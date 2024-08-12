@@ -11,7 +11,7 @@ interface Props {
 
 const DokumentUtenTilgang = ({ dokument, dato, avsender }: Props) => {
   return (
-    <div className={`${styles.container} ${styles.hover}`}>
+    <div className={`${styles.container} ${styles.hover}`} key={dokument.dokumentInfoId}>
       <div className={styles.icon}>
         <EyeSlashIcon fontSize="2rem" />
       </div>

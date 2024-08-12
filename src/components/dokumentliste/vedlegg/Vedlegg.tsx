@@ -17,9 +17,9 @@ const Vedlegg = ({ journalpost }: { journalpost: JournalpostProps }) => {
           <Label size="small">Vedlegg</Label>
           {vedleggsListe.map((vedlegg) =>
             vedlegg.brukerHarTilgang ? (
-              <a className={styles.vedlegg}>{vedlegg.tittel}</a>
+              <a className={styles.vedlegg} key={vedlegg.dokumentInfoId}>{vedlegg.tittel}</a>
             ) : (
-              <div className={styles.vedleggIngenTilgang}>
+              <div className={styles.vedleggIngenTilgang} key={vedlegg.dokumentInfoId}>
                 {vedlegg.tittel + text.vedleggKanIkkeVises["nb"]}
               </div>
             )

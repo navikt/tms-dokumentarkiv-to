@@ -11,20 +11,22 @@ interface Props {
 
 const Dokument = ({ dokument, dato, avsender }: Props) => {
   return (
-    <>
-      <a className={`${styles.container} ${styles.hover}`} href="#">
-        <FilePdfIcon fontSize="2rem" />
-        <div className={styles.content}>
-          <Heading level="3" size="xsmall" className={styles.tittel}>
-            {dokument.tittel}
-          </Heading>
-          <div className={styles.datoOgAvsender}>
-            <Detail>{dato}</Detail>
-            <Detail>{"Avsender: " + avsender}</Detail>
-          </div>
+    <a
+      className={`${styles.container} ${styles.hover}`}
+      href="#"
+      key={dokument.dokumentInfoId}
+    >
+      <FilePdfIcon fontSize="2rem" />
+      <div className={styles.content}>
+        <Heading level="3" size="xsmall" className={styles.tittel}>
+          {dokument.tittel}
+        </Heading>
+        <div className={styles.datoOgAvsender}>
+          <Detail>{dato}</Detail>
+          <Detail>{"Avsender: " + avsender}</Detail>
         </div>
-      </a>
-    </>
+      </div>
+    </a>
   );
 };
 

@@ -15,7 +15,7 @@ const Journalpost = ({ journalpost }: { journalpost: JournalpostProps }) => {
   const avsender = journalpost.avsender;
   return (
     <>
-      <li className={styles.container}>
+      <li className={styles.container} key={journalpost.journalpostId}>
         {hovedDokument[0].brukerHarTilgang ? (
           <Dokument
             dokument={hovedDokument[0]}

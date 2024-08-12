@@ -15,7 +15,7 @@
     "harVedlegg": true,
     "dokumenter": [
       {            
-        "dokumentInfoId": "624882104",
+        "dokumentInfoId": "624887896",
         "tittel":
           "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
         "dokumenttype": "HOVED",
@@ -23,7 +23,7 @@
         "brukerHarTilgang": false
       },
       {            
-        "dokumentInfoId": "624882105",
+        "dokumentInfoId": "624878907",
         "tittel": "Kvitteringsside for dokumentinnsending",
         "dokumenttype": "VEDLEGG",
         "brukerHarTilgang": false,
@@ -32,7 +32,7 @@
     ]       
   },
   {
-    "journalpostId": "598134457",
+    "journalpostId": "596734457",
     "tittel":
       "Søknad om å beholde pensjon under opphold i utlandet ",
     "journalposttype": "INNGAAENDE",
@@ -46,7 +46,7 @@
     "sisteEndret": "2023-02-10T14:25:01Z",
     "dokumenter": [
       {            
-        "dokumentInfoId": "624882104",
+        "dokumentInfoId": "625432104",
         "tittel":
           "Søknad om å beholde pensjon under opphold i utlandet ",
         "dokumenttype": "HOVED",
@@ -54,21 +54,21 @@
         "brukerHarTilgang": true
       },
       {            
-        "dokumentInfoId": "624882105",
+        "dokumentInfoId": "624123405",
         "tittel": "Kvitteringsside for dokumentinnsending",
         "dokumenttype": "VEDLEGG",
         "brukerHarTilgang": true,
         "filtype": "PDF"
       },
       {            
-        "dokumentInfoId": "624882105",
+        "dokumentInfoId": "624867895",
         "tittel": "Kvitteringsside for dokumentinnsending",
         "dokumenttype": "VEDLEGG",
         "brukerHarTilgang": true,
         "filtype": "PDF"
       },
       {            
-        "dokumentInfoId": "624882105",
+        "dokumentInfoId": "623456105",
         "tittel": "Kvitteringsside for dokumentinnsending",
         "dokumenttype": "VEDLEGG",
         "brukerHarTilgang": false,
@@ -77,7 +77,7 @@
     ]       
   },
   {
-    "journalpostId": "598134457",
+    "journalpostId": "598134897",
     "tittel":
       "Søknad om foreldrepenger",
     "journalposttype": "INNGAAENDE",
@@ -91,7 +91,7 @@
     "sisteEndret": "2020-12-10T15:27:01Z",
     "dokumenter": [
       {            
-        "dokumentInfoId": "624882104",
+        "dokumentInfoId": "621234104",
         "tittel":
           "Søknad om foreldrepenger",
         "dokumenttype": "HOVED",

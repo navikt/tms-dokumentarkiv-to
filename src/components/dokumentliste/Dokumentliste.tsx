@@ -11,7 +11,6 @@ const Dokumentliste = () => {
   return (
     <ul className={styles.list}>
       {journalposter?.map((journalpost: JournalpostProps) => {
-        console.log(journalpost);
         return <Journalpost journalpost={journalpost} />;
       })}
     </ul>

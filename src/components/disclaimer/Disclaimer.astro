@@ -1,16 +1,15 @@
 ---
-
 import { Heading, BodyLong } from "@navikt/ds-react";
 import { text } from "@language/text";
-import styles from "./Disclaimer.module.css"
+import styles from "./Disclaimer.module.css";
 import type { Language } from "@language/language";
+import DisclaimerLenke from "./DisclaimerLenke";
 
 interface Props {
   language: Language;
 }
 
 const { language } = Astro.props;
-
 ---
 
 <div class={styles.container}>
@@ -31,15 +30,5 @@ const { language } = Astro.props;
       <BodyLong>{text.documentDisclaimerListepunktTo[language]}</BodyLong>
     </li>
   </ul>
-  <BodyLong>
-    <span>
-      {/* <a
-        href={kontaktOssUrl}
-        onClick={() => logAmplitudeEvent("Lenke", "Disclaimer", text.landingssideDisclaimerTekstDel1["nb"])}
-      >
-        {text.landingssideDisclaimerTekstDel1[language]}
-      </a>*/}
-    </span>
-    {text.landingssideDisclaimerTekstDel2[language]}
-  </BodyLong>
+  <DisclaimerLenke language={language} />
 </div>
