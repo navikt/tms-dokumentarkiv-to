@@ -1,0 +1,7 @@
+.container {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: var(--a-surface-subtle);
+}

@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  color: var(--a-text-default);
+  text-decoration: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  color: var(--a-text-subtle);
+}
+
+.tittel {
+  margin: 0 0 0.25rem 0;
+  text-decoration: underline;
+}
+
+.tittelIkkeTilgang {
+  margin: 0;
+  text-decoration: none;
+  color: var(--a-text-subtle);
+}
+
+.datoOgAvsender {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.content:hover .tittel {
+  text-decoration: none;
+  cursor: pointer;
+}

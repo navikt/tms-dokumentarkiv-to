@@ -1,0 +1,8 @@
+{
+  "navn": "Dag Helge Daghelgesen",
+  "ident": "123456789",
+  "fullmaktsGivere": [
+    { "navn": "Sergio Sergiozen", "ident": "12345" },
+    { "navn": "Amir Amiresen", "ident": "345678901" }
+  ]
+}

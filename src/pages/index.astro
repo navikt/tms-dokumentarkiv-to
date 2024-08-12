@@ -1,0 +1,14 @@
+---
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import Layout from "../layouts/Layout.astro";
+import styles from "./_index.module.css";
+import Dokumentarkiv from "@src/components/dokumentarkiv/Dokumentarkiv";
+import Disclaimer from "@components/disclaimer/Disclaimer.astro";
+---
+
+<Layout title="Dokumentarkiv" breadcrumbs={[]}>
+  <h1>Dokumentarkiv</h1>
+  <Dokumentarkiv client:only="react"/>
+  <Disclaimer language="nb"/>
+</Layout>

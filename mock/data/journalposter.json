@@ -1,0 +1,103 @@
+[
+  {
+    "journalpostId": "598134457",
+    "tittel":
+      "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+    "journalposttype": "INNGAAENDE",
+    "journalstatus": "MOTTATT",
+    "temakode": "AAP",
+    "temanavn": "Arbeidsavklaringspenger",
+    "avsendertype": "",
+    "avsender": "Bedrift AS",
+    "mottakertype": "",
+    "mottaker": null,
+    "sisteEndret": "2021-07-10T08:27:01Z",
+    "harVedlegg": true,
+    "dokumenter": [
+      {            
+        "dokumentInfoId": "624882104",
+        "tittel":
+          "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+        "dokumenttype": "HOVED",
+        "filtype": "PDF",
+        "brukerHarTilgang": false
+      },
+      {            
+        "dokumentInfoId": "624882105",
+        "tittel": "Kvitteringsside for dokumentinnsending",
+        "dokumenttype": "VEDLEGG",
+        "brukerHarTilgang": false,
+        "filtype": "PDF"
+      }
+    ]       
+  },
+  {
+    "journalpostId": "598134457",
+    "tittel":
+      "Søknad om å beholde pensjon under opphold i utlandet ",
+    "journalposttype": "INNGAAENDE",
+    "journalstatus": "MOTTATT",
+    "temakode": "PEN",
+    "temanavn": "Pensjon",
+    "avsendertype": "",
+    "avsender": "NAV",
+    "mottakertype": "",
+    "mottaker": null,
+    "sisteEndret": "2023-02-10T14:25:01Z",
+    "dokumenter": [
+      {            
+        "dokumentInfoId": "624882104",
+        "tittel":
+          "Søknad om å beholde pensjon under opphold i utlandet ",
+        "dokumenttype": "HOVED",
+        "filtype": "PDF",
+        "brukerHarTilgang": true
+      },
+      {            
+        "dokumentInfoId": "624882105",
+        "tittel": "Kvitteringsside for dokumentinnsending",
+        "dokumenttype": "VEDLEGG",
+        "brukerHarTilgang": true,
+        "filtype": "PDF"
+      },
+      {            
+        "dokumentInfoId": "624882105",
+        "tittel": "Kvitteringsside for dokumentinnsending",
+        "dokumenttype": "VEDLEGG",
+        "brukerHarTilgang": true,
+        "filtype": "PDF"
+      },
+      {            
+        "dokumentInfoId": "624882105",
+        "tittel": "Kvitteringsside for dokumentinnsending",
+        "dokumenttype": "VEDLEGG",
+        "brukerHarTilgang": false,
+        "filtype": "PDF"
+      }
+    ]       
+  },
+  {
+    "journalpostId": "598134457",
+    "tittel":
+      "Søknad om foreldrepenger",
+    "journalposttype": "INNGAAENDE",
+    "journalstatus": "MOTTATT",
+    "temakode": "FOR",
+    "temanavn": "Foreldrepenger",
+    "avsendertype": "",
+    "avsender": "Navn Navnesen",
+    "mottakertype": "",
+    "mottaker": null,
+    "sisteEndret": "2020-12-10T15:27:01Z",
+    "dokumenter": [
+      {            
+        "dokumentInfoId": "624882104",
+        "tittel":
+          "Søknad om foreldrepenger",
+        "dokumenttype": "HOVED",
+        "filtype": "PDF",
+        "brukerHarTilgang": true
+      }
+    ]       
+  }
+]
