@@ -6,9 +6,9 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  base: "/dokumentarkiv",
+  base: "/dokumentarkiv-to",
   build: {
-    assetsPrefix: "https://cdn.nav.no/min-side/dokumentarkiv",
+    assetsPrefix: "https://cdn.nav.no/min-side/dokumentarkiv-to",
   },
   integrations: [
     react(),
