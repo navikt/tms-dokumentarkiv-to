@@ -8,7 +8,7 @@ import node from "@astrojs/node";
 export default defineConfig({
   base: "/dokumentarkiv-to",
   build: {
-    assetsPrefix: "https://cdn.nav.no/min-side/dokumentarkiv-to",
+    assetsPrefix: "https://cdn.nav.no/min-side/tms-dokumentarkiv-to",
   },
   integrations: [
     react(),
