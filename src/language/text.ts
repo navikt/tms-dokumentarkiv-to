@@ -1,4 +1,9 @@
 export const text = {
+  dokumentListeTittel: {
+    nb: "Dokumentliste",
+    nn: "Dokumentliste",
+    en: "List of documents",
+  },
   vedleggKanIkkeVises: {
     nb: " (kan ikke vises)",
     nn: " (kan ikkje visast)",
@@ -68,5 +73,30 @@ export const text = {
     nb: " dersom det er noe du lurer på.",
     nn: " dersom det er noko du lurar på.",
     en: " if you have any questions.",
+  },
+  lasterInn: {
+    nb: "Laster...",
+    nn: "Laster...",
+    en: "Loading...",
+  },
+  nyttigOgVite: {
+    nb: "Nyttig å vite",
+    nn: "Nyttig å vite",
+    en: "Useful information",
+  },
+  lenke1: {
+    nb: "Saksbehandlingstider",
+    nn: "Saksbehandlingstider",
+    en: "Processing times",
+  },
+  lenke2: {
+    nb: "Klage på vedtak",
+    nn: "Klage på vedtak",
+    en: "Appeal against decisions",
+  },
+  lenke3: {
+    nb: "Kontakt oss",
+    nn: "Kontakt oss",
+    en: "Contact us",
   },
 };
