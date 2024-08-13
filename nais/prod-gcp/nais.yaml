@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: tms-dokumentarkiv-2
+  name: tms-dokumentarkiv-to
   namespace: min-side
   labels:
     team: min-side
@@ -16,10 +16,10 @@ spec:
   image: {{ image }}
   port: 3000
   liveness:
-    path: /minside/dokumentarkiv/api/internal/isAlive
+    path: /minside/dokumentarkiv-to/api/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /minside/dokumentarkiv/api/internal/isReady
+    path: /minside/dokumentarkiv-to/api/internal/isReady
     initialDelay: 10
   replicas:
     min: 2
