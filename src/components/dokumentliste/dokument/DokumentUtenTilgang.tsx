@@ -7,9 +7,10 @@ interface Props {
   dokument: DokumentProps;
   dato: string;
   avsender: string;
+  mottaker: string;
 }
 
-const DokumentUtenTilgang = ({ dokument, dato, avsender }: Props) => {
+const DokumentUtenTilgang = ({ dokument, dato, avsender, mottaker }: Props) => {
   return (
     <div className={`${styles.container} ${styles.hover}`} key={dokument.dokumentInfoId}>
       <div className={styles.icon}>
@@ -19,11 +20,12 @@ const DokumentUtenTilgang = ({ dokument, dato, avsender }: Props) => {
         <Heading level="3" size="xsmall" className={styles.tittelIkkeTilgang}>
           {dokument.tittel}
         </Heading>
-        <div className={styles.datoOgAvsender}>
+        <div className={styles.detail}>
           <Detail>{dato}</Detail>
           <Detail>{"Avsender: " + avsender}</Detail>
-          <Detail>Dokument utilgjengelig</Detail>
+          <Detail>{"Mottaker: " + mottaker}</Detail>
         </div>
+        <Detail className={styles.utilgjengelig}>Dokument utilgjengelig</Detail>
       </div>
     </div>
   );

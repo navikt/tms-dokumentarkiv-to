@@ -5,7 +5,7 @@ import styles from "./Vedlegg.module.css";
 
 const Vedlegg = ({ journalpost }: { journalpost: JournalpostProps }) => {
   const vedleggsListe = journalpost.dokumenter.filter(
-    (d) => d.dokumenttype === "VEDLEGG"
+    (d) => d.dokumenttype === "Vedlegg"
   );
 
   const hasVedlegg = vedleggsListe.length > 0;

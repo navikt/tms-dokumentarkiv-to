@@ -22,15 +22,19 @@
 }
 
 .tittelIkkeTilgang {
-  margin: 0;
+  margin: 0 0 0.2rem 0;
   text-decoration: none;
   color: var(--a-text-subtle);
 }
 
-.datoOgAvsender {
+.detail {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+.utilgjengelig {
+  margin-top: 0.5rem;
 }
 
 .content:hover .tittel {

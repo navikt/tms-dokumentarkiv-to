@@ -7,9 +7,10 @@ interface Props {
   dokument: DokumentProps;
   dato: string;
   avsender: string;
+  mottaker: string;
 }
 
-const Dokument = ({ dokument, dato, avsender }: Props) => {
+const Dokument = ({ dokument, dato, avsender, mottaker }: Props) => {
   return (
     <a
       className={`${styles.container} ${styles.hover}`}
@@ -21,9 +22,10 @@ const Dokument = ({ dokument, dato, avsender }: Props) => {
         <Heading level="3" size="xsmall" className={styles.tittel}>
           {dokument.tittel}
         </Heading>
-        <div className={styles.datoOgAvsender}>
+        <div className={styles.detail}>
           <Detail>{dato}</Detail>
           <Detail>{"Avsender: " + avsender}</Detail>
+          <Detail>{"Mottaker: " + mottaker}</Detail>
         </div>
       </div>
     </a>

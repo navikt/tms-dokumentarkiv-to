@@ -18,14 +18,14 @@
         "dokumentInfoId": "624887896",
         "tittel":
           "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
-        "dokumenttype": "HOVED",
+        "dokumenttype": "Hoved",
         "filtype": "PDF",
         "brukerHarTilgang": false
       },
       {            
         "dokumentInfoId": "624878907",
         "tittel": "Kvitteringsside for dokumentinnsending",
-        "dokumenttype": "VEDLEGG",
+        "dokumenttype": "Vedlegg",
         "brukerHarTilgang": false,
         "filtype": "PDF"
       }
@@ -50,14 +50,14 @@
         "dokumentInfoId": "624887896",
         "tittel":
           "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
-        "dokumenttype": "HOVED",
+        "dokumenttype": "Hoved",
         "filtype": "PDF",
         "brukerHarTilgang": false
       },
       {            
         "dokumentInfoId": "624878907",
         "tittel": "Kvitteringsside for dokumentinnsending",
-        "dokumenttype": "VEDLEGG",
+        "dokumenttype": "Vedlegg",
         "brukerHarTilgang": false,
         "filtype": "PDF"
       }
@@ -81,21 +81,21 @@
         "dokumentInfoId": "625432104",
         "tittel":
           "Søknad om å beholde pensjon under opphold i utlandet ",
-        "dokumenttype": "HOVED",
+        "dokumenttype": "Hoved",
         "filtype": "PDF",
         "brukerHarTilgang": true
       },
       {            
         "dokumentInfoId": "624123405",
         "tittel": "Kvitteringsside for dokumentinnsending",
-        "dokumenttype": "VEDLEGG",
+        "dokumenttype": "Vedlegg",
         "brukerHarTilgang": true,
         "filtype": "PDF"
       },
       {            
         "dokumentInfoId": "624867895",
         "tittel": "Kvitteringsside for dokumentinnsending",
-        "dokumenttype": "VEDLEGG",
+        "dokumenttype": "Vedlegg",
         "brukerHarTilgang": true,
         "filtype": "PDF"
       },
@@ -111,7 +111,7 @@
   {
     "journalpostId": "598134897",
     "tittel":
-      "Søknad om foreldrepenger",
+      "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
     "journalposttype": "Inn",
     "journalstatus": "Mottatt",
     "temakode": "FOR",
@@ -125,8 +125,8 @@
       {            
         "dokumentInfoId": "621234104",
         "tittel":
-          "Søknad om foreldrepenger",
-        "dokumenttype": "HOVED",
+          "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+        "dokumenttype": "Hoved",
         "filtype": "PDF",
         "brukerHarTilgang": true
       }
