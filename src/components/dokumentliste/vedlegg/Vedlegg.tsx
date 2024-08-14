@@ -1,8 +1,7 @@
-import type { JournalpostProps } from "../DokumentInterfaces";
-import { getLanguage } from "@language/language";
-import { text } from "../../../language/text";
-import styles from "./Vedlegg.module.css";
 import { Label } from "@navikt/ds-react";
+import { text } from "../../../language/text";
+import type { JournalpostProps } from "../DokumentInterfaces";
+import styles from "./Vedlegg.module.css";
 
 const Vedlegg = ({ journalpost }: { journalpost: JournalpostProps }) => {
   const vedleggsListe = journalpost.dokumenter.filter(

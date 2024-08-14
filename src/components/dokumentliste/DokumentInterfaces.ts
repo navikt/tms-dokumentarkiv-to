@@ -9,7 +9,7 @@ export interface JournalpostProps {
   avsender: string;
   mottakertype: string;
   mottaker: string;
-  sisteEndret: string;
+  opprettet: string;
   dokumenter: [DokumentProps];
 }
 

@@ -1,17 +1,15 @@
-import { Detail } from "@navikt/ds-react";
 import { format } from "date-fns";
-import { FilePdfIcon } from "@navikt/aksel-icons";
-import type { JournalpostProps } from "../DokumentInterfaces";
-import styles from "./Journalpost.module.css";
-import DokumentUtenTilgang from "../dokument/DokumentUtenTilgang";
 import Dokument from "../dokument/Dokument";
+import DokumentUtenTilgang from "../dokument/DokumentUtenTilgang";
+import type { JournalpostProps } from "../DokumentInterfaces";
 import Vedlegg from "../vedlegg/Vedlegg";
+import styles from "./Journalpost.module.css";
 
 const Journalpost = ({ journalpost }: { journalpost: JournalpostProps }) => {
   const hovedDokument = journalpost.dokumenter.filter(
     (d) => d.dokumenttype === "HOVED"
   );
-  const dato = format(new Date(journalpost.sisteEndret), "dd.MM.yyyy");
+  const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const avsender = journalpost.avsender;
   return (
     <>
