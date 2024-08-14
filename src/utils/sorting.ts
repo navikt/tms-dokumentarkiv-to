@@ -3,4 +3,4 @@ import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfa
 
 
 export const sortByOpprettet = (a: JournalpostProps, b: JournalpostProps) =>
-  dayjs(a.sisteEndret).isAfter(dayjs(b.sisteEndret)) ? -1 : 1;
+  dayjs(a.opprettet).isAfter(dayjs(b.opprettet)) ? -1 : 1;

@@ -3,15 +3,47 @@
     "journalpostId": "598134457",
     "tittel":
       "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
-    "journalposttype": "INNGAAENDE",
-    "journalstatus": "MOTTATT",
+    "journalposttype": "Ut",
+    "journalstatus": "Ferdigstilt",
     "temakode": "AAP",
     "temanavn": "Arbeidsavklaringspenger",
-    "avsendertype": "",
-    "avsender": "Bedrift AS",
-    "mottakertype": "",
-    "mottaker": null,
-    "sisteEndret": "2021-07-10T08:27:01Z",
+    "avsendertype": null,
+    "avsender": null,
+    "mottakertype": "Organisasjon",
+    "mottaker": "TRYGDERETTEN",
+    "opprettet": "2021-07-10T08:27:01Z",
+    "harVedlegg": true,
+    "dokumenter": [
+      {            
+        "dokumentInfoId": "624887896",
+        "tittel":
+          "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+        "dokumenttype": "HOVED",
+        "filtype": "PDF",
+        "brukerHarTilgang": false
+      },
+      {            
+        "dokumentInfoId": "624878907",
+        "tittel": "Kvitteringsside for dokumentinnsending",
+        "dokumenttype": "VEDLEGG",
+        "brukerHarTilgang": false,
+        "filtype": "PDF"
+      }
+    ]       
+  },
+  {
+    "journalpostId": "598167457",
+    "tittel":
+      "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+    "journalposttype": "Ut",
+    "journalstatus": "Ferdigstilt",
+    "temakode": "AAP",
+    "temanavn": "Arbeidsavklaringspenger",
+    "avsendertype": null,
+    "avsender": null,
+    "mottakertype": "Bruker",
+    "mottaker": "Navn Navnesen",
+    "opprettet": "2021-07-10T08:27:01Z",
     "harVedlegg": true,
     "dokumenter": [
       {            
@@ -35,15 +67,15 @@
     "journalpostId": "596734457",
     "tittel":
       "Søknad om å beholde pensjon under opphold i utlandet ",
-    "journalposttype": "INNGAAENDE",
-    "journalstatus": "MOTTATT",
+    "journalposttype": "Inn",
+    "journalstatus": "Mottatt",
     "temakode": "PEN",
     "temanavn": "Pensjon",
-    "avsendertype": "",
-    "avsender": "NAV",
+    "avsendertype": "Internasjonal",
+    "avsender": "NAV ACC 05",
     "mottakertype": "",
     "mottaker": null,
-    "sisteEndret": "2023-02-10T14:25:01Z",
+    "opprettet": "2023-02-10T14:25:01Z",
     "dokumenter": [
       {            
         "dokumentInfoId": "625432104",
@@ -80,15 +112,15 @@
     "journalpostId": "598134897",
     "tittel":
       "Søknad om foreldrepenger",
-    "journalposttype": "INNGAAENDE",
-    "journalstatus": "MOTTATT",
+    "journalposttype": "Inn",
+    "journalstatus": "Mottatt",
     "temakode": "FOR",
     "temanavn": "Foreldrepenger",
-    "avsendertype": "",
+    "avsendertype": "Bruker",
     "avsender": "Navn Navnesen",
     "mottakertype": "",
     "mottaker": null,
-    "sisteEndret": "2020-12-10T15:27:01Z",
+    "opprettet": "2020-12-10T15:27:01Z",
     "dokumenter": [
       {            
         "dokumentInfoId": "621234104",
