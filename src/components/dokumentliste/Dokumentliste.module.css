@@ -2,6 +2,20 @@
   margin-top: 2rem;
 }
 
+.ingress {
+  margin-top: 1.25rem;
+}
+
+.sistEndret {
+  margin-top: 2.5rem;
+  color: var(--a-text-subtle);
+  font-size: 1rem;
+}
+
+.listWrapper {
+  margin-top: 1.75rem;
+}
+
 .list {
   padding: 0;
   margin: 0;

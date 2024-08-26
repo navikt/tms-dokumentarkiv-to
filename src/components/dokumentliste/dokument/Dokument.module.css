@@ -13,12 +13,17 @@
 }
 
 .icon {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: var(--a-surface-subtle);
   color: var(--a-text-subtle);
+  line-height: 0;
 }
 
 .tittel {
   margin: 0 0 0.25rem 0;
   text-decoration: underline;
+  color: var(--a-text-action);
 }
 
 .tittelIkkeTilgang {
@@ -33,8 +38,11 @@
   gap: 1rem;
 }
 
-.utilgjengelig {
+.dokumentKanIkkeVises {
   margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--a-text-subtle);
 }
 
 .content:hover .tittel {

@@ -1,19 +1,19 @@
-import type { Language } from "@language/language";
-import { onLanguageSelect, setAvailableLanguages, setParams } from "@navikt/nav-dekoratoren-moduler";
 import { useEffect } from "react";
+import { onLanguageSelect, setAvailableLanguages, setParams, type DecoratorLocale } from "@navikt/nav-dekoratoren-moduler";
+import type { Language } from "@language/language";
+
+export const setSessionLanguage = (language : DecoratorLocale) => {
+  window.sessionStorage.setItem("language", language );
+}
 
 export const useLanguage = (language: Language) => {
-  const [_leadingSlash, _basePath, _path, _oldLocale, ...rest] = window.location.pathname.split("/");
+  const [_leadingSlash, _basePath, _oldLocale, ...rest] = window.location.pathname.split("/");
   const slug = rest.join("/");
-  
+  setSessionLanguage(language)
+
   onLanguageSelect((language) => {
-    window.sessionStorage.setItem("language", language.locale);
-    
-    if(language.locale === "nb") {
-      window.location.pathname = `/minside/dokumentarkiv/${slug}`;
-    } else {
-      window.location.pathname = `/minside/dokumentarkiv/${language.locale}/${slug}`;
-    }   
+    setSessionLanguage(language.locale )
+    window.location.pathname = `/minside/${language.locale}/${slug}`;
   });
 
   useEffect(() => {
@@ -24,11 +24,11 @@ export const useLanguage = (language: Language) => {
         handleInApp: true,
       },
       {
-        locale: "nn",
+        locale: "en",
         handleInApp: true,
       },
       {
-        locale: "en",
+        locale: "nn",
         handleInApp: true,
       },
     ]);

@@ -1,9 +1,9 @@
 import { Loader } from "@navikt/ds-react";
 import styles from "./ContentLoader.module.css";
 import { text } from "../../language/text";
+import type { Language } from "@language/language";
 
-const ContentLoader = () => {
-  const language = "nb";
+const ContentLoader = ({ language }: { language: Language }) => {
 
   return (
     <div className={styles.contentLoader}>

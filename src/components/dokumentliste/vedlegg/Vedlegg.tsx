@@ -1,31 +1,98 @@
-import { Label } from "@navikt/ds-react";
-import { text } from "../../../language/text";
-import type { JournalpostProps } from "../DokumentInterfaces";
+import { ChevronDownIcon, ChevronUpIcon } from "@navikt/aksel-icons";
+import { BodyShort, Button } from "@navikt/ds-react";
+import { useState } from "react";
+import { text } from "@language/text";
+import { logAmplitudeEvent } from "@utils/amplitude";
 import styles from "./Vedlegg.module.css";
+import type { DokumentProps, JournalpostProps } from "../DokumentInterfaces";
+import { dokumentUrl } from "@src/urls.client";
+import type { Language } from "@language/language";
 
-const Vedlegg = ({ journalpost }: { journalpost: JournalpostProps }) => {
-  const vedleggsListe = journalpost.dokumenter.filter(
-    (d) => d.dokumenttype === "Vedlegg"
-  );
+interface Props {
+  journalpost: JournalpostProps;
+  language: Language;
+}
 
-  const hasVedlegg = vedleggsListe.length > 0;
-  return (
-    <>
-      {hasVedlegg ? (
-        <div className={styles.veddleggsListe}>
-          <Label size="small">Vedlegg</Label>
-          {vedleggsListe.map((vedlegg) =>
-            vedlegg.brukerHarTilgang ? (
-              <a className={styles.vedlegg} key={vedlegg.dokumentInfoId}>{vedlegg.tittel}</a>
+interface VedleggslenkeProps {
+  url: string;
+  tittel: string;
+  brukerHarTilgang: boolean;
+}
+
+const Vedlegg = ({ journalpost, language }: Props) => {
+  const [hideVedlegg, setHideVedlegg] = useState(true);
+  const vedleggsListe = journalpost.dokumenter.filter((d) => d.dokumenttype === "Vedlegg");
+  const antallVedlegg = vedleggsListe.length;
+  const hasVedlegg = antallVedlegg > 0;
+  const grupperVedlegg = antallVedlegg > 4;
+  const baseUrl = `${dokumentUrl}/${journalpost.journalpostId}`;
+
+
+  const handleOnClick = () => {
+    setHideVedlegg(!hideVedlegg);
+  };
+
+  const VedleggsLenke = ({ url, tittel, brukerHarTilgang }: VedleggslenkeProps) => {
+    const tittelMedPdfTag = tittel + ".pdf";
+
+    return brukerHarTilgang ? (
+      <a href={url} className={styles.vedlegg} onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}>
+        {tittelMedPdfTag}
+      </a>
+    ) : (
+      <div className={styles.vedleggIngenTilgang}>{tittelMedPdfTag + text.vedleggKanIkkeVises[language]}</div>
+    );
+  };
+
+  if(!hasVedlegg) {
+    return null;
+  }
+
+  if (grupperVedlegg) {
+    return (
+      <div className={styles.veddleggsListe}>
+        <BodyShort className={styles.tittel}>{text.antallVedlegg[language](antallVedlegg)}</BodyShort>
+        <Button
+          className={styles.btn}
+          variant="secondary-neutral"
+          size="xsmall"
+          icon={
+            hideVedlegg ? (
+              <ChevronDownIcon fontSize="1.5rem" aria-hidden />
             ) : (
-              <div className={styles.vedleggIngenTilgang} key={vedlegg.dokumentInfoId}>
-                {vedlegg.tittel + text.vedleggKanIkkeVises["nb"]}
-              </div>
+              <ChevronUpIcon fontSize="1.5rem" aria-hidden />
             )
-          )}
+          }
+          onClick={() => handleOnClick()}
+        >
+          {hideVedlegg ? text.visVedlegg[language] : text.skjulVedlegg[language]}
+        </Button>
+        <div className={hideVedlegg ? styles.visuallyHidden : undefined}>
+          {vedleggsListe.map((vedlegg: DokumentProps) => (
+            <VedleggsLenke
+              url={`${baseUrl}/${vedlegg.dokumentInfoId}`}
+              tittel={vedlegg.tittel}
+              brukerHarTilgang={vedlegg.brukerHarTilgang}
+              key={vedlegg.dokumentInfoId}
+            />
+          ))}
         </div>
-      ) : null}
-    </>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.veddleggsListe}>
+      <BodyShort className={styles.tittel}>{text.antallVedlegg[language](antallVedlegg)}</BodyShort>
+      {vedleggsListe.map((vedlegg: DokumentProps) => (
+        <VedleggsLenke
+          url={`${baseUrl}/${vedlegg.dokumentInfoId}`}
+          tittel={vedlegg.tittel}
+          brukerHarTilgang={vedlegg.brukerHarTilgang}
+          key={vedlegg.dokumentInfoId}
+        />
+      ))}
+    </div>
   );
 };
 

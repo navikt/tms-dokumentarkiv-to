@@ -27,7 +27,6 @@ const DIGISOS_REDIRECT_URL = {
 export const mineSakerApiUrl = MINE_SAKER_API_URL[getEnvironmentClientSide()];
 export const authenticationUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/login/status`;
 export const getSakstemaerUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/sakstemaer`;
-export const getJournalposterUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/alle`;
 export const dokumentUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/dokument`;
 export const getFullmaktForhold = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/forhold`;
 export const postUserUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/representert`;
@@ -42,6 +41,8 @@ export const pdlFullmaktUrl = `${BASE_URL[getEnvironmentClientSide()]}/person/pd
 export const saksbehandlingstiderUrl = "https://www.nav.no/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav";
 export const tilbakemeldingerUrl = "https://www.nav.no/person/kontakt-oss/tilbakemeldinger";
 export const digisosRedirectUrl = DIGISOS_REDIRECT_URL[getEnvironmentClientSide()];
+
+export const getJournalposterUrl = (tema: string) => `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sakstema/${tema}/journalposter`;
 
 export const baseUrlWithLanguage = {
   nb: `${baseUrl}/dokumentarkiv`,

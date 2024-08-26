@@ -1,9 +1,10 @@
 ---
-import SakstemalisteContainer from "@components/containers/SakstemalisteContainer";
+import DokumentlisteContainer from "@components/containers/DokumentlisteContainer";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
 
+//TODO url for nivå 2 i breadcrumb
 const breadcrumbs = [
   {
     title: text.minSide["nn"], url: "https://www.nav.no/minside/nn"
@@ -11,10 +12,14 @@ const breadcrumbs = [
   {
     url: `${baseUrl}/nn`,
     title: text.dokumentarkiv["nn"]
+  },
+  {
+    url: `${baseUrl}/nn`,
+    title: text.dokumenter["nn"]
   }
 ];
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs}>
-  <SakstemalisteContainer language="nn" client:only="react" />
+  <DokumentlisteContainer language="nn" client:only="react" />
 </Layout>

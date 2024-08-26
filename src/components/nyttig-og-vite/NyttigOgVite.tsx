@@ -3,10 +3,9 @@ import styles from "./NyttigOgVite.module.css";
 import { kontaktOssUrl, saksbehandlingstiderUrl, tilbakemeldingerUrl } from "@src/urls.client";
 import { text } from "../../language/text";
 import { logAmplitudeEvent } from "../../utils/amplitude";
+import type { Language } from "@language/language";
 
-const NyttigOgVite = () => {
-
-  const language = "nb";
+const NyttigOgVite = ({ language }: { language: Language }) => {
 
   return(
     <div className={styles.container}>

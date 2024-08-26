@@ -1,16 +1,19 @@
 import type { DokumentProps } from "../DokumentInterfaces";
-import { Heading, Detail } from "@navikt/ds-react";
+import { Heading, Detail, BodyShort } from "@navikt/ds-react";
 import { EyeSlashIcon } from "@navikt/aksel-icons";
 import styles from "./Dokument.module.css";
+import { text } from "@language/text";
+import type { Language } from "@language/language";
 
 interface Props {
   dokument: DokumentProps;
   dato: string;
   avsender: string;
   mottaker: string;
+  language: Language;
 }
 
-const DokumentUtenTilgang = ({ dokument, dato, avsender, mottaker }: Props) => {
+const DokumentUtenTilgang = ({ dokument, dato, avsender, mottaker, language }: Props) => {
   return (
     <div className={`${styles.container} ${styles.hover}`} key={dokument.dokumentInfoId}>
       <div className={styles.icon}>
@@ -25,7 +28,9 @@ const DokumentUtenTilgang = ({ dokument, dato, avsender, mottaker }: Props) => {
           <Detail>{"Avsender: " + avsender}</Detail>
           <Detail>{"Mottaker: " + mottaker}</Detail>
         </div>
-        <Detail className={styles.utilgjengelig}>Dokument utilgjengelig</Detail>
+        <BodyShort size="small" className={styles.dokumentKanIkkeVises}>
+          {text.dokumentKanIkkeVises[language]}
+        </BodyShort>
       </div>
     </div>
   );

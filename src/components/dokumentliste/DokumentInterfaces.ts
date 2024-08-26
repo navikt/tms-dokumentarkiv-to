@@ -13,11 +13,16 @@ export interface JournalpostProps {
   dokumenter: [DokumentProps];
 }
 
-export interface DokumentProps {  
+export interface DokumentProps {
   dokumentInfoId: string;
   tittel: string;
-  dokumenttype: string;  
+  dokumenttype: string;
   filtype: string;
   brukerHarTilgang: boolean;
 }
 
+export interface JournalposterProps {
+  temakode: string;
+  temanavn: string;
+  journalposter: Array<JournalpostProps>;
+}

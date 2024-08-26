@@ -23,6 +23,33 @@
 
 .veddleggsListe {
   padding-top: 0.75rem;
-  padding-left: 3rem;
+  padding-left: 4rem;
   color: var(--a-text-on-info);
+}
+
+.tittel {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn {
+  margin-top: 0.75rem;
+}
+
+.chevron {
+  overflow: visible;
+}
+
+.show {
+  display: flex;
+}
+
+.visuallyHidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

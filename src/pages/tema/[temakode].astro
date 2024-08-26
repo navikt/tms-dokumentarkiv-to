@@ -1,0 +1,29 @@
+---
+import DokumentlisteContainer from "@components/containers/DokumentlisteContainer";
+import { text } from "@language/text";
+import Layout from "@layouts/Layout.astro";
+
+const language = "nb";
+const breadcrumbs = [
+  {
+    title: text.minSide["nb"], url: "/minside"
+  },
+  {
+    url: `/dokumentarkiv-to`,
+    title: text.dokumentarkiv["nb"],
+    handleInApp: true,
+  },
+  {
+    url: `/dokumentarkiv-to`,
+    title: text.dokumenter["nb"],
+    handleInApp: true,
+  }
+];
+
+const { temakode } = Astro.params;
+
+---
+
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs}>
+  <DokumentlisteContainer language="nb" client:only="react" temakode={temakode}/>
+</Layout>

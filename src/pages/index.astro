@@ -1,14 +1,20 @@
 ---
-import type { Language } from "@language/language";
+import SakstemalisteContainer from "@components/containers/SakstemalisteContainer";
 import { text } from "@language/text";
-import Layout from "../layouts/Layout.astro";
-import styles from "./_index.module.css";
-import Dokumentarkiv from "@src/components/dokumentarkiv/Dokumentarkiv";
-import Disclaimer from "@components/disclaimer/Disclaimer.astro";
+import Layout from "@layouts/Layout.astro";
+import { baseUrl } from "@src/urls";
+
+const breadcrumbs = [
+  {
+    title: text.minSide["nb"], url: "https://www.nav.no/minside"
+  },
+  {
+    url: baseUrl,
+    title: text.dokumentarkiv["nb"]
+  }
+];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={[]}>
-  <h1>Dokumentarkiv</h1>
-  <Dokumentarkiv client:only="react"/>
-  <Disclaimer language="nb"/>
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs}>
+  <SakstemalisteContainer language="nb" client:only="react" />
 </Layout>

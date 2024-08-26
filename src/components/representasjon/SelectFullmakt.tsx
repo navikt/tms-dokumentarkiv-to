@@ -32,7 +32,7 @@ export interface FullmaktInfoProps {
   representertIdent: string;
 }
 
-const SelectFullmakt = ({ language }: { language: Language }) => {
+const SelectFullmakt = () => {
   const {
     data: fullmakter,
     isLoading: isLoadingFullmakter,
@@ -46,6 +46,8 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     getJournalposterUrl,
     fetcher
   );
+
+  const language = "nb";
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     await postUser({ ident: event.target.value });
