@@ -1,7 +1,6 @@
 import { BodyShort } from "@navikt/ds-react";
 import { text } from "@language/text";
 import styles from "./IngenSaker.module.css";
-import { representantSelected } from "@store/store";
 import type { Language } from "@language/language";
 
 const IngenSaker = ({ language }: { language: Language }) => {
