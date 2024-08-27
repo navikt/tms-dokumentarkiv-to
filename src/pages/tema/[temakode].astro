@@ -2,25 +2,26 @@
 import DokumentlisteContainer from "@components/containers/DokumentlisteContainer";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
+import { baseUrl } from "@src/urls";
 
 const language = "nb";
+const { temakode } = Astro.params;
 const breadcrumbs = [
   {
     title: text.minSide["nb"], url: "/minside"
   },
   {
-    url: `/dokumentarkiv-to`,
+    url: baseUrl,
     title: text.dokumentarkiv["nb"],
-    handleInApp: true,
   },
   {
-    url: `/dokumentarkiv-to`,
+    url: `${baseUrl}/tema/${temakode}`,
     title: text.dokumenter["nb"],
-    handleInApp: true,
   }
 ];
 
-const { temakode } = Astro.params;
+
+console.log(breadcrumbs)
 
 ---
 

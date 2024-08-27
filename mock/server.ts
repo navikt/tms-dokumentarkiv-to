@@ -30,7 +30,7 @@ api.get('/mine-saker-api/sakstemaer', (c) => {
   return c.json(sakstemaer);
 });
 
-api.get('/mine-saker-api/journalposter', (c) => {
+api.get('/mine-saker-api/v2/sakstema/*', (c) => {
   return c.json(journalposter);
 });
 
