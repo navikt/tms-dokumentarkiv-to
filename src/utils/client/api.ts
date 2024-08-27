@@ -1,12 +1,4 @@
 import {  postUserUrl } from "@src/urls.client.ts";
-import { redirectToIdPorten, redirectToLandingsside } from "./redirect.ts";
-
-interface Props {
-  path: string;
-  options?: object;
-  handleNotFound?: boolean;
-  eventObj?: object;
-}
 
 interface eventObjectProps {
   ident: string;

@@ -6,7 +6,7 @@ import { SWRConfig } from "swr";
 
 interface Props {
   language: Language;
-  temakode: string;
+  temakode: string | undefined;
 }
 
 const DokumentlisteContainer = ({ language, temakode }: Props) => {

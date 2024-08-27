@@ -15,11 +15,11 @@ import type { Language } from "@language/language";
 
 interface Props {
   language: Language;
-  temakode: string;
+  temakode: string | undefined;
 }
 
 const Dokumentliste = ({ language, temakode }: Props) => {
-  const journalpostUrl = getJournalposterUrl(temakode)
+  const journalpostUrl = temakode && getJournalposterUrl(temakode);
   const { data: journalposter, isLoading } = useSWRImmutable<JournalposterProps>(
     journalpostUrl,
     fetcher

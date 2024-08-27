@@ -1,20 +1,20 @@
 ---
-import { getLanguage } from "@language/language";
 import { fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
 import { getEnvironment } from "../utils/server/environment";
 import { baseUrl } from "@src/urls";
 import styles from "./Layout.module.css";
+import type { Language } from "@language/language";
 
 export interface Props {
   title: string;
-  breadcrumbs: [{
+  language: Language;
+  breadcrumbs: {
     title: string,
     url: string,
-  }] | [];
+  }[] | [];
 }
 
-const language = getLanguage(Astro.url);
-const { breadcrumbs } = Astro.props;
+const { breadcrumbs, language } = Astro.props;
 
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),

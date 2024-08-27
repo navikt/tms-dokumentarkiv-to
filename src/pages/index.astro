@@ -7,15 +7,15 @@ import { baseUrl } from "@src/urls";
 const breadcrumbs = [
   {
     title: text.minSide["nb"],
-    url: "https://www.nav.no/minside"
+    url: "https://www.nav.no/minside",
   },
   {
     url: baseUrl,
-    title: text.dokumentarkiv["nb"]
-  }
+    title: text.dokumentarkiv["nb"],
+  },
 ];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs}>
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nb">
   <SakstemalisteContainer language="nb" client:only="react" />
 </Layout>

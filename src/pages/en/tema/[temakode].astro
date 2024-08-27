@@ -4,22 +4,22 @@ import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
 
-//TODO url for nivå 2 i breadcrumb
+const { temakode } = Astro.params;
 const breadcrumbs = [
   {
-    title: text.minSide["en"], url: "https://www.nav.no/minside/en"
+    title: text.minSide["en"], url: "/minside",
   },
   {
-    url: `${baseUrl}/en`,
-    title: text.dokumentarkiv["en"]
+    url: baseUrl,
+    title: text.dokumentarkiv["en"],
   },
   {
-    url: `${baseUrl}/en`,
-    title: text.dokumenter["en"]
-  }
+    url: `${baseUrl}/tema/${temakode}`,
+    title: text.dokumenter["en"],
+  },
 ];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs}>
-  <DokumentlisteContainer language="en" client:only="react" />
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="en">
+  <DokumentlisteContainer language="en" client:only="react" temakode={temakode}/>
 </Layout>

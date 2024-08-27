@@ -4,11 +4,10 @@ import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
 
-const language = "nb";
 const { temakode } = Astro.params;
 const breadcrumbs = [
   {
-    title: text.minSide["nb"], url: "/minside"
+    title: text.minSide["nb"], url: "/minside",
   },
   {
     url: baseUrl,
@@ -17,14 +16,10 @@ const breadcrumbs = [
   {
     url: `${baseUrl}/tema/${temakode}`,
     title: text.dokumenter["nb"],
-  }
+  },
 ];
-
-
-console.log(breadcrumbs)
-
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs}>
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nb">
   <DokumentlisteContainer language="nb" client:only="react" temakode={temakode}/>
 </Layout>

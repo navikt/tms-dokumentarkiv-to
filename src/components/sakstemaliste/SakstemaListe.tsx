@@ -32,7 +32,7 @@ const SakstemaListe = ({ language }: { language: Language }) => {
       <Heading level="1" size="large">
         {text.dokumentarkiv[language]}
       </Heading>
-      <SelectFullmakt />
+      <SelectFullmakt language={language}/>
       {tomListe ? (
         <IngenSaker language={language}/>
       ) : (
