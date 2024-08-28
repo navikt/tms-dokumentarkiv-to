@@ -4,9 +4,9 @@ export interface JournalpostProps {
   journalposttype: string;
   journalstatus: string;
   avsendertype: string;
-  avsender: string;
+  avsendernavn: string;
   mottakertype: string;
-  mottaker: string;
+  mottakernavn: string;
   opprettet: string;
   dokumenter: [DokumentProps];
 }

@@ -25,8 +25,8 @@ const Journalpost = ({ journalpost, language }: Props) => {
         <Dokument
           dokument={hovedDokument[0]}
           dato={dato}
-          avsender={journalpost.avsender}
-          mottaker={journalpost.mottaker}
+          avsender={journalpost.avsendernavn}
+          mottaker={journalpost.mottakernavn}
           journalpostId={journalpost.journalpostId}
           language={language}
         />
@@ -34,8 +34,8 @@ const Journalpost = ({ journalpost, language }: Props) => {
         <DokumentUtenTilgang
           dokument={hovedDokument[0]}
           dato={dato}
-          avsender={journalpost.avsender}
-          mottaker={journalpost.mottaker}
+          avsender={journalpost.avsendernavn}
+          mottaker={journalpost.mottakernavn}
           language={language}
         />
       )}
