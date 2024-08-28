@@ -18,23 +18,15 @@ const Journalpost = ({ journalpost, language }: Props) => {
   );
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const isUtgaaendeDokument = journalpost.journalposttype === "Ut";
-  //TODO: Håndtere tilfeller hvor både avsender og mottaker er satt til null
-  const hasRegisteredAvsender = journalpost.avsender != null;
-  const hasRegisteredMottaker = journalpost.mottaker != null;
-  const avsender = isUtgaaendeDokument ? "NAV" : journalpost.avsender;
-  const mottaker = isUtgaaendeDokument
-    ? journalpost.mottaker === "Bruker"
-      ? "Deg"
-      : journalpost.mottaker
-    : "NAV";
+  
   return (
     <li className={styles.container} key={journalpost.journalpostId}>
       {hovedDokument[0].brukerHarTilgang ? (
         <Dokument
           dokument={hovedDokument[0]}
           dato={dato}
-          avsender={avsender}
-          mottaker={mottaker}
+          avsender={journalpost.avsender}
+          mottaker={journalpost.mottaker}
           journalpostId={journalpost.journalpostId}
           language={language}
         />
@@ -42,8 +34,8 @@ const Journalpost = ({ journalpost, language }: Props) => {
         <DokumentUtenTilgang
           dokument={hovedDokument[0]}
           dato={dato}
-          avsender={avsender}
-          mottaker={mottaker}
+          avsender={journalpost.avsender}
+          mottaker={journalpost.mottaker}
           language={language}
         />
       )}

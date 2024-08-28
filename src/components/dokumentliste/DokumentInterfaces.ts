@@ -3,8 +3,6 @@ export interface JournalpostProps {
   tittel: string;
   journalposttype: string;
   journalstatus: string;
-  temakode: string;
-  temanavn: string;
   avsendertype: string;
   avsender: string;
   mottakertype: string;
@@ -18,11 +16,13 @@ export interface DokumentProps {
   tittel: string;
   dokumenttype: string;
   filtype: string;
+  filstorrelse: string; 
   brukerHarTilgang: boolean;
+  sladdet: boolean;
 }
 
 export interface JournalposterProps {
-  temakode: string;
-  temanavn: string;
+  kode: string;
+  navn: string;
   journalposter: Array<JournalpostProps>;
 }
