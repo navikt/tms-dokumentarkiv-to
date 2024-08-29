@@ -21,7 +21,8 @@
           "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
           "dokumenttype": "Hoved",
           "filtype": "PDF",
-          "brukerHarTilgang": false
+          "filstorrelse": 12345678,
+          "brukerHarTilgang": true
         },
         {
           "dokumentInfoId": "624878907",

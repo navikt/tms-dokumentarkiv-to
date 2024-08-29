@@ -16,7 +16,7 @@ export interface DokumentProps {
   tittel: string;
   dokumenttype: string;
   filtype: string;
-  filstorrelse: string; 
+  filstorrelse: number; 
   brukerHarTilgang: boolean;
   sladdet: boolean;
 }

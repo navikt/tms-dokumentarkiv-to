@@ -4,6 +4,7 @@ import { EyeSlashIcon } from "@navikt/aksel-icons";
 import styles from "./Dokument.module.css";
 import { text } from "@language/text";
 import type { Language } from "@language/language";
+import { readableFileSize } from "@utils/readableFilesize";
 
 interface Props {
   dokument: DokumentProps;
@@ -27,6 +28,7 @@ const DokumentUtenTilgang = ({ dokument, dato, avsender, mottaker, language }: P
           <Detail>{dato}</Detail>
           <Detail>{"Avsender: " + avsender}</Detail>
           <Detail>{"Mottaker: " + mottaker}</Detail>
+          <Detail>{readableFileSize(dokument.filstorrelse)}</Detail>
         </div>
         <BodyShort size="small" className={styles.dokumentKanIkkeVises}>
           {text.dokumentKanIkkeVises[language]}

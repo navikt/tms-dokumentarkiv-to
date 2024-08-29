@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@navikt/aksel-icons";
-import { BodyShort, Button } from "@navikt/ds-react";
+import { BodyShort, Button, Detail } from "@navikt/ds-react";
 import { useState } from "react";
 import { text } from "@language/text";
 import { logAmplitudeEvent } from "@utils/amplitude";
@@ -7,6 +7,7 @@ import styles from "./Vedlegg.module.css";
 import type { DokumentProps, JournalpostProps } from "../DokumentInterfaces";
 import { dokumentUrl } from "@src/urls.client";
 import type { Language } from "@language/language";
+import { readableFileSize } from "@utils/readableFilesize";
 
 interface Props {
   journalpost: JournalpostProps;
@@ -16,6 +17,7 @@ interface Props {
 interface VedleggslenkeProps {
   url: string;
   tittel: string;
+  filstorrelse: number;
   brukerHarTilgang: boolean;
 }
 
@@ -32,15 +34,21 @@ const Vedlegg = ({ journalpost, language }: Props) => {
     setHideVedlegg(!hideVedlegg);
   };
 
-  const VedleggsLenke = ({ url, tittel, brukerHarTilgang }: VedleggslenkeProps) => {
+  const VedleggsLenke = ({ url, tittel, brukerHarTilgang, filstorrelse }: VedleggslenkeProps) => {
     const tittelMedPdfTag = tittel + ".pdf";
 
     return brukerHarTilgang ? (
+      <>
       <a href={url} className={styles.vedlegg} onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}>
         {tittelMedPdfTag}
       </a>
+      <Detail>{readableFileSize(filstorrelse)}</Detail>
+      </>
     ) : (
+      <>
       <div className={styles.vedleggIngenTilgang}>{tittelMedPdfTag + text.vedleggKanIkkeVises[language]}</div>
+      <Detail>{readableFileSize(filstorrelse)}</Detail>
+      </>
     );
   };
 
@@ -73,6 +81,7 @@ const Vedlegg = ({ journalpost, language }: Props) => {
               url={`${baseUrl}/${vedlegg.dokumentInfoId}`}
               tittel={vedlegg.tittel}
               brukerHarTilgang={vedlegg.brukerHarTilgang}
+              filstorrelse={vedlegg.filstorrelse}
               key={vedlegg.dokumentInfoId}
             />
           ))}

@@ -4,6 +4,7 @@ import { FilePdfIcon } from "@navikt/aksel-icons";
 import styles from "./Dokument.module.css";
 import type { Language } from "@language/language";
 import { dokumentUrl } from "@src/urls.client";
+import { readableFileSize } from "@utils/readableFilesize";
 
 interface Props {
   dokument: DokumentProps;
@@ -33,6 +34,7 @@ const Dokument = ({ dokument, dato, avsender, mottaker, journalpostId, language 
           <Detail>{dato}</Detail>
           <Detail>{"Avsender: " + avsender}</Detail>
           <Detail>{"Mottaker: " + mottaker}</Detail>
+          <Detail>{readableFileSize(dokument.filstorrelse)}</Detail>
         </div>
       </div>
     </a>
