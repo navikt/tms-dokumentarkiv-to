@@ -98,6 +98,7 @@ const Vedlegg = ({ journalpost, language }: Props) => {
           url={`${baseUrl}/${vedlegg.dokumentInfoId}`}
           tittel={vedlegg.tittel}
           brukerHarTilgang={vedlegg.brukerHarTilgang}
+          filstorrelse={vedlegg.filstorrelse}
           key={vedlegg.dokumentInfoId}
         />
       ))}
