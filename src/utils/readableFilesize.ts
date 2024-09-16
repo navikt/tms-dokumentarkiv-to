@@ -3,14 +3,14 @@ export function readableFileSize(fileSizeInput: number) {
   const fileSize = fileSizeInput ?? DEFAULT_SIZE;
 
   if (!fileSize) {
-    return `${DEFAULT_SIZE} kb`;
+    return `${DEFAULT_SIZE} kB`;
   }
 
   const sizeInKb = fileSize / 1024;
 
   if (sizeInKb > 1024) {
-    return `${(sizeInKb / 1024).toFixed(2)} mb`;
+    return `${(sizeInKb / 1024).toFixed(2)} MB`;
   } else {
-    return `${sizeInKb.toFixed(2)} kb`;
+    return `${sizeInKb.toFixed(2)} kB`;
   }
 }

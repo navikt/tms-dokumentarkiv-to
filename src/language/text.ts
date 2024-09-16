@@ -154,11 +154,6 @@ export const text = {
     nn: "Ingen saker eller dokument å vise",
     en: "No cases or documents to show",
   },
-  representantIngenSakerTittel: {
-    nb: "Ingen saker eller dokumenter å vise",
-    nn: "Ingen saker eller dokument å vise",
-    en: "No cases or documents to show",
-  },
   ingenSakerListeTittel: {
     nb: "Finner du ikke det du leter etter?",
     nn: "Finner du ikke det du leter etter?",

@@ -22,7 +22,7 @@ export interface DokumentProps {
 }
 
 export interface JournalposterProps {
-  kode: string;
-  navn: string;
+  temakode: string;
+  temanavn: string;
   journalposter: Array<JournalpostProps>;
 }
