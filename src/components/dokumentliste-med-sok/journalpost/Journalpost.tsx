@@ -1,11 +1,11 @@
+import type { Language } from "@language/language";
+import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
 import Dokument from "../dokument/Dokument";
 import DokumentUtenTilgang from "../dokument/DokumentUtenTilgang";
 import type { JournalpostProps } from "../DokumentInterfaces";
 import Vedlegg from "../vedlegg/Vedlegg";
 import styles from "./Journalpost.module.css";
-import type { Language } from "@language/language";
-import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 
 interface Props {
   journalpost: JournalpostProps;

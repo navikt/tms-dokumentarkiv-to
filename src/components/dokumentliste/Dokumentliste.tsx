@@ -40,7 +40,7 @@ const Dokumentliste = ({ language, temakode }: Props) => {
       {journalposter && (
         <div className={styles.container}>
           <Heading level="1" size="xlarge">
-            {journalposter?.temanavn}
+            {journalposter?.navn}
           </Heading>
           <div>
             <BodyLong
@@ -48,11 +48,11 @@ const Dokumentliste = ({ language, temakode }: Props) => {
               className={styles.ingress}
               aria-live="polite"
             >
-              {text.dokumentArkivIngress[language] + " " + journalposter?.temanavn}
+              {text.dokumentArkivIngress[language] + " " + journalposter?.navn}
               {fullmaktInfo?.viserRepresentertesData ? (
                 <span>{" for " + fullmaktInfo.representertNavn + ". "}</span>
               ) : null}
-              {journalposter && <TemaLenke lenketekst={journalposter?.temanavn} language={language}/>}
+              {journalposter && <TemaLenke lenketekst={journalposter?.navn} language={language}/>}
             </BodyLong>
             <BodyShort className={styles.sistEndret}>
               {text.sistEndret[language] + " " + dato}

@@ -18,6 +18,6 @@ export interface DokumentProps {
 
 export interface JournalposterProps {
   temakode: string;
-  temanavn: string;
+  navn: string;
   journalposter: JournalpostProps[];
 }

@@ -20,15 +20,11 @@ const DokumentUtenTilgang = ({ dokument, dato, avsenderText, language }: Props) 
         <EyeSlashIcon fontSize="2rem" />
       </div>
       <div className={styles.content}>
-        <Heading level="3" size="xsmall" className={styles.tittelIkkeTilgang}>
+        <BodyShort size="small">{dato + "  -  " + avsenderText}</BodyShort>
+        <BodyShort size="medium" className={styles.tittelIkkeTilgang}>
           {dokument.tittel}
-        </Heading>
-        <div className={styles.detail}>
-          <Detail>{dato}</Detail>
-          <Detail>{avsenderText}</Detail>
-          <Detail>{readableFileSize(dokument.filstorrelse)}</Detail>
-        </div>
-        <BodyShort size="small" className={styles.dokumentKanIkkeVises}>
+        </BodyShort>
+        <BodyShort size="small">
           {text.dokumentKanIkkeVises[language]}
         </BodyShort>
       </div>

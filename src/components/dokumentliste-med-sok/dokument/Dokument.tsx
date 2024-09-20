@@ -1,5 +1,5 @@
 import type { DokumentProps } from "../DokumentInterfaces";
-import { Heading, Detail } from "@navikt/ds-react";
+import { Heading, Detail, BodyShort } from "@navikt/ds-react";
 import { FilePdfIcon } from "@navikt/aksel-icons";
 import styles from "./Dokument.module.css";
 import type { Language } from "@language/language";
@@ -25,18 +25,13 @@ const Dokument = ({ dokument, dato, avsenderText, journalpostId, language }: Pro
         <FilePdfIcon fontSize="2rem" />
       </div>
       <div className={styles.content}>  
-        <div className={styles.detail}>
-          <Detail>{avsenderText}</Detail>
-          <Detail>{dato}</Detail>
-        </div>
-        <div>
-          <a className={styles.link} href={url}>
-            <Heading level="3" size="xsmall" className={styles.tittel}>
-              {dokument.tittel}
-            </Heading>
-          </a>
-          <Detail>{readableFileSize(dokument.filstorrelse)}</Detail>
-        </div>
+        <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
+        <a className={styles.link} href={url}>
+          <BodyShort size="medium">
+            {dokument.tittel}
+          </BodyShort>
+        </a>
+        <BodyShort size="small">{readableFileSize(dokument.filstorrelse)}</BodyShort>
       </div>
     </div>
   );

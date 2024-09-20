@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  align-items: center;
   color: var(--a-text-default);
   text-decoration: none;
 }
@@ -14,6 +13,8 @@
 }
 
 .icon {
+  height: 3rem;
+  width: 3rem;
   padding: 0.5rem;
   border-radius: 8px;
   background-color: var(--a-surface-subtle);
@@ -22,28 +23,14 @@
 }
 
 .link {
-  margin: 0 0 0.25rem 0;
+  margin: 0.2rem 0;
   text-decoration: underline;
   color: var(--a-text-action);
 }
 
 .tittelIkkeTilgang {
-  margin: 0 0 0.2rem 0;
+  margin: 0.2rem 0;
   text-decoration: none;
-  color: var(--a-text-subtle);
-}
-
-.detail {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.dokumentKanIkkeVises {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
   color: var(--a-text-subtle);
 }
 

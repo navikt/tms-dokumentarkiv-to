@@ -23,8 +23,6 @@ const Dokumentliste = ({ language }: Props) => {
     return null;
   }
 
-  const antallDokumenter = 4;
-
   return (
     <>
       {journalposter && (
