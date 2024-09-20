@@ -19,6 +19,11 @@ export const text = {
     nn: (antall: number) => `Dokumentet har ${antall} vedlegg`,
     en: (antall: number) => `The document has ${antall} attachments`,
   },
+  viserAntallDokumenter: {
+    nb: (synlige: number, antall: number ) => `Viser ${synlige} av ${antall} dokumenter`,
+    nn: (synlige: number, antall: number ) => `Viser ${synlige} av ${antall} dokumenter`,
+    en: (synlige: number, antall: number ) => `Showing ${synlige} of ${antall} documents`,
+  },
   dokumentArkivTittel: {
     nb: "Dokumentarkiv",
     nn: "Dokumentarkiv",
@@ -44,20 +49,15 @@ export const text = {
     nn: "Her finn du alle journalførte dokument knytt til",
     en: "Here you will find all archived documents related to",
   },
-  sendtInnAvDeg: {
-    nb: "Sendt inn av deg",
-    nn: "Sendt inn av deg",
-    en: "Sent by you",
+  sendtAv: {
+    nb: (avsender: string) => `Fra ${avsender}`,
+    nn: (avsender: string) => `Fra ${avsender}`,
+    en: (avsender: string) => `From ${avsender}`,
   },
-  fraNav: {
-    nb: "Fra NAV",
-    nn: "Frå NAV",
-    en: "From NAV",
-  },
-  avTredjepart: {
-    nb: "Fra tredjepart",
-    nn: "Frå tredjepart",
-    en: "By third party",
+  sendtTil: {
+    nb: (avsender: string) => `Til ${avsender}`,
+    nn: (avsender: string) => `Til ${avsender}`,
+    en: (avsender: string) => `Too ${avsender}`,
   },
   lasterInn: {
     nb: "Tredjepart",

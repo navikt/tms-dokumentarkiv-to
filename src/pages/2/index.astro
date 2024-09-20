@@ -1,0 +1,22 @@
+---
+import OnePagerContainer from "@components/containers/OnePagerContainer";
+import SakstemalisteContainer from "@components/containers/SakstemalisteContainer";
+import { text } from "@language/text";
+import Layout from "@layouts/Layout.astro";
+import { baseUrl } from "@src/urls";
+
+const breadcrumbs = [
+  {
+    title: text.minSide["nb"],
+    url: "https://www.nav.no/minside",
+  },
+  {
+    url: baseUrl,
+    title: text.dokumentarkiv["nb"],
+  },
+];
+---
+
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nb">
+  <OnePagerContainer language="nb" client:only="react" />
+</Layout>

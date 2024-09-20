@@ -7,7 +7,7 @@
   gap: 10px;
   padding: 1rem;
   border-radius: 8px;
-  background-color: var(--a-surface-subtle);
+  background-color: var(--a-surface-default);
 }
 
 .liste {
