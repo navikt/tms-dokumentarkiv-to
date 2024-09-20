@@ -5,7 +5,7 @@ export interface JournalpostProps {
   mottakernavn: string;
   opprettet: string;
   dokument: DokumentProps;
-  vedlegg: [DokumentProps];
+  vedlegg: DokumentProps[];
 }
 
 export interface DokumentProps {
@@ -14,4 +14,10 @@ export interface DokumentProps {
   filtype: string;
   filstorrelse: number; 
   brukerHarTilgang: boolean;
+}
+
+export interface JournalposterProps {
+  temakode: string;
+  temanavn: string;
+  journalposter: JournalpostProps[];
 }

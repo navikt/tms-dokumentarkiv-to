@@ -1,7 +1,7 @@
 import Disclaimer from "@components/disclaimers/disclaimer-dokumentliste/Disclaimer";
 import Dokumentliste from "@components/dokumentliste-med-sok/Dokumentliste";
 import SelectFullmakt from "@components/dokumentliste-med-sok/representasjon/SelectFullmakt";
-import SearchAndFilter from "@components/dokumentliste-med-sok/search-and-filter/searchAndFilter";
+import SearchAndFilter from "@components/dokumentliste-med-sok/search-and-filter/SearchAndFilter";
 import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
 import type { Language } from "@language/language";
 import { text } from "@language/text";

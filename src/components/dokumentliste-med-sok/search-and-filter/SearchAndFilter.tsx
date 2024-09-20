@@ -1,5 +1,5 @@
 import Filter from "./filter/Filter";
-import Search from "./search/search";
+import Search from "./search/Search";
 import styles from "./SearchAndFilter.module.css"
 
 const SearchAndFilter = () => {

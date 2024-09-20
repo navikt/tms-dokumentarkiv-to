@@ -10,7 +10,7 @@ import type { Language } from "@language/language";
 import { readableFileSize } from "@utils/readableFilesize";
 
 interface Props {
-  vedleggsListe: [DokumentProps];
+  vedleggsListe: DokumentProps[];
   journalpostId: string;
   language: Language;
 }

@@ -5,7 +5,7 @@ export interface JournalpostProps {
   mottaker: string;
   opprettet: string;
   dokument: DokumentProps;
-  vedlegg: [DokumentProps];
+  vedlegg: DokumentProps[];
 }
 
 export interface DokumentProps {
