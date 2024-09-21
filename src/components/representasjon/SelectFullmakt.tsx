@@ -1,11 +1,11 @@
-import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
+import type { SakstemaElement } from "@components/sakstemaliste/SakstemaListe";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { Heading, Select } from "@navikt/ds-react";
 import {
   getFullmaktForhold,
   getFullmaktInfoUrl,
-  getJournalposterUrl,
+  getSakstemaerUrl,
   pdlFullmaktUrl,
 } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/amplitude";
@@ -42,8 +42,8 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     getFullmaktInfoUrl,
     fetcher
   );
-  const { mutate: mutateSakstemaer } = useSWR<JournalpostProps[]>(
-    getJournalposterUrl,
+  const { mutate: mutateSakstemaer } = useSWR<SakstemaElement[]>(
+    getSakstemaerUrl,
     fetcher
   );
 
