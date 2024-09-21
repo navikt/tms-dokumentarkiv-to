@@ -5,7 +5,7 @@
   gap: 20px;
   border-radius: 8px;
   background: var(--a-surface-selected);
-  margin-top: 2rem;
+  margin: 2rem 0 1.5rem 0;
 }
 
 .select {
@@ -21,5 +21,5 @@
 }
 
 .valgtBrukerText {
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
 }
