@@ -1,11 +1,11 @@
 import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { BodyShort, Heading, Select } from "@navikt/ds-react";
+import { BodyShort, Select } from "@navikt/ds-react";
 import {
+  getAlleJournalposterUrl,
   getFullmaktForhold,
   getFullmaktInfoUrl,
-  getJournalposterUrl,
   pdlFullmaktUrl,
 } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/amplitude";
@@ -42,14 +42,14 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     getFullmaktInfoUrl,
     fetcher
   );
-  const { mutate: mutateSakstemaer } = useSWR<JournalpostProps[]>(
-    getJournalposterUrl,
+  const { mutate: mutateDokumentliste } = useSWR<JournalpostProps[]>(
+    getAlleJournalposterUrl,
     fetcher
   );
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     await postUser({ ident: event.target.value });
-    mutateSakstemaer();
+    mutateDokumentliste();
     mutateUser();
   };
 
