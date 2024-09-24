@@ -57,7 +57,7 @@ const Dokumentliste = ({ language, temakode }: Props) => {
                   journalposter?.navn}
                 {fullmaktInfo?.viserRepresentertesData ? (
                   <span>{" for " + fullmaktInfo.representertNavn + ". "}</span>
-                ) : null}
+                ) : ". "}
                 {journalposter && (
                   <TemaLenke
                     lenketekst={journalposter?.navn}
