@@ -6,8 +6,14 @@
   margin-top: 1rem;
 }
 
-.heading {
+.dokumentlisteInfo {
+  display: flex;
+  justify-content: space-between;
   margin: 1rem 0;
+}
+
+.text {
+  font-weight: 600;
 }
 
 .list {

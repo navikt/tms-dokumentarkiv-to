@@ -9,28 +9,22 @@ import { readableFileSize } from "@utils/readableFilesize";
 interface Props {
   dokument: DokumentProps;
   dato: string;
-  avsender: string;
-  mottaker: string;
+  avsenderText: string;
   language: Language;
 }
 
-const DokumentUtenTilgang = ({ dokument, dato, avsender, mottaker, language }: Props) => {
+const DokumentUtenTilgang = ({ dokument, dato, avsenderText, language }: Props) => {
   return (
     <div className={`${styles.container} ${styles.hover}`} key={dokument.dokumentInfoId}>
       <div className={styles.icon}>
         <EyeSlashIcon fontSize="2rem" />
       </div>
       <div className={styles.content}>
-        <Heading level="3" size="xsmall" className={styles.tittelIkkeTilgang}>
+        <BodyShort size="small">{dato + "  -  " + avsenderText}</BodyShort>
+        <BodyShort size="medium" className={styles.tittelIkkeTilgang}>
           {dokument.tittel}
-        </Heading>
-        <div className={styles.detail}>
-          <Detail>{dato}</Detail>
-          <Detail>{"Avsender: " + avsender}</Detail>
-          <Detail>{"Mottaker: " + mottaker}</Detail>
-          <Detail>{readableFileSize(dokument.filstorrelse)}</Detail>
-        </div>
-        <BodyShort size="small" className={styles.dokumentKanIkkeVises}>
+        </BodyShort>
+        <BodyShort size="small">
           {text.dokumentKanIkkeVises[language]}
         </BodyShort>
       </div>

@@ -1,5 +1,5 @@
 import type { DokumentProps } from "../DokumentInterfaces";
-import { Heading, Detail } from "@navikt/ds-react";
+import { Heading, Detail, BodyShort } from "@navikt/ds-react";
 import { FilePdfIcon } from "@navikt/aksel-icons";
 import styles from "./Dokument.module.css";
 import type { Language } from "@language/language";
@@ -9,35 +9,31 @@ import { readableFileSize } from "@utils/readableFilesize";
 interface Props {
   dokument: DokumentProps;
   dato: string;
-  avsender: string;
-  mottaker: string;
+  avsenderText: string;
   journalpostId: string;
   language: Language;
 }
 
-const Dokument = ({ dokument, dato, avsender, mottaker, journalpostId, language }: Props) => {
+const Dokument = ({ dokument, dato, avsenderText, journalpostId, language }: Props) => {
   const url = `${dokumentUrl}/${journalpostId}/${dokument.dokumentInfoId}`;
   return (
-    <a
+    <div
       className={`${styles.container} ${styles.hover}`}
-      href={url}
       key={dokument.dokumentInfoId}
     >
       <div className={styles.icon}>
         <FilePdfIcon fontSize="2rem" />
       </div>
-      <div className={styles.content}>
-        <Heading level="3" size="xsmall" className={styles.tittel}>
-          {dokument.tittel}
-        </Heading>
-        <div className={styles.detail}>
-          <Detail>{dato}</Detail>
-          <Detail>{"Avsender: " + avsender}</Detail>
-          <Detail>{"Mottaker: " + mottaker}</Detail>
-          <Detail>{readableFileSize(dokument.filstorrelse)}</Detail>
-        </div>
+      <div className={styles.content}>  
+        <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
+        <a className={styles.link} href={url}>
+          <BodyShort size="medium">
+            {dokument.tittel}
+          </BodyShort>
+        </a>
+        <BodyShort size="small">{readableFileSize(dokument.filstorrelse)}</BodyShort>
       </div>
-    </a>
+    </div>
   );
 };
 

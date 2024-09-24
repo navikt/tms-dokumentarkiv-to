@@ -2,6 +2,19 @@
   margin-top: 2rem;
 }
 
+.whiteBackground {
+}
+
+.grayBackground {
+  padding-top: 0.5rem;
+  padding-right: calc((100vw - 100%) / 2);
+  padding-left: calc((100vw - 100%) / 2);
+  margin-top: 1rem;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  background-color: var(--a-surface-subtle);
+}
+
 .ingress {
   margin-top: 1.25rem;
 }
@@ -16,7 +29,26 @@
   margin-top: 1.75rem;
 }
 
+.dokumentlisteInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.antallDokumenterText {
+  font-weight: 600;
+}
+
 .list {
   padding: 0;
   margin: 0;
+}
+
+.list li:first-of-type {
+  border-radius: 12px 12px 4px 4px;
+}
+
+.list li:last-of-type {
+  border-radius: 4px 4px 12px 12px;
+  margin-bottom: 0;
 }

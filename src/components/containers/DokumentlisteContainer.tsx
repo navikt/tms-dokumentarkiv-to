@@ -3,6 +3,7 @@ import Dokumentliste from "@components/dokumentliste/Dokumentliste";
 import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
 import type { Language } from "@language/language";
 import { SWRConfig } from "swr";
+import styles from "./DokumentlisteContainer.module.css";
 
 interface Props {
   language: Language;
@@ -13,8 +14,10 @@ const DokumentlisteContainer = ({ language, temakode }: Props) => {
   return (
     <SWRConfig value={{ shouldRetryOnError: false }}>
       <Dokumentliste language={language} temakode={temakode}/>
-      <Disclaimer language={language}/>
-      <NyttigOgVite language={language}/>
+      <div className={styles.grayBackground}>
+        <Disclaimer language={language}/>
+        <NyttigOgVite language={language}/>
+      </div>
     </SWRConfig>
   );
 };
