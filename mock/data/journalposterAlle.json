@@ -24,13 +24,13 @@
   },
   {
     "journalpostId": "598167457",
-    "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+    "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i utlandet ",
     "avsender": null,
     "mottaker": "Navn Navnesen",
     "opprettet": "2021-07-10T08:27:01Z",
     "dokument": {
       "dokumentInfoId": "624887896",
-      "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+      "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i utlandet ",
       "filtype": "PDF",
       "filstorrelse": 12345678,
       "brukerHarTilgang": false
@@ -98,13 +98,13 @@
   },
   {
     "journalpostId": "598134897",
-    "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+    "tittel": "Vedtak om å beholde arbeidsavklaringspenger under opphold i innlandet ",
     "avsender": "Navn Navnesen",
     "mottaker": null,
     "opprettet": "2020-12-10T15:27:01Z",
     "dokument": {
       "dokumentInfoId": "621234104",
-      "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
+      "tittel": "Vedtak om å beholde arbeidsavklaringspenger under opphold i innlandet ",
       "dokumenttype": "Hoved",
       "filtype": "PDF",
       "filstorrelse": 12345678,

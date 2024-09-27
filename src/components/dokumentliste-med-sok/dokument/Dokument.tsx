@@ -18,7 +18,7 @@ const Dokument = ({ dokument, dato, avsenderText, journalpostId, language }: Pro
   const url = `${dokumentUrl}/${journalpostId}/${dokument.dokumentInfoId}`;
   return (
     <div
-      className={`${styles.container} ${styles.hover}`}
+      className={`${styles.container}`}
       key={dokument.dokumentInfoId}
     >
       <div className={styles.icon}>

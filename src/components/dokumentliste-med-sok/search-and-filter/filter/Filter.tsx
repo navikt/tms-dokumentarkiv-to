@@ -4,6 +4,7 @@ import { FilterIcon } from "@navikt/aksel-icons";
 import styles from "./Filter.module.css";
 import { Checkbox, CheckboxGroup, Modal } from "@navikt/ds-react";
 import { useRef } from "react";
+import { setVedtakAtom } from "@store/store";
 
 const Filter = () => {
   const ref = useRef<HTMLDialogElement>(null);
@@ -12,7 +13,9 @@ const Filter = () => {
     return <div className={styles.counter}>2</div>;
   };
 
-  const handleChange = (val: string[]) => console.info(val);
+  const handleChange = (val: string[]) => {
+    setVedtakAtom(val.includes("vedtak")) 
+  };
 
   return (
     <>

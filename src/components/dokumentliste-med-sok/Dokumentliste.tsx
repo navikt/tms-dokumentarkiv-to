@@ -8,8 +8,9 @@ import type { JournalpostProps } from "./DokumentInterfaces";
 import styles from "./Dokumentliste.module.css";
 import Journalpost from "./journalpost/Journalpost";
 import type { Language } from "@language/language";
-import { journalposterAtom, setJournalposter } from "@store/store";
+import { filteredJournalposter, setJournalposter, searchAtom, vedtakFilterAtom } from "@store/store";
 import { useStore } from "@nanostores/react";
+import type { ChangeEvent } from "react";
 
 interface Props {
   language: Language;
@@ -20,7 +21,11 @@ const Dokumentliste = ({ language }: Props) => {
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);
 
-  const list = useStore(journalposterAtom);
+  const search = useStore(searchAtom);
+  const vedtak = useStore(vedtakFilterAtom)
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  }
 
   if (isLoading) {
     return null;
@@ -28,7 +33,9 @@ const Dokumentliste = ({ language }: Props) => {
 
   if (journalposter) {
     setJournalposter(journalposter);
-  }
+  } 
+  
+  const filteredList = filteredJournalposter({search, vedtak});
 
   return (
     <>
@@ -44,13 +51,13 @@ const Dokumentliste = ({ language }: Props) => {
                   <BodyShort size="small" className={styles.text}>
                     {text.viserAntallDokumenter[language](4, 8)}
                   </BodyShort>
-                  <Select label="Velg bostedsland" size="small" hideLabel>
-                    <option value="nyeste">Nyeste først</option>
-                    <option value="eldste">Eldste først</option>
+                  <Select label="Velg bostedsland" size="small" hideLabel onChange={handleSelectChange} >
+                    <option value="asc">Nyeste først</option>
+                    <option value="desc">Eldste først</option>
                   </Select>
                   </div>
                   <ul className={styles.list}>
-                    {list.map((journalpost: JournalpostProps) => {
+                    {filteredList?.map((journalpost: JournalpostProps) => {
                       return (
                         <Journalpost
                           journalpost={journalpost}
