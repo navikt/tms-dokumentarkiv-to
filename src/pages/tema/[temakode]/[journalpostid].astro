@@ -1,0 +1,25 @@
+---
+import DokumentDirekteLenkeContainer from "@components/containers/DokumentDirekteLenkeContainer";
+import { text } from "@language/text";
+import Layout from "@layouts/Layout.astro";
+import { baseUrl } from "@src/urls";
+
+const { temakode, journalpostid } = Astro.params;
+const breadcrumbs = [
+  {
+    title: text.minSide["nb"], url: "/minside",
+  },
+  {
+    url: baseUrl,
+    title: text.dokumentarkiv["nb"],
+  },
+  {
+    url: `${baseUrl}/tema/${temakode}`,
+    title: text.dokumenter["nb"],
+  },
+];
+---
+
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nb">
+  <DokumentDirekteLenkeContainer language="nb" client:only="react" temakode={temakode} journalpostid={journalpostid}/>
+</Layout>

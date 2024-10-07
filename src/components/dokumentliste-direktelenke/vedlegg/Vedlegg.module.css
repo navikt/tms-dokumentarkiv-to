@@ -1,0 +1,55 @@
+.vedlegg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--a-text-default);
+  text-decoration: underline;
+  padding-top: 0.75rem;
+}
+
+.vedlegg:hover {
+  text-decoration: none;
+}
+
+.vedleggIngenTilgang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  color: var(--a-text-subtle);
+  text-decoration: none;
+  padding-top: 0.75rem;
+}
+
+.veddleggsListe {
+  padding-top: 0.75rem;
+  padding-left: 4rem;
+  color: var(--a-text-on-info);
+}
+
+.tittel {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn {
+  margin-top: 0.75rem;
+}
+
+.chevron {
+  overflow: visible;
+}
+
+.show {
+  display: flex;
+}
+
+.visuallyHidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

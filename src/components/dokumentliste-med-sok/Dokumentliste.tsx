@@ -10,13 +10,14 @@ import Journalpost from "./journalpost/Journalpost";
 import type { Language } from "@language/language";
 import { filteredJournalposter, setJournalposter, searchAtom, vedtakFilterAtom } from "@store/store";
 import { useStore } from "@nanostores/react";
-import type { ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 
 interface Props {
   language: Language;
 }
 
 const Dokumentliste = ({ language }: Props) => {
+  const [order, setOrder] = useState("asc");
   const { data: journalposter, isLoading } = useSWRImmutable<
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);
@@ -25,6 +26,7 @@ const Dokumentliste = ({ language }: Props) => {
   const vedtak = useStore(vedtakFilterAtom)
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setOrder(event.target.value)
   }
 
   if (isLoading) {
@@ -35,7 +37,9 @@ const Dokumentliste = ({ language }: Props) => {
     setJournalposter(journalposter);
   } 
   
-  const filteredList = filteredJournalposter({search, vedtak});
+  const filteredList = filteredJournalposter({search, vedtak, order});
+  const numberOfDocuments = journalposter?.length;
+  const numberOfShownDocuments = filteredList.length;
 
   return (
     <>
@@ -49,7 +53,7 @@ const Dokumentliste = ({ language }: Props) => {
                 <>
                   <div className={styles.dokumentlisteInfo}>
                   <BodyShort size="small" className={styles.text}>
-                    {text.viserAntallDokumenter[language](4, 8)}
+                    {numberOfDocuments && text.viserAntallDokumenter[language](numberOfShownDocuments, numberOfDocuments)}
                   </BodyShort>
                   <Select label="Velg bostedsland" size="small" hideLabel onChange={handleSelectChange} >
                     <option value="asc">Nyeste først</option>

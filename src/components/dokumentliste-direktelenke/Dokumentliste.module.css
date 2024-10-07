@@ -1,0 +1,67 @@
+.container {
+  margin-top: 2rem;
+}
+
+.grayBackground {
+  padding-top: 0.5rem;
+  padding-right: calc((100vw - 100%) / 2);
+  padding-left: calc((100vw - 100%) / 2);
+  margin-top: 1rem;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  background-color: var(--a-surface-subtle);
+}
+
+.ingress {
+  margin-top: 1.25rem;
+}
+
+.sistEndret {
+  margin-top: 2.5rem;
+  color: var(--a-text-subtle);
+  font-size: 1rem;
+}
+
+.hovedDokumentTittel {
+  margin: 1rem 0;
+}
+
+.dokumentElement {
+  list-style: none;
+  background-color: white;
+  margin: 0.2rem 0;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.listWrapper {
+  margin-top: 1.75rem;
+}
+
+.dokumentlisteInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.antallDokumenterText {
+  font-weight: 600;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+}
+
+.listElement {
+  list-style: none;
+}
+
+.list li:first-of-type {
+  border-radius: 12px 12px 4px 4px;
+}
+
+.list li:last-of-type {
+  border-radius: 4px 4px 12px 12px;
+  margin-bottom: 0;
+}

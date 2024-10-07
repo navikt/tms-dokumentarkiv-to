@@ -1,5 +1,6 @@
 import { Search as SearchBar } from "@navikt/ds-react";
-import { searchAtom, setSearchAtom } from "@store/store";
+import { setSearchAtom } from "@store/store";
+import styles from "./Search.module.css";
 
 const Search = () => {
 
@@ -12,7 +13,7 @@ const Search = () => {
   }
 
   return (
-    <form role="search" onSubmit={handleSubmit}>
+    <form role="search" className={styles.search} onSubmit={handleSubmit}>
       <SearchBar label="Søk på siden" variant="simple" onChange={handleOnChange}/>
     </form>
   );
