@@ -1,4 +1,4 @@
-import type { JournalpostProps } from "@components/dokumentliste-med-sok/DokumentInterfaces";
+import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
 import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
 
