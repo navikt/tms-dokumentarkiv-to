@@ -15,26 +15,32 @@ interface Props {
 const Journalpost = ({ journalpost, language }: Props) => {
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const avsenderText = setAvsenderMottaker(journalpost, language);
-  
+
   return (
     <li className={styles.container} key={journalpost.journalpostId}>
-      {journalpost.dokument.brukerHarTilgang ? (
-        <Dokument
-          dokument={journalpost.dokument}
-          dato={dato}
-          avsenderText={avsenderText}
+      <article>
+        {journalpost.dokument.brukerHarTilgang ? (
+          <Dokument
+            dokument={journalpost.dokument}
+            dato={dato}
+            avsenderText={avsenderText}
+            journalpostId={journalpost.journalpostId}
+            language={language}
+          />
+        ) : (
+          <DokumentUtenTilgang
+            dokument={journalpost.dokument}
+            dato={dato}
+            avsenderText={avsenderText}
+            language={language}
+          />
+        )}
+        <Vedlegg
+          vedleggsListe={journalpost.vedlegg}
           journalpostId={journalpost.journalpostId}
           language={language}
         />
-      ) : (
-        <DokumentUtenTilgang
-          dokument={journalpost.dokument}
-          dato={dato}
-          avsenderText={avsenderText}
-          language={language}
-        />
-      )}
-      <Vedlegg vedleggsListe={journalpost.vedlegg} journalpostId={journalpost.journalpostId} language={language}/>
+      </article>
     </li>
   );
 };

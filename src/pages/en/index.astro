@@ -13,6 +13,9 @@ const breadcrumbs = [
     title: text.dokumentarkiv["en"]
   }
 ];
+
+const language = Astro.currentLocale;
+console.log(language)
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="en">
