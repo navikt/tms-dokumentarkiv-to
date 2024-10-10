@@ -97,13 +97,6 @@ const Dokumentliste = ({ language, temakode, journalpostid }: Props) => {
                   <ContentLoader language={language} />
                 ) : (
                   <>
-                    <Heading
-                      level="2"
-                      size="small"
-                      className={styles.hovedDokumentTittel}
-                    >
-                      Lenket dokument
-                    </Heading>
                     <article className={styles.dokumentElement}>
                       <Journalpost
                         journalpost={filteredList.lenketJournalpost}
@@ -111,13 +104,12 @@ const Dokumentliste = ({ language, temakode, journalpostid }: Props) => {
                       />
                     </article>
                     <div className={styles.dokumentlisteInfo}>
-                      <Heading
-                        level="3"
+                      <BodyShort
                         size="small"
                         className={styles.antallDokumenterText}
                       >
-                        Resterende dokumenter
-                      </Heading>
+                        Andre dokumenter om {journalposter?.navn}
+                      </BodyShort>
                       <Select
                         label="Velg bostedsland"
                         size="small"
