@@ -36,12 +36,14 @@
 }
 
 .antallDokumenterText {
+  align-self: center;
   font-weight: 600;
 }
 
 .list {
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 .list li:first-of-type {

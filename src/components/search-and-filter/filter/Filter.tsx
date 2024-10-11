@@ -28,8 +28,8 @@ const Filter = () => {
         <Modal.Body>
           <CheckboxGroup legend="" onChange={handleChange}>
             <Checkbox value="vedtak">Vedtak</Checkbox>
-            <Checkbox value="inngaende">Inngående</Checkbox>
-            <Checkbox value="utgaende">Utgående</Checkbox>
+            <Checkbox value="inngaende">Dokumenter du har sendt</Checkbox>
+            <Checkbox value="utgaende">Dokumenter sendt til deg</Checkbox>
           </CheckboxGroup>
         </Modal.Body>
       </Modal>

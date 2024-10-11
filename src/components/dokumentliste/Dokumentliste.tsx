@@ -15,6 +15,8 @@ import type { FullmaktInfoProps } from "@components/representasjon/SelectFullmak
 import TemaLenke from "./temaside-lenke/TemaLenke";
 import { format } from "date-fns";
 import type { Language } from "@language/language";
+import { filteredJournalposter, setJournalposter } from "@store/store";
+import { useState, type ChangeEvent } from "react";
 
 interface Props {
   language: Language;
@@ -22,6 +24,7 @@ interface Props {
 }
 
 const Dokumentliste = ({ language, temakode }: Props) => {
+  const [order, setOrder] = useState("asc");
   const journalpostUrl = temakode && getJournalposterUrl(temakode);
   const { data: journalposter, isLoading } =
     useSWRImmutable<JournalposterProps>(journalpostUrl, fetcher);
@@ -30,9 +33,21 @@ const Dokumentliste = ({ language, temakode }: Props) => {
     fetcher
   );
 
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setOrder(event.target.value)
+  }
+
   if (isLoading) {
     return null;
   }
+
+  if (journalposter) {
+    setJournalposter(journalposter.journalposter);
+  } 
+  
+  const filteredList = filteredJournalposter({ order });
+  const numberOfDocuments = journalposter?.journalposter.length;
+  const numberOfShownDocuments = filteredList.length;
 
   const dato =
     journalposter &&
@@ -57,7 +72,9 @@ const Dokumentliste = ({ language, temakode }: Props) => {
                   journalposter?.navn}
                 {fullmaktInfo?.viserRepresentertesData ? (
                   <span>{" for " + fullmaktInfo.representertNavn + ". "}</span>
-                ) : ". "}
+                ) : (
+                  ". "
+                )}
                 {journalposter && (
                   <TemaLenke
                     lenketekst={journalposter?.navn}
@@ -72,12 +89,21 @@ const Dokumentliste = ({ language, temakode }: Props) => {
             <div className={styles.grayBackground}>
               <div className={styles.listWrapper}>
                 <div className={styles.dokumentlisteInfo}>
-                  <BodyShort size="small" className={styles.antallDokumenterText}>
-                    {text.viserAntallDokumenter[language](4, 8)}
+                  <BodyShort size="small" className={styles.text}>
+                    {numberOfDocuments &&
+                      text.viserAntallDokumenter[language](
+                        numberOfShownDocuments,
+                        numberOfDocuments
+                      )}
                   </BodyShort>
-                  <Select label="Velg bostedsland" size="small" hideLabel>
-                    <option value="nyeste">Nyeste først</option>
-                    <option value="eldste">Eldste først</option>
+                  <Select
+                    label="Velg bostedsland"
+                    size="small"
+                    hideLabel
+                    onChange={handleSelectChange}
+                  >
+                    <option value="asc">Nyeste først</option>
+                    <option value="desc">Eldste først</option>
                   </Select>
                 </div>
                 {isLoading ? (

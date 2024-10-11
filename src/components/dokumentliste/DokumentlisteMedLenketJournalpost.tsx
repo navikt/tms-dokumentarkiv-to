@@ -1,25 +1,25 @@
 import ContentLoader from "@components/loader/ContentLoader";
-import { getJournalposterUrl, getFullmaktInfoUrl } from "@src/urls.client";
-import { fetcher } from "@utils/client/api";
-import { Heading, BodyLong, BodyShort, Select } from "@navikt/ds-react";
+import type { FullmaktInfoProps } from "@components/representasjon/SelectFullmakt";
+import type { Language } from "@language/language";
 import { text } from "@language/text";
-import useSWRImmutable from "swr/immutable";
+import { BodyLong, BodyShort, Heading, Select } from "@navikt/ds-react";
+import { getFullmaktInfoUrl, getJournalposterUrl } from "@src/urls.client";
+import {
+  filteredJournalposterMedDirektelenke,
+  setJournalposterMedDirektelenkeAtom,
+} from "@store/store";
+import { fetcher } from "@utils/client/api";
+import { format } from "date-fns";
+import { useState, type ChangeEvent } from "react";
 import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import type {
   JournalpostProps,
   JournalposterProps,
 } from "./DokumentInterfaces";
 import styles from "./Dokumentliste.module.css";
 import Journalpost from "./journalpost/Journalpost";
-import type { FullmaktInfoProps } from "@components/representasjon/SelectFullmakt";
 import TemaLenke from "./temaside-lenke/TemaLenke";
-import { format } from "date-fns";
-import type { Language } from "@language/language";
-import { useState, type ChangeEvent } from "react";
-import {
-  filteredJournalposterMedDirektelenke,
-  setJournalposterMedDirektelenkeAtom,
-} from "@store/store";
 
 interface Props {
   language: Language;
@@ -97,13 +97,6 @@ const Dokumentliste = ({ language, temakode, journalpostid }: Props) => {
                   <ContentLoader language={language} />
                 ) : (
                   <>
-                    <Heading
-                      level="2"
-                      size="small"
-                      className={styles.hovedDokumentTittel}
-                    >
-                      Lenket dokument
-                    </Heading>
                     <article className={styles.dokumentElement}>
                       <Journalpost
                         journalpost={filteredList.lenketJournalpost}
@@ -111,13 +104,12 @@ const Dokumentliste = ({ language, temakode, journalpostid }: Props) => {
                       />
                     </article>
                     <div className={styles.dokumentlisteInfo}>
-                      <Heading
-                        level="3"
+                      <BodyShort
                         size="small"
                         className={styles.antallDokumenterText}
                       >
-                        Resterende dokumenter
-                      </Heading>
+                        Andre dokumenter om {journalposter?.navn}
+                      </BodyShort>
                       <Select
                         label="Velg bostedsland"
                         size="small"

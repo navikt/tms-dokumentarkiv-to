@@ -1,5 +1,5 @@
 import Disclaimer from "@components/disclaimers/disclaimer-dokumentliste/Disclaimer";
-import Dokumentliste from "@components/dokumentliste-direktelenke/Dokumentliste";
+import Dokumentliste from "@components/dokumentliste/DokumentlisteMedLenketJournalpost";
 import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
 import type { Language } from "@language/language";
 import { SWRConfig } from "swr";

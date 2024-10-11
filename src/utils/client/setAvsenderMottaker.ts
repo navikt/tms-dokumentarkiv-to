@@ -1,6 +1,6 @@
 import { text } from '@language/text';
 import type { Language } from './../../language/language';
-import type { JournalpostProps } from "@components/dokumentliste-med-sok/DokumentInterfaces";
+import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
 
 export const setAvsenderMottaker = (journalpost: JournalpostProps, language: Language) => {
   if(!journalpost.avsender) {
