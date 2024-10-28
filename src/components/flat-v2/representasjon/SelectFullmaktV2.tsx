@@ -1,7 +1,7 @@
 import type { SakstemaElement } from "@components/sakstemaliste/SakstemaListe";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { Heading, Select } from "@navikt/ds-react";
+import {Heading, Ingress, Select} from "@navikt/ds-react";
 import {
   getFullmaktForhold,
   getFullmaktInfoUrl,
@@ -32,7 +32,7 @@ export interface FullmaktInfoProps {
   representertIdent: string;
 }
 
-const SelectFullmakt = ({ language }: { language: Language }) => {
+const SelectFullmaktV2 = ({ language }: { language: Language }) => {
   const {
     data: fullmakter,
     isLoading: isLoadingFullmakter,
@@ -112,18 +112,10 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         </div>
       ) : null}
       {fullmaktInfo?.viserRepresentertesData && (
-        <Heading
-          size="large"
-          level="2"
-          className={styles.heading}
-          aria-live="polite"
-        >
-          {text.representasjonValgtBruker[language] +
-              fullmaktInfo?.representertNavn}
-        </Heading>
+          <Ingress className={styles.ingress} spacing>Journalførte dokumentarkivet tilknyttet {fullmaktInfo?.representertNavn} og Nav.</Ingress>
       )}
     </>
   );
 };
 
-export default SelectFullmakt;
+export default SelectFullmaktV2;
