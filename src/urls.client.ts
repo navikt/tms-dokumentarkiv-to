@@ -45,8 +45,6 @@ export const digisosRedirectUrl = DIGISOS_REDIRECT_URL[getEnvironmentClientSide(
 export const getJournalposterUrl = (tema: string) => `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sakstema/${tema}/journalposter`;
 export const getAlleJournalposterUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/alle`;
 
-
-
 export const baseUrlWithLanguage = {
   nb: `${baseUrl}/dokumentarkiv`,
   en: `${baseUrl}/dokumentarkiv/en`,
