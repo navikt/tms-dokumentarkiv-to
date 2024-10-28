@@ -119,9 +119,3 @@ const SelectFullmaktV2 = ({ language }: { language: Language }) => {
 };
 
 export default SelectFullmaktV2;
-
-/*
-TODO: add/remove this in Heading above
-{text.representasjonValgtBruker[language] +
-            fullmaktInfo?.representertNavn}
- */
