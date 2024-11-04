@@ -5,6 +5,7 @@ import { cors } from "hono/cors";
 import status from "./data/status.json" assert { type: "json" };
 import journalposter from "./data/journalposter.json" assert { type: "json" };
 import journalposterAlle from "./data/journalposterAlle.json" assert { type: "json" };
+import journalpost from "./data/journalpost.json" assert { type: "json" };
 import fullmaktsinfo from "./data/fullmaktsinfo.json" assert { type: "json" };
 import fullmaktsforhold from "./data/fullmaktsforhold.json" assert { type: "json" };
 import sakstemaer from "./data/sakstemaer.json" assert { type: "json" };
@@ -37,6 +38,10 @@ api.get('/mine-saker-api/v2/sakstema/*', (c) => {
 
 api.get('/mine-saker-api/v2/journalposter/alle', (c) => {
   return c.json(journalposterAlle);
+});
+
+api.get('/mine-saker-api/v2/journalposter/journalpost/*', (c) => {
+  return c.json(journalpost);
 });
 
 api.get('/mine-saker-api/fullmakt/info', (c) => {

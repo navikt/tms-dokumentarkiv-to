@@ -1,11 +1,11 @@
 import { format } from "date-fns";
-import Dokument from "../dokument/Dokument";
-import DokumentUtenTilgang from "../dokument/DokumentUtenTilgang";
 import type { JournalpostProps } from "../DokumentInterfaces";
 import Vedlegg from "../vedlegg/Vedlegg";
 import styles from "./Journalpost.module.css";
 import type { Language } from "@language/language";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
+import { ChevronRightIcon, FilePdfIcon } from "@navikt/aksel-icons";
+import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   journalpost: JournalpostProps;
@@ -15,31 +15,18 @@ interface Props {
 const Journalpost = ({ journalpost, language }: Props) => {
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const avsenderText = setAvsenderMottaker(journalpost, language);
+  const url = "";
 
   return (
     <li className={styles.container} key={journalpost.journalpostId}>
-      <article>
-        {journalpost.dokument.brukerHarTilgang ? (
-          <Dokument
-            dokument={journalpost.dokument}
-            dato={dato}
-            avsenderText={avsenderText}
-            journalpostId={journalpost.journalpostId}
-            language={language}
-          />
-        ) : (
-          <DokumentUtenTilgang
-            dokument={journalpost.dokument}
-            dato={dato}
-            avsenderText={avsenderText}
-            language={language}
-          />
-        )}
-        <Vedlegg
-          vedleggsListe={journalpost.vedlegg}
-          journalpostId={journalpost.journalpostId}
-          language={language}
-        />
+      <article className={styles.wrapper}>
+        <div>
+          <a className={styles.link} href={url}>
+            <BodyShort size="medium" weight="semibold">{journalpost.tittel}</BodyShort>
+          </a>
+          <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
+        </div>
+        <ChevronRightIcon />
       </article>
     </li>
   );

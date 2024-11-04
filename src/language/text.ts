@@ -224,6 +224,11 @@ export const text = {
     nn: "Ditt sjukefråvær",
     en: "Sickness benefit",
   },
+  vedleggTitle: {
+    nb: "Vedlegg",
+    nn: "Vedlegg",
+    en: "Attachments",
+  },
   visVedlegg: {
     nb: "Vis vedlegg",
     nn: "Vis vedlegg",
@@ -243,5 +248,25 @@ export const text = {
     nb: " (kan ikke vises)",
     nn: " (kan ikkje visast)",
     en: " (can not show)",
+  },
+  detaljerTitle: {
+    nb: "Detaljer",
+    nn: "Detaljher",
+    en: "Details",
+  },
+  datoTitle: {
+    nb: "Dato",
+    nn: "Dato",
+    en: "Date",
+  },
+  temaTitle: {
+    nb: "Tema",
+    nn: "Tema",
+    en: "Theme",
+  },
+  avsenderTitle: {
+    nb: "Sendt inn av",
+    nn: "Sendt inn av",
+    en: "Sent by",
   },
 };

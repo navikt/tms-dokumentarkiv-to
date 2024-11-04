@@ -1,23 +1,22 @@
 ---
-import SakstemalisteContainer from "@components/containers/SakstemalisteContainer";
+import DokumentlisteContainer from "@components/containers/DokumentlisteContainer"
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
 
 const breadcrumbs = [
   {
-    title: text.minSide["en"], url: "https://www.nav.no/minside/en"
+    title: text.minSide["en"],
+    url: "https://www.nav.no/minside",
   },
   {
-    url: `${baseUrl}/en`,
-    title: text.dokumentarkiv["en"]
-  }
+    url: baseUrl,
+    title: text.dokumentarkiv["en"],
+  },
 ];
 
-const language = Astro.currentLocale;
-console.log(language)
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="en">
-  <SakstemalisteContainer language="en" client:only="react" />
+  <DokumentlisteContainer language="en" client:only="react" />
 </Layout>

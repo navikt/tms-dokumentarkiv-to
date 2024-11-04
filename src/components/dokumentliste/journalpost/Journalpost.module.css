@@ -1,7 +1,28 @@
 .container {
-  list-style: none;
-  background-color: white;
-  margin: 0.2rem 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: var(--a-text-default);
+  text-decoration: none;
+  background: var(--a-surface-subtle, #F2F3F5);
   padding: 0.75rem;
-  border-radius: 4px;
+  margin-bottom: 0.2rem;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  margin: 0.2rem 0;
+  text-decoration: underline;
+  color: var(--a-text-action);
+}
+
+.link:hover {
+  text-decoration: none;
+  cursor: pointer;
 }

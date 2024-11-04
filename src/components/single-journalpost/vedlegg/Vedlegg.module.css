@@ -1,0 +1,41 @@
+.container {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--a-bg-subtle);
+}
+
+.title {
+  padding: 0.75rem 0;
+}
+
+.vedlegg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--a-surface-action);
+  text-decoration: underline;
+  padding-bottom: 0.2rem;
+}
+
+.vedlegg:hover {
+  text-decoration: none;
+}
+
+.vedleggIngenTilgang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  color: var(--a-text-subtle);
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+}
+
+.veddleggsListe {
+  padding: 0.75rem;
+  color: var(--a-text-on-info);
+}
+
+.tittel {
+  font-size: 1rem;
+  font-weight: 600;
+}

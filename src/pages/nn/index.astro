@@ -1,5 +1,5 @@
 ---
-import SakstemalisteContainer from "@components/containers/SakstemalisteContainer";
+import DokumentlisteContainer from "@components/containers/DokumentlisteContainer"
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
@@ -7,15 +7,16 @@ import { baseUrl } from "@src/urls";
 const breadcrumbs = [
   {
     title: text.minSide["nn"],
-    url: "https://www.nav.no/minside/nn",
+    url: "https://www.nav.no/minside",
   },
   {
-    url: `${baseUrl}/nn`,
+    url: baseUrl,
     title: text.dokumentarkiv["nn"],
   },
 ];
+
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nn">
-  <SakstemalisteContainer language="nn" client:only="react" />
+  <DokumentlisteContainer language="nn" client:only="react" />
 </Layout>

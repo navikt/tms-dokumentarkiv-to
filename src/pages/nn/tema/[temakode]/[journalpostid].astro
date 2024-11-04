@@ -7,19 +7,19 @@ import { baseUrl } from "@src/urls";
 const { temakode, journalpostid } = Astro.params;
 const breadcrumbs = [
   {
-    title: text.minSide["nb"], url: "/minside",
+    title: text.minSide["nn"], url: "/minside",
   },
   {
     url: baseUrl,
-    title: text.dokumentarkiv["nb"],
+    title: text.dokumentarkiv["nn"],
   },
   {
     url: `${baseUrl}/tema/${temakode}`,
-    title: text.dokumenter["nb"],
+    title: text.dokumenter["nn"],
   },
 ];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nb">
-  <SingleJournalpostContainer language="nb" client:only="react" journalpostId={journalpostid}/>
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nn">
+  <SingleJournalpostContainer language="nn" client:only="react" journalpostId={journalpostid}/>
 </Layout>

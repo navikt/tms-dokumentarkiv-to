@@ -1,5 +1,5 @@
 ---
-import SakstemalisteContainer from "@components/containers/SakstemalisteContainer";
+import DokumentlisteContainer from "@components/containers/DokumentlisteContainer"
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
@@ -18,5 +18,5 @@ const breadcrumbs = [
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nb">
-  <SakstemalisteContainer language="nb" client:only="react" />
+  <DokumentlisteContainer language="nb" client:only="react" />
 </Layout>

@@ -4,8 +4,8 @@ import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfa
 
 export const setAvsenderMottaker = (journalpost: JournalpostProps, language: Language) => {
   if(!journalpost.avsender) {
-    return text.sendtTil[language](journalpost.mottaker);
+    return journalpost.mottaker;
   } else {
-    return text.sendtAv[language](journalpost.avsender);
+    return journalpost.avsender;
   }
 }

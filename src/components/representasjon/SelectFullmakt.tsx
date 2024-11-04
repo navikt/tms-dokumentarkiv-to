@@ -1,8 +1,9 @@
 import type { SakstemaElement } from "@components/sakstemaliste/SakstemaListe";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { Heading, Select } from "@navikt/ds-react";
+import { BodyShort, Heading, Select } from "@navikt/ds-react";
 import {
+  getAlleJournalposterUrl,
   getFullmaktForhold,
   getFullmaktInfoUrl,
   getSakstemaerUrl,
@@ -14,6 +15,7 @@ import type { ChangeEvent } from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SelectFullmakt.module.css";
+import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
 
 type fullmaktsGiverConfig = {
   navn: string;
@@ -42,14 +44,14 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     getFullmaktInfoUrl,
     fetcher
   );
-  const { mutate: mutateSakstemaer } = useSWR<SakstemaElement[]>(
-    getSakstemaerUrl,
+  const { mutate: mutateJournalposter } = useSWR<JournalpostProps[]>(
+    getAlleJournalposterUrl,
     fetcher
   );
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     await postUser({ ident: event.target.value });
-    mutateSakstemaer();
+    mutateJournalposter();
     mutateUser();
   };
 
@@ -112,15 +114,14 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         </div>
       ) : null}
       {fullmaktInfo?.viserRepresentertesData && (
-        <Heading
-          size="large"
-          level="2"
+        <BodyShort
+          size="medium"
           className={styles.heading}
           aria-live="polite"
         >
           {text.representasjonValgtBruker[language] +
               fullmaktInfo?.representertNavn}
-        </Heading>
+        </BodyShort>
       )}
     </>
   );
