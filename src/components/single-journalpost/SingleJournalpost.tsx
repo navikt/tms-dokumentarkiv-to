@@ -3,7 +3,7 @@ import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort, Heading } from "@navikt/ds-react";
-import { getJournalpostUrl } from "@src/urls.client";
+import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
 import { fetcher } from "@utils/client/api";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
@@ -25,7 +25,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     fetcher
   );
 
-  const url = "";
+  const url = journalpost && `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
   const avsenderText =
     journalpost && setAvsenderMottaker(journalpost, language);
   const dato =

@@ -1,25 +1,25 @@
 import { getEnvironmentClientSide } from "@utils/client/environment";
 
 const MINE_SAKER_API_URL = {
-  local: "http://localhost:3000/mine-saker-api",
+  local: "http://localhost:4321/mine-saker-api",
   dev: "https://www.intern.dev.nav.no/mine-saker-api",
   prod: "https://person.nav.no/mine-saker-api",
 };
 
 const BASE_URL = {
-  local: "http://localhost:3000",
+  local: "http://localhost:4321",
   dev: "https://www.intern.dev.nav.no",
   prod: "https://www.nav.no",
 };
 
 const BASE_URL_INTERN = {
-  local: "http://localhost:3000",
+  local: "http://localhost:4321",
   dev: "https://www.intern.dev.nav.no",
   prod: "https://www.intern.nav.no",
 };
 
 const DIGISOS_REDIRECT_URL = {
-  local: "http://localhost:3000/sosialhjelp/innsyn",
+  local: "http://localhost:4321/sosialhjelp/innsyn",
   dev: "https://www-q0.dev.nav.no/sosialhjelp/innsyn/",
   prod: "https://www.nav.no/sosialhjelp/innsyn/",
 };
@@ -48,7 +48,7 @@ export const getJournalpostUrl = (journalpostId: string) => `${MINE_SAKER_API_UR
 
 
 export const baseUrlWithLanguage = {
-  nb: `${baseUrl}/dokumentarkiv`,
-  en: `${baseUrl}/dokumentarkiv/en`,
-  nn: `${baseUrl}/dokumentarkiv/nn`,
+  nb: `${baseUrl}/dokumentarkiv-to`,
+  en: `${baseUrl}/dokumentarkiv-to/en`,
+  nn: `${baseUrl}/dokumentarkiv-to/nn`,
 };

@@ -6,6 +6,7 @@ import type { Language } from "@language/language";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { ChevronRightIcon, FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort } from "@navikt/ds-react";
+import { baseUrlWithLanguage } from "@src/urls.client";
 
 interface Props {
   journalpost: JournalpostProps;
@@ -15,7 +16,7 @@ interface Props {
 const Journalpost = ({ journalpost, language }: Props) => {
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const avsenderText = setAvsenderMottaker(journalpost, language);
-  const url = "";
+  const url = `${baseUrlWithLanguage[language]}/tema/${journalpost.temakode}/${journalpost.journalpostId}`;
 
   return (
     <li className={styles.container} key={journalpost.journalpostId}>
