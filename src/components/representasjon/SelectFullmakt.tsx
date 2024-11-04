@@ -1,12 +1,11 @@
-import type { SakstemaElement } from "@components/sakstemaliste/SakstemaListe";
+import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { BodyShort, Heading, Select } from "@navikt/ds-react";
+import { BodyShort, Select } from "@navikt/ds-react";
 import {
   getAlleJournalposterUrl,
   getFullmaktForhold,
   getFullmaktInfoUrl,
-  getSakstemaerUrl,
   pdlFullmaktUrl,
 } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/amplitude";
@@ -15,7 +14,6 @@ import type { ChangeEvent } from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SelectFullmakt.module.css";
-import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
 
 type fullmaktsGiverConfig = {
   navn: string;
