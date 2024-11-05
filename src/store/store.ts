@@ -3,7 +3,6 @@ import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
 
 export type Filters = {
-  vedtak?: boolean;
   search?: string;
   order?: string;
   dokumentDataFilters?: string[];
@@ -11,25 +10,22 @@ export type Filters = {
 };
 
 export const journalposterAtom = atom<JournalpostProps[]>([]);
-export const searchAtom = atom<Filters["search"]>();
-export const vedtakFilterAtom = atom<Filters["vedtak"]>(false)
-export const sortingOrder = atom<Filters["order"]>("asc");
-export const dokumentDataFiltersAtom = atom<Filters["dokumentDataFilters"]>(["test1"]);
 export const sakstemaerAtom = atom<string[]>([]);
-export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["test"]);
+export const sortingOrder = atom<Filters["order"]>("asc");
+export const dokumentDataFiltersAtom = atom<Filters["dokumentDataFilters"]>([]);
+export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>([]);
 
 export function setJournalposter(journalposter: JournalpostProps[]) {
   journalposterAtom.set(journalposter);
 }
 
 export function setSakstemaer(journalposter: JournalpostProps[]) {
-  let sakstemaer = sakstemaerAtom.get()
+  let sakstemaer = sakstemaerAtom.get();
   journalposter.map((journalpost) => {
-    if(!sakstemaer.includes(journalpost.navn)) {
-    sakstemaer = [...sakstemaer, journalpost.navn]
+    if (!sakstemaer.includes(journalpost.temanavn)) {
+      sakstemaer = [...sakstemaer, journalpost.temanavn];
     }
-  })
-
+  });
   sakstemaerAtom.set(sakstemaer);
 }
 
@@ -41,45 +37,38 @@ export function setDokumentDataFilters(filters: string[]) {
   dokumentDataFiltersAtom.set(filters);
 }
 
-export function setSearchAtom(input: string) {
-  searchAtom.set(input);
-}
-
-export function setVedtakAtom(input: boolean) {
-  vedtakFilterAtom.set(input);
-}
-
 export const filteredJournalposter = (filters?: Filters) => {
-
   let journalposter = journalposterAtom.get();
 
-  if (filters?.vedtak) {
+  if(!filters) {
+    return journalposter;
+  }
+
+  if (filters?.dokumentDataFilters?.includes("Vedtak")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.tittel.toLowerCase().includes("vedtak");
     });
   }
 
-  if (filters?.dokumentDataFilters) {
-    if (filters?.dokumentDataFilters.includes("Inn")) {
-      journalposter = journalposter.filter((journalpost) => {
-        return journalpost.avsendertype === "Inn";
-      });
-    }
-    if (filters?.dokumentDataFilters.includes("Ut")) {
-      journalposter = journalposter.filter((journalpost) => {
-        return journalpost.avsendertype === "Ut";
-      });
-    }
+  if (filters?.dokumentDataFilters?.includes("Inn")) {
+    journalposter = journalposter.filter((journalpost) => {
+      return journalpost.journalposttype === "Inn";
+    });
+  }
+  if (filters?.dokumentDataFilters?.includes("Ut")) {
+    journalposter = journalposter.filter((journalpost) => {
+      return journalpost.journalposttype === "Ut";
+    });
   }
 
-  if(filters?.order) {
-    if(filters.order === "asc") {
-      journalposter.sort(sortByOpprettetAsc)
+  if (filters?.order) {
+    if (filters.order === "asc") {
+      journalposter.sort(sortByOpprettetAsc);
     }
-    if(filters.order === "desc") {
-      journalposter.sort(sortByOpprettetDesc)
+    if (filters.order === "desc") {
+      journalposter.sort(sortByOpprettetDesc);
     }
   }
 
   return journalposter;
-}
+};

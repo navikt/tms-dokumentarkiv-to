@@ -8,10 +8,8 @@ import {
   dokumentDataFiltersAtom,
   sakstemaFiltersAtom,
   filteredJournalposter,
-  searchAtom,
   setJournalposter,
   setSakstemaer,
-  vedtakFilterAtom,
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
 import { useEffect, useState, type ChangeEvent } from "react";
@@ -30,27 +28,23 @@ const Journalpostliste = ({ language }: Props) => {
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);
 
-  const search = useStore(searchAtom);
-  const vedtak = useStore(vedtakFilterAtom);
   const dokumentDataFilters = useStore(dokumentDataFiltersAtom)
   const sakstemaFilters = useStore(sakstemaFiltersAtom)
 
-  if (isLoading) {
-    return null;
-  }
+  useEffect(() => {
+    if(journalposter)
+    setSakstemaer(journalposter);
+  }, [journalposter])
   
   if (journalposter) {
     setJournalposter(journalposter);
-    setSakstemaer(journalposter);
   }
-
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setOrder(event.target.value);
   };
   
-
-  const filteredList = filteredJournalposter({ search, vedtak, order, dokumentDataFilters, sakstemaFilters });
+  const filteredList = filteredJournalposter({ order, dokumentDataFilters, sakstemaFilters });
   const numberOfDocuments = journalposter?.length;
   const numberOfShownDocuments = filteredList.length;
 
@@ -82,12 +76,13 @@ const Journalpostliste = ({ language }: Props) => {
                       <option value="desc">Eldste først</option>
                     </Select>
                   </div>
-                  <ul className={styles.list}>
+                  <ul className={styles.list} key="journalpostliste">
                     {filteredList?.map((journalpost: JournalpostProps) => {
                       return (
                         <Journalpost
                           journalpost={journalpost}
                           language={language}
+                          key={journalpost.journalpostId}
                         />
                       );
                     })}

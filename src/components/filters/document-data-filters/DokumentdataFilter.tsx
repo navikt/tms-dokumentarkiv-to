@@ -5,7 +5,7 @@ import styles from "./DokumentdataFilter.module.css"
 import { useStore } from "@nanostores/react";
 
 const DokumentdataFilter = () => {
-  const [selected, setSelected] = useState(["Alle"]);
+  const [selected, setSelected] = useState<string[]>([]);
   const sakstemaer = useStore(sakstemaerAtom);
 
   const handleToggle = (value: string[]) => {
@@ -47,6 +47,19 @@ const DokumentdataFilter = () => {
           }
         >
           {"Ut"}
+        </Chips.Toggle>
+        <Chips.Toggle
+          key={"Vedtak"}
+          selected={selected.includes("Vedtak")}
+          onClick={() =>
+            handleToggle(
+              selected.includes("Vedtak")
+                ? selected.filter((x) => x !== "Vedtak")
+                : [...selected, "Vedtak"]
+            )
+          }
+        >
+          {"Vedtak"}
         </Chips.Toggle>
         {sakstemaer.map((sakstema) => (
           <Chips.Toggle

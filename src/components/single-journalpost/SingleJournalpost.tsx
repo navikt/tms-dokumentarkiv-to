@@ -53,7 +53,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
       </div>
       <div className={styles.temalenke}>
         <TemaLenke
-          lenketekst={journalpost?.navn}
+          lenketekst={journalpost?.temanavn}
           temakode={journalpost?.temakode}
           language={language}
         />
@@ -74,7 +74,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium">{journalpost?.navn}</BodyShort>
+          <BodyShort size="medium">{journalpost?.temanavn}</BodyShort>
         </div>
       </div>
       <div className={styles.vedlegg}>

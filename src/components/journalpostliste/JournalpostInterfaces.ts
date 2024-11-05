@@ -1,11 +1,11 @@
 export interface JournalpostProps {
   journalpostId: string;
   temakode: string,
-  navn: string,
+  temanavn: string,
   tittel: string;
   avsender: string;
   mottaker: string;
-  avsendertype: string,
+  journalposttype: string,
   opprettet: string;
   dokument: DokumentProps;
   vedlegg: DokumentProps[];
