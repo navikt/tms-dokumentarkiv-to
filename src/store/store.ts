@@ -20,7 +20,7 @@ export function setJournalposter(journalposter: JournalpostProps[]) {
 }
 
 export function setSakstemaer(journalposter: JournalpostProps[]) {
-  let sakstemaer = sakstemaerAtom.get();
+  let sakstemaer: string[] = [];
   journalposter.map((journalpost) => {
     if (!sakstemaer.includes(journalpost.temanavn)) {
       sakstemaer = [...sakstemaer, journalpost.temanavn];
