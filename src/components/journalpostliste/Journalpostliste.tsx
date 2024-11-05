@@ -6,23 +6,25 @@ import { BodyShort, Select } from "@navikt/ds-react";
 import { getAlleJournalposterUrl } from "@src/urls.client";
 import {
   dokumentDataFiltersAtom,
+  sakstemaFiltersAtom,
   filteredJournalposter,
   searchAtom,
   setJournalposter,
+  setSakstemaer,
   vedtakFilterAtom,
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import useSWRImmutable from "swr/immutable";
-import type { JournalpostProps } from "./DokumentInterfaces";
-import styles from "./Dokumentliste.module.css";
+import type { JournalpostProps } from "./JournalpostInterfaces";
+import styles from "./Journalpostliste.module.css";
 import Journalpost from "./journalpost/Journalpost";
 
 interface Props {
   language: Language;
 }
 
-const Dokumentliste = ({ language }: Props) => {
+const Journalpostliste = ({ language }: Props) => {
   const [order, setOrder] = useState("asc");
   const { data: journalposter, isLoading } = useSWRImmutable<
     JournalpostProps[]
@@ -31,20 +33,24 @@ const Dokumentliste = ({ language }: Props) => {
   const search = useStore(searchAtom);
   const vedtak = useStore(vedtakFilterAtom);
   const dokumentDataFilters = useStore(dokumentDataFiltersAtom)
-
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setOrder(event.target.value);
-  };
+  const sakstemaFilters = useStore(sakstemaFiltersAtom)
 
   if (isLoading) {
     return null;
   }
-
+  
   if (journalposter) {
     setJournalposter(journalposter);
+    setSakstemaer(journalposter);
   }
 
-  const filteredList = filteredJournalposter({ search, vedtak, order, dokumentDataFilters });
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setOrder(event.target.value);
+  };
+  
+
+  const filteredList = filteredJournalposter({ search, vedtak, order, dokumentDataFilters, sakstemaFilters });
   const numberOfDocuments = journalposter?.length;
   const numberOfShownDocuments = filteredList.length;
 
@@ -96,4 +102,4 @@ const Dokumentliste = ({ language }: Props) => {
   );
 };
 
-export default Dokumentliste;
+export default Journalpostliste;

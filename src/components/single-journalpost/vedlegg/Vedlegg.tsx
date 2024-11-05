@@ -1,11 +1,11 @@
+import type { DokumentProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
+import { text } from "@language/text";
 import { BodyShort, Detail } from "@navikt/ds-react";
 import { dokumentUrl } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
 import styles from "./Vedlegg.module.css";
-import { text } from "@language/text";
-import type { DokumentProps } from "@components/dokumentliste/DokumentInterfaces";
 
 interface Props {
   vedleggsListe: DokumentProps[] | undefined;

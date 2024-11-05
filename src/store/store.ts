@@ -1,4 +1,4 @@
-import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
+import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
 
@@ -6,17 +6,35 @@ export type Filters = {
   vedtak?: boolean;
   search?: string;
   order?: string;
-  dokumentDataFilters: string[];
+  dokumentDataFilters?: string[];
+  sakstemaFilters?: string[];
 };
 
 export const journalposterAtom = atom<JournalpostProps[]>([]);
 export const searchAtom = atom<Filters["search"]>();
 export const vedtakFilterAtom = atom<Filters["vedtak"]>(false)
 export const sortingOrder = atom<Filters["order"]>("asc");
-export const dokumentDataFiltersAtom = atom<Filters["dokumentDataFilters"]>(["Vis alle"]);
+export const dokumentDataFiltersAtom = atom<Filters["dokumentDataFilters"]>(["test1"]);
+export const sakstemaerAtom = atom<string[]>([]);
+export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["test"]);
 
 export function setJournalposter(journalposter: JournalpostProps[]) {
   journalposterAtom.set(journalposter);
+}
+
+export function setSakstemaer(journalposter: JournalpostProps[]) {
+  let sakstemaer = sakstemaerAtom.get()
+  journalposter.map((journalpost) => {
+    if(!sakstemaer.includes(journalpost.navn)) {
+    sakstemaer = [...sakstemaer, journalpost.navn]
+    }
+  })
+
+  sakstemaerAtom.set(sakstemaer);
+}
+
+export function setSakstemaFilters(filters: string[]) {
+  sakstemaFiltersAtom.set(filters);
 }
 
 export function setDokumentDataFilters(filters: string[]) {

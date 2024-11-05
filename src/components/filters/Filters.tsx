@@ -5,7 +5,6 @@ import DokumentdataFilter from "./document-data-filters/DokumentdataFilter";
 const SearchAndFilter = () => {
   return(
     <div className={styles.container}>
-      <Periodefilter />
       <DokumentdataFilter />
     </div>
   )

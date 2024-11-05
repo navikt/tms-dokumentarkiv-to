@@ -1,4 +1,4 @@
-import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
+import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { FilePdfIcon } from "@navikt/aksel-icons";

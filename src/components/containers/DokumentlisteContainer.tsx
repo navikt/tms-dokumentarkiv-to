@@ -1,5 +1,5 @@
 import Disclaimer from "@components/disclaimers/disclaimer-dokumentliste/Disclaimer";
-import Dokumentliste from "@components/dokumentliste/Dokumentliste";
+import Dokumentliste from "@components/journalpostliste/Journalpostliste";
 import SelectFullmakt from "@components/representasjon/SelectFullmakt";
 import Filters from "@components/filters/Filters";
 import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
