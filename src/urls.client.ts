@@ -1,7 +1,7 @@
 import { getEnvironmentClientSide } from "@utils/client/environment";
 
 const MINE_SAKER_API_URL = {
-  local: "http://localhost:4321/mine-saker-api",
+  local: "http://localhost:3000/mine-saker-api",
   dev: "https://www.intern.dev.nav.no/mine-saker-api",
   prod: "https://person.nav.no/mine-saker-api",
 };

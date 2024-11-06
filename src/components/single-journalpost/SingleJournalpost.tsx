@@ -1,4 +1,4 @@
-import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
+import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { FilePdfIcon } from "@navikt/aksel-icons";
@@ -47,13 +47,13 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.content}>
           <a className={styles.link} href={url}>
-            <BodyShort size="medium">{journalpost?.tittel}</BodyShort>
+            <BodyShort size="medium">{"Åpne " + journalpost?.dokument.tittel.toLowerCase()}</BodyShort>
           </a>
         </div>
       </div>
       <div className={styles.temalenke}>
         <TemaLenke
-          lenketekst={journalpost?.navn}
+          lenketekst={journalpost?.temanavn}
           temakode={journalpost?.temakode}
           language={language}
         />
@@ -74,7 +74,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium">{journalpost?.navn}</BodyShort>
+          <BodyShort size="medium">{journalpost?.temanavn}</BodyShort>
         </div>
       </div>
       <div className={styles.vedlegg}>

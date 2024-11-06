@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import type { JournalpostProps } from "@components/dokumentliste/DokumentInterfaces";
+import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 
 
 export const sortByOpprettetAsc = (a: JournalpostProps, b: JournalpostProps) =>

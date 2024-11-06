@@ -2,12 +2,12 @@
   {
     "journalpostId": "598134457",
     "temakode": "AAP",
-    "navn": "Arbeidsavklaringspenger",
+    "temanavn": "Arbeidsavklaringspenger",
     "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
     "avsender": null,
     "mottaker": "TRYGDERETTEN",
     "opprettet": "2021-07-10T08:27:01Z",
-    "avsendertype": "Inn",
+    "journalposttype": "Inn",
     "dokument": {
       "dokumentInfoId": "624887896",
       "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet ",
@@ -28,14 +28,14 @@
   {
     "journalpostId": "598167457",
     "temakode": "PEN",
-    "navn": "Pensjon",
+    "temanavn": "Pensjon",
     "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i utlandet ",
     "avsender": null,
     "mottaker": "Navn Navnesen",
     "opprettet": "2021-07-10T08:27:01Z",
-    "avsendertype": "Ut",
+    "journalposttype": "Ut",
     "dokument": {
-      "dokumentInfoId": "624887896",
+      "dokumentInfoId": "624882896",
       "tittel": "Søknad om å beholde arbeidsavklaringspenger under opphold i utlandet ",
       "filtype": "PDF",
       "filstorrelse": 12345678,
@@ -43,7 +43,7 @@
     },
     "vedlegg": [
       {
-        "dokumentInfoId": "624878907",
+        "dokumentInfoId": "624873907",
         "tittel": "Kvitteringsside for dokumentinnsending",
         "brukerHarTilgang": false,
         "filstorrelse": 12345678,
@@ -54,12 +54,12 @@
   {
     "journalpostId": "596734457",
     "temakode": "AAP",
-    "navn": "Arbeidsavklaringspenger",
+    "temanavn": "Arbeidsavklaringspenger",
     "tittel": "Søknad om å beholde pensjon under opphold i utlandet ",
     "avsender": "NAV ACC 05",
     "mottaker": null,
     "opprettet": "2023-02-10T14:25:01Z",
-    "avsendertype": "Inn",
+    "journalposttype": "Inn",
     "dokument": {
       "dokumentInfoId": "625432104",
       "tittel": "Søknad om å beholde pensjon under opphold i utlandet ",
@@ -108,12 +108,12 @@
   {
     "journalpostId": "598134897",
     "temakode": "FOR",
-    "navn": "Foreldrepenger",
+    "temanavn": "Foreldrepenger",
     "tittel": "Vedtak om å beholde arbeidsavklaringspenger under opphold i innlandet ",
     "avsender": "Navn Navnesen",
     "mottaker": null,
     "opprettet": "2020-12-10T15:27:01Z",
-    "avsendertype": "Ut",
+    "journalposttype": "Ut",
     "dokument": {
       "dokumentInfoId": "621234104",
       "tittel": "Vedtak om å beholde arbeidsavklaringspenger under opphold i innlandet ",

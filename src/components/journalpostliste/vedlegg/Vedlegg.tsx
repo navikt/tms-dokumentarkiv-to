@@ -4,7 +4,7 @@ import { useState } from "react";
 import { text } from "@language/text";
 import { logAmplitudeEvent } from "@utils/amplitude";
 import styles from "./Vedlegg.module.css";
-import type { DokumentProps } from "../DokumentInterfaces";
+import type { DokumentProps } from "../JournalpostInterfaces";
 import { dokumentUrl } from "@src/urls.client";
 import type { Language } from "@language/language";
 import { readableFileSize } from "@utils/readableFilesize";
