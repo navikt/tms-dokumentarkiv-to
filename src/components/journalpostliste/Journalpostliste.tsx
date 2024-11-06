@@ -11,33 +11,48 @@ import {
   setSakstemaer,
   sakstemaFiltersAtom,
   sortingOrderAtom,
-  setSortingOrder
+  setSortingOrder,
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
-import { useEffect, useState, type ChangeEvent } from "react";
+import {
+  useEffect,
+  useState,
+  type ChangeEvent,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import useSWRImmutable from "swr/immutable";
 import type { JournalpostProps } from "./JournalpostInterfaces";
 import styles from "./Journalpostliste.module.css";
 import Journalpost from "./journalpost/Journalpost";
+import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
 
 interface Props {
+  setShowFilters: Dispatch<SetStateAction<boolean>>;
   language: Language;
 }
 
-const Journalpostliste = ({ language }: Props) => {
+const Journalpostliste = ({ language, setShowFilters }: Props) => {
   const { data: journalposter, isLoading } = useSWRImmutable<
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);
 
-  const filters = useStore(filtersAtom)
-  const sakstemaFilters = useStore(sakstemaFiltersAtom)
-  const order = useStore(sortingOrderAtom)
+  useEffect(() => {
+    if (journalposter) setSakstemaer(journalposter);
+  }, [journalposter]);
 
   useEffect(() => {
-    if(journalposter)
-    setSakstemaer(journalposter);
-  }, [journalposter])
-  
+    if (journalposter) {
+      hasJournalposter && numberOfDocuments > 3
+        ? setShowFilters(true)
+        : setShowFilters(false);
+    }
+  }, [journalposter]);
+
+  const filters = useStore(filtersAtom);
+  const sakstemaFilters = useStore(sakstemaFiltersAtom);
+  const order = useStore(sortingOrderAtom);
+
   if (journalposter) {
     setJournalposter(journalposter);
   }
@@ -45,10 +60,16 @@ const Journalpostliste = ({ language }: Props) => {
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortingOrder(event.target.value.toString());
   };
+
+  const filteredList = filteredJournalposter({
+    order,
+    filters,
+    sakstemaFilters,
+  });
   
-  const filteredList = filteredJournalposter({ order, filters, sakstemaFilters });
-  const numberOfDocuments = journalposter?.length;
+  const numberOfDocuments = journalposter ? journalposter.length : 0;
   const numberOfShownDocuments = filteredList.length;
+  const hasJournalposter = journalposter && journalposter?.length > 0;
 
   return (
     <>
@@ -58,7 +79,7 @@ const Journalpostliste = ({ language }: Props) => {
             <div className={styles.contentWrapper}>
               {isLoading ? (
                 <ContentLoader language={language} />
-              ) : (
+              ) : hasJournalposter ? (
                 <>
                   <div className={styles.dokumentlisteInfo}>
                     <BodyShort size="small" className={styles.text}>
@@ -90,6 +111,8 @@ const Journalpostliste = ({ language }: Props) => {
                     })}
                   </ul>
                 </>
+              ) : (
+                <IngenJournalposter language={language} />
               )}
             </div>
           </div>

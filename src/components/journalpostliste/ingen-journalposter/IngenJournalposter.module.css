@@ -1,0 +1,5 @@
+.container {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--a-surface-subtle);
+}

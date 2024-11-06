@@ -184,10 +184,10 @@ export const text = {
     nn: "Tilbake til forside dokumentarkiv",
     en: "Back to document archive front page",
   },
-  ingenDokumenter: {
-    nb: "Ingen dokumenter å vise",
-    nn: "Ingen dokument å vise",
-    en: "No documents to show",
+  ingenJournalposter: {
+    nb: "Ingen registrerte saker eller dokumenter å vise",
+    nn: "Ingen registrerte sakar eller dokument å vise",
+    en: "No registered cases or documents to show",
   },
   kanIkkeViseDokument: {
     nb: "Kan ikke vise dokument",
