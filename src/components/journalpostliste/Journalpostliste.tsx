@@ -5,11 +5,13 @@ import { useStore } from "@nanostores/react";
 import { BodyShort, Select } from "@navikt/ds-react";
 import { getAlleJournalposterUrl } from "@src/urls.client";
 import {
-  dokumentDataFiltersAtom,
-  sakstemaFiltersAtom,
+  filtersAtom,
   filteredJournalposter,
   setJournalposter,
   setSakstemaer,
+  sakstemaFiltersAtom,
+  sortingOrderAtom,
+  setSortingOrder
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
 import { useEffect, useState, type ChangeEvent } from "react";
@@ -23,13 +25,13 @@ interface Props {
 }
 
 const Journalpostliste = ({ language }: Props) => {
-  const [order, setOrder] = useState("asc");
   const { data: journalposter, isLoading } = useSWRImmutable<
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);
 
-  const dokumentDataFilters = useStore(dokumentDataFiltersAtom)
+  const filters = useStore(filtersAtom)
   const sakstemaFilters = useStore(sakstemaFiltersAtom)
+  const order = useStore(sortingOrderAtom)
 
   useEffect(() => {
     if(journalposter)
@@ -41,10 +43,10 @@ const Journalpostliste = ({ language }: Props) => {
   }
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setOrder(event.target.value);
+    setSortingOrder(event.target.value.toString());
   };
   
-  const filteredList = filteredJournalposter({ order, dokumentDataFilters, sakstemaFilters });
+  const filteredList = filteredJournalposter({ order, filters, sakstemaFilters });
   const numberOfDocuments = journalposter?.length;
   const numberOfShownDocuments = filteredList.length;
 

@@ -47,7 +47,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.content}>
           <a className={styles.link} href={url}>
-            <BodyShort size="medium">{journalpost?.tittel}</BodyShort>
+            <BodyShort size="medium">{"Åpne " + journalpost?.dokument.tittel.toLowerCase()}</BodyShort>
           </a>
         </div>
       </div>
