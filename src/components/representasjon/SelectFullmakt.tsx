@@ -10,10 +10,11 @@ import {
 } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/amplitude";
 import { fetcher, postUser } from "@utils/client/api";
-import type { ChangeEvent } from "react";
+import { useEffect, type ChangeEvent } from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SelectFullmakt.module.css";
+import { setIsValidatingJournalposter } from "@store/store";
 
 type fullmaktsGiverConfig = {
   navn: string;
@@ -42,10 +43,14 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     getFullmaktInfoUrl,
     fetcher
   );
-  const { mutate: mutateJournalposter } = useSWR<JournalpostProps[]>(
+  const { mutate: mutateJournalposter, isValidating } = useSWR<JournalpostProps[]>(
     getAlleJournalposterUrl,
     fetcher
   );
+
+  useEffect(() => {
+    setIsValidatingJournalposter(isValidating)
+  }, [isValidating])
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     await postUser({ ident: event.target.value });

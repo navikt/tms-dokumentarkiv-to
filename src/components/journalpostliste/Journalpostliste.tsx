@@ -12,6 +12,7 @@ import {
   sakstemaFiltersAtom,
   sortingOrderAtom,
   setSortingOrder,
+  isValidatingJournalposterAtom,
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
 import {
@@ -49,6 +50,7 @@ const Journalpostliste = ({ language, setShowFilters }: Props) => {
     }
   }, [journalposter]);
 
+  const isValidating = useStore(isValidatingJournalposterAtom)
   const filters = useStore(filtersAtom);
   const sakstemaFilters = useStore(sakstemaFiltersAtom);
   const order = useStore(sortingOrderAtom);
@@ -70,6 +72,7 @@ const Journalpostliste = ({ language, setShowFilters }: Props) => {
   const numberOfDocuments = journalposter ? journalposter.length : 0;
   const numberOfShownDocuments = filteredList.length;
   const hasJournalposter = journalposter && journalposter?.length > 0;
+  const showContentLoader = isLoading || isValidating;
 
   return (
     <>
@@ -77,7 +80,7 @@ const Journalpostliste = ({ language, setShowFilters }: Props) => {
         <div className={styles.container}>
           <div>
             <div className={styles.contentWrapper}>
-              {isLoading ? (
+              {showContentLoader ? (
                 <ContentLoader language={language} />
               ) : hasJournalposter ? (
                 <>
