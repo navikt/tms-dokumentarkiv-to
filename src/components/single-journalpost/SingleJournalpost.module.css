@@ -70,3 +70,10 @@
 .vedlegg {
   margin-top: 2rem;
 }
+
+.kanIkkeViseDokument {
+  background-color: var(--a-bg-subtle);
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+}

@@ -20,21 +20,35 @@ interface Props {
 const SingleJournalpost = ({ language, journalpostId }: Props) => {
   const journalpostUrl = journalpostId && getJournalpostUrl(journalpostId);
 
-  const { data: journalpost, isLoading } = useSWRImmutable<JournalpostProps>(
-    journalpostUrl,
-    fetcher
-  );
+  const {
+    data: journalpost,
+    isLoading,
+    error,
+  } = useSWRImmutable<JournalpostProps>(journalpostUrl, fetcher);
 
-  const url = journalpost && `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
+  if (isLoading) {
+    return null;
+  }
+
+  if(error || !journalpost?.journalpostId) {
+    return(
+      <>
+      <Heading level="1" size="medium">Enkeltvisning</Heading>
+      <div className={styles.kanIkkeViseDokument}>
+        <BodyShort size="medium">Kunne ikke hente dokument</BodyShort>
+      </div>
+      </>
+    )
+  }
+
+  const url =
+    journalpost &&
+    `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
   const avsenderText =
     journalpost && setAvsenderMottaker(journalpost, language);
   const dato =
     journalpost && format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const veddleggsListe = journalpost && journalpost.vedlegg;
-
-  if (isLoading) {
-    return null;
-  }
 
   return (
     <>
@@ -47,7 +61,9 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.content}>
           <a className={styles.link} href={url}>
-            <BodyShort size="medium">{"Åpne " + journalpost?.dokument.tittel.toLowerCase()}</BodyShort>
+            <BodyShort size="medium">
+              {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
+            </BodyShort>
           </a>
         </div>
       </div>

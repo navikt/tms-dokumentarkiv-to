@@ -88,7 +88,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
           <Select
             className={styles.select}
             label={text.representasjonLabel[language]}
-            defaultValue={fullmakter?.ident}
+            defaultValue={"test"}
             onChange={handleSelectChange}
             onClick={() =>
               logAmplitudeEvent("Nedtrekksliste", "Representasjon")
