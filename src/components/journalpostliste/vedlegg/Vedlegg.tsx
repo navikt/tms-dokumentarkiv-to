@@ -1,13 +1,13 @@
+import type { Language } from "@language/language";
+import { text } from "@language/text";
 import { ChevronDownIcon, ChevronUpIcon } from "@navikt/aksel-icons";
 import { BodyShort, Button, Detail } from "@navikt/ds-react";
-import { useState } from "react";
-import { text } from "@language/text";
-import { logAmplitudeEvent } from "@utils/amplitude";
-import styles from "./Vedlegg.module.css";
-import type { DokumentProps } from "../JournalpostInterfaces";
 import { dokumentUrl } from "@src/urls.client";
-import type { Language } from "@language/language";
+import { logAmplitudeEvent } from "@utils/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
+import { useState } from "react";
+import type { DokumentProps } from "../JournalpostInterfaces";
+import styles from "./Vedlegg.module.css";
 
 interface Props {
   vedleggsListe: DokumentProps[];
@@ -29,37 +29,49 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
   const grupperVedlegg = antallVedlegg > 4;
   const baseUrl = `${dokumentUrl}/${journalpostId}`;
 
-
   const handleOnClick = () => {
     setHideVedlegg(!hideVedlegg);
   };
 
-  const VedleggsLenke = ({ url, tittel, brukerHarTilgang, filstorrelse }: VedleggslenkeProps) => {
+  const VedleggsLenke = ({
+    url,
+    tittel,
+    brukerHarTilgang,
+    filstorrelse,
+  }: VedleggslenkeProps) => {
     const tittelMedPdfTag = tittel + ".pdf";
 
     return brukerHarTilgang ? (
       <>
-      <a href={url} className={styles.vedlegg} onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}>
-        {tittelMedPdfTag}
-      </a>
-      <Detail>{readableFileSize(filstorrelse)}</Detail>
+        <a
+          href={url}
+          className={styles.vedlegg}
+          onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}
+        >
+          {tittelMedPdfTag}
+        </a>
+        <Detail>{readableFileSize(filstorrelse)}</Detail>
       </>
     ) : (
       <>
-      <div className={styles.vedleggIngenTilgang}>{tittelMedPdfTag + text.vedleggKanIkkeVises[language]}</div>
-      <Detail>{readableFileSize(filstorrelse)}</Detail>
+        <div className={styles.vedleggIngenTilgang}>
+          {tittelMedPdfTag + text.vedleggKanIkkeVises[language]}
+        </div>
+        <Detail>{readableFileSize(filstorrelse)}</Detail>
       </>
     );
   };
 
-  if(!hasVedlegg) {
+  if (!hasVedlegg) {
     return null;
   }
 
   if (grupperVedlegg) {
     return (
       <div className={styles.veddleggsListe}>
-        <BodyShort className={styles.tittel}>{text.antallVedlegg[language](antallVedlegg)}</BodyShort>
+        <BodyShort className={styles.tittel}>
+          {text.antallVedlegg[language](antallVedlegg)}
+        </BodyShort>
         <Button
           className={styles.btn}
           variant="secondary-neutral"
@@ -73,7 +85,9 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
           }
           onClick={() => handleOnClick()}
         >
-          {hideVedlegg ? text.visVedlegg[language] : text.skjulVedlegg[language]}
+          {hideVedlegg
+            ? text.visVedlegg[language]
+            : text.skjulVedlegg[language]}
         </Button>
         <div className={hideVedlegg ? styles.visuallyHidden : undefined}>
           {vedleggsListe.map((vedlegg: DokumentProps) => (
@@ -92,7 +106,9 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
 
   return (
     <div className={styles.veddleggsListe}>
-      <BodyShort className={styles.tittel}>{text.antallVedlegg[language](antallVedlegg)}</BodyShort>
+      <BodyShort className={styles.tittel}>
+        {text.antallVedlegg[language](antallVedlegg)}
+      </BodyShort>
       {vedleggsListe.map((vedlegg: DokumentProps) => (
         <VedleggsLenke
           url={`${baseUrl}/${vedlegg.dokumentInfoId}`}
