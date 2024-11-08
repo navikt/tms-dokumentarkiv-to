@@ -3,9 +3,14 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  margin: 2rem 0;
   padding: 1rem;
-  margin: 3rem 0 2rem 0;
   gap: 10px;
-  background-color: var(--a-bg-subtle);
   border-radius: 8px;
+  background-color: var(--a-bg-subtle);
+}
+
+.liste {
+  margin-top: 0.12rem;
+  margin-bottom: 0;
 }
