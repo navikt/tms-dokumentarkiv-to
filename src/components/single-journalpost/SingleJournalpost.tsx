@@ -2,7 +2,7 @@ import type { JournalpostProps } from "@components/journalpostliste/JournalpostI
 import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { FilePdfIcon } from "@navikt/aksel-icons";
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
 import { fetcher } from "@utils/client/api";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
@@ -11,6 +11,7 @@ import useSWRImmutable from "swr/immutable";
 import styles from "./SingleJournalpost.module.css";
 import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
+import { readableFileSize } from "@utils/readableFilesize";
 
 interface Props {
   language: Language;
@@ -30,15 +31,17 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     return null;
   }
 
-  if(error || !journalpost?.journalpostId) {
-    return(
+  if (error || !journalpost?.journalpostId) {
+    return (
       <>
-      <Heading level="1" size="medium">Enkeltvisning</Heading>
-      <div className={styles.kanIkkeViseDokument}>
-        <BodyShort size="medium">Kunne ikke hente dokument</BodyShort>
-      </div>
+        <Heading level="1" size="medium">
+          Enkeltvisning
+        </Heading>
+        <div className={styles.kanIkkeViseDokument}>
+          <BodyShort size="medium">Kunne ikke hente dokument</BodyShort>
+        </div>
       </>
-    )
+    );
   }
 
   const url =
@@ -50,23 +53,49 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     journalpost && format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const veddleggsListe = journalpost && journalpost.vedlegg;
 
+  const HovedDokument = () => {
+    return (
+      <>
+        {journalpost?.dokument.brukerHarTilgang ? (
+          <div className={`${styles.container} ${styles.hover}`}>
+            <div className={styles.icon}>
+              <FilePdfIcon fontSize="1.5rem" />
+            </div>
+            <div className={styles.content}>
+              <a className={styles.link} href={url}>
+                <BodyShort size="medium">
+                  {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
+                </BodyShort>
+              </a>
+              <Detail>
+                {readableFileSize(journalpost.dokument.filstorrelse)}
+              </Detail>
+            </div>
+          </div>
+        ) : (
+          <div className={`${styles.container} ${styles.hover}`}>
+            <div className={styles.icon}>
+              <FilePdfIcon fontSize="1.5rem" />
+            </div>
+            <div className={styles.content}>
+              <div className={styles.tittelIkkeTilgang}>
+                <BodyShort size="medium">
+                  {journalpost?.dokument.tittel + text.vedleggKanIkkeVises[language]}
+                </BodyShort>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <Heading level="1" size="large">
         {journalpost?.tittel}
       </Heading>
-      <div className={`${styles.container} ${styles.hover}`}>
-        <div className={styles.icon}>
-          <FilePdfIcon fontSize="1.5rem" />
-        </div>
-        <div className={styles.content}>
-          <a className={styles.link} href={url}>
-            <BodyShort size="medium">
-              {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
-            </BodyShort>
-          </a>
-        </div>
-      </div>
+      <HovedDokument />
       <div className={styles.temalenke}>
         <TemaLenke
           lenketekst={journalpost?.temanavn}
