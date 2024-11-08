@@ -14,7 +14,7 @@ interface Props {
 
 const Journalpost = ({ journalpost, language }: Props) => {
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
-  const avsenderText = setAvsenderMottaker(journalpost, language);
+  const avsenderText = setAvsenderMottaker(journalpost);
   const url = `${baseUrlWithLanguage[language]}/tema/${journalpost.temakode}/${journalpost.journalpostId}`;
 
   return (

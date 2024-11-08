@@ -48,7 +48,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     journalpost &&
     `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
   const avsenderText =
-    journalpost && setAvsenderMottaker(journalpost, language);
+    journalpost && setAvsenderMottaker(journalpost);
   const dato =
     journalpost && format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const veddleggsListe = journalpost && journalpost.vedlegg;
