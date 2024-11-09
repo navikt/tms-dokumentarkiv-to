@@ -54,3 +54,8 @@
   border-radius: 4px 4px 12px 12px;
   margin-bottom: 0;
 }
+
+.list li:only-child {
+  border-radius: 12px;
+  margin-bottom: 0;
+}

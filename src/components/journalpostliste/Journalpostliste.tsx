@@ -5,28 +5,23 @@ import { useStore } from "@nanostores/react";
 import { BodyShort, Select } from "@navikt/ds-react";
 import { getAlleJournalposterUrl } from "@src/urls.client";
 import {
-  filtersAtom,
   filteredJournalposter,
+  filtersAtom,
+  isValidatingJournalposterAtom,
+  sakstemaFiltersAtom,
   setJournalposter,
   setSakstemaer,
-  sakstemaFiltersAtom,
-  sortingOrderAtom,
-  setSortingOrder,
-  isValidatingJournalposterAtom,
   setShowFilters,
+  setSortingOrder,
+  sortingOrderAtom,
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
-import {
-  useEffect,
-  type ChangeEvent,
-  type Dispatch,
-  type SetStateAction,
-} from "react";
+import { useEffect, type ChangeEvent } from "react";
 import useSWRImmutable from "swr/immutable";
 import type { JournalpostProps } from "./JournalpostInterfaces";
 import styles from "./Journalpostliste.module.css";
-import Journalpost from "./journalpost/Journalpost";
 import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
+import Journalpost from "./journalpost/Journalpost";
 
 interface Props {
   language: Language;
@@ -49,7 +44,7 @@ const Journalpostliste = ({ language }: Props) => {
     }
   }, [journalposter]);
 
-  const isValidating = useStore(isValidatingJournalposterAtom)
+  const isValidating = useStore(isValidatingJournalposterAtom);
   const filters = useStore(filtersAtom);
   const sakstemaFilters = useStore(sakstemaFiltersAtom);
   const order = useStore(sortingOrderAtom);
@@ -67,7 +62,7 @@ const Journalpostliste = ({ language }: Props) => {
     filters,
     sakstemaFilters,
   });
-  
+
   const numberOfDocuments = journalposter ? journalposter.length : 0;
   const numberOfShownDocuments = filteredList.length;
   const hasJournalposter = journalposter && journalposter?.length > 0;
@@ -75,51 +70,49 @@ const Journalpostliste = ({ language }: Props) => {
 
   return (
     <>
-      {journalposter && (
-        <div className={styles.container}>
-          <div>
-            <div className={styles.contentWrapper}>
-              {showContentLoader ? (
-                <ContentLoader language={language} />
-              ) : hasJournalposter ? (
-                <>
-                  <div className={styles.dokumentlisteInfo}>
-                    <BodyShort size="small" className={styles.text}>
-                      {numberOfDocuments &&
-                        text.viserAntallDokumenter[language](
-                          numberOfShownDocuments,
-                          numberOfDocuments
-                        )}
-                    </BodyShort>
-                    <Select
-                      label="Sorteringsrekkefølge etter dato"
-                      size="small"
-                      hideLabel
-                      onChange={handleSelectChange}
-                    >
-                      <option value="asc">Nyeste først</option>
-                      <option value="desc">Eldste først</option>
-                    </Select>
-                  </div>
-                  <ul className={styles.list} key="journalpostliste">
-                    {filteredList?.map((journalpost: JournalpostProps) => {
-                      return (
-                        <Journalpost
-                          journalpost={journalpost}
-                          language={language}
-                          key={journalpost.journalpostId}
-                        />
-                      );
-                    })}
-                  </ul>
-                </>
-              ) : (
-                <IngenJournalposter language={language} />
-              )}
-            </div>
+      <div className={styles.container}>
+        <div>
+          <div className={styles.contentWrapper}>
+            {showContentLoader ? (
+              <ContentLoader language={language} />
+            ) : hasJournalposter ? (
+              <>
+                <div className={styles.dokumentlisteInfo}>
+                  <BodyShort size="small" className={styles.text}>
+                    {numberOfDocuments &&
+                      text.viserAntallDokumenter[language](
+                        numberOfShownDocuments,
+                        numberOfDocuments
+                      )}
+                  </BodyShort>
+                  <Select
+                    label="Sorteringsrekkefølge etter dato"
+                    size="small"
+                    hideLabel
+                    onChange={handleSelectChange}
+                  >
+                    <option value="asc">Nyeste først</option>
+                    <option value="desc">Eldste først</option>
+                  </Select>
+                </div>
+                <ul className={styles.list} key="journalpostliste">
+                  {filteredList?.map((journalpost: JournalpostProps) => {
+                    return (
+                      <Journalpost
+                        journalpost={journalpost}
+                        language={language}
+                        key={journalpost.journalpostId}
+                      />
+                    );
+                  })}
+                </ul>
+              </>
+            ) : (
+              <IngenJournalposter language={language} />
+            )}
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
