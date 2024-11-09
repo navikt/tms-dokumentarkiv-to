@@ -13,6 +13,7 @@ import {
   sortingOrderAtom,
   setSortingOrder,
   isValidatingJournalposterAtom,
+  setShowFilters,
 } from "@store/store";
 import { fetcher } from "@utils/client/api";
 import {
@@ -28,11 +29,10 @@ import Journalpost from "./journalpost/Journalpost";
 import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
 
 interface Props {
-  setShowFilters: Dispatch<SetStateAction<boolean>>;
   language: Language;
 }
 
-const Journalpostliste = ({ language, setShowFilters }: Props) => {
+const Journalpostliste = ({ language }: Props) => {
   const { data: journalposter, isLoading } = useSWRImmutable<
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);

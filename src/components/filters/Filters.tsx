@@ -1,12 +1,17 @@
 import { useStore } from "@nanostores/react";
 import { Chips, Label } from "@navikt/ds-react";
-import { sakstemaerAtom, setFilters, setSakstemaFilters } from "@store/store";
+import { sakstemaerAtom, setFilters, setSakstemaFilters, showFiltersAtom } from "@store/store";
 import { useState } from "react";
 import styles from "./Filters.module.css";
 
 const Filters = () => {
   const [selected, setSelected] = useState<string[]>([]);
   const sakstemaer = useStore(sakstemaerAtom);
+  const showFilters = useStore(showFiltersAtom);
+
+  if (!showFilters) {
+    return null;
+  }
 
   const handleToggle = (value: string[]) => {
     setFilters(value);

@@ -12,6 +12,7 @@ export const journalposterAtom = atom<JournalpostProps[]>([]);
 export const sakstemaerAtom = atom<string[]>([]);
 export const sortingOrderAtom = atom<Filters["order"]>("asc");
 export const filtersAtom = atom<Filters["filters"]>(["Alle"]);
+export const showFiltersAtom = atom<boolean>(false);
 export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Ingen"]);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
 
@@ -29,12 +30,16 @@ export function setSakstemaer(journalposter: JournalpostProps[]) {
   sakstemaerAtom.set(sakstemaer);
 }
 
-export function setIsValidatingJournalposter(state: boolean) {
-  isValidatingJournalposterAtom.set(state)
+export function setIsValidatingJournalposter(bool: boolean) {
+  isValidatingJournalposterAtom.set(bool)
 }
 
 export function setFilters(filters: string[]) {
   filtersAtom.set(filters);
+}
+
+export function setShowFilters(bool: boolean) {
+  showFiltersAtom.set(bool)
 }
 
 export function setSakstemaFilters(filters: string[]) {

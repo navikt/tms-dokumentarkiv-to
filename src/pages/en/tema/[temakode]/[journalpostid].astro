@@ -1,25 +1,28 @@
 ---
-import SingleJournalpostContainer from "@components/containers/SingleJournalpostContainer";
-import { text } from "@language/text";
-import Layout from "@layouts/Layout.astro";
 import { baseUrl } from "@src/urls";
+import { text } from "@language/text";
+import Disclaimer from "@components/disclaimers/disclaimer-single-journalpost/Disclaimer";
+import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
+import Layout from "@layouts/Layout.astro";
 
 const { temakode, journalpostid } = Astro.params;
+const language = "en"
 const breadcrumbs = [
   {
-    title: text.minSide["en"], url: "/minside",
+    title: text.minSide[language], url: "/minside",
   },
   {
     url: baseUrl,
-    title: text.dokumentarkiv["en"],
+    title: text.dokumentarkiv[language],
   },
   {
     url: `${baseUrl}/tema/${temakode}`,
-    title: text.dokumenter["en"],
+    title: text.dokumenter[language],
   },
 ];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="en">
-  <SingleJournalpostContainer language="en" client:only="react" journalpostId={journalpostid}/>
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+  <SingleJournalpost language={language} journalpostId={journalpostid} client:only="react"/>
+  <Disclaimer language={language} />
 </Layout>

@@ -1,22 +1,36 @@
 ---
-import DokumentlisteContainer from "@components/containers/JournalpostlisteContainer"
+import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
+import Filters from "@components/filters/Filters";
+import Journalpostliste from "@components/journalpostliste/Journalpostliste";
+import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
+import SelectFullmakt from "@components/representasjon/SelectFullmakt";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
+import { Heading } from "@navikt/ds-react";
 import { baseUrl } from "@src/urls";
+
+const language = "nn";
 
 const breadcrumbs = [
   {
-    title: text.minSide["nn"],
+    title: text.minSide[language],
     url: "https://www.nav.no/minside",
   },
   {
     url: baseUrl,
-    title: text.dokumentarkiv["nn"],
+    title: text.dokumentarkiv[language],
   },
 ];
 
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language="nn">
-  <DokumentlisteContainer language="nn" client:only="react" />
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+  <Heading level="1" size="large">
+    {text.dokumentarkiv[language]}
+  </Heading>
+  <SelectFullmakt language={language} client:only="react"/>
+  <Filters client:only="react"/>
+  <Journalpostliste language={language} client:only="react"/>
+  <Disclaimer language={language} />
+  <NyttigOgVite language={language} />
 </Layout>
