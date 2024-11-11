@@ -19,7 +19,8 @@
 .link {
   margin: 0.2rem 0;
   text-decoration: underline;
-  color: var(--a-text-action);
+  color: var(--a-text-action);  
+  text-wrap: balance;
 }
 
 .link:hover {

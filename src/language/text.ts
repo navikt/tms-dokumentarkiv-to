@@ -251,7 +251,7 @@ export const text = {
   },
   detaljerTitle: {
     nb: "Detaljer",
-    nn: "Detaljher",
+    nn: "Detaljer",
     en: "Details",
   },
   datoTitle: {

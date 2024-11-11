@@ -22,6 +22,7 @@ interface VedleggslenkeProps {
 
 const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
   const baseUrl = `${dokumentUrl}/${journalpostId}`;
+  const hasVedlegg = vedleggsListe && vedleggsListe.length > 0;
 
   const VedleggsLenke = ({
     url,
@@ -52,7 +53,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
     );
   };
 
-  return (
+  return hasVedlegg ? (
     <>
       <div className={styles.title}>
         <BodyShort size="medium" weight="semibold">
@@ -69,7 +70,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
         />
       ))}
     </>
-  );
+  ) : null;
 };
 
 export default Vedlegg;

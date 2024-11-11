@@ -14,3 +14,7 @@
   margin-top: 0.12rem;
   margin-bottom: 0;
 }
+
+.liste li {
+  text-wrap: balance;
+}

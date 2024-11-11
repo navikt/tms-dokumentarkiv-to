@@ -48,6 +48,7 @@ const Journalpostliste = ({ language }: Props) => {
   const filters = useStore(filtersAtom);
   const sakstemaFilters = useStore(sakstemaFiltersAtom);
   const order = useStore(sortingOrderAtom);
+  const showContentLoader = isLoading || isValidating;
 
   if (journalposter) {
     setJournalposter(journalposter);
@@ -66,7 +67,6 @@ const Journalpostliste = ({ language }: Props) => {
   const numberOfDocuments = journalposter ? journalposter.length : 0;
   const numberOfShownDocuments = filteredList.length;
   const hasJournalposter = journalposter && journalposter?.length > 0;
-  const showContentLoader = isLoading || isValidating;
 
   return (
     <>

@@ -34,12 +34,14 @@
   margin: 0.2rem 0;
   text-decoration: underline;
   color: var(--a-text-action);
+  text-wrap: balance;
 }
 
 .tittelIkkeTilgang {
   margin: 0.2rem 0;
   text-decoration: none;
   color: var(--a-text-subtle);
+  text-wrap: balance;
 }
 
 .link:hover {

@@ -9,3 +9,7 @@
   background-color: var(--a-surface-default);
   border-radius: 8px;
 }
+
+.liste li {
+  text-wrap: balance;
+}
