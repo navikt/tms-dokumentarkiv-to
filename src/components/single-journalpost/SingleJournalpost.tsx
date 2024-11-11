@@ -52,6 +52,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
   const dato =
     journalpost && format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const veddleggsListe = journalpost && journalpost.vedlegg;
+  const isInngaaendeJournalpost = journalpost.journalposttype.toLowerCase() === "inn";
 
   const HovedDokument = () => {
     return (
@@ -110,7 +111,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
           </BodyShort>
         </div>
         <div className={styles.detail}>
-          <BodyShort size="medium">{text.avsenderTitle[language]}</BodyShort>
+          <BodyShort size="medium">{isInngaaendeJournalpost ? text.sendtInnTitle[language] : text.sendtTilTitle[language]}</BodyShort>
           <BodyShort size="medium">{avsenderText}</BodyShort>
         </div>
         <div className={styles.detail}>

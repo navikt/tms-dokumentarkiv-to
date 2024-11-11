@@ -255,18 +255,23 @@ export const text = {
     en: "Details",
   },
   datoTitle: {
-    nb: "Dato",
-    nn: "Dato",
-    en: "Date",
+    nb: "Dato opprettet",
+    nn: "Dato opprettet",
+    en: "Date created",
   },
   temaTitle: {
     nb: "Tema",
     nn: "Tema",
     en: "Theme",
   },
-  avsenderTitle: {
+  sendtInnTitle: {
     nb: "Sendt inn av",
     nn: "Sendt inn av",
     en: "Sent by",
+  },
+  sendtTilTitle: {
+    nb: "Sendt til",
+    nn: "Sendt til",
+    en: "Sent too",
   },
 };
