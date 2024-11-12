@@ -9,6 +9,7 @@ import {
   filtersAtom,
   isValidatingJournalposterAtom,
   sakstemaFiltersAtom,
+  setIsError,
   setJournalposter,
   setSakstemaer,
   setShowFilters,
@@ -28,7 +29,7 @@ interface Props {
 }
 
 const Journalpostliste = ({ language }: Props) => {
-  const { data: journalposter, isLoading } = useSWRImmutable<
+  const { data: journalposter, isLoading, error : getJournalposterError } = useSWRImmutable<
     JournalpostProps[]
   >(getAlleJournalposterUrl, fetcher);
 
@@ -49,6 +50,11 @@ const Journalpostliste = ({ language }: Props) => {
   const sakstemaFilters = useStore(sakstemaFiltersAtom);
   const order = useStore(sortingOrderAtom);
   const showContentLoader = isLoading || isValidating;
+
+  if (getJournalposterError) {
+    setIsError(true)
+    return null;
+  }
 
   if (journalposter) {
     setJournalposter(journalposter);

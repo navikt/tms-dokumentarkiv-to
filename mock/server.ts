@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { HTTPException } from "hono/http-exception";
 import { compress } from "hono/compress";
 import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
@@ -7,6 +8,7 @@ import journalposterAlle from "./data/journalposterAlle.json" assert { type: "js
 import journalpost from "./data/journalpost.json" assert { type: "json" };
 import fullmaktsinfo from "./data/fullmaktsinfo.json" assert { type: "json" };
 import fullmaktsforhold from "./data/fullmaktsforhold.json" assert { type: "json" };
+import representert from "./data/representert.json" assert { type: "json" };
 
 
 const api = new Hono();
@@ -31,6 +33,7 @@ api.get('/mine-saker-api/v2/journalposter/alle', (c) => {
 });
 
 api.get('/mine-saker-api/v2/journalposter/journalpost/*', (c) => {
+  throw new HTTPException(502, {message: "Error!"})
   return c.json(journalpost);
 });
 
@@ -40,6 +43,10 @@ api.get('/mine-saker-api/fullmakt/info', (c) => {
 
 api.get('/mine-saker-api/fullmakt/forhold', (c) => {
   return c.json(fullmaktsforhold);
+});
+
+api.post('/mine-saker-api/fullmakt/representert', (c) => {
+  return c.json(representert);
 });
 
 serve(api);

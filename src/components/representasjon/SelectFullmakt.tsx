@@ -8,13 +8,13 @@ import {
   getFullmaktInfoUrl,
   pdlFullmaktUrl,
 } from "@src/urls.client";
-import { logAmplitudeEvent } from "@utils/amplitude";
+import { logAmplitudeEvent } from "@utils/client/amplitude";
 import { fetcher, postUser } from "@utils/client/api";
 import { useEffect, type ChangeEvent } from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SelectFullmakt.module.css";
-import { setIsValidatingJournalposter } from "@store/store";
+import { setIsError, setIsValidatingJournalposter } from "@store/store";
 
 type fullmaktsGiverConfig = {
   navn: string;
@@ -37,13 +37,16 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   const {
     data: fullmakter,
     isLoading: isLoadingFullmakter,
-    error,
+    error : fullmaktsForholdError,
   } = useSWRImmutable<Fullmakter>(getFullmaktForhold, fetcher);
-  const { data: fullmaktInfo, mutate: mutateUser } = useSWR<FullmaktInfoProps>(
+
+  const { data: fullmaktInfo, mutate: mutateUser, error : fullmaktsInfoError,
+  } = useSWR<FullmaktInfoProps>(
     getFullmaktInfoUrl,
     fetcher
   );
-  const { mutate: mutateJournalposter, isValidating } = useSWR<JournalpostProps[]>(
+
+  const { mutate: mutateJournalposter, isValidating, error : mutateJournalposterError } = useSWR<JournalpostProps[]>(
     getAlleJournalposterUrl,
     fetcher
   );
@@ -58,7 +61,12 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     mutateUser();
   };
 
-  if (isLoadingFullmakter || error) {
+  if (isLoadingFullmakter) {
+    return null;
+  }
+
+  if (fullmaktsForholdError || fullmaktsInfoError || mutateJournalposterError) {
+    setIsError(true)
     return null;
   }
 

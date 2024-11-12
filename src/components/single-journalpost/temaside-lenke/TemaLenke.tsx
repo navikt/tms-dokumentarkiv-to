@@ -2,7 +2,7 @@ import type { Language } from "@language/language";
 import { lenker } from "./Lenker";
 import styles from "./TemaLenke.module.css";
 import { text } from "@language/text";
-import { logAmplitudeEvent } from "@utils/amplitude";
+import { logAmplitudeEvent } from "@utils/client/amplitude";
 
 export type Temakode =
   | "DAG"

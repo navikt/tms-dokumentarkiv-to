@@ -3,7 +3,7 @@ import { text } from "@language/text";
 import { ChevronDownIcon, ChevronUpIcon } from "@navikt/aksel-icons";
 import { BodyShort, Button, Detail } from "@navikt/ds-react";
 import { dokumentUrl } from "@src/urls.client";
-import { logAmplitudeEvent } from "@utils/amplitude";
+import { logAmplitudeEvent } from "@utils/client/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
 import { useState } from "react";
 import type { DokumentProps } from "../JournalpostInterfaces";

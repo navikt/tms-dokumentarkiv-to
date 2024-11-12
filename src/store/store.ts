@@ -15,6 +15,11 @@ export const filtersAtom = atom<Filters["filters"]>(["Alle"]);
 export const showFiltersAtom = atom<boolean>(false);
 export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Ingen"]);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
+export const isErrorAtom = atom<boolean>(false);
+
+export function setIsError(bool: boolean) {
+  isErrorAtom.set(bool)
+}
 
 export function setJournalposter(journalposter: JournalpostProps[]) {
   journalposterAtom.set(journalposter);

@@ -12,6 +12,8 @@ import styles from "./SingleJournalpost.module.css";
 import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
 import { readableFileSize } from "@utils/readableFilesize";
+import { setIsError } from "@store/store";
+import FeilMelding from "@components/feilmelding/Feilmelding";
 
 interface Props {
   language: Language;
@@ -31,28 +33,20 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     return null;
   }
 
-  if (error || !journalpost?.journalpostId) {
-    return (
-      <>
-        <Heading level="1" size="medium">
-          Enkeltvisning
-        </Heading>
-        <div className={styles.kanIkkeViseDokument}>
-          <BodyShort size="medium">Kunne ikke hente dokument</BodyShort>
-        </div>
-      </>
-    );
+  if (error) {
+    setIsError(true);
   }
 
-  const url =
-    journalpost &&
-    `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
-  const avsenderText =
-    journalpost && setAvsenderMottaker(journalpost);
-  const dato =
-    journalpost && format(new Date(journalpost.opprettet), "dd.MM.yyyy");
-  const veddleggsListe = journalpost && journalpost.vedlegg;
-  const isInngaaendeJournalpost = journalpost.journalposttype.toLowerCase() === "inn";
+  if (!journalpost) {
+    return null;
+  }
+
+  const url = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
+  const avsenderText = setAvsenderMottaker(journalpost);
+  const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
+  const veddleggsListe = journalpost.vedlegg;
+  const isInngaaendeJournalpost =
+    journalpost.journalposttype.toLowerCase() === "inn";
 
   const HovedDokument = () => {
     return (
@@ -81,7 +75,8 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
             <div className={styles.content}>
               <div className={styles.tittelIkkeTilgang}>
                 <BodyShort size="medium">
-                  {journalpost?.dokument.tittel + text.vedleggKanIkkeVises[language]}
+                  {journalpost?.dokument.tittel +
+                    text.vedleggKanIkkeVises[language]}
                 </BodyShort>
               </div>
             </div>
@@ -111,7 +106,11 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
           </BodyShort>
         </div>
         <div className={styles.detail}>
-          <BodyShort size="medium">{isInngaaendeJournalpost ? text.sendtInnTitle[language] : text.sendtTilTitle[language]}</BodyShort>
+          <BodyShort size="medium">
+            {isInngaaendeJournalpost
+              ? text.sendtInnTitle[language]
+              : text.sendtTilTitle[language]}
+          </BodyShort>
           <BodyShort size="medium">{avsenderText}</BodyShort>
         </div>
         <div className={styles.detail}>

@@ -2,7 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import styles from "./NyttigOgVite.module.css";
 import { kontaktOssUrl, saksbehandlingstiderUrl, tilbakemeldingerUrl } from "@src/urls.client";
 import { text } from "../../language/text";
-import { logAmplitudeEvent } from "../../utils/amplitude";
+import { logAmplitudeEvent } from "../../utils/client/amplitude";
 import type { Language } from "@language/language";
 
 const NyttigOgVite = ({ language }: { language: Language }) => {

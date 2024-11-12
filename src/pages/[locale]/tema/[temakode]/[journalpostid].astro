@@ -4,9 +4,11 @@ import { text } from "@language/text";
 import Disclaimer from "@components/disclaimers/disclaimer-single-journalpost/Disclaimer";
 import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
 import Layout from "@layouts/Layout.astro";
+import type { Language } from "@language/language";
+import FeilMelding from "@components/feilmelding/Feilmelding";
 
 const { temakode, journalpostid } = Astro.params;
-const language = "en"
+const language = Astro.currentLocale as Language;
 const breadcrumbs = [
   {
     title: text.minSide[language], url: "/minside",
@@ -23,6 +25,7 @@ const breadcrumbs = [
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+  <FeilMelding language={language} client:only="react" />
   <SingleJournalpost language={language} journalpostId={journalpostid} client:only="react"/>
   <Disclaimer language={language} />
 </Layout>

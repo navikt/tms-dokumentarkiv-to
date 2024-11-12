@@ -1,15 +1,17 @@
 ---
 import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
+import FeilMelding from "@components/feilmelding/Feilmelding";
 import Filters from "@components/filters/Filters";
 import Journalpostliste from "@components/journalpostliste/Journalpostliste";
 import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
 import SelectFullmakt from "@components/representasjon/SelectFullmakt";
+import type { Language } from "@language/language";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@navikt/ds-react";
 import { baseUrl } from "@src/urls";
 
-const language = "nb";
+const language = Astro.currentLocale as Language;
 
 const breadcrumbs = [
   {
@@ -25,6 +27,7 @@ const breadcrumbs = [
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+  <FeilMelding language={language} client:only="react"/>
   <Heading level="1" size="large">
     {text.dokumentarkiv[language]}
   </Heading>

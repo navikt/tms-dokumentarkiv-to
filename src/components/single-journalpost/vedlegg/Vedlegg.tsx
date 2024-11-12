@@ -3,7 +3,7 @@ import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { BodyShort, Detail } from "@navikt/ds-react";
 import { dokumentUrl } from "@src/urls.client";
-import { logAmplitudeEvent } from "@utils/amplitude";
+import { logAmplitudeEvent } from "@utils/client/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
 import styles from "./Vedlegg.module.css";
 
