@@ -33,7 +33,6 @@ api.get('/mine-saker-api/v2/journalposter/alle', (c) => {
 });
 
 api.get('/mine-saker-api/v2/journalposter/journalpost/*', (c) => {
-  throw new HTTPException(502, {message: "Error!"})
   return c.json(journalpost);
 });
 

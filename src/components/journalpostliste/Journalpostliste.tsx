@@ -2,7 +2,7 @@ import ContentLoader from "@components/loader/ContentLoader";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { useStore } from "@nanostores/react";
-import { BodyShort, Select } from "@navikt/ds-react";
+import { BodyShort, Select, Skeleton } from "@navikt/ds-react";
 import { getAlleJournalposterUrl } from "@src/urls.client";
 import {
   filteredJournalposter,
@@ -23,6 +23,7 @@ import type { JournalpostProps } from "./JournalpostInterfaces";
 import styles from "./Journalpostliste.module.css";
 import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
 import Journalpost from "./journalpost/Journalpost";
+import SkeletonComponent from "@components/loader/skeleton/Skeleton";
 
 interface Props {
   language: Language;
@@ -80,7 +81,7 @@ const Journalpostliste = ({ language }: Props) => {
         <div>
           <div className={styles.contentWrapper}>
             {showContentLoader ? (
-              <ContentLoader language={language} />
+              <SkeletonComponent />
             ) : hasJournalposter ? (
               <>
                 <div className={styles.dokumentlisteInfo}>

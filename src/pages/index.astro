@@ -24,6 +24,9 @@ const breadcrumbs = [
   },
 ];
 
+const params = Astro.url.searchParams;
+const tema = params.get("tema")
+
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
