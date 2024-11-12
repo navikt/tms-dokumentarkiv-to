@@ -110,18 +110,18 @@ export const text = {
     en: "Send an appeal against the decision",
   },
   dokumentDisclaimerTittel: {
-    nb: "Dokumenter vi foreløpig ikke kan vise deg:",
-    nn: "Dokument vi førebels ikkje kan vise deg:",
+    nb: "Dokumenter du ikke får åpnet",
+    nn: "Dokumenter du ikke får åpnet",
     en: "Not all types of documents are able to be viewed",
   },
   documentDisclaimerListepunktEn: {
-    nb: "Papirer du har sendt til NAV i posten",
-    nn: "Dokument du har sendt til NAV i posten",
+    nb: "Papirer du har sendt til NAV i posten. Du vil kunne se tittelen og dato for dokumentet, men ikke innholdet i pdf. Dokumenter du har sendt i papirpost blir skannet og digitalisert. Det er en liten risiko for at det skjer noe feil i skanningen. Vi vil ikke vise deg dokumentet før vi er sikre på at det gjelder deg og din sak",
+    nn: "Papirer du har sendt til NAV i posten. Du vil kunne se tittelen og dato for dokumentet, men ikke innholdet i pdf. Dokumenter du har sendt i papirpost blir skannet og digitalisert. Det er en liten risiko for at det skjer noe feil i skanningen. Vi vil ikke vise deg dokumentet før vi er sikre på at det gjelder deg og din sak",
     en: "Documents sent to NAV by mail",
   },
   documentDisclaimerListepunktTo: {
-    nb: "Dokumenter som gjelder saken din, men som er sendt av andre på vegne av deg. Det kan for eksempel være en lege, advokat, verge eller fullmektig.",
-    nn: "Dokument som gjeld saka di, men som er sendt av andre på dine vegner. Det kan til dømes vera ein lege, advokat, verje eller fullmektig.",
+    nb: "Dokumenter som gjelder saken din, men som er sendt av andre på vegne av deg.  Du vil kunne se tittelen og dato for dokumentet, men ikke innholdet i pdf. Slike dokumenter kan for eksempel være en lege, advokat, verge eller fullmektig.",
+    nn: "Dokumenter som gjelder saken din, men som er sendt av andre på vegne av deg.  Du vil kunne se tittelen og dato for dokumentet, men ikke innholdet i pdf. Slike dokumenter kan for eksempel være en lege, advokat, verge eller fullmektig.",
     en: "Documents regarding your case, sent by others on your behalf. This could mean that it was sent by a doctor, laywer or legal guardian.",
   },
   landingssideDisclaimerTittel: {
@@ -130,13 +130,23 @@ export const text = {
     en: "Do you not find what you were looking for?",
   },
   landingssideDisclaimerListepunktEn: {
-    nb: "Har du sendt inn en søknad per post tar det litt tid før saken vises her.",
-    nn: "Har du sendt inn ein søknad per post tar det litt tid før saka blir vist her.",
+    nb: "Her viser vi alle dokumenter som er registrert på <innlogget navn/fullmakt>",
+    nn: "Her viser vi alle dokumenter som er registrert på <innlogget navn/fullmakt>",
     en: "If you have sent an application by mail it will take some time before it is shown here",
   },
   landingssideDisclaimerListepunktTo: {
-    nb: "For bidragssaker kan du kun se dokumenter fra starten av 2022.",
-    nn: "For saker knytt til bidrag kan du berre sjå dokumenter frå starten av 2022.",
+    nb: "Vi henter dokumenter i saker etter 2016. For bidragssaker får du bare dokumenter fra starten av 2022.",
+    nn: "Vi henter dokumenter i saker etter 2016. For bidragssaker får du bare dokumenter fra starten av 2022.",
+    en: "For contribution matters, we are only able to present documents starting from 2022.",
+  },
+  landingssideDisclaimerListepunktTre: {
+    nb: "Har du søkt om økonomisk sosialhjelp? Da er dokumenter knyttet til digitale søknader tilgjengelige i en ",
+    nn: "Har du søkt om økonomisk sosialhjelp? Da er dokumenter knyttet til digitale søknader tilgjengelige i en ",
+    en: "For contribution matters, we are only able to present documents starting from 2022.",
+  },
+  landingssideDisclaimerListepunktTreLenke: {
+    nb: "egen løsning",
+    nn: "egen løsning",
     en: "For contribution matters, we are only able to present documents starting from 2022.",
   },
   landingssideDisclaimerTekstDel1: {

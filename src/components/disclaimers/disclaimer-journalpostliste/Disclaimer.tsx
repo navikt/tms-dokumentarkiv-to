@@ -23,6 +23,12 @@ const Disclaimer = ({ language }: { language: Language }) => {
             {text.landingssideDisclaimerListepunktTo[language]}
           </BodyLong>
         </li>
+        <li>
+          <BodyLong>
+            {text.landingssideDisclaimerListepunktTre[language]}
+            <a href="">{text.landingssideDisclaimerListepunktTreLenke[language]}</a>
+          </BodyLong>
+        </li>
       </ul>
       <BodyLong>
         <span>

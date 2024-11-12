@@ -18,3 +18,7 @@
 .liste li {
   text-wrap: balance;
 }
+
+.liste li :first-of-type {
+  margin-bottom: 1rem;
+}
