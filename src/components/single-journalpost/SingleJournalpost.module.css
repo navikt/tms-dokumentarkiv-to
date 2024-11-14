@@ -30,6 +30,10 @@
   line-height: 0;
 }
 
+.iconKanIkkeVises {
+  color: var(--a-text-default);
+}
+
 .link {
   margin: 0.2rem 0;
   text-decoration: underline;

@@ -1,7 +1,7 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { FilePdfIcon } from "@navikt/aksel-icons";
+import { EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
 import { fetcher } from "@utils/client/api";
@@ -49,6 +49,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     journalpost.journalposttype.toLowerCase() === "inn";
 
   const HovedDokument = () => {
+    console.log(journalpost)
     return (
       <>
         {journalpost?.dokument.brukerHarTilgang ? (
@@ -69,8 +70,8 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
           </div>
         ) : (
           <div className={`${styles.container} ${styles.hover}`}>
-            <div className={styles.icon}>
-              <FilePdfIcon fontSize="1.5rem" />
+            <div className={`${styles.icon} ${styles.iconKanIkkeVises}`}>
+              <EyeSlashIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
               <div className={styles.tittelIkkeTilgang}>
