@@ -293,5 +293,10 @@ export const text = {
     nb: "Vi har for øyeblikket tekniske problemer. Dette kan føre til at du ikke får opp all informasjon. Vennligst prøv igjen senere.",
     en: "We're having technical difficulties. Some information may not be available, please try again later.",
     nn: "Vi har for øyeblikket tekniske problemer. Dette kan føre til at du ikke får opp all informasjon. Vennligst prøv igjen senere.",
+  },
+  filtersTitle: {
+    nb: "Velg hvilke dokumenter du vil se",
+    nn: "Velg hvilke dokumenter du vil se",
+    en: "Choose which category of documents you wish to see",
   }
 };

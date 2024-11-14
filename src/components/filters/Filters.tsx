@@ -3,12 +3,15 @@ import { Chips, Label } from "@navikt/ds-react";
 import { sakstemaerAtom, setQueryParam, setSakstemaFilters, showFiltersAtom } from "@store/store";
 import { useEffect, useState } from "react";
 import styles from "./Filters.module.css";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
 
 interface Props {
+  language: Language;
   queryParam: string | null;
 }
 
-const Filters = ({ queryParam }: Props) => {
+const Filters = ({ language, queryParam }: Props) => {
   const [selected, setSelected] = useState<string[]>(["Alle"]);
   const sakstemaer = useStore(sakstemaerAtom);
   const showFilters = useStore(showFiltersAtom);
@@ -45,7 +48,7 @@ const Filters = ({ queryParam }: Props) => {
   };
   return (
     <div className={styles.container}>
-      <Label size={"medium"}>Velg hvilke dokumenter du vil se</Label>
+      <Label size={"medium"}>{text.filtersTitle[language]}</Label>
       <Chips>
         <Chips.Toggle
           key={"Alle"}

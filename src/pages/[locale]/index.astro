@@ -24,6 +24,9 @@ const breadcrumbs = [
   },
 ];
 
+const params = Astro.url.searchParams;
+const tema = params.get("tema")
+
 ---
 
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
@@ -32,7 +35,7 @@ const breadcrumbs = [
     {text.dokumentarkiv[language]}
   </Heading>
   <SelectFullmakt language={language} client:only="react"/>
-  <Filters client:only="react"/>
+  <Filters language={language} queryParam={tema} client:only="react"/>
   <Journalpostliste language={language} client:only="react"/>
   <Disclaimer language={language} />
   <NyttigOgVite language={language} />
