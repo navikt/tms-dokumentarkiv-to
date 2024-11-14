@@ -35,7 +35,7 @@ const tema = params.get("tema")
     {text.dokumentarkiv[language]}
   </Heading>
   <SelectFullmakt language={language} client:only="react"/>
-  <Filters client:only="react"/>
+  <Filters client:only="react" queryParam={tema}/>
   <Journalpostliste language={language} client:only="react"/>
   <Disclaimer language={language} />
   <NyttigOgVite language={language} />

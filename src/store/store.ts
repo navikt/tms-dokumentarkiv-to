@@ -54,8 +54,8 @@ export function setSakstemaFilters(filters: string[]) {
   sakstemaFiltersAtom.set(filters);
 }
 
-export function setQueryParam(filters: string[]) {
-  queryParam.set(filters);
+export function setQueryParam(param: string[]) {
+  queryParam.set(param);
 }
 
 export function setSortingOrder(order: string) {
@@ -78,7 +78,6 @@ export const filteredJournalposter = (filters?: Filters) => {
     return journalposter;
   }
 
-  console.log(filters.sakstemaFilters)
   if (filters?.sakstemaFilters?.includes("Vedtak")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.tittel.toLowerCase().includes("vedtak");
