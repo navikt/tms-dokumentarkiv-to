@@ -4,16 +4,21 @@ import { atom } from "nanostores";
 
 export type Filters = {
   order?: string;
-  filters?: string[];
+  queryParam?: string[];
   sakstemaFilters: string[];
 };
 
+interface Sakstema {
+  temanavn: string;
+  temakode: string;
+}
+
 export const journalposterAtom = atom<JournalpostProps[]>([]);
-export const sakstemaerAtom = atom<string[]>([]);
+export const sakstemaerAtom = atom<Sakstema[]>([]);
+export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Alle"]);
+export const queryParam = atom<Filters["queryParam"]>([]);
 export const sortingOrderAtom = atom<Filters["order"]>("asc");
-export const filtersAtom = atom<Filters["filters"]>(["Alle"]);
 export const showFiltersAtom = atom<boolean>(false);
-export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Ingen"]);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
 export const isErrorAtom = atom<boolean>(false);
 
@@ -26,10 +31,12 @@ export function setJournalposter(journalposter: JournalpostProps[]) {
 }
 
 export function setSakstemaer(journalposter: JournalpostProps[]) {
-  let sakstemaer: string[] = [];
+  let sakstemaer: Sakstema[] = [];
   journalposter.map((journalpost) => {
-    if (!sakstemaer.includes(journalpost.temanavn)) {
-      sakstemaer = [...sakstemaer, journalpost.temanavn];
+    if (!sakstemaer.some((sakstema) => sakstema.temanavn === journalpost.temanavn)) {
+      sakstemaer = [...sakstemaer, { temanavn: journalpost.temanavn, temakode: journalpost.temakode }];
+    } else {
+      sakstemaer = [...sakstemaer];
     }
   });
   sakstemaerAtom.set(sakstemaer);
@@ -39,16 +46,16 @@ export function setIsValidatingJournalposter(bool: boolean) {
   isValidatingJournalposterAtom.set(bool)
 }
 
-export function setFilters(filters: string[]) {
-  filtersAtom.set(filters);
-}
-
 export function setShowFilters(bool: boolean) {
   showFiltersAtom.set(bool)
 }
 
 export function setSakstemaFilters(filters: string[]) {
   sakstemaFiltersAtom.set(filters);
+}
+
+export function setQueryParam(filters: string[]) {
+  queryParam.set(filters);
 }
 
 export function setSortingOrder(order: string) {
@@ -67,19 +74,20 @@ export const filteredJournalposter = (filters?: Filters) => {
     }
   }
 
-  if(!filters || filters.filters?.includes("Alle")) {
+  if(!filters || filters.sakstemaFilters?.includes("Alle")) {
     return journalposter;
   }
 
-  if (filters?.filters?.includes("Vedtak")) {
+  console.log(filters.sakstemaFilters)
+  if (filters?.sakstemaFilters?.includes("Vedtak")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.tittel.toLowerCase().includes("vedtak");
     });
   }
 
-  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Ingen")) {
+  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle") && !filters.sakstemaFilters.includes("Vedtak")) {
     journalposter = journalposter.filter((journalpost) => {
-      return journalpost.temanavn === filters.sakstemaFilters[0];
+      return journalpost.temakode === filters.sakstemaFilters[0];
     });
   }
 

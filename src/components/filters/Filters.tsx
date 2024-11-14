@@ -1,11 +1,11 @@
 import { useStore } from "@nanostores/react";
 import { Chips, Label } from "@navikt/ds-react";
-import { sakstemaerAtom, setFilters, setSakstemaFilters, showFiltersAtom } from "@store/store";
+import { sakstemaerAtom, setSakstemaFilters, showFiltersAtom } from "@store/store";
 import { useState } from "react";
 import styles from "./Filters.module.css";
 
 const Filters = () => {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>(["Alle"]);
   const sakstemaer = useStore(sakstemaerAtom);
   const showFilters = useStore(showFiltersAtom);
 
@@ -14,13 +14,6 @@ const Filters = () => {
   }
 
   const handleToggle = (value: string[]) => {
-    setFilters(value);
-    setSakstemaFilters(["Ingen"]);
-    setSelected(value);
-  };
-
-  const handleSakstemaToggle = (value: string[]) => {
-    setFilters(["Sakstema"]);
     setSakstemaFilters(value);
     setSelected(value);
   };
@@ -38,12 +31,12 @@ const Filters = () => {
         </Chips.Toggle>
         {sakstemaer.map((sakstema) => (
           <Chips.Toggle
-            key={sakstema}
+            key={sakstema.temanavn}
             checkmark={false}
-            selected={selected.includes(sakstema)}
-            onClick={() => handleSakstemaToggle([sakstema])}
+            selected={selected.includes(sakstema.temanavn)}
+            onClick={() => handleToggle([sakstema.temakode])}
           >
-            {sakstema}
+            {sakstema.temanavn}
           </Chips.Toggle>
         ))}
         <Chips.Toggle
