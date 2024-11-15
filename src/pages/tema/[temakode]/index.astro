@@ -1,0 +1,42 @@
+---
+import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
+import FeilMelding from "@components/feilmelding/Feilmelding";
+import Filters from "@components/filters/Filters";
+import Journalpostliste from "@components/journalpostliste/Journalpostliste";
+import NyttigOgVite from "@components/nyttig-og-vite/NyttigOgVite";
+import SelectFullmakt from "@components/representasjon/SelectFullmakt";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import Layout from "@layouts/Layout.astro";
+import { Heading } from "@navikt/ds-react";
+import { baseUrl } from "@src/urls";
+
+const language = Astro.currentLocale as Language;
+
+const breadcrumbs = [
+  {
+    title: text.minSide[language],
+    url: "https://www.nav.no/minside",
+  },
+  {
+    url: baseUrl,
+    title: text.dokumentarkiv[language],
+  },
+];
+
+const params = Astro.params;
+const tema = params.temakode ? params.temakode : null;
+
+---
+
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+  <FeilMelding language={language} client:only="react"/>
+  <Heading level="1" size="large">
+    {text.dokumentarkiv[language]}
+  </Heading>
+  <SelectFullmakt language={language} client:only="react"/>
+  <Filters language={language} queryParam={tema} client:only="react"/>
+  <Journalpostliste language={language} client:only="react"/>
+  <Disclaimer language={language} />
+  <NyttigOgVite language={language} />
+</Layout>
