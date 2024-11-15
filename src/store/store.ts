@@ -4,7 +4,6 @@ import { atom } from "nanostores";
 
 export type Filters = {
   order?: string;
-  queryParam?: string[];
   sakstemaFilters: string[];
 };
 
@@ -16,7 +15,6 @@ interface Sakstema {
 export const journalposterAtom = atom<JournalpostProps[]>([]);
 export const sakstemaerAtom = atom<Sakstema[]>([]);
 export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Alle"]);
-export const queryParam = atom<Filters["queryParam"]>([]);
 export const sortingOrderAtom = atom<Filters["order"]>("asc");
 export const showFiltersAtom = atom<boolean>(false);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
@@ -54,10 +52,6 @@ export function setSakstemaFilters(filters: string[]) {
   sakstemaFiltersAtom.set(filters);
 }
 
-export function setQueryParam(param: string[]) {
-  queryParam.set(param);
-}
-
 export function setSortingOrder(order: string) {
   sortingOrderAtom.set(order)
 }
@@ -78,13 +72,7 @@ export const filteredJournalposter = (filters?: Filters) => {
     return journalposter;
   }
 
-  if (filters?.sakstemaFilters?.includes("Vedtak")) {
-    journalposter = journalposter.filter((journalpost) => {
-      return journalpost.tittel.toLowerCase().includes("vedtak");
-    });
-  }
-
-  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle") && !filters.sakstemaFilters.includes("Vedtak")) {
+  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.temakode === filters.sakstemaFilters[0];
     });
