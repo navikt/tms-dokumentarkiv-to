@@ -1,6 +1,7 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
+import Journalpost from "@components/journalpostliste/journalpost/Journalpost.tsx";
 
 export type Filters = {
   order?: string;
@@ -29,15 +30,16 @@ export function setJournalposter(journalposter: JournalpostProps[]) {
 }
 
 export function setSakstemaer(journalposter: JournalpostProps[]) {
-  let sakstemaer: Sakstema[] = [];
-  journalposter.map((journalpost) => {
-    if (!sakstemaer.some((sakstema) => sakstema.temanavn === journalpost.temanavn)) {
-      sakstemaer = [...sakstemaer, { temanavn: journalpost.temanavn, temakode: journalpost.temakode }];
-    } else {
-      sakstemaer = [...sakstemaer];
-    }
-  });
-  sakstemaerAtom.set(sakstemaer);
+  const toSakstemaer = (journalpost: JournalpostProps) => (
+      {temanavn: journalpost.temanavn, temakode: journalpost.temakode }
+  );
+
+  const byUniques = (value: Sakstema, index: number, self: Sakstema[]) =>
+      index === self.findIndex((sakstema: any) => (
+          sakstema.temakode === value.temakode
+      ));
+
+  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques));
 }
 
 export function setIsValidatingJournalposter(bool: boolean) {
