@@ -4,6 +4,9 @@ import { getEnvironment } from "../utils/server/environment";
 import { baseUrl } from "@src/urls";
 import styles from "./Layout.module.css";
 import type { Language } from "@language/language";
+import type { DecoratorLocale } from "@navikt/nav-dekoratoren-moduler";
+
+const currentLocale:Language  = Astro.currentLocale as Language;
 
 export interface Props {
   title: string;
@@ -21,6 +24,7 @@ const Decorator = await fetchDecoratorReact({
   params: {
     context: "privatperson",
     breadcrumbs: breadcrumbs,
+    language: currentLocale as DecoratorLocale,
     availableLanguages : [
       {
         locale: "nb",
