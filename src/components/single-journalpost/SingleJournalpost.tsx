@@ -48,7 +48,6 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     journalpost.journalposttype.toLowerCase() === "inn";
 
   const HovedDokument = () => {
-    console.log(journalpost)
     return (
       <>
         {journalpost?.dokument.brukerHarTilgang ? (
