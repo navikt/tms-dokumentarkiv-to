@@ -37,23 +37,24 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   const {
     data: fullmakter,
     isLoading: isLoadingFullmakter,
-    error : fullmaktsForholdError,
+    error: fullmaktsForholdError,
   } = useSWRImmutable<Fullmakter>(getFullmaktForhold, fetcher);
 
-  const { data: fullmaktInfo, mutate: mutateUser, error : fullmaktsInfoError,
-  } = useSWR<FullmaktInfoProps>(
-    getFullmaktInfoUrl,
-    fetcher
-  );
+  const {
+    data: fullmaktInfo,
+    mutate: mutateUser,
+    error: fullmaktsInfoError,
+  } = useSWR<FullmaktInfoProps>(getFullmaktInfoUrl, fetcher);
 
-  const { mutate: mutateJournalposter, isValidating, error : mutateJournalposterError } = useSWR<JournalpostProps[]>(
-    getAlleJournalposterUrl,
-    fetcher
-  );
+  const {
+    mutate: mutateJournalposter,
+    isValidating,
+    error: mutateJournalposterError,
+  } = useSWR<JournalpostProps[]>(getAlleJournalposterUrl, fetcher);
 
   useEffect(() => {
-    setIsValidatingJournalposter(isValidating)
-  }, [isValidating])
+    setIsValidatingJournalposter(isValidating);
+  }, [isValidating]);
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     await postUser({ ident: event.target.value });
@@ -66,7 +67,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   }
 
   if (fullmaktsForholdError || fullmaktsInfoError || mutateJournalposterError) {
-    setIsError(true)
+    setIsError(true);
     return null;
   }
 
@@ -103,11 +104,17 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
             }
           >
             {fullmakter &&
-              nedtrekksliste?.map((user) => (
-                <option key={user.ident} value={user.ident}>
-                  {user.navn}
-                </option>
-              ))}
+              nedtrekksliste?.map((user) =>
+                user.ident === fullmaktInfo?.representertIdent ? (
+                  <option key={user.ident} value={user.ident} selected>
+                    {user.navn}
+                  </option>
+                ) : (
+                  <option key={user.ident} value={user.ident}>
+                    {user.navn}
+                  </option>
+                )
+              )}
           </Select>
           <a
             href={pdlFullmaktUrl}
@@ -125,13 +132,9 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         </div>
       ) : null}
       {fullmaktInfo?.viserRepresentertesData && (
-        <BodyShort
-          size="medium"
-          className={styles.heading}
-          aria-live="polite"
-        >
+        <BodyShort size="medium" className={styles.heading} aria-live="polite">
           {text.representasjonValgtBruker[language] +
-              fullmaktInfo?.representertNavn}
+            fullmaktInfo?.representertNavn}
         </BodyShort>
       )}
     </>
