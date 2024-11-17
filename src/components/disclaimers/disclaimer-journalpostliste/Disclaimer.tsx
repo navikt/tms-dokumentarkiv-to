@@ -1,6 +1,6 @@
 import { text } from "@language/text";
 import { BodyLong, Heading } from "@navikt/ds-react";
-import { kontaktOssUrl } from "@src/urls.client";
+import { kontaktOssUrl } from "@src/urls";
 import { logAmplitudeEvent } from "@utils/client/amplitude";
 import styles from "./Disclaimer.module.css";
 import type { Language } from "@language/language";

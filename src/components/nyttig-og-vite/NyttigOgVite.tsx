@@ -1,6 +1,6 @@
 import { Heading } from "@navikt/ds-react";
 import styles from "./NyttigOgVite.module.css";
-import { kontaktOssUrl, saksbehandlingstiderUrl, tilbakemeldingerUrl } from "@src/urls.client";
+import { kontaktOssUrl, saksbehandlingstiderUrl, tilbakemeldingerUrl } from "@src/urls";
 import { text } from "../../language/text";
 import { logAmplitudeEvent } from "../../utils/client/amplitude";
 import type { Language } from "@language/language";

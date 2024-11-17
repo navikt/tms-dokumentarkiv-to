@@ -13,7 +13,6 @@ import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
 import { readableFileSize } from "@utils/readableFilesize";
 import { setIsError } from "@store/store";
-import FeilMelding from "@components/feilmelding/Feilmelding";
 
 interface Props {
   language: Language;
