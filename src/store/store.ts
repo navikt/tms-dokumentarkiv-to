@@ -1,10 +1,10 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
+import Journalpost from "@components/journalpostliste/journalpost/Journalpost.tsx";
 
 export type Filters = {
   order?: string;
-  queryParam?: string[];
   sakstemaFilters: string[];
 };
 
@@ -16,7 +16,6 @@ interface Sakstema {
 export const journalposterAtom = atom<JournalpostProps[]>([]);
 export const sakstemaerAtom = atom<Sakstema[]>([]);
 export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Alle"]);
-export const queryParam = atom<Filters["queryParam"]>([]);
 export const sortingOrderAtom = atom<Filters["order"]>("asc");
 export const showFiltersAtom = atom<boolean>(false);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
@@ -31,15 +30,16 @@ export function setJournalposter(journalposter: JournalpostProps[]) {
 }
 
 export function setSakstemaer(journalposter: JournalpostProps[]) {
-  let sakstemaer: Sakstema[] = [];
-  journalposter.map((journalpost) => {
-    if (!sakstemaer.some((sakstema) => sakstema.temanavn === journalpost.temanavn)) {
-      sakstemaer = [...sakstemaer, { temanavn: journalpost.temanavn, temakode: journalpost.temakode }];
-    } else {
-      sakstemaer = [...sakstemaer];
-    }
-  });
-  sakstemaerAtom.set(sakstemaer);
+  const toSakstemaer = (journalpost: JournalpostProps) => (
+      {temanavn: journalpost.temanavn, temakode: journalpost.temakode }
+  );
+
+  const byUniques = (value: Sakstema, index: number, self: Sakstema[]) =>
+      index === self.findIndex((sakstema: any) => (
+          sakstema.temakode === value.temakode
+      ));
+
+  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques));
 }
 
 export function setIsValidatingJournalposter(bool: boolean) {
@@ -52,10 +52,6 @@ export function setShowFilters(bool: boolean) {
 
 export function setSakstemaFilters(filters: string[]) {
   sakstemaFiltersAtom.set(filters);
-}
-
-export function setQueryParam(param: string[]) {
-  queryParam.set(param);
 }
 
 export function setSortingOrder(order: string) {
@@ -78,13 +74,7 @@ export const filteredJournalposter = (filters?: Filters) => {
     return journalposter;
   }
 
-  if (filters?.sakstemaFilters?.includes("Vedtak")) {
-    journalposter = journalposter.filter((journalpost) => {
-      return journalpost.tittel.toLowerCase().includes("vedtak");
-    });
-  }
-
-  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle") && !filters.sakstemaFilters.includes("Vedtak")) {
+  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.temakode === filters.sakstemaFilters[0];
     });

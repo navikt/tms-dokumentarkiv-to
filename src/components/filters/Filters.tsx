@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { Chips, Label } from "@navikt/ds-react";
-import { sakstemaerAtom, setQueryParam, setSakstemaFilters, showFiltersAtom } from "@store/store";
+import { sakstemaerAtom, setSakstemaFilters, showFiltersAtom } from "@store/store";
 import { useEffect, useState } from "react";
 import styles from "./Filters.module.css";
 import type { Language } from "@language/language";
@@ -17,22 +17,15 @@ const Filters = ({ language, queryParam }: Props) => {
   const showFilters = useStore(showFiltersAtom);
 
   const isValidFilterValue = (queryParam: string | null) => {
-      let sakstemakoder: string[] = ["Alle", "Vedtak"];
-      sakstemaer?.map((sakstema) => {
-        sakstemakoder = [...sakstemakoder, sakstema.temakode]
-      })
-      if(queryParam !== null) {
-      return sakstemakoder.includes(queryParam)
-      } else {
-        return false;
-      }
+      const filterValue = sakstemaer.filter((sakstema) => sakstema.temakode === queryParam);
+
+      return filterValue.length > 0;
   }
 
   const isValidQueryParam = isValidFilterValue(queryParam);
 
   useEffect(() => {
     if(queryParam && isValidQueryParam) {
-        setQueryParam([queryParam])
         setSelected([queryParam])
         setSakstemaFilters([queryParam]);
     }
@@ -68,14 +61,6 @@ const Filters = ({ language, queryParam }: Props) => {
             {sakstema.temanavn}
           </Chips.Toggle>
         ))}
-        <Chips.Toggle
-          key={"Vedtak"}
-          checkmark={false}
-          selected={selected.includes("Vedtak")}
-          onClick={() => handleToggle(["Vedtak"])}
-        >
-          {"Vedtak"}
-        </Chips.Toggle>
       </Chips>
     </div>
   );
