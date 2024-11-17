@@ -39,7 +39,7 @@ const Journalpostliste = ({ language }: Props) => {
 
   useEffect(() => {
     if (journalposter) {
-      hasJournalposter && numberOfDocuments > 3
+      hasJournalposter && numberOfDocuments > 0
         ? setShowFilters(true)
         : setShowFilters(false);
     }
