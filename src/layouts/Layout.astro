@@ -19,8 +19,6 @@ export interface Props {
 }
 
 const { breadcrumbs, language, languageSelectorUrl } = Astro.props;
-console.log(languageSelectorUrl)
-console.log(`${baseUrlWithLanguage["nb"]}${languageSelectorUrl}`)
 
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),
