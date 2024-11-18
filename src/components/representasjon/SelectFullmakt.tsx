@@ -97,24 +97,21 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
           <Select
             className={styles.select}
             label={text.representasjonLabel[language]}
-            defaultValue={"test"}
+            value={fullmaktInfo?.representertIdent === null ? "" : fullmaktInfo?.representertIdent}
             onChange={handleSelectChange}
             onClick={() =>
               logAmplitudeEvent("Nedtrekksliste", "Representasjon")
             }
           >
             {fullmakter &&
-              nedtrekksliste?.map((user) =>
-                user.ident === fullmaktInfo?.representertIdent ? (
-                  <option key={user.ident} value={user.ident} selected>
-                    {user.navn}
-                  </option>
-                ) : (
-                  <option key={user.ident} value={user.ident}>
-                    {user.navn}
-                  </option>
-                )
-              )}
+              nedtrekksliste?.map((user) => (
+                <option
+                  key={user.ident}
+                  value={user.ident}
+                >
+                  {user.navn}
+                </option>
+              ))}
           </Select>
           <a
             href={pdlFullmaktUrl}
