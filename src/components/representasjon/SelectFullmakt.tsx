@@ -77,7 +77,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     return (
       <BodyShort size="medium" className={styles.heading} aria-live="polite">
         {text.representasjonStandardTekst[language] +
-          fullmaktInfo?.representertNavn}
+          fullmakter?.navn}
       </BodyShort>
     );
   }
