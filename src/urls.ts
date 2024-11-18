@@ -35,3 +35,9 @@ export const baseUrl = BASE_URL[getEnvironment()];
 export const tilbakemeldingerUrl = "https://www.nav.no/person/kontakt-oss/tilbakemeldinger";
 export const saksbehandlingstiderUrl = "https://www.nav.no/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav";
 export const kontaktOssUrl = `${NAV_NO_URL[getEnvironment()]}/kontaktoss`;
+
+export const baseUrlWithLanguage = {
+  nb: `${baseUrl}`,
+  en: `${baseUrl}/en`,
+  nn: `${baseUrl}/nn`,
+};

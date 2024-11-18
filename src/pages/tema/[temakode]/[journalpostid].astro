@@ -1,5 +1,5 @@
 ---
-import { baseUrl } from "@src/urls";
+import { baseUrl, baseUrlWithLanguage, minSideUrl } from "@src/urls";
 import { text } from "@language/text";
 import Disclaimer from "@components/disclaimers/disclaimer-single-journalpost/Disclaimer";
 import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
@@ -11,14 +11,14 @@ const { temakode, journalpostid } = Astro.params;
 const language = Astro.currentLocale as Language;
 const breadcrumbs = [
   {
-    title: text.minSide[language], url: "/minside",
+    title: text.minSide[language], url: minSideUrl,
   },
   {
-    url: baseUrl,
+    url: baseUrlWithLanguage[language],
     title: text.dokumentarkiv[language],
   },
   {
-    url: `${baseUrl}/tema/${temakode}`,
+    url: `${baseUrlWithLanguage[language]}/tema/${temakode}`,
     title: text.dokumenter[language],
   },
 ];

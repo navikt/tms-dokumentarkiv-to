@@ -9,14 +9,14 @@ import type { Language } from "@language/language";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@navikt/ds-react";
-import { baseUrl } from "@src/urls";
+import { baseUrl, minSideUrl } from "@src/urls";
 
 const language = Astro.currentLocale as Language;
 
 const breadcrumbs = [
   {
     title: text.minSide[language],
-    url: "https://www.nav.no/minside",
+    url: minSideUrl,
   },
   {
     url: baseUrl,
