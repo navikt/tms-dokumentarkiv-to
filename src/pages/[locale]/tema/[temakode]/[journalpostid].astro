@@ -9,6 +9,7 @@ import FeilMelding from "@components/feilmelding/Feilmelding";
 
 const { temakode, journalpostid } = Astro.params;
 const language = Astro.currentLocale as Language;
+const languageSelectorUrl = `/tema/${temakode}/${journalpostid}`
 const breadcrumbs = [
   {
     title: text.minSide[language], url: minSideUrl,
@@ -24,7 +25,7 @@ const breadcrumbs = [
 ];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language} languageSelectorUrl={languageSelectorUrl}>
   <FeilMelding language={language} client:only="react" />
   <SingleJournalpost language={language} journalpostId={journalpostid} client:only="react"/>
   <Disclaimer language={language} />

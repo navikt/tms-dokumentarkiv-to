@@ -1,7 +1,7 @@
 ---
 import { fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
 import { getEnvironment } from "../utils/server/environment";
-import { baseUrl } from "@src/urls";
+import { baseUrl, baseUrlWithLanguage } from "@src/urls";
 import styles from "./Layout.module.css";
 import type { Language } from "@language/language";
 import type { DecoratorLocale } from "@navikt/nav-dekoratoren-moduler";
@@ -11,13 +11,16 @@ const currentLocale:Language  = Astro.currentLocale as Language;
 export interface Props {
   title: string;
   language: Language;
+  languageSelectorUrl?: string;
   breadcrumbs: {
     title: string,
     url: string,
   }[] | [];
 }
 
-const { breadcrumbs, language } = Astro.props;
+const { breadcrumbs, language, languageSelectorUrl } = Astro.props;
+console.log(languageSelectorUrl)
+console.log(`${baseUrlWithLanguage["nb"]}${languageSelectorUrl}`)
 
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),
@@ -28,15 +31,15 @@ const Decorator = await fetchDecoratorReact({
     availableLanguages : [
       {
         locale: "nb",
-        url: baseUrl
+        url: languageSelectorUrl ? `${baseUrlWithLanguage["nb"]}${languageSelectorUrl}`  : baseUrlWithLanguage["nb"]
       },
       {
         locale: "en",
-        url: `${baseUrl}/en`
+        url: languageSelectorUrl ? `${baseUrlWithLanguage["en"]}${languageSelectorUrl}` : baseUrlWithLanguage["en"]
       },
       {
         locale: "nn",
-        url: `${baseUrl}/nn`
+        url: languageSelectorUrl ? `${baseUrlWithLanguage["nn"]}${languageSelectorUrl}` : baseUrlWithLanguage["nn"]
       }
     ]
   },
