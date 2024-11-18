@@ -74,6 +74,11 @@ export const text = {
     nn: "Velg mellom dine representerte for å se dokumentarkivet deres.",
     en: "Choose between the people you represent to view their documents.",
   },
+  representasjonStandardTekst: {
+    nb: "Alle dokumenter som er registrert på ",
+    nn: "Alle dokumenter som er registrert på ",
+    en: "All documents registered for ",
+  },
   representasjonValgtBruker: {
     nb: "Du bruker nå dokumentarkivet på vegne av ",
     nn: "Du brukar no dokumentarkivet på vegner av ",

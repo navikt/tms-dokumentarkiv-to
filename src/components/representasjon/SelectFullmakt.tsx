@@ -73,6 +73,15 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
 
   const hasFullmakter = fullmakter && fullmakter.fullmaktsGivere.length > 0;
 
+  if (!hasFullmakter) {
+    return (
+      <BodyShort size="medium" className={styles.heading} aria-live="polite">
+        {text.representasjonStandardTekst[language] +
+          fullmaktInfo?.representertNavn}
+      </BodyShort>
+    );
+  }
+
   const genererListe = () => {
     const originalUser = {
       navn: fullmakter?.navn + text.representasjonDeg[language],
@@ -97,7 +106,11 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
           <Select
             className={styles.select}
             label={text.representasjonLabel[language]}
-            value={fullmaktInfo?.representertIdent === null ? "" : fullmaktInfo?.representertIdent}
+            value={
+              fullmaktInfo?.representertIdent === null
+                ? ""
+                : fullmaktInfo?.representertIdent
+            }
             onChange={handleSelectChange}
             onClick={() =>
               logAmplitudeEvent("Nedtrekksliste", "Representasjon")
@@ -105,10 +118,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
           >
             {fullmakter &&
               nedtrekksliste?.map((user) => (
-                <option
-                  key={user.ident}
-                  value={user.ident}
-                >
+                <option key={user.ident} value={user.ident}>
                   {user.navn}
                 </option>
               ))}
