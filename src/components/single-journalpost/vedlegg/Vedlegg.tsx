@@ -6,6 +6,7 @@ import { dokumentUrl } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/client/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
 import styles from "./Vedlegg.module.css";
+import { ExternalLinkIcon } from "@navikt/aksel-icons";
 
 interface Props {
   vedleggsListe: DokumentProps[] | undefined;
@@ -34,13 +35,19 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
 
     return brukerHarTilgang ? (
       <div className={styles.container}>
-        <a
-          href={url}
-          className={styles.vedlegg}
-          onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}
-        >
-          {tittelMedPdfTag}
-        </a>
+        <div className={styles.linkWIthIcon}>
+          <a
+            href={url}
+            target="_blank"
+            className={styles.vedlegg}
+            onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}
+          >
+            {tittelMedPdfTag}
+          </a>
+          <div className={styles.externalLinkIcon}>
+            <ExternalLinkIcon fontSize="1.5rem" />
+          </div>{" "}
+        </div>
         <Detail>{readableFileSize(filstorrelse)}</Detail>
       </div>
     ) : (

@@ -1,9 +1,9 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
+import { ExternalLinkIcon, EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
+import { baseUrlWithLanguage, dokumentUrl, getJournalpostUrl } from "@src/urls.client";
 import { fetcher } from "@utils/client/api";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
@@ -43,7 +43,8 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     return null;
   }
 
-  const url = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
+  const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
+  const filtrertTemaUrl = `${baseUrlWithLanguage[language]}?tema=${journalpost.temakode}`
   const avsenderText = setAvsenderMottaker(journalpost);
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const veddleggsListe = journalpost.vedlegg;
@@ -59,7 +60,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
               <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
-              <a className={styles.link} href={url}>
+              <a className={styles.link} href={hovedDokumentUrl} target="_blank">
                 <BodyShort size="medium">
                   {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
                 </BodyShort>
@@ -68,6 +69,9 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
                 {readableFileSize(journalpost.dokument.filstorrelse)}
               </Detail>
             </div>
+            <div className={styles.externalLinkIcon}>
+              <ExternalLinkIcon fontSize="1.5rem" />
+            </div>     
           </div>
         ) : (
           <div className={`${styles.container} ${styles.hover}`}>
@@ -121,7 +125,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium">{journalpost?.temanavn}</BodyShort>
+          <BodyShort size="medium"><a href={filtrertTemaUrl}>{journalpost?.temanavn}</a></BodyShort>
         </div>
       </div>
       <div className={styles.vedlegg}>

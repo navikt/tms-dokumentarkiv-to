@@ -8,7 +8,6 @@
   padding: 1rem;
   margin-top: 2rem;
   text-decoration: none;
-  align-items: center;
 }
 
 .content {
@@ -34,8 +33,12 @@
   color: var(--a-text-default);
 }
 
+.externalLinkIcon {
+  color: var(--a-surface-action);
+}
+
 .link {
-  margin: 0.2rem 0;
+  margin: 0;
   text-decoration: underline;
   color: var(--a-text-action);
   text-wrap: balance;
