@@ -1,6 +1,7 @@
 .container {
   padding: 0.75rem 0;
   border-top: 1px solid var(--a-bg-subtle);
+  position: relative;
 }
 
 .title {
@@ -14,6 +15,13 @@
   color: var(--a-surface-action);
   text-decoration: underline;
   padding-bottom: 0.2rem;
+}
+
+.vedlegg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .vedlegg:hover {

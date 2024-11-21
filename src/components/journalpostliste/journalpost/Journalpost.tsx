@@ -28,7 +28,9 @@ const Journalpost = ({ journalpost, language }: Props) => {
           </a>
           <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
         </div>
-        <ChevronRightIcon />
+        <div className={styles.chevron}>
+          <ChevronRightIcon fontSize="1.25rem"/>
+        </div>
       </article>
     </li>
   );
