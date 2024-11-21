@@ -1,4 +1,4 @@
-import { Heading, Skeleton } from "@navikt/ds-react";
+import { Skeleton } from "@navikt/ds-react";
 import styles from "./Skeletone.module.css"
 
 const SkeletonComponent = () => {

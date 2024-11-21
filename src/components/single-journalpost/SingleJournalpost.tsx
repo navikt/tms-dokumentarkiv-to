@@ -13,6 +13,7 @@ import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
 import { readableFileSize } from "@utils/readableFilesize";
 import { setIsError } from "@store/store";
+import SkeletonComponent from "@components/loader/skeleton/Skeleton";
 
 interface Props {
   language: Language;
@@ -29,7 +30,9 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
   } = useSWRImmutable<JournalpostProps>(journalpostUrl, fetcher);
 
   if (isLoading) {
-    return null;
+    return (
+      <SkeletonComponent />
+    );
   }
 
   if (error) {
