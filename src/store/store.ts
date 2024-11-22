@@ -1,5 +1,5 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
-import { sortAlphabetically, sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
+import { alphabetically, byOpprettetDateAsc, byOpprettetDateDesc } from "@utils/sorting";
 import { atom } from "nanostores";
 
 export type Filters = {
@@ -40,7 +40,7 @@ export function setSakstemaer(journalposter: JournalpostProps[]) {
       ));
 
 
-  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques).sort(sortAlphabetically));
+  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques).sort(alphabetically));
 }
 
 export function setSingleJournalpostDisclaimerAtom(string: string | null) {
@@ -68,10 +68,10 @@ export const filteredJournalposter = (filters?: Filters) => {
 
   if (filters?.order) {
     if (filters.order === "asc") {
-      journalposter.sort(sortByOpprettetAsc);
+      journalposter.sort(byOpprettetDateAsc);
     }
     if (filters.order === "desc") {
-      journalposter.sort(sortByOpprettetDesc);
+      journalposter.sort(byOpprettetDateDesc);
     }
   }
 
