@@ -8,6 +8,10 @@ import { singleJournalpostDisclaimerAtom } from "@store/store";
 const Disclaimer = ({ language }: { language: Language }) => {
   const tilgangssperre = useStore(singleJournalpostDisclaimerAtom);
 
+  if(tilgangssperre === null) {
+    return null;
+  }
+
   return (
     <div className={styles.container}>
       <Heading level="2" size="small">
