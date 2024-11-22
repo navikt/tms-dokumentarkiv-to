@@ -37,6 +37,6 @@ const tema = params.temakode ? params.temakode : null;
   <SelectFullmakt language={language} client:only="react"/>
   <Filters language={language} queryParam={tema} client:only="react"/>
   <Journalpostliste language={language} client:only="react"/>
-  <Disclaimer language={language} />
+  <Disclaimer language={language} client:only="react"/>
   <NyttigOgVite language={language} />
 </Layout>
