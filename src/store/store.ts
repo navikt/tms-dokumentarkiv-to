@@ -1,5 +1,5 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
-import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
+import { sortAlphabetically, sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
 
 export type Filters = {
@@ -7,7 +7,7 @@ export type Filters = {
   sakstemaFilters: string[];
 };
 
-interface Sakstema {
+export interface Sakstema {
   temanavn: string;
   temakode: string;
 }
@@ -39,7 +39,8 @@ export function setSakstemaer(journalposter: JournalpostProps[]) {
           sakstema.temakode === value.temakode
       ));
 
-  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques));
+
+  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques).sort(sortAlphabetically));
 }
 
 export function setSingleJournalpostDisclaimerAtom(string: string | null) {
