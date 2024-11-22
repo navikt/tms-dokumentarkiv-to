@@ -18,7 +18,7 @@ const Disclaimer = ({ language }: { language: Language }) => {
         {text.dokumentDisclaimerTittel[language]}
       </Heading>
       <ul className={styles.liste}>
-        {tilgangssperre === "Skannet" && (
+        {tilgangssperre === "SkannetDokument" && (
           <li>
             <BodyLong>{text.documentDisclaimerListepunktEn[language]}</BodyLong>
           </li>
