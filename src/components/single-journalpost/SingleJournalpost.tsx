@@ -12,8 +12,9 @@ import styles from "./SingleJournalpost.module.css";
 import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
 import { readableFileSize } from "@utils/readableFilesize";
-import { setIsError } from "@store/store";
+import { setIsError, setSingleJournalpostDisclaimerAtom } from "@store/store";
 import SkeletonComponent from "@components/loader/skeleton/Skeleton";
+import { useEffect } from "react";
 
 interface Props {
   language: Language;
@@ -28,6 +29,12 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     isLoading,
     error,
   } = useSWRImmutable<JournalpostProps>(journalpostUrl, fetcher);
+
+  useEffect(() => {
+    if(journalpost && journalpost.dokument.tilgangssperre !== null) {
+      setSingleJournalpostDisclaimerAtom(journalpost?.dokument.tilgangssperre)
+    }
+  }, [journalpost]);
 
   if (isLoading) {
     return (

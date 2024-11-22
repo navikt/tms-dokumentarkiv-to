@@ -1,7 +1,6 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import { sortByOpprettetAsc, sortByOpprettetDesc } from "@utils/sorting";
 import { atom } from "nanostores";
-import Journalpost from "@components/journalpostliste/journalpost/Journalpost.tsx";
 
 export type Filters = {
   order?: string;
@@ -16,6 +15,7 @@ interface Sakstema {
 export const journalposterAtom = atom<JournalpostProps[]>([]);
 export const sakstemaerAtom = atom<Sakstema[]>([]);
 export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Alle"]);
+export const singleJournalpostDisclaimerAtom = atom<string | null>(null);
 export const sortingOrderAtom = atom<Filters["order"]>("asc");
 export const showFiltersAtom = atom<boolean>(false);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
@@ -40,6 +40,10 @@ export function setSakstemaer(journalposter: JournalpostProps[]) {
       ));
 
   sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques));
+}
+
+export function setSingleJournalpostDisclaimerAtom(string: string | null) {
+  singleJournalpostDisclaimerAtom.set(string)
 }
 
 export function setIsValidatingJournalposter(bool: boolean) {

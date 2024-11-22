@@ -42,6 +42,7 @@ export const minSideUrl = `${BASE_URL[getEnvironmentClientSide()]}/minside`;
 export const dokumentArkivUrl = `${BASE_URL[getEnvironmentClientSide()]}/dokumentarkiv`;
 export const pdlFullmaktUrl = `${BASE_URL[getEnvironmentClientSide()]}/person/pdl-fullmakt-ui/`;
 export const digisosRedirectUrl = DIGISOS_REDIRECT_URL[getEnvironmentClientSide()];
+export const kontaktOssUrl = `${BASE_URL[getEnvironmentClientSide()]}/kontaktoss`;
 
 export const getJournalposterUrl = (tema: string) => `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sakstema/${tema}/journalposter`;
 export const getAlleJournalposterUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/alle`;

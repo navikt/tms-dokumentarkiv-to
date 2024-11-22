@@ -17,6 +17,7 @@ export interface DokumentProps {
   filtype: string;
   filstorrelse: number; 
   brukerHarTilgang: boolean;
+  tilgangssperre: string | null;
 }
 
 export interface JournalposterProps {
