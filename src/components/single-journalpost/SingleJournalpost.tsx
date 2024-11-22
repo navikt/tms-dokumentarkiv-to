@@ -81,7 +81,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
             </div>     
           </div>
         ) : (
-          <div className={`${styles.container} ${styles.hover}`}>
+          <div className={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}>
             <div className={`${styles.icon} ${styles.iconKanIkkeVises}`}>
               <EyeSlashIcon fontSize="1.5rem" />
             </div>

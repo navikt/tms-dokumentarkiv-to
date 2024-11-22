@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.kanIkkeVises {
+  align-items: center;
+}
+
 .content {
   display: flex;
   flex-direction: column;
