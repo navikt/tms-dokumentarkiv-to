@@ -129,7 +129,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium"><a href={filtrertTemaUrl}>{journalpost?.temanavn}</a></BodyShort>
+          <BodyShort size="medium">{journalpost?.temanavn}</BodyShort>
         </div>
       </div>
       <div className={styles.vedlegg}>
