@@ -21,13 +21,11 @@ const Disclaimer = ({ language }: { language: Language }) => {
         {text.landingssideDisclaimerTittel[language]}
       </Heading>
       <ul>
-        {hasBidrag.length > 0 && (
-          <li>
-            <BodyLong>
-              {text.landingssideDisclaimerListepunktTo[language]}
-            </BodyLong>
-          </li>
-        )}
+        <li>
+          <BodyLong>
+            {text.landingssideDisclaimerListepunktTo[language]}
+          </BodyLong>
+        </li>
         <li>
           <BodyLong>
             {text.landingssideDisclaimerListepunktTre[language]}

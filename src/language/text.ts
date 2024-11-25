@@ -140,8 +140,8 @@ export const text = {
     en: "If you have sent an application by mail it will take some time before it is shown here",
   },
   landingssideDisclaimerListepunktTo: {
-    nb: "Vi henter dokumenter i saker etter 2016. For bidragssaker får du bare dokumenter fra starten av 2022.",
-    nn: "Vi henter dokumenter i saker etter 2016. For bidragssaker får du bare dokumenter fra starten av 2022.",
+    nb: "Vi viser dokumenter i saker nyere enn 2016. For bidragssaker kan du kun se dokumenter fra starten av 2022.",
+    nn: "Vi viser dokumenter i saker nyere enn 2016. For bidragssaker kan du kun se dokumenter fra starten av 2022.",
     en: "For contribution matters, we are only able to present documents starting from 2022.",
   },
   landingssideDisclaimerListepunktTre: {

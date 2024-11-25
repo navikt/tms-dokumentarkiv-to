@@ -8,7 +8,7 @@ import { singleJournalpostDisclaimerAtom } from "@store/store";
 const Disclaimer = ({ language }: { language: Language }) => {
   const tilgangssperre = useStore(singleJournalpostDisclaimerAtom);
 
-  if(tilgangssperre === null) {
+  if (tilgangssperre === null) {
     return null;
   }
 
@@ -18,16 +18,12 @@ const Disclaimer = ({ language }: { language: Language }) => {
         {text.dokumentDisclaimerTittel[language]}
       </Heading>
       <ul className={styles.liste}>
-        {tilgangssperre === "SkannetDokument" && (
-          <li>
-            <BodyLong>{text.documentDisclaimerListepunktEn[language]}</BodyLong>
-          </li>
-        )}
-        {tilgangssperre === "Tredjepart" && (
-          <li>
-            <BodyLong>{text.documentDisclaimerListepunktTo[language]}</BodyLong>
-          </li>
-        )}
+        <li>
+          <BodyLong>{text.documentDisclaimerListepunktEn[language]}</BodyLong>
+        </li>
+        <li>
+          <BodyLong>{text.documentDisclaimerListepunktTo[language]}</BodyLong>
+        </li>
       </ul>
     </div>
   );
