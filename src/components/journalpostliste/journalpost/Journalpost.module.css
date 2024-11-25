@@ -41,7 +41,6 @@
   cursor: pointer;
 }
 
-.link:hover::before,
 .link:focus::before {
   border-color: var(--a-surface-action-selected-hover);
 }
