@@ -30,7 +30,7 @@ interface Props {
 const Journalpostliste = ({ language }: Props) => {
   const { data: journalposter, isLoading, error : getJournalposterError } = useSWRImmutable<
     JournalpostProps[]
-  >(getAlleJournalposterUrl, fetcher);
+  >(getAlleJournalposterUrl, fetcher, {revalidateOnFocus: false});
 
   useEffect(() => {
     if (journalposter) setSakstemaer(journalposter);
