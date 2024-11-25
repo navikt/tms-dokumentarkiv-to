@@ -38,15 +38,11 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
         <div className={styles.linkWIthIcon}>
           <a
             href={url}
-            target="_blank"
             className={styles.vedlegg}
             onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}
           >
             {tittelMedPdfTag}
           </a>
-          <div className={styles.externalLinkIcon}>
-            <ExternalLinkIcon fontSize="1.5rem" />
-          </div>{" "}
         </div>
         <Detail>{readableFileSize(filstorrelse)}</Detail>
       </div>

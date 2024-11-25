@@ -67,7 +67,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
               <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
-              <a className={styles.link} href={hovedDokumentUrl} target="_blank">
+              <a className={styles.link} href={hovedDokumentUrl}>
                 <BodyShort size="medium">
                   {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
                 </BodyShort>
@@ -75,10 +75,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
               <Detail>
                 {readableFileSize(journalpost.dokument.filstorrelse)}
               </Detail>
-            </div>
-            <div className={styles.externalLinkIcon}>
-              <ExternalLinkIcon fontSize="1.5rem" />
-            </div>     
+            </div>   
           </div>
         ) : (
           <div className={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}>

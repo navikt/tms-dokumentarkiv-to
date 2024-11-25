@@ -38,10 +38,6 @@
   color: var(--a-text-default);
 }
 
-.externalLinkIcon {
-  color: var(--a-surface-action);
-}
-
 .link {
   margin: 0;
   text-decoration: underline;

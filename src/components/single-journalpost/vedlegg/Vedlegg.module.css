@@ -47,8 +47,3 @@
   display: flex;
   gap: 1rem;
 }
-
-
-.externalLinkIcon {
-  color: var(--a-surface-action);
-}
