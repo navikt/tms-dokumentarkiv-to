@@ -8,12 +8,6 @@ import { useStore } from "@nanostores/react";
 import { sakstemaerAtom } from "@store/store";
 
 const Disclaimer = ({ language }: { language: Language }) => {
-  const sakstemaer = useStore(sakstemaerAtom);
-  const hasBidrag = sakstemaer.filter(
-    (sakstema) => sakstema.temanavn === "Bidrag"
-  );
-
-  console.log(hasBidrag);
 
   return (
     <div className={styles.container}>
