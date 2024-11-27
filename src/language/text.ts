@@ -318,5 +318,20 @@ export const text = {
     nb: "Velg hvilke dokumenter du vil se",
     nn: "Velg hvilke dokumenter du vil se",
     en: "Choose which category of documents you wish to see",
-  }
+  },
+  tilgangssperreSkannet: {
+    nb: "Du får ikke åpnet dokumenter du har sendt i papirpost. ",
+    nn: "Du får ikke åpnet dokumenter du har sendt i papirpost. ",
+    en: "You can not open documents sendt by mail. ",
+  },
+  tilgangssperreTredjepart: {
+    nb: "Du får ikke åpnet dette dokumentet fordi det er sendt av noen andre enn deg. ",
+    nn: "Du får ikke åpnet dette dokumentet fordi det er sendt av noen andre enn deg. ",
+    en: "You can not open this document because it sent by someone other than yourself. ",
+  },
+  tilgangssperreAnnet: {
+    nb: "Du får ikke åpnet dette dokumentet. ",
+    nn: "Du får ikke åpnet dette dokumentet. ",
+    en: "You can not open this document. ",
+  },
 };

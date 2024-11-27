@@ -13,7 +13,7 @@
     "filtype": "PDF",
     "filstorrelse": 12345678,
     "brukerHarTilgang": true,
-    "tilgangssperre": "Tredjepart"
+    "tilgangssperre": null
 
   },
   "vedlegg": [

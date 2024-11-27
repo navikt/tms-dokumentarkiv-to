@@ -42,7 +42,6 @@ const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
 
   if (isUnntak) {
     return (
-      <div className={styles.container}>
         <span>
           {text.temaLenkeDel1[language]}
           <a
@@ -54,7 +53,6 @@ const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
           </a>
           {text.temaLenkeDel2[language]}
         </span>
-      </div>
     );
   } else {
     return null;

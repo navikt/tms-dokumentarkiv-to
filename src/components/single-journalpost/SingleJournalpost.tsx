@@ -50,8 +50,18 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
     return null;
   }
 
+  const tilgangsSperreInfo = () => {
+    if(journalpost.dokument.tilgangssperre === null)
+      return null;
+    if(journalpost.dokument.tilgangssperre === "Skannet")
+      return <span>{text.tilgangssperreSkannet[language]}</span>;
+    if(journalpost.dokument.tilgangssperre === "Tredjepart")
+      return <span>{text.tilgangssperreTredjepart[language]}</span>;
+    if(journalpost.dokument.tilgangssperre === "Annet")
+      return <span>{text.tilgangssperreAnnet[language]}</span>;
+  }
+
   const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
-  const filtrertTemaUrl = `${baseUrlWithLanguage[language]}?tema=${journalpost.temakode}`
   const avsenderText = setAvsenderMottaker(journalpost);
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const veddleggsListe = journalpost.vedlegg;
@@ -103,6 +113,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
       </Heading>
       <HovedDokument />
       <div className={styles.temalenke}>
+        {tilgangsSperreInfo()}
         <TemaLenke
           lenketekst={journalpost?.temanavn}
           temakode={journalpost?.temakode}
