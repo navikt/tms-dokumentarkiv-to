@@ -20,7 +20,7 @@ const breadcrumbs = [
   },
   {
     url: baseUrl,
-    title: text.dokumentarkiv[language],
+    title: text.dokumenter[language],
   },
 ];
 
@@ -32,7 +32,7 @@ const tema = params.get("tema")
 <Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
   <FeilMelding language={language} client:only="react"/>
   <Heading level="1" size="large">
-    {text.dokumentarkiv[language]}
+    {text.dokumenter[language]}
   </Heading>
   <SelectFullmakt language={language} client:only="react"/>
   <Filters language={language} queryParam={tema} client:only="react"/>
