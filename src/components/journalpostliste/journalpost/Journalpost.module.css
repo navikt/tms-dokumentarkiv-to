@@ -49,6 +49,13 @@
   outline: none;
 }
 
+.tag {
+  border-radius: 4px;
+  min-height: 1.25rem;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+
 .chevron {
   line-height: 0;
   transition: 0.3s;

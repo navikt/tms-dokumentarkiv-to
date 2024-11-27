@@ -1,6 +1,6 @@
 import type { Language } from "@language/language";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
-import { BodyShort } from "@navikt/ds-react";
+import { BodyShort, Tag } from "@navikt/ds-react";
 import { baseUrlWithLanguage } from "@src/urls.client";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
@@ -27,6 +27,7 @@ const Journalpost = ({ journalpost, language }: Props) => {
             </BodyShort>
           </a>
           <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
+          <Tag variant="neutral" className={styles.tag}>{journalpost.temanavn}</Tag>
         </div>
         <div className={styles.chevron}>
           <ChevronRightIcon fontSize="1.25rem"/>
