@@ -7,6 +7,7 @@ import {
   getFullmaktForhold,
   getFullmaktInfoUrl,
   pdlFullmaktUrl,
+  hasDigisosContentUrl,
 } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/client/amplitude";
 import { fetcher, postUser } from "@utils/client/api";
@@ -20,6 +21,10 @@ type fullmaktsGiverConfig = {
   navn: string;
   ident: string;
 };
+
+interface HasDigisosContent {
+  harInnsendte: boolean;
+}
 
 export interface Fullmakter {
   navn: string;
@@ -47,6 +52,11 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   } = useSWR<FullmaktInfoProps>(getFullmaktInfoUrl, fetcher);
 
   const {
+    data: hasDigisosContentData,
+    error: hasDigisosContentError,
+  } = useSWR<HasDigisosContent>(hasDigisosContentUrl, fetcher);
+
+  const {
     mutate: mutateJournalposter,
     isValidating,
     error: mutateJournalposterError,
@@ -72,13 +82,14 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   }
 
   const hasFullmakter = fullmakter && fullmakter.fullmaktsGivere.length > 0;
+  const hasDigisosContent = hasDigisosContentData?.harInnsendte;
 
   if (!hasFullmakter) {
     return (
       <BodyShort size="medium" className={styles.heading} aria-live="polite">
         {text.representasjonStandardTekst[language] +
           fullmakter?.navn + ". " + text.sosialhjelpTekst[language]}
-          <a>{text.sosialhjelpLenketekst[language]}</a>
+          {hasDigisosContent && <a>{text.sosialhjelpLenketekst[language]}</a>}
       </BodyShort>
     );
   }
@@ -143,7 +154,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         <BodyShort size="medium" className={styles.heading} aria-live="polite">
           {text.representasjonValgtBruker[language] +
             fullmaktInfo?.representertNavn + ". " + text.sosialhjelpTekst[language]}
-            <a>{text.sosialhjelpLenketekst[language]}</a>
+            {hasDigisosContent && <a>{text.sosialhjelpLenketekst[language]}</a>}
         </BodyShort>
       )}
     </>

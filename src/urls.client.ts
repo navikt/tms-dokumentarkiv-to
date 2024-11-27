@@ -35,6 +35,7 @@ export const dokumentUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/do
 export const getFullmaktForhold = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/forhold`;
 export const postUserUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/representert`;
 export const getFullmaktInfoUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/info`;
+export const hasDigisosContentUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sosialhjelp/har_innsendte`
 
 export const baseUrl = BASE_URL[getEnvironmentClientSide()];
 export const internBaseUrl = BASE_URL_INTERN[getEnvironmentClientSide()];

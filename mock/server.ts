@@ -48,4 +48,8 @@ api.post('/mine-saker-api/fullmakt/representert', (c) => {
   return c.json(representert);
 });
 
+api.post('/mine-saker-api/v2/sosialhjelp/har_innsendte', (c) => {
+  return c.json(representert);
+});
+
 serve(api);
