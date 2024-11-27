@@ -9,6 +9,7 @@ import journalpost from "./data/journalpost.json" assert { type: "json" };
 import fullmaktsinfo from "./data/fullmaktsinfo.json" assert { type: "json" };
 import fullmaktsforhold from "./data/fullmaktsforhold.json" assert { type: "json" };
 import representert from "./data/representert.json" assert { type: "json" };
+import digisosHarInnsendte from "./data/digisosHarInnsendte.json" assert { type: "json" };
 
 
 const api = new Hono();
@@ -44,11 +45,11 @@ api.get('/mine-saker-api/fullmakt/forhold', (c) => {
   return c.json(fullmaktsforhold);
 });
 
-api.post('/mine-saker-api/fullmakt/representert', (c) => {
-  return c.json(representert);
+api.get('/mine-saker-api/v2/sosialhjelp/har_innsendte', (c) => {
+  return c.json(digisosHarInnsendte);
 });
 
-api.post('/mine-saker-api/v2/sosialhjelp/har_innsendte', (c) => {
+api.post('/mine-saker-api/fullmakt/representert', (c) => {
   return c.json(representert);
 });
 

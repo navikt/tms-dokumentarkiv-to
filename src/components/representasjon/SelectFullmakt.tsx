@@ -22,10 +22,6 @@ type fullmaktsGiverConfig = {
   ident: string;
 };
 
-interface HasDigisosContent {
-  harInnsendte: boolean;
-}
-
 export interface Fullmakter {
   navn: string;
   ident: string;
@@ -52,9 +48,9 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   } = useSWR<FullmaktInfoProps>(getFullmaktInfoUrl, fetcher);
 
   const {
-    data: hasDigisosContentData,
+    data: hasDigisosContent,
     error: hasDigisosContentError,
-  } = useSWR<HasDigisosContent>(hasDigisosContentUrl, fetcher);
+  } = useSWR<boolean>(hasDigisosContentUrl, fetcher);
 
   const {
     mutate: mutateJournalposter,
@@ -82,14 +78,13 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   }
 
   const hasFullmakter = fullmakter && fullmakter.fullmaktsGivere.length > 0;
-  const hasDigisosContent = hasDigisosContentData?.harInnsendte;
 
   if (!hasFullmakter) {
     return (
       <BodyShort size="medium" className={styles.heading} aria-live="polite">
         {text.representasjonStandardTekst[language] +
-          fullmakter?.navn + ". " + text.sosialhjelpTekst[language]}
-          {hasDigisosContent && <a>{text.sosialhjelpLenketekst[language]}</a>}
+          fullmakter?.navn + ". "}
+          {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a>{text.sosialhjelpLenketekst[language]}</a></span>}
       </BodyShort>
     );
   }
@@ -152,9 +147,9 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
       ) : null}
       {fullmaktInfo?.viserRepresentertesData && (
         <BodyShort size="medium" className={styles.heading} aria-live="polite">
-          {text.representasjonValgtBruker[language] +
-            fullmaktInfo?.representertNavn + ". " + text.sosialhjelpTekst[language]}
-            {hasDigisosContent && <a>{text.sosialhjelpLenketekst[language]}</a>}
+          {text.representasjonStandardTekst[language] +
+            fullmaktInfo?.representertNavn + ". "}
+            {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a>{text.sosialhjelpLenketekst[language]}</a></span>}
         </BodyShort>
       )}
     </>
