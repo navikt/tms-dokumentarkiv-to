@@ -14,38 +14,21 @@ const Disclaimer = ({ language }: { language: Language }) => {
       <Heading level="2" size="small">
         {text.landingssideDisclaimerTittel[language]}
       </Heading>
-      <ul>
+      <ul className={styles.list}>
+      <li>
+          <BodyLong>
+            {text.sosialhjelpTekst[language]}
+            <a href="">
+              {text.sosialhjelpLenketekst[language]}
+            </a>
+          </BodyLong>
+        </li>
         <li>
           <BodyLong>
             {text.landingssideDisclaimerListepunktTo[language]}
           </BodyLong>
         </li>
-        <li>
-          <BodyLong>
-            {text.landingssideDisclaimerListepunktTre[language]}
-            <a href="">
-              {text.landingssideDisclaimerListepunktTreLenke[language]}
-            </a>
-          </BodyLong>
-        </li>
       </ul>
-      <BodyLong>
-        <span>
-          <a
-            href={kontaktOssUrl}
-            onClick={() =>
-              logAmplitudeEvent(
-                "Lenke",
-                "Disclaimer",
-                text.landingssideDisclaimerTekstDel1["nb"]
-              )
-            }
-          >
-            {text.landingssideDisclaimerTekstDel1[language]}
-          </a>
-        </span>
-        {text.landingssideDisclaimerTekstDel2[language]}
-      </BodyLong>
     </div>
   );
 };

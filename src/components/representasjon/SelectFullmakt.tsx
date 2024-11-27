@@ -77,7 +77,8 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     return (
       <BodyShort size="medium" className={styles.heading} aria-live="polite">
         {text.representasjonStandardTekst[language] +
-          fullmakter?.navn}
+          fullmakter?.navn + ". " + text.sosialhjelpTekst[language]}
+          <a>{text.sosialhjelpLenketekst[language]}</a>
       </BodyShort>
     );
   }
@@ -141,7 +142,8 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
       {fullmaktInfo?.viserRepresentertesData && (
         <BodyShort size="medium" className={styles.heading} aria-live="polite">
           {text.representasjonValgtBruker[language] +
-            fullmaktInfo?.representertNavn}
+            fullmaktInfo?.representertNavn + ". " + text.sosialhjelpTekst[language]}
+            <a>{text.sosialhjelpLenketekst[language]}</a>
         </BodyShort>
       )}
     </>

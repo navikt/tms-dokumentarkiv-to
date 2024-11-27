@@ -3,13 +3,19 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0;
   margin: 3rem 0 2rem 0;
   gap: 10px;
   background-color: var(--a-surface-default);
   border-radius: 8px;
 }
 
-.liste li {
+.list {
+  padding-left: 2rem;
+  margin: 0;
+}
+
+.list li {
   text-wrap: balance;
+  margin-bottom: 0.2rem;
 }

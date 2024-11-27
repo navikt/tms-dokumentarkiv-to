@@ -84,6 +84,16 @@ export const text = {
     nn: "Du brukar no dokumentarkivet på vegner av ",
     en: "You are now viewing the document archive on behalf of ",
   },
+  sosialhjelpTekst: {
+    nb: "Dokumenter om ",
+    nn: "Dokumenter om ",
+    en: "Documents regarding ",
+  },
+  sosialhjelpLenketekst: {
+    nb: "økonomisk sosialhjelp finner du her.",
+    nn: "økonomisk sosialhjelp finner du her.",
+    en: "økonomisk sosialhjelp finner du her.",
+  },
   representasjonDeg: {
     nb: " (Deg)",
     nn: " (Deg)",
