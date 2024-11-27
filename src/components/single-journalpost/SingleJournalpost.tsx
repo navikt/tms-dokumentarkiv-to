@@ -95,8 +95,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
             <div className={styles.content}>
               <div className={styles.tittelIkkeTilgang}>
                 <BodyShort size="medium">
-                  {journalpost?.dokument.tittel +
-                    text.vedleggKanIkkeVises[language]}
+                  {journalpost?.dokument.tittel}
                 </BodyShort>
               </div>
             </div>

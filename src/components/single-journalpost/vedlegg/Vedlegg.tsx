@@ -49,7 +49,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
     ) : (
       <div className={styles.container}>
         <div className={styles.vedleggIngenTilgang}>
-          {tittelMedPdfTag + text.vedleggKanIkkeVises[language]}
+          {tittelMedPdfTag}
         </div>
         <Detail>{readableFileSize(filstorrelse)}</Detail>
       </div>
