@@ -44,7 +44,7 @@ const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
     return (
       <div className={styles.container}>
         <span>
-          {text.temaLenkeIntro[language]}
+          {text.temaLenkeDel1[language]}
           <a
             href={lenker[type]}
             className={styles.lenke}
@@ -52,6 +52,7 @@ const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
           >
             {isSykOrSym ? text.sykOgSymLenke[language] : lenketekst}
           </a>
+          {text.temaLenkeDel2[language]}
         </span>
       </div>
     );

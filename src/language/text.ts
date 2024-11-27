@@ -239,10 +239,15 @@ export const text = {
     nn: "Kontakt oss",
     en: "Contact us",
   },
-  temaLenkeIntro: {
-    nb: "For endring og status se ",
-    nn: "For endringar og status se ",
-    en: "For corrections and status go to ",
+  temaLenkeDel1: {
+    nb: "På ",
+    nn: "På ",
+    en: "On ",
+  },
+  temaLenkeDel2: {
+    nb: " finner du informasjon om endringer og status i saken din.",
+    nn: " finner du informasjon om endringer og status i saken din.",
+    en: " you will find information about changes and status on your case.",
   },
   sykOgSymLenke: {
     nb: "Ditt sykefravær",
