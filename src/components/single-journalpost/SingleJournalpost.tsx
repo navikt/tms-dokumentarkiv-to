@@ -53,7 +53,7 @@ const SingleJournalpost = ({ language, journalpostId }: Props) => {
   const tilgangsSperreInfo = () => {
     if(journalpost.dokument.tilgangssperre === null)
       return null;
-    if(journalpost.dokument.tilgangssperre === "Skannet")
+    if(journalpost.dokument.tilgangssperre === "SkannetDokument")
       return <span>{text.tilgangssperreSkannet[language]}</span>;
     if(journalpost.dokument.tilgangssperre === "Tredjepart")
       return <span>{text.tilgangssperreTredjepart[language]}</span>;
