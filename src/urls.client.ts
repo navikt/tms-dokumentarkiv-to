@@ -21,7 +21,7 @@ const BASE_URL_INTERN = {
   prod: "https://www.intern.nav.no",
 };
 
-const DIGISOS_REDIRECT_URL = {
+const DIGISOS_URL = {
   local: "http://localhost:4321/sosialhjelp/innsyn",
   dev: "https://www-q0.dev.nav.no/sosialhjelp/innsyn/",
   ansatt: "https://www-q0.dev.nav.no/sosialhjelp/innsyn/",
@@ -42,7 +42,7 @@ export const internBaseUrl = BASE_URL_INTERN[getEnvironmentClientSide()];
 export const minSideUrl = `${BASE_URL[getEnvironmentClientSide()]}/minside`;
 export const dokumentArkivUrl = `${BASE_URL[getEnvironmentClientSide()]}/dokumentarkiv`;
 export const pdlFullmaktUrl = `${BASE_URL[getEnvironmentClientSide()]}/person/pdl-fullmakt-ui/`;
-export const digisosRedirectUrl = DIGISOS_REDIRECT_URL[getEnvironmentClientSide()];
+export const digisosUrl = DIGISOS_URL[getEnvironmentClientSide()];
 export const kontaktOssUrl = `${BASE_URL[getEnvironmentClientSide()]}/kontaktoss`;
 
 export const getJournalposterUrl = (tema: string) => `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sakstema/${tema}/journalposter`;

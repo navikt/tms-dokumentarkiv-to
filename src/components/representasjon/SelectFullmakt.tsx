@@ -8,6 +8,7 @@ import {
   getFullmaktInfoUrl,
   pdlFullmaktUrl,
   hasDigisosContentUrl,
+  digisosUrl,
 } from "@src/urls.client";
 import { logAmplitudeEvent } from "@utils/client/amplitude";
 import { fetcher, postUser } from "@utils/client/api";
@@ -84,7 +85,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
       <BodyShort size="medium" className={styles.heading} aria-live="polite">
         {text.representasjonStandardTekst[language] +
           fullmakter?.navn + ". "}
-          {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a>{text.sosialhjelpLenketekst[language]}</a></span>}
+          {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a></span>}
       </BodyShort>
     );
   }
@@ -149,7 +150,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         <BodyShort size="medium" className={styles.heading} aria-live="polite">
           {text.representasjonStandardTekst[language] +
             fullmaktInfo?.representertNavn + ". "}
-            {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a>{text.sosialhjelpLenketekst[language]}</a></span>}
+            {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a></span>}
         </BodyShort>
       )}
     </>
