@@ -12,19 +12,14 @@ export interface Props {
   title: string;
   language: Language;
   languageSelectorUrl?: string;
-  breadcrumbs: {
-    title: string,
-    url: string,
-  }[] | [];
 }
 
-const { breadcrumbs, language, languageSelectorUrl } = Astro.props;
+const {  language, languageSelectorUrl } = Astro.props;
 
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),
   params: {
     context: "privatperson",
-    breadcrumbs: breadcrumbs,
     language: currentLocale as DecoratorLocale,
     availableLanguages : [
       {

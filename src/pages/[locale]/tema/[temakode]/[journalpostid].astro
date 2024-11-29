@@ -1,28 +1,17 @@
 ---
-import { baseUrlWithLanguage, minSideUrl } from "@src/urls";
-import { text } from "@language/text";
-import Disclaimer from "@components/disclaimers/disclaimer-single-journalpost/Disclaimer";
 import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
 import Layout from "@layouts/Layout.astro";
 import type { Language } from "@language/language";
 import FeilMelding from "@components/feilmelding/Feilmelding";
+import Breadcrumbs from "@components/breadcrumbs/Breadcrumbs";
 
 const { temakode, journalpostid } = Astro.params;
 const language = Astro.currentLocale as Language;
 const languageSelectorUrl = `/tema/${temakode}/${journalpostid}`
-const breadcrumbs = [
-  {
-    title: text.minSide[language], url: minSideUrl,
-  },
-  {
-    url: baseUrlWithLanguage[language],
-    title: text.dokumenter[language],
-  },
-];
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language} languageSelectorUrl={languageSelectorUrl}>
+<Layout title="Dokumentarkiv" language={language} languageSelectorUrl={languageSelectorUrl}>
+  <Breadcrumbs showDokumenter={true} language={language} client:only="react"/>
   <FeilMelding language={language} client:only="react" />
   <SingleJournalpost language={language} journalpostId={journalpostid} client:only="react"/>
-  <Disclaimer language={language} client:only="react"/>
 </Layout>

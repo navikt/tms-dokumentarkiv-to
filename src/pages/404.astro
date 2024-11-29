@@ -16,20 +16,9 @@ import { minSideUrl, errorReportingUrl, navNoUrl } from '@src/urls';
 
 const language = Astro.currentLocale as Language;
 
-const breadcrumbs = [
-  {
-    title: text.minSide[language],
-    url: minSideUrl,
-  },
-  {
-    url: "",
-    title: text.ingenSide404[language],
-  },
-];
-
 ---
 
-<Layout title="Siden finnes ikke" breadcrumbs={breadcrumbs} language={language}>
+<Layout title="Siden finnes ikke" language={language}>
   <Box paddingBlock="20 16" data-aksel-template="404-v2">
     <VStack gap="16">
       <VStack gap="12" align="start">

@@ -1,4 +1,5 @@
 ---
+import Breadcrumbs from "@components/breadcrumbs/Breadcrumbs";
 import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
 import FeilMelding from "@components/feilmelding/Feilmelding";
 import Filters from "@components/filters/Filters";
@@ -8,27 +9,15 @@ import type { Language } from "@language/language";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@navikt/ds-react";
-import { baseUrl, minSideUrl } from "@src/urls";
 
 const language = Astro.currentLocale as Language;
-
-const breadcrumbs = [
-  {
-    title: text.minSide[language],
-    url: minSideUrl,
-  },
-  {
-    url: baseUrl,
-    title: text.dokumenter[language],
-  },
-];
-
 const params = Astro.params;
 const tema = params.temakode ? params.temakode : null;
 
 ---
 
-<Layout title="Dokumentarkiv" breadcrumbs={breadcrumbs} language={language}>
+<Layout title="Dokumentarkiv" language={language}>
+  <Breadcrumbs showDokumenter={false} language={language} client:only="react"/>
   <FeilMelding language={language} client:only="react"/>
   <Heading level="1" size="large">
     {text.dokumenter[language]}

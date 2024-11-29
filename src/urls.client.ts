@@ -55,3 +55,9 @@ export const baseUrlWithLanguage = {
   en: `${baseUrl}/dokumentarkiv-to/en`,
   nn: `${baseUrl}/dokumentarkiv-to/nn`,
 };
+
+export const minSideUrlWithLanguage = {
+  nb: minSideUrl,
+  en: `${minSideUrl}/en`,
+  nn: `${minSideUrl}/nn`,
+};
