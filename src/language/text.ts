@@ -92,7 +92,7 @@ export const text = {
   sosialhjelpLenketekst: {
     nb: "økonomisk sosialhjelp finner du her.",
     nn: "økonomisk sosialhjelp finner du her.",
-    en: "økonomisk sosialhjelp finner du her.",
+    en: "økonomisk sosialhjelp can be found on this page.",
   },
   representasjonDeg: {
     nb: " (Deg)",
