@@ -3,7 +3,7 @@ import type { Language } from "@language/language";
 import { text } from "@language/text";
 import { BodyShort, Detail } from "@navikt/ds-react";
 import { dokumentUrl } from "@src/urls.client";
-import { logAmplitudeEvent } from "@utils/client/amplitude";
+import { logEvent } from "@utils/client/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
 import styles from "./Vedlegg.module.css";
 import { ExternalLinkIcon } from "@navikt/aksel-icons";
@@ -39,7 +39,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
           <a
             href={url}
             className={styles.vedlegg}
-            onClick={() => logAmplitudeEvent("Dokumentlenke", "Vedlegg")}
+            onClick={() => logEvent("Dokumentlenke", "Vedlegg")}
           >
             {tittelMedPdfTag}
           </a>

@@ -1,9 +1,9 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { ExternalLinkIcon, EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
+import {  EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { baseUrlWithLanguage, dokumentUrl, getJournalpostUrl } from "@src/urls.client";
+import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
 import { fetcher, NotFoundError } from "@utils/client/api";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";

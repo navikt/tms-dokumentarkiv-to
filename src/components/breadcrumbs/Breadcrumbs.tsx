@@ -2,7 +2,7 @@ import { text } from '@language/text';
 import style from './Breadcrumbs.module.css';
 import { Link } from '@navikt/ds-react';
 import { minSideUrlWithLanguage, baseUrlWithLanguage } from '@src/urls.client';
-import { logAmplitudeEvent } from '@src/utils/client/amplitude';
+import { logEvent } from '@src/utils/client/amplitude';
 import type { Language } from '@language/language';
 
 interface Props {
@@ -15,7 +15,7 @@ const Breadcrumbs = ({ showDokumenter, language }: Props) => (
     <a
       className={`${style.minSideLink} ${style.link}`}
       href={minSideUrlWithLanguage[language]}
-      onClick={() => logAmplitudeEvent('breadcrum', 'min-side')}
+      onClick={() => logEvent('breadcrum', 'min-side')}
     >
       {text.minSide[language]}
     </a>
@@ -23,7 +23,7 @@ const Breadcrumbs = ({ showDokumenter, language }: Props) => (
       <div className={style.linkWrapper}>
         <a
           className={style.link}
-          onClick={() => logAmplitudeEvent('breadcrum', 'utbetalinger')}
+          onClick={() => logEvent('breadcrum', 'utbetalinger')}
           href={baseUrlWithLanguage[language]}
         >
           {text.dokumenter[language]}

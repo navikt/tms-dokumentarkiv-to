@@ -10,7 +10,7 @@ import {
   hasDigisosContentUrl,
   digisosUrl,
 } from "@src/urls.client";
-import { logAmplitudeEvent } from "@utils/client/amplitude";
+import { logEvent } from "@utils/client/amplitude";
 import { fetcher, postUser } from "@utils/client/api";
 import { useEffect, type ChangeEvent } from "react";
 import useSWR from "swr";
@@ -132,7 +132,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
             }
             onChange={handleSelectChange}
             onClick={() =>
-              logAmplitudeEvent("Nedtrekksliste", "Representasjon")
+              logEvent("Nedtrekksliste", "Representasjon")
             }
           >
             {fullmakter &&
@@ -146,7 +146,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
             href={pdlFullmaktUrl}
             className={styles.lenke}
             onClick={() =>
-              logAmplitudeEvent(
+              logEvent(
                 "Lenke",
                 "Digital fullmakt innsynslenke",
                 text.representasjonLenkeTekst["nb"]

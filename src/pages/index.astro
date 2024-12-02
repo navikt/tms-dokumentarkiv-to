@@ -9,6 +9,7 @@ import type { Language } from "@language/language";
 import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@navikt/ds-react";
+import { initAmplitude } from "@utils/client/amplitude";
 
 const language = Astro.currentLocale as Language;
 const params = Astro.url.searchParams;

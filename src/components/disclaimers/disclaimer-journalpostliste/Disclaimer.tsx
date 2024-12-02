@@ -1,7 +1,7 @@
 import { text } from "@language/text";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import { digisosUrl, kontaktOssUrl } from "@src/urls.client";
-import { logAmplitudeEvent } from "@utils/client/amplitude";
+import { logEvent } from "@utils/client/amplitude";
 import styles from "./Disclaimer.module.css";
 import type { Language } from "@language/language";
 import { useStore } from "@nanostores/react";
