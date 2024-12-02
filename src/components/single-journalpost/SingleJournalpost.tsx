@@ -4,7 +4,7 @@ import { text } from "@language/text";
 import { ExternalLinkIcon, EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { baseUrlWithLanguage, dokumentUrl, getJournalpostUrl } from "@src/urls.client";
-import { fetcher } from "@utils/client/api";
+import { fetcher, NotFoundError } from "@utils/client/api";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
 import useSWRImmutable from "swr/immutable";
@@ -15,6 +15,7 @@ import { readableFileSize } from "@utils/readableFilesize";
 import { setIsError, setSingleJournalpostDisclaimerAtom } from "@store/store";
 import SkeletonComponent from "@components/loader/skeleton/Skeleton";
 import { useEffect } from "react";
+import DokumentNotFound from "./finner-ikke-dokument/DokumentNotFound";
 
 interface Props {
   language: Language;
@@ -41,6 +42,10 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
     return (
       <SkeletonComponent />
     );
+  }
+
+  if(error instanceof NotFoundError) {
+    return <DokumentNotFound language={language}/>
   }
 
   if (error) {

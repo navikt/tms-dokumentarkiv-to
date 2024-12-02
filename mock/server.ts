@@ -34,7 +34,7 @@ api.get('/mine-saker-api/v2/journalposter/alle', (c) => {
 });
 
 api.get('/mine-saker-api/v2/journalposter/journalpost/*', (c) => {
-  return c.json(journalpost);
+  throw new HTTPException(404, { message: 'Custom error message' })
 });
 
 api.get('/mine-saker-api/fullmakt/info', (c) => {

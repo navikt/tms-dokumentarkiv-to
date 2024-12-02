@@ -214,6 +214,11 @@ export const text = {
     nn: "Ingen registrerte sakar eller dokument å vise",
     en: "No registered cases or documents to show",
   },
+  finnerIkkeDokument: {
+    nb: "Kunne ikke finne dokument",
+    nn: "Kunne ikkje finne dokument",
+    en: "Could not find document",
+  },
   kanIkkeViseDokument: {
     nb: "Kan ikke vise dokument",
     nn: "Kan ikkje vise dokument",
