@@ -20,6 +20,7 @@ export const sortingOrderAtom = atom<Filters["order"]>("asc");
 export const showFiltersAtom = atom<boolean>(false);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
 export const isErrorAtom = atom<boolean>(false);
+export const isValgtRepresentantAtom = atom<boolean>(false);
 
 export function setIsError(bool: boolean) {
   isErrorAtom.set(bool)
@@ -49,6 +50,10 @@ export function setSingleJournalpostDisclaimerAtom(string: string | null) {
 
 export function setIsValidatingJournalposter(bool: boolean) {
   isValidatingJournalposterAtom.set(bool)
+}
+
+export function setIsValgtRepresentant(bool: boolean) {
+  isValgtRepresentantAtom.set(bool)
 }
 
 export function setShowFilters(bool: boolean) {
