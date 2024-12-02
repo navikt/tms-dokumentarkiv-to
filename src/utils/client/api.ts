@@ -16,7 +16,6 @@ export const fetcher = async (url:string) => {
     credentials: "include",
   });
 
-
   if (!response.ok) {
     throw new Error("Post request failed");
   }

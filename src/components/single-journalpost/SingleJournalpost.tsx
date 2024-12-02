@@ -19,16 +19,17 @@ import { useEffect } from "react";
 interface Props {
   language: Language;
   journalpostId: string | undefined;
+  fullmakt: string | null;
 }
 
-const SingleJournalpost = ({ language, journalpostId }: Props) => {
+const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
   const journalpostUrl = journalpostId && getJournalpostUrl(journalpostId);
 
   const {
     data: journalpost,
     isLoading,
     error,
-  } = useSWRImmutable<JournalpostProps>(journalpostUrl, fetcher, {revalidateOnFocus: false});
+  } = useSWRImmutable<JournalpostProps>(fullmakt ? journalpostUrl : `${journalpostUrl}?enable_repr=true`, fetcher, {revalidateOnFocus: false});
 
   useEffect(() => {
     if(journalpost && journalpost.dokument.tilgangssperre !== null) {
