@@ -10,7 +10,7 @@ spec:
     enabled: true
     sidecar:
       enabled: true
-      level: Level3
+      level: idporten-loa-high
   tokenx:
     enabled: true
   image: {{ image }}
