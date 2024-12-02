@@ -6,6 +6,13 @@ interface eventObjectProps {
   ident: string;
 }
 
+export class NotFoundError extends Error {
+  constructor(message = "") {
+    super(message);
+    this.message = message;
+  }
+}
+
 export const include = {
   credentials: "include",
 };
@@ -16,9 +23,11 @@ export const fetcher = async (url:string) => {
     credentials: "include",
   });
 
-
   if (!response.ok) {
-    throw new Error("Post request failed");
+    if (response.status === 404) {
+      throw new NotFoundError("Document not found");
+    }
+    throw new Error("Get request failed");
   }
 
   return await response.json();

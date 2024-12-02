@@ -10,12 +10,15 @@ import styles from "./Journalpost.module.css";
 interface Props {
   journalpost: JournalpostProps;
   language: Language;
+  isValgtRepresentant: boolean;
 }
 
-const Journalpost = ({ journalpost, language }: Props) => {
+const Journalpost = ({ journalpost, language, isValgtRepresentant }: Props) => {
   const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
   const avsenderText = setAvsenderMottaker(journalpost);
-  const url = `${baseUrlWithLanguage[language]}/tema/${journalpost.temakode}/${journalpost.journalpostId}`;
+  const url = isValgtRepresentant
+    ? `${baseUrlWithLanguage[language]}/tema/${journalpost.temakode}/${journalpost.journalpostId}?fullmakt=true`
+    : `${baseUrlWithLanguage[language]}/tema/${journalpost.temakode}/${journalpost.journalpostId}`;
 
   return (
     <li className={styles.container} key={journalpost.journalpostId}>
@@ -27,10 +30,12 @@ const Journalpost = ({ journalpost, language }: Props) => {
             </BodyShort>
           </a>
           <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
-          <Tag variant="neutral" className={styles.tag}>{journalpost.temanavn}</Tag>
+          <Tag variant="neutral" className={styles.tag}>
+            {journalpost.temanavn}
+          </Tag>
         </div>
         <div className={styles.chevron}>
-          <ChevronRightIcon fontSize="1.25rem"/>
+          <ChevronRightIcon fontSize="1.25rem" />
         </div>
       </article>
     </li>

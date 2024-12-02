@@ -6,6 +6,7 @@ import { BodyShort, Select } from "@navikt/ds-react";
 import { getAlleJournalposterUrl } from "@src/urls.client";
 import {
   filteredJournalposter,
+  isValgtRepresentantAtom,
   isValidatingJournalposterAtom,
   sakstemaFiltersAtom,
   setIsError,
@@ -45,6 +46,7 @@ const Journalpostliste = ({ language }: Props) => {
   }, [journalposter]);
 
   const isValidating = useStore(isValidatingJournalposterAtom);
+  const isValgtRepresentant = useStore(isValgtRepresentantAtom);
   const sakstemaFilters = useStore(sakstemaFiltersAtom);
   const order = useStore(sortingOrderAtom);
   const showContentLoader = isLoading || isValidating;
@@ -104,6 +106,7 @@ const Journalpostliste = ({ language }: Props) => {
                       <Journalpost
                         journalpost={journalpost}
                         language={language}
+                        isValgtRepresentant={isValgtRepresentant}
                         key={journalpost.journalpostId}
                       />
                     );

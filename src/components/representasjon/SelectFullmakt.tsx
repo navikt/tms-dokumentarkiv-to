@@ -16,7 +16,11 @@ import { useEffect, type ChangeEvent } from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SelectFullmakt.module.css";
-import { setIsError, setIsValidatingJournalposter } from "@store/store";
+import {
+  setIsError,
+  setIsValgtRepresentant,
+  setIsValidatingJournalposter,
+} from "@store/store";
 
 type fullmaktsGiverConfig = {
   navn: string;
@@ -48,10 +52,8 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     error: fullmaktsInfoError,
   } = useSWR<FullmaktInfoProps>(getFullmaktInfoUrl, fetcher);
 
-  const {
-    data: hasDigisosContent,
-    error: hasDigisosContentError,
-  } = useSWR<boolean>(hasDigisosContentUrl, fetcher);
+  const { data: hasDigisosContent, error: hasDigisosContentError } =
+    useSWR<boolean>(hasDigisosContentUrl, fetcher);
 
   const {
     mutate: mutateJournalposter,
@@ -62,6 +64,11 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   useEffect(() => {
     setIsValidatingJournalposter(isValidating);
   }, [isValidating]);
+
+  useEffect(() => {
+    fullmaktInfo &&
+      setIsValgtRepresentant(fullmaktInfo.viserRepresentertesData);
+  }, [fullmaktInfo]);
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     await postUser({ ident: event.target.value });
@@ -83,9 +90,13 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   if (!hasFullmakter) {
     return (
       <BodyShort size="medium" className={styles.heading} aria-live="polite">
-        {text.representasjonStandardTekst[language] +
-          fullmakter?.navn + ". "}
-          {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a></span>}
+        {text.representasjonStandardTekst[language] + fullmakter?.navn + ". "}
+        {hasDigisosContent && (
+          <span>
+            {text.sosialhjelpTekst[language]}
+            <a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a>
+          </span>
+        )}
       </BodyShort>
     );
   }
@@ -149,8 +160,14 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
       {fullmaktInfo?.viserRepresentertesData && (
         <BodyShort size="medium" className={styles.heading} aria-live="polite">
           {text.representasjonStandardTekst[language] +
-            fullmaktInfo?.representertNavn + ". "}
-            {hasDigisosContent && <span>{text.sosialhjelpTekst[language]}<a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a></span>}
+            fullmaktInfo?.representertNavn +
+            ". "}
+          {hasDigisosContent && (
+            <span>
+              {text.sosialhjelpTekst[language]}
+              <a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a>
+            </span>
+          )}
         </BodyShort>
       )}
     </>
