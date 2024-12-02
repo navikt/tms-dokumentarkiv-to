@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: tms-dokumentarkiv-to
+  name: tms-dokumentarkiv
   namespace: min-side
   labels:
     team: min-side
@@ -16,10 +16,10 @@ spec:
   image: {{ image }}
   port: 3000
   liveness:
-    path: /dokumentarkiv-to/api/internal/isAlive
+    path: /dokumentarkiv/api/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /dokumentarkiv-to/api/internal/isReady
+    path: /dokumentarkiv/api/internal/isReady
     initialDelay: 10
   replicas:
     min: 2
@@ -30,7 +30,7 @@ spec:
         - application: nav-dekoratoren
           namespace: personbruker
   ingresses:
-    - "https://www.ansatt.dev.nav.no/dokumentarkiv-to"
+    - "https://www.ansatt.dev.nav.no/dokumentarkiv"
   resources:
     limits:
       memory: 768Mi

@@ -7,9 +7,9 @@ const MIN_SIDE_PROXY_URL = {
 };
 
 const BASE_URL = {
-  local: "http://localhost:4321/dokumentarkiv-to",
-  dev: "https://www.ansatt.dev.nav.no/dokumentarkiv-to",
-  prod: "https://www.nav.no/dokumentarkiv-to",
+  local: "http://localhost:4321/dokumentarkiv",
+  dev: "https://www.ansatt.dev.nav.no/dokumentarkiv",
+  prod: "https://www.nav.no/dokumentarkiv",
 };
 
 const NAV_NO_URL = {
