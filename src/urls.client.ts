@@ -51,9 +51,9 @@ export const getJournalpostUrl = (journalpostId: string) => `${MINE_SAKER_API_UR
 
 
 export const baseUrlWithLanguage = {
-  nb: `${baseUrl}/dokumentarkiv-to`,
-  en: `${baseUrl}/dokumentarkiv-to/en`,
-  nn: `${baseUrl}/dokumentarkiv-to/nn`,
+  nb: `${baseUrl}/dokumentarkiv`,
+  en: `${baseUrl}/dokumentarkiv/en`,
+  nn: `${baseUrl}/dokumentarkiv/nn`,
 };
 
 export const minSideUrlWithLanguage = {

@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { HTTPException } from "hono/http-exception";
 import { compress } from "hono/compress";
 import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
@@ -34,7 +33,7 @@ api.get('/mine-saker-api/v2/journalposter/alle', (c) => {
 });
 
 api.get('/mine-saker-api/v2/journalposter/journalpost/*', (c) => {
-  throw new HTTPException(404, { message: 'Custom error message' })
+  return c.json(journalpost);
 });
 
 api.get('/mine-saker-api/fullmakt/info', (c) => {
