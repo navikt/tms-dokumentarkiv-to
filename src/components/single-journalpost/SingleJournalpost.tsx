@@ -29,7 +29,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
     data: journalpost,
     isLoading,
     error,
-  } = useSWRImmutable<JournalpostProps>(fullmakt ? journalpostUrl : `${journalpostUrl}?enable_repr=true`, fetcher, {revalidateOnFocus: false});
+  } = useSWRImmutable<JournalpostProps>(fullmakt ? `${journalpostUrl}?enable_repr=true` : journalpostUrl, fetcher, {revalidateOnFocus: false});
 
   useEffect(() => {
     if(journalpost && journalpost.dokument.tilgangssperre !== null) {
