@@ -46,7 +46,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
         <a
           href={url}
           className={styles.vedlegg}
-          onClick={() => logEvent("Dokumentlenke", "Vedlegg")}
+          onClick={() => logEvent("Vedleggslenke", "Vedlegg")}
         >
           {tittelMedPdfTag}
         </a>

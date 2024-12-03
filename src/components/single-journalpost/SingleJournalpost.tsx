@@ -16,6 +16,7 @@ import { setIsError, setSingleJournalpostDisclaimerAtom } from "@store/store";
 import SkeletonComponent from "@components/loader/skeleton/Skeleton";
 import { useEffect } from "react";
 import DokumentNotFound from "./finner-ikke-dokument/DokumentNotFound";
+import { logEvent } from "@utils/client/amplitude";
 
 interface Props {
   language: Language;
@@ -83,7 +84,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
               <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
-              <a className={styles.link} href={hovedDokumentUrl}>
+              <a className={styles.link} href={hovedDokumentUrl} onClick={() => logEvent('hoveddokument', journalpost.temanavn)}>
                 <BodyShort size="medium">
                   {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
                 </BodyShort>

@@ -94,7 +94,12 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         {hasDigisosContent && (
           <span>
             {text.sosialhjelpTekst[language]}
-            <a href={digisosUrl} onClick={() => logEvent("Lenke", "Sosialhjelp ingress")}>{text.sosialhjelpLenketekst[language]}</a>
+            <a
+              href={digisosUrl}
+              onClick={() => logEvent("Lenke", "Sosialhjelp ingress")}
+            >
+              {text.sosialhjelpLenketekst[language]}
+            </a>
           </span>
         )}
       </BodyShort>
@@ -131,9 +136,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
                 : fullmaktInfo?.representertIdent
             }
             onChange={handleSelectChange}
-            onClick={() =>
-              logEvent("Nedtrekksliste", "Representasjon")
-            }
+            onClick={() => logEvent("Nedtrekksliste", "Representasjon")}
           >
             {fullmakter &&
               nedtrekksliste?.map((user) => (
@@ -165,7 +168,12 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
           {hasDigisosContent && (
             <span>
               {text.sosialhjelpTekst[language]}
-              <a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a>
+              <a
+                href={digisosUrl}
+                onClick={() => logEvent("Lenke", "Sosialhjelp ingress")}
+              >
+                {text.sosialhjelpLenketekst[language]}
+              </a>
             </span>
           )}
         </BodyShort>

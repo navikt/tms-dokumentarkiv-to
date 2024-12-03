@@ -23,7 +23,7 @@ const Breadcrumbs = ({ showDokumenter, language }: Props) => (
       <div className={style.linkWrapper}>
         <a
           className={style.link}
-          onClick={() => logEvent('breadcrum', 'utbetalinger')}
+          onClick={() => logEvent('breadcrum', 'dokumenter')}
           href={baseUrlWithLanguage[language]}
         >
           {text.dokumenter[language]}

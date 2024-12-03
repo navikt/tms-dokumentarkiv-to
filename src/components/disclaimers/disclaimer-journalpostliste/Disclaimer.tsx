@@ -1,11 +1,9 @@
 import { text } from "@language/text";
 import { BodyLong, Heading } from "@navikt/ds-react";
-import { digisosUrl, kontaktOssUrl } from "@src/urls.client";
+import { digisosUrl } from "@src/urls.client";
 import { logEvent } from "@utils/client/amplitude";
 import styles from "./Disclaimer.module.css";
 import type { Language } from "@language/language";
-import { useStore } from "@nanostores/react";
-import { sakstemaerAtom } from "@store/store";
 
 const Disclaimer = ({ language }: { language: Language }) => {
 
@@ -18,7 +16,7 @@ const Disclaimer = ({ language }: { language: Language }) => {
       <li>
           <BodyLong>
             {text.sosialhjelpTekst[language]}
-            <a href={digisosUrl}>
+            <a href={digisosUrl} onClick={() => logEvent("Lenke", "Sosialhjelp lenke")}>
               {text.sosialhjelpLenketekst[language]}
             </a>
           </BodyLong>
