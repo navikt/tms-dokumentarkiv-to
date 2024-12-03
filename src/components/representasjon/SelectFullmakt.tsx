@@ -94,7 +94,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         {hasDigisosContent && (
           <span>
             {text.sosialhjelpTekst[language]}
-            <a href={digisosUrl}>{text.sosialhjelpLenketekst[language]}</a>
+            <a href={digisosUrl} onClick={() => logEvent("Lenke", "Sosialhjelp ingress")}>{text.sosialhjelpLenketekst[language]}</a>
           </span>
         )}
       </BodyShort>
