@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "./Filters.module.css";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
+import { logEvent } from "@utils/client/amplitude";
 
 interface Props {
   language: Language;
@@ -38,6 +39,7 @@ const Filters = ({ language, queryParam }: Props) => {
   const handleToggle = (value: string[]) => {
     setSakstemaFilters(value);
     setSelected(value);
+    logEvent("Filter", value[0])
   };
   return (
     <div className={styles.container}>

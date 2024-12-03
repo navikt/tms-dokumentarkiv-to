@@ -23,6 +23,7 @@ import type { JournalpostProps } from "./JournalpostInterfaces";
 import styles from "./Journalpostliste.module.css";
 import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
 import Journalpost from "./journalpost/Journalpost";
+import { logEvent } from "@utils/client/amplitude";
 
 interface Props {
   language: Language;
@@ -62,6 +63,7 @@ const Journalpostliste = ({ language }: Props) => {
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortingOrder(event.target.value.toString());
+    logEvent("Sorteringsrekkefolge", event.target.value.toString())
   };
 
   const filteredList = filteredJournalposter({

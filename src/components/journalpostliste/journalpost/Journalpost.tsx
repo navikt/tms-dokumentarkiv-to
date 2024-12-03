@@ -6,6 +6,7 @@ import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
 import type { JournalpostProps } from "../JournalpostInterfaces";
 import styles from "./Journalpost.module.css";
+import { logEvent } from "@utils/client/amplitude";
 
 interface Props {
   journalpost: JournalpostProps;
@@ -24,7 +25,7 @@ const Journalpost = ({ journalpost, language, isValgtRepresentant }: Props) => {
     <li className={styles.container} key={journalpost.journalpostId}>
       <article className={styles.wrapper}>
         <div>
-          <a className={styles.link} href={url}>
+          <a className={styles.link} href={url} onClick={() => logEvent("Journalpostlenke", journalpost.temanavn)}>
             <BodyShort size="medium" weight="semibold">
               {journalpost.tittel}
             </BodyShort>

@@ -1,9 +1,9 @@
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { ExternalLinkIcon, EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
+import {  EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
 import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { baseUrlWithLanguage, dokumentUrl, getJournalpostUrl } from "@src/urls.client";
+import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
 import { fetcher, NotFoundError } from "@utils/client/api";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
 import { format } from "date-fns";
@@ -16,6 +16,7 @@ import { setIsError, setSingleJournalpostDisclaimerAtom } from "@store/store";
 import SkeletonComponent from "@components/loader/skeleton/Skeleton";
 import { useEffect } from "react";
 import DokumentNotFound from "./finner-ikke-dokument/DokumentNotFound";
+import { logEvent } from "@utils/client/amplitude";
 
 interface Props {
   language: Language;
@@ -83,7 +84,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
               <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
-              <a className={styles.link} href={hovedDokumentUrl}>
+              <a className={styles.link} href={hovedDokumentUrl} onClick={() => logEvent('hoveddokument', journalpost.temanavn)}>
                 <BodyShort size="medium">
                   {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
                 </BodyShort>
