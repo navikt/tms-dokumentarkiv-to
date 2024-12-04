@@ -179,4 +179,14 @@ export const text = {
     nn: "Du får ikkje opna dette dokumentet. ",
     en: "You can not open this document. ",
   },
+  sortingOrderAsc: {
+    nb: "Nyeste først",
+    nn: "Nyaste først",
+    en: "Most recent",
+  },
+  sortingOrderDesc: {
+    nb: "Eldste først",
+    nn: "Eldste først",
+    en: "Oldest",
+  },
 };
