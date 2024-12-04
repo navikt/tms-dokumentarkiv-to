@@ -104,11 +104,6 @@ export const text = {
     nn: "Sjå digitale fullmakter",
     en: "See your digital powers of attorney",
   },
-  sistEndret: {
-    nb: "Sist endret",
-    nn: "Sist endra",
-    en: "Last changed at",
-  },
   snarveier: {
     nb: "Snarveier",
     nn: "Snarveier",
