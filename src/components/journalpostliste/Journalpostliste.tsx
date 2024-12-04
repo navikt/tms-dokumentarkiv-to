@@ -98,8 +98,8 @@ const Journalpostliste = ({ language }: Props) => {
                     hideLabel
                     onChange={handleSelectChange}
                   >
-                    <option value="asc">Nyeste først</option>
-                    <option value="desc">Eldste først</option>
+                    <option value="asc">{text.sortingOrderAsc[language]}</option>
+                    <option value="desc">{text.sortingOrderDesc[language]}</option>
                   </Select>
                 </div>
                 <ul className={styles.list} key="journalpostliste">
