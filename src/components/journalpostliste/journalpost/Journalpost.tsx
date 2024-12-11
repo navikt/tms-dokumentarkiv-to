@@ -25,13 +25,13 @@ const Journalpost = ({ journalpost, language, isValgtRepresentant }: Props) => {
     <li className={styles.container} key={journalpost.journalpostId}>
       <article className={styles.wrapper}>
         <div>
-          <a className={styles.link} href={url} onClick={() => logEvent("Journalpostlenke", journalpost.temanavn)}>
+          <a className={styles.link} href={url} lang="nb" onClick={() => logEvent("Journalpostlenke", journalpost.temanavn)}>
             <BodyShort size="medium" weight="semibold">
               {journalpost.tittel}
             </BodyShort>
           </a>
           <BodyShort size="small">{dato + " - " + avsenderText}</BodyShort>
-          <Tag variant="neutral" className={styles.tag}>
+          <Tag variant="neutral" className={styles.tag} lang="nb">
             {journalpost.temanavn}
           </Tag>
         </div>

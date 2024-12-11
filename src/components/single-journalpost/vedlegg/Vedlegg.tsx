@@ -39,6 +39,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
           <a
             href={url}
             className={styles.vedlegg}
+            lang="nb"
             onClick={() => logEvent("Dokumentlenke", "Vedlegg")}
           >
             {tittelMedPdfTag}
@@ -48,7 +49,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
       </div>
     ) : (
       <div className={styles.container}>
-        <div className={styles.vedleggIngenTilgang}>
+        <div className={styles.vedleggIngenTilgang} lang="nb">
           {tittelMedPdfTag}
         </div>
         <Detail>{readableFileSize(filstorrelse)}</Detail>

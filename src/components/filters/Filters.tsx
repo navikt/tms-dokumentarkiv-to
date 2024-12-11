@@ -47,6 +47,7 @@ const Filters = ({ language, queryParam }: Props) => {
       <Chips>
         <Chips.Toggle
           key={"Alle"}
+          lang="nb"
           checkmark={false}
           selected={selected.includes("Alle")}
           onClick={() => handleToggle(["Alle"])}
@@ -56,6 +57,7 @@ const Filters = ({ language, queryParam }: Props) => {
         {sakstemaer.map((sakstema) => (
           <Chips.Toggle
             key={sakstema.temanavn}
+            lang="nb"
             checkmark={false}
             selected={selected.includes(sakstema.temakode)}
             onClick={() => handleToggle([sakstema.temakode])}
