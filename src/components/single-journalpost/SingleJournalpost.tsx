@@ -84,7 +84,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
               <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
-              <a className={styles.link} href={hovedDokumentUrl} onClick={() => logEvent('hoveddokument', journalpost.temanavn)}>
+              <a className={styles.link} href={hovedDokumentUrl} lang="nb" onClick={() => logEvent('hoveddokument', journalpost.temanavn)}>
                 <BodyShort size="medium">
                   {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
                 </BodyShort>
@@ -101,7 +101,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
             </div>
             <div className={styles.content}>
               <div className={styles.tittelIkkeTilgang}>
-                <BodyShort size="medium">
+                <BodyShort size="medium" lang="nb">
                   {journalpost?.dokument.tittel}
                 </BodyShort>
               </div>
@@ -114,7 +114,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
 
   return (
     <>
-      <Heading level="1" size="large">
+      <Heading level="1" size="large" lang="nb">
         {journalpost?.tittel}
       </Heading>
       <HovedDokument />
@@ -128,9 +128,9 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
       </div>
       <div className={styles.details}>
         <div className={styles.detailTitle}>
-          <BodyShort size="medium" weight="semibold">
+          <Heading level="2" size="xsmall">
             {text.detaljerTitle[language]}
-          </BodyShort>
+          </Heading>
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">
@@ -146,7 +146,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium">{journalpost?.temanavn}</BodyShort>
+          <BodyShort size="medium" lang="nb">{journalpost?.temanavn}</BodyShort>
         </div>
       </div>
       <div className={styles.vedlegg}>

@@ -34,15 +34,10 @@ export const text = {
     nn: "Alle dokument som er registrert på ",
     en: "All documents registered for ",
   },
-  sosialhjelpTekst: {
-    nb: "Dokumenter om ",
-    nn: "Dokument om ",
-    en: "Documents regarding ",
-  },
   sosialhjelpLenketekst: {
-    nb: "økonomisk sosialhjelp finner du her.",
-    nn: "økonomisk sosialhjelp finn du her.",
-    en: "økonomisk sosialhjelp can be found on this page.",
+    nb: "Dokumenter om økonomisk sosialhjelp.",
+    nn: "Dokument om økonomisk sosialhjelp.",
+    en: "Documents regarding økonomisk sosialhjelp can be found on this page.",
   },
   representasjonDeg: {
     nb: " (Deg)",

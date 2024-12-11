@@ -93,7 +93,6 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
         {text.representasjonStandardTekst[language] + fullmakter?.navn + ". "}
         {hasDigisosContent && (
           <span>
-            {text.sosialhjelpTekst[language]}
             <a
               href={digisosUrl}
               onClick={() => logEvent("Lenke", "Sosialhjelp ingress")}
@@ -167,7 +166,6 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
             ". "}
           {hasDigisosContent && (
             <span>
-              {text.sosialhjelpTekst[language]}
               <a
                 href={digisosUrl}
                 onClick={() => logEvent("Lenke", "Sosialhjelp ingress")}

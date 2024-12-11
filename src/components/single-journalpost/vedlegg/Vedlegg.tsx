@@ -1,7 +1,7 @@
 import type { DokumentProps } from "@components/journalpostliste/JournalpostInterfaces";
 import type { Language } from "@language/language";
 import { text } from "@language/text";
-import { BodyShort, Detail } from "@navikt/ds-react";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
 import { dokumentUrl } from "@src/urls.client";
 import { logEvent } from "@utils/client/amplitude";
 import { readableFileSize } from "@utils/readableFilesize";
@@ -39,6 +39,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
           <a
             href={url}
             className={styles.vedlegg}
+            lang="nb"
             onClick={() => logEvent("Dokumentlenke", "Vedlegg")}
           >
             {tittelMedPdfTag}
@@ -48,7 +49,7 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
       </div>
     ) : (
       <div className={styles.container}>
-        <div className={styles.vedleggIngenTilgang}>
+        <div className={styles.vedleggIngenTilgang} lang="nb">
           {tittelMedPdfTag}
         </div>
         <Detail>{readableFileSize(filstorrelse)}</Detail>
@@ -59,9 +60,9 @@ const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
   return hasVedlegg ? (
     <>
       <div className={styles.title}>
-        <BodyShort size="medium" weight="semibold">
+        <Heading level="2" size="xsmall">
           {text.vedleggTitle[language]}
-        </BodyShort>
+        </Heading>
       </div>
       {vedleggsListe?.map((vedlegg: DokumentProps) => (
         <VedleggsLenke
