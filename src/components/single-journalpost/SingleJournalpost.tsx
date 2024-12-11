@@ -128,9 +128,9 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
       </div>
       <div className={styles.details}>
         <div className={styles.detailTitle}>
-          <BodyShort size="medium" weight="semibold">
+          <Heading level="2" size="xsmall">
             {text.detaljerTitle[language]}
-          </BodyShort>
+          </Heading>
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">

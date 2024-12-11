@@ -15,7 +15,6 @@ const Disclaimer = ({ language }: { language: Language }) => {
       <ul className={styles.list}>
       <li>
           <BodyLong>
-            {text.sosialhjelpTekst[language]}
             <a href={digisosUrl} onClick={() => logEvent("Lenke", "Sosialhjelp lenke")}>
               {text.sosialhjelpLenketekst[language]}
             </a>

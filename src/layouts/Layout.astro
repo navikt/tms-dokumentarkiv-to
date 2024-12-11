@@ -46,16 +46,16 @@ const Decorator = await fetchDecoratorReact({
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Dokumentarkiv</title>
+		<title>Dokumenter - nav.no</title>
     <link rel="preload" href="https://cdn.nav.no/aksel/@navikt/ds-css/5.7.3/index.min.css" as="style" />
     <link rel="stylesheet" href="https://cdn.nav.no/aksel/@navikt/ds-css/5.7.3/index.min.css" />
     <Decorator.Styles />
   </head>
   <body class="main">
     <Decorator.Header />
-      <div class={styles.container}>
+      <main class={styles.container}>
         <slot />
-      </div>
+      </main>
     <Decorator.Footer />
     <Decorator.Scripts />
   </body>
