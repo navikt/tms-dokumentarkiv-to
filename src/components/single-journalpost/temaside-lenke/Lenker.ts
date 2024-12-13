@@ -37,9 +37,9 @@ const PENSJON = {
 
 const UFORETRYGD = {
   local: "https://localhost:3000/uforetrygd",
-  dev: "https://pensjon-pselv-q1.dev.nav.no/pselv/publisering/uforetrygd.jsf?execution=e2s1",
-  ansatt: "https://pensjon-pselv-q1.dev.nav.no/pselv/publisering/uforetrygd.jsf?execution=e2s1",
-  prod: "https://www.nav.no/pselv/publisering/uforetrygd.jsf?execution=e2s1",
+  dev: "https://uforetrygd-selvbetjening-frontend-borger.intern.dev.nav.no/uforetrygd/selvbetjening",
+  ansatt: "https://uforetrygd-selvbetjening-frontend-borger.ansatt.dev.nav.no/uforetrygd/selvbetjening",
+  prod: "https://www.nav.no/uforetrygd/selvbetjening",
 };
 
 export const dagpengerUrl = DAGPENGER[getEnvironmentClientSide()];
