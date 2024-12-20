@@ -32,6 +32,8 @@ spec:
   ingresses:
     - "https://www.nav.no/dokumentarkiv"
     - "https://person.nav.no/dokumentarkiv"
+    - "https://www.nav.no/mine-saker"
+    - "https://person.nav.no/mine-saker"
   resources:
     limits:
       memory: 768Mi

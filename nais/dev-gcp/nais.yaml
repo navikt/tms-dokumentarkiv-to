@@ -31,6 +31,7 @@ spec:
           namespace: personbruker
   ingresses:
     - "https://www.ansatt.dev.nav.no/dokumentarkiv"
+    - "https://www.ansatt.dev.nav.no/mine-saker"
   resources:
     limits:
       memory: 768Mi
