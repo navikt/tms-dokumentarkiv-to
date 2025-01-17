@@ -84,9 +84,15 @@ export const filteredJournalposter = (filters?: Filters) => {
     return journalposter;
   }
 
-  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle")) {
+  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle") && !filters.sakstemaFilters.includes("Vedtak")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.temakode === filters.sakstemaFilters[0];
+    });
+  }
+
+  if (filters?.sakstemaFilters?.includes("Vedtak")) {
+    journalposter = journalposter.filter((journalpost) => {
+      return journalpost.tittel.toLowerCase().includes("vedtak");
     });
   }
 
