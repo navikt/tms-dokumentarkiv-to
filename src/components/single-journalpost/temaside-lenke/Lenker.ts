@@ -30,9 +30,9 @@ const SOSIALHJELP = {
 
 const PENSJON = {
   local: "https://localhost:3000/dinpensjon",
-  dev: "https://pensjon-pselv-q1.dev.nav.no/pselv/publisering/dinpensjon.jsf?execution=e1s1",
-  ansatt: "https://pensjon-pselv-q1.dev.nav.no/pselv/publisering/dinpensjon.jsf?execution=e1s1",
-  prod: "https://www.nav.no/pselv/publisering/dinpensjon.jsf?execution=e1s1",
+  dev: "https://pensjon-selvbetjening-dinpensjon-frontend-borger-q2.intern.dev.nav.no/pensjon/selvbetjening/dinpensjon",
+  ansatt: "https://pensjon-selvbetjening-dinpensjon-frontend-borger-q2.intern.dev.nav.no/pensjon/selvbetjening/dinpensjon",
+  prod: "https://www.nav.no/pensjon/selvbetjening/dinpensjon",
 };
 
 const UFORETRYGD = {
