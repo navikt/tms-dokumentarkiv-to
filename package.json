@@ -19,6 +19,7 @@
     "@navikt/aksel-icons": "6.1.1",
     "@navikt/ds-react": "6.1.1",
     "@navikt/nav-dekoratoren-moduler": "2.1.6",
+    "@navikt/oasis": "^3.4.0",
     "astro": "5.1.4",
     "dayjs": "1.11.10",
     "prom-client": "^15.1.3",
