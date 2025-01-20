@@ -47,23 +47,24 @@ const journalpost =
       isError = true;
     }));
 
-const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
-const avsenderText = setAvsenderMottaker(journalpost);
-const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
-const veddleggsListe = journalpost.vedlegg;
+const hovedDokumentUrl = journalpost ? `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}` : "";
+const avsenderText = journalpost && setAvsenderMottaker(journalpost);
+const dato = journalpost && format(new Date(journalpost.opprettet), "dd.MM.yyyy");
+const veddleggsListe = journalpost?.vedlegg;
 const isInngaaendeJournalpost =
-  journalpost.journalposttype.toLowerCase() === "inn";
+  journalpost?.journalposttype.toLowerCase() === "inn";
 
 const tilgangsSperreInfo = () => {
-  if (journalpost.dokument.tilgangssperre === "SkannetDokument")
+  if (journalpost?.dokument.tilgangssperre === "SkannetDokument")
     return text.tilgangssperreSkannet[language];
-  if (journalpost.dokument.tilgangssperre === "Tredjepart")
+  if (journalpost?.dokument.tilgangssperre === "Tredjepart")
     return text.tilgangssperreTredjepart[language];
-  if (journalpost.dokument.tilgangssperre === "Annet")
+  if (journalpost?.dokument.tilgangssperre === "Annet")
     return text.tilgangssperreAnnet[language];
 };
 ---
 
+{isError ? <div>Feil</div> : (
 <>
   <Heading level="1" size="large" lang="nb">
     {journalpost?.tittel}
@@ -112,3 +113,4 @@ const tilgangsSperreInfo = () => {
     <Vedlegg vedleggsListe={veddleggsListe} journalpostId={journalpostId} />
   </div>
 </>
+)}
