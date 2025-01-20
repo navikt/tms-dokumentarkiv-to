@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: var(--a-text-default);
+  background-color: var(--a-bg-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 2rem;
+  text-decoration: none;
+  position: relative;
+}
+
+.kanIkkeVises {
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  color: var(--a-surface-action);
+  background-color: var(--a-bg-default);
+  line-height: 0;
+}
+
+.iconKanIkkeVises {
+  color: var(--a-text-default);
+}
+
+.link {
+  margin: 0;
+  text-decoration: underline;
+  color: var(--a-text-action);
+  text-wrap: balance;
+}
+
+.link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.tittelIkkeTilgang {
+  margin: 0.2rem 0;
+  text-decoration: none;
+  color: var(--a-text-subtle);
+  text-wrap: balance;
+}
+
+.link:hover {
+  text-decoration: none;
+  cursor: pointer;
+}

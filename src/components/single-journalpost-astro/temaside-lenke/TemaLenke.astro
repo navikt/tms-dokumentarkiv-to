@@ -1,0 +1,49 @@
+---
+import { lenker } from "@components/single-journalpost-astro/temaside-lenke/Lenker";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import styles from "./TemaLenke.module.css";
+
+export type Temakode = "DAG" | "HJE" | "FOR" | "KOM" | "AAP" | "SYK" | "SYM" | "PEN" | "UFO" | "OMS";
+
+interface Props {
+  lenketekst: string | undefined;
+  temakode: string | undefined;
+}
+
+const { lenketekst, temakode } = Astro.props;
+
+const type = temakode as Temakode;
+
+const language = "nb"
+
+const unntaksKoder = [
+  "DAG",
+  "HJE",
+  "FOR",
+  "KOM",
+  "AAP",
+  "SYK",
+  "SYM",
+  "PEN",
+  "UFO",
+  "OMS",
+];
+
+const isUnntak = unntaksKoder.includes(type);
+const isSykOrSym = type === "SYM" || type === "SYK";
+
+//Amplitude: onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
+---
+
+{
+  isUnntak ? (
+    <span>
+      {text.temaLenkeDel1[language]}
+      <a href={lenker[type]} class={styles.lenke}>
+        {isSykOrSym ? text.sykOgSymLenke[language] : lenketekst}
+      </a>
+      {text.temaLenkeDel2[language]}
+    </span>
+  ) : null
+}

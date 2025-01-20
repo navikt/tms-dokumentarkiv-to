@@ -1,0 +1,48 @@
+---
+import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
+import styles from "./HovedDokument.module.css";
+import { EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
+import { BodyShort, Detail } from "@navikt/ds-react";
+import { readableFileSize } from "@utils/readableFilesize";
+
+interface Props {
+  journalpost: JournalpostProps;
+  hovedDokumentUrl: string;
+}
+
+const { journalpost, hovedDokumentUrl } = Astro.props;
+//Amplitude :  onClick={() => logEvent('hoveddokument', journalpost.temanavn)}
+---
+
+<>
+  {
+    journalpost?.dokument.brukerHarTilgang ? (
+      <div class={`${styles.container} ${styles.hover}`}>
+        <div class={styles.icon}>
+          <FilePdfIcon fontSize="1.5rem" />
+        </div>
+        <div class={styles.content}>
+          <a class={styles.link} href={hovedDokumentUrl} lang="nb">
+            <BodyShort size="medium">
+              {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
+            </BodyShort>
+          </a>
+          <Detail>{readableFileSize(journalpost.dokument.filstorrelse)}</Detail>
+        </div>
+      </div>
+    ) : (
+      <div class={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}>
+        <div class={`${styles.icon} ${styles.iconKanIkkeVises}`}>
+          <EyeSlashIcon fontSize="1.5rem" />
+        </div>
+        <div class={styles.content}>
+          <div class={styles.tittelIkkeTilgang}>
+            <BodyShort size="medium" lang="nb">
+              {journalpost?.dokument.tittel}
+            </BodyShort>
+          </div>
+        </div>
+      </div>
+    )
+  }
+</>

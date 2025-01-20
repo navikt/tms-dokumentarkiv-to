@@ -1,0 +1,44 @@
+---
+import { Detail } from "@navikt/ds-react";
+import styles from "./Vedlegg.module.css";
+import { readableFileSize } from "@utils/readableFilesize";
+
+
+interface Props {
+  url: string;
+  tittel: string;
+  filstorrelse: number;
+  brukerHarTilgang: boolean;
+}
+
+const { url, tittel, filstorrelse, brukerHarTilgang } = Astro.props;
+
+const tittelMedPdfTag = tittel + ".pdf";
+
+//Amplitude: onClick={() => logEvent("Dokumentlenke", "Vedlegg")}
+
+---
+
+{
+  brukerHarTilgang ? (
+      <div class={styles.container}>
+        <div class={styles.linkWIthIcon}>
+          <a
+            href={url}
+            class={styles.vedlegg}
+            lang="nb"
+          >
+            {tittelMedPdfTag}
+          </a>
+        </div>
+        <Detail>{readableFileSize(filstorrelse)}</Detail>
+      </div>
+    ) : (
+      <div class={styles.container}>
+        <div class={styles.vedleggIngenTilgang} lang="nb">
+          {tittelMedPdfTag}
+        </div>
+        <Detail>{readableFileSize(filstorrelse)}</Detail>
+      </div>
+    )
+}

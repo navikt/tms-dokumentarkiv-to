@@ -1,47 +1,114 @@
 ---
 import type { Language } from "@language/language";
-import { getOboToken } from "@utils/server/token";
-import { getJournalpostUrl, dokumentUrl } from "@src/urls";
-import { format } from "date-fns";
+import { text } from "@language/text";
+import { BodyShort, Heading } from "@navikt/ds-react";
+import { dokumentUrl, getJournalpostUrl } from "@src/urls";
 import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
+import { getOboToken } from "@utils/server/token";
+import { format } from "date-fns";
+import HovedDokument from "./hoveddokument/HovedDokument.astro";
+import styles from "./SingleJournalpost.module.css";
+import TemaLenke from "./temaside-lenke/TemaLenke.astro";
+import Vedlegg from "./vedlegg/Vedlegg.astro";
 
 interface Props {
-  journalpostId: string;
+  journalpostId: string | undefined;
+  fullmakt: string | null;
 }
 
-const { journalpostId } = Astro.props;
+const { journalpostId, fullmakt } = Astro.props;
 const language = Astro.currentLocale as Language;
 
-const journalpostUrl = getJournalpostUrl(journalpostId);
+const journalpostUrl = journalpostId && getJournalpostUrl(journalpostId);
 
 const oboToken = await getOboToken(Astro.locals.token);
 let isError = false;
 
-const journalpost = await fetch(journalpostUrl, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization: `Bearer ${oboToken}`,
-  },
-})
-  .then((response) => {
-    if (!response.ok) {
-      console.error(`Error, fetch failed with status: ${response.status}`);
-      isError = true;
-    }
-
-    return response.json();
+const journalpost =
+  journalpostUrl &&
+  (await fetch(journalpostUrl, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${oboToken}`,
+    },
   })
-  .catch((error) => {
-    console.error(`Error, fetch failed: ${error}`);
-    isError = true;
-  });
+    .then((response) => {
+      if (!response.ok) {
+        console.error(`Error, fetch failed with status: ${response.status}`);
+        isError = true;
+      }
 
-  const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
-  const avsenderText = setAvsenderMottaker(journalpost);
-  const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
-  const veddleggsListe = journalpost.vedlegg;
+      return response.json();
+    })
+    .catch((error) => {
+      console.error(`Error, fetch failed: ${error}`);
+      isError = true;
+    }));
+
+const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
+const avsenderText = setAvsenderMottaker(journalpost);
+const dato = format(new Date(journalpost.opprettet), "dd.MM.yyyy");
+const veddleggsListe = journalpost.vedlegg;
+const isInngaaendeJournalpost =
+  journalpost.journalposttype.toLowerCase() === "inn";
+
+const tilgangsSperreInfo = () => {
+  if (journalpost.dokument.tilgangssperre === "SkannetDokument")
+    return text.tilgangssperreSkannet[language];
+  if (journalpost.dokument.tilgangssperre === "Tredjepart")
+    return text.tilgangssperreTredjepart[language];
+  if (journalpost.dokument.tilgangssperre === "Annet")
+    return text.tilgangssperreAnnet[language];
+};
 ---
 
-
+<>
+  <Heading level="1" size="large" lang="nb">
+    {journalpost?.tittel}
+  </Heading>
+  <HovedDokument
+    journalpost={journalpost}
+    hovedDokumentUrl={hovedDokumentUrl}
+  />
+  <div class={styles.temalenke}>
+    {
+      journalpost.dokument.tilgangssperre === null ? (
+        <span>{tilgangsSperreInfo()}</span>
+      ) : null
+    }
+    <TemaLenke
+      lenketekst={journalpost?.temanavn}
+      temakode={journalpost?.temakode}
+    />
+  </div>
+  <div class={styles.details}>
+    <div class={styles.detailTitle}>
+      <Heading level="2" size="xsmall">
+        {text.detaljerTitle[language]}
+      </Heading>
+    </div>
+    <div class={styles.detail}>
+      <BodyShort size="medium">
+        {
+          isInngaaendeJournalpost
+            ? text.sendtInnTitle[language]
+            : text.sendtTilTitle[language]
+        }
+      </BodyShort>
+      <BodyShort size="medium">{avsenderText}</BodyShort>
+    </div>
+    <div class={styles.detail}>
+      <BodyShort size="medium">{text.datoTitle[language]}</BodyShort>
+      <BodyShort size="medium">{dato}</BodyShort>
+    </div>
+    <div class={styles.detail}>
+      <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
+      <BodyShort size="medium" lang="nb">{journalpost?.temanavn}</BodyShort>
+    </div>
+  </div>
+  <div class={styles.vedlegg}>
+    <Vedlegg vedleggsListe={veddleggsListe} journalpostId={journalpostId} />
+  </div>
+</>

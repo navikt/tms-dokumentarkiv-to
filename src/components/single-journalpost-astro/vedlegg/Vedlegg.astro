@@ -1,0 +1,40 @@
+---
+import type { DokumentProps } from "@components/journalpostliste/JournalpostInterfaces";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { Heading } from "@navikt/ds-react";
+import { dokumentUrl } from "@src/urls";
+import styles from "./Vedlegg.module.css";
+import VedleggsLenke from "./VedleggsLenke.astro";
+
+interface Props {
+  vedleggsListe: DokumentProps[] | undefined;
+  journalpostId: string | undefined;
+}
+
+const { vedleggsListe, journalpostId } = Astro.props;
+
+const language = Astro.currentLocale as Language;
+const baseUrl = `${dokumentUrl}/${journalpostId}`;
+const hasVedlegg = vedleggsListe && vedleggsListe.length > 0;
+---
+
+{
+  hasVedlegg ? (
+    <>
+      <div class={styles.title}>
+        <Heading level="2" size="xsmall">
+          {text.vedleggTitle[language]}
+        </Heading>
+      </div>
+      {vedleggsListe?.map((vedlegg: DokumentProps) => (
+        <VedleggsLenke
+          url={`${baseUrl}/${vedlegg.dokumentInfoId}`}
+          tittel={vedlegg.tittel}
+          brukerHarTilgang={vedlegg.brukerHarTilgang}
+          filstorrelse={vedlegg.filstorrelse}
+        />
+      ))}
+    </>
+  ) : null
+}

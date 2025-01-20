@@ -1,0 +1,23 @@
+.temalenke {
+  margin-top: 2rem;
+}
+
+.details {
+  margin-top: 2rem;
+}
+
+.detailTitle {
+  display: flex;
+  padding: 0.75rem 0;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--a-bg-subtle);
+}
+
+.vedlegg {
+  margin: 2rem 0;
+}

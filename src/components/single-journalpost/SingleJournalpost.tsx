@@ -120,11 +120,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
       <HovedDokument />
       <div className={styles.temalenke}>
         {tilgangsSperreInfo()}
-        <TemaLenke
-          lenketekst={journalpost?.temanavn}
-          temakode={journalpost?.temakode}
-          language={language}
-        />
+
       </div>
       <div className={styles.details}>
         <div className={styles.detailTitle}>
