@@ -2,32 +2,32 @@ import { getEnvironment } from "@utils/server/environment";
 
 const MIN_SIDE_PROXY_URL = {
   local: "http://localhost:4321",
-  ansatt: "https://www.ansatt.dev.nav.no/tms-min-side-proxy",
+  dev: "https://www.ansatt.dev.nav.no/tms-min-side-proxy",
   prod: "https://www.nav.no/tms-min-side-proxy",
 };
 
 const MINE_SAKER_API_URL = {
   local: "http://localhost:3000/mine-saker-api",
-  ansatt: "https://www.ansatt.dev.nav.no/mine-saker-api",
+  dev: "https://www.ansatt.dev.nav.no/mine-saker-api",
   prod: "https://person.nav.no/mine-saker-api",
 };
 
 const BASE_URL = {
   local: "http://localhost:4321/dokumentarkiv",
-  ansatt: "https://www.ansatt.dev.nav.no/dokumentarkiv",
+  dev: "https://www.ansatt.dev.nav.no/dokumentarkiv",
   prod: "https://www.nav.no/dokumentarkiv",
 };
 
 const NAV_NO_URL = {
   local: "http://localhost:4321",
-  ansatt: "https://www.ansatt.dev.nav.no",
+  dev: "https://www.ansatt.dev.nav.no",
   prod: "https://www.nav.no",
 };
 
 const ERROR_REPORTING_URL = {
   local:
     'https://www.intern.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler',
-  ansatt:
+    dev:
     'https://www.intern.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler',
   prod:
     'https://www.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler',
