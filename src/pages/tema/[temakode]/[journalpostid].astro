@@ -14,5 +14,7 @@ const language = Astro.currentLocale as Language;
 <Layout title="Dokumentarkiv" language={language}>
   <Breadcrumbs showDokumenter={true} language={language} client:only="react" />
   <FeilMelding language={language} client:only="react" />
-  <SingleJournalpost journalpostId={journalpostid} fullmakt={fullmakt} />
+  <SingleJournalpost server:defer journalpostId={journalpostid} fullmakt={fullmakt}>
+    <div slot="fallback">Loading...</div>
+  </SingleJournalpost>
 </Layout>
