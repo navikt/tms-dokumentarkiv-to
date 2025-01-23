@@ -1,6 +1,11 @@
 import { useStore } from "@nanostores/react";
 import { Chips, Label } from "@navikt/ds-react";
-import { sakstemaerAtom, setSakstemaFilters, showFiltersAtom } from "@store/store";
+import {
+  sakstemaerAtom,
+  setSakstemaFilters,
+  showFiltersAtom,
+  showVedtakFilterAtom,
+} from "@store/store";
 import { useEffect, useState } from "react";
 import styles from "./Filters.module.css";
 import type { Language } from "@language/language";
@@ -16,21 +21,26 @@ const Filters = ({ language, queryParam }: Props) => {
   const [selected, setSelected] = useState<string[]>(["Alle"]);
   const sakstemaer = useStore(sakstemaerAtom);
   const showFilters = useStore(showFiltersAtom);
+  const showVedtakFilter = useStore(showVedtakFilterAtom);
+
+  console.log(showVedtakFilter);
 
   const isValidFilterValue = (queryParam: string | null) => {
-      const filterValue = sakstemaer.filter((sakstema) => sakstema.temakode === queryParam);
+    const filterValue = sakstemaer.filter(
+      (sakstema) => sakstema.temakode === queryParam
+    );
 
-      return filterValue.length > 0;
-  }
+    return filterValue.length > 0;
+  };
 
   const isValidQueryParam = isValidFilterValue(queryParam);
 
   useEffect(() => {
-    if(queryParam && isValidQueryParam) {
-        setSelected([queryParam])
-        setSakstemaFilters([queryParam]);
+    if (queryParam && isValidQueryParam) {
+      setSelected([queryParam]);
+      setSakstemaFilters([queryParam]);
     }
-  }, [queryParam, isValidQueryParam])
+  }, [queryParam, isValidQueryParam]);
 
   if (!showFilters) {
     return null;
@@ -39,7 +49,7 @@ const Filters = ({ language, queryParam }: Props) => {
   const handleToggle = (value: string[]) => {
     setSakstemaFilters(value);
     setSelected(value);
-    logEvent("Filter", value[0])
+    logEvent("Filter", value[0]);
   };
   return (
     <div className={styles.container}>
@@ -54,15 +64,17 @@ const Filters = ({ language, queryParam }: Props) => {
         >
           {"Alle"}
         </Chips.Toggle>
-        <Chips.Toggle
-          key={"Vedtak"}
-          lang="nb"
-          checkmark={false}
-          selected={selected.includes("Vedtak")}
-          onClick={() => handleToggle(["Vedtak"])}
-        >
-          {"Vedtak"}
-        </Chips.Toggle>
+        {showVedtakFilter.map(() => (
+          <Chips.Toggle
+            key={"Vedtak"}
+            lang="nb"
+            checkmark={false}
+            selected={selected.includes("Vedtak")}
+            onClick={() => handleToggle(["Vedtak"])}
+          >
+            {"Vedtak"}
+          </Chips.Toggle>
+        ))}
         {sakstemaer.map((sakstema) => (
           <Chips.Toggle
             key={sakstema.temanavn}

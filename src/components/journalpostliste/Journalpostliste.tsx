@@ -13,6 +13,7 @@ import {
   setJournalposter,
   setSakstemaer,
   setShowFilters,
+  setShowVedtakFilter,
   setSortingOrder,
   sortingOrderAtom,
 } from "@store/store";
@@ -30,12 +31,19 @@ interface Props {
 }
 
 const Journalpostliste = ({ language }: Props) => {
-  const { data: journalposter, isLoading, error : getJournalposterError } = useSWRImmutable<
-    JournalpostProps[]
-  >(getAlleJournalposterUrl, fetcher, {revalidateOnFocus: false});
+  const {
+    data: journalposter,
+    isLoading,
+    error: getJournalposterError,
+  } = useSWRImmutable<JournalpostProps[]>(getAlleJournalposterUrl, fetcher, {
+    revalidateOnFocus: false,
+  });
 
   useEffect(() => {
-    if (journalposter) setSakstemaer(journalposter);
+    if (journalposter) {
+      setSakstemaer(journalposter);
+      setShowVedtakFilter(journalposter);
+    }
   }, [journalposter]);
 
   useEffect(() => {
@@ -53,7 +61,7 @@ const Journalpostliste = ({ language }: Props) => {
   const showContentLoader = isLoading || isValidating;
 
   if (getJournalposterError) {
-    setIsError(true)
+    setIsError(true);
     return null;
   }
 
@@ -63,7 +71,7 @@ const Journalpostliste = ({ language }: Props) => {
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortingOrder(event.target.value.toString());
-    logEvent("Sorteringsrekkefolge", event.target.value.toString())
+    logEvent("Sorteringsrekkefolge", event.target.value.toString());
   };
 
   const filteredList = filteredJournalposter({
@@ -98,8 +106,12 @@ const Journalpostliste = ({ language }: Props) => {
                     hideLabel
                     onChange={handleSelectChange}
                   >
-                    <option value="asc">{text.sortingOrderAsc[language]}</option>
-                    <option value="desc">{text.sortingOrderDesc[language]}</option>
+                    <option value="asc">
+                      {text.sortingOrderAsc[language]}
+                    </option>
+                    <option value="desc">
+                      {text.sortingOrderDesc[language]}
+                    </option>
                   </Select>
                 </div>
                 <ul className={styles.list} key="journalpostliste">
