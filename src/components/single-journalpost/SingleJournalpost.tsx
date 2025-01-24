@@ -49,7 +49,7 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Prop
         if (typeof window.TA === "function") {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          window.TA("start", "03411");
+          window.TA("start", "03415");
         }
       }, 1000);
     }
