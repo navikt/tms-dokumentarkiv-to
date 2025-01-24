@@ -21,10 +21,11 @@ import { logEvent } from "@utils/client/amplitude";
 interface Props {
   language: Language;
   journalpostId: string | undefined;
+  temakode: string | undefined;
   fullmakt: string | null;
 }
 
-const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
+const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Props) => {
   const journalpostUrl = journalpostId && getJournalpostUrl(journalpostId);
 
   const {
@@ -38,6 +39,21 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt }: Props) => {
       setSingleJournalpostDisclaimerAtom(journalpost?.dokument.tilgangssperre)
     }
   }, [journalpost]);
+
+  useEffect(() => {
+    // Task analytic Spørreundersøkelse for gammel og ny vedtaksbrev
+    if (temakode === "BAR") {
+      setTimeout(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (typeof window.TA === "function") {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          window.TA("start", "03415");
+        }
+      }, 1000);
+    }
+  });
 
   if (isLoading) {
     return (

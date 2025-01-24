@@ -5,7 +5,7 @@ import type { Language } from "@language/language";
 import FeilMelding from "@components/feilmelding/Feilmelding";
 import Breadcrumbs from "@components/breadcrumbs/Breadcrumbs";
 
-const { journalpostid } = Astro.params;
+const { journalpostid, temakode } = Astro.params;
 const params = Astro.url.searchParams;
 const fullmakt = params.get("fullmakt");
 const language = Astro.currentLocale as Language;
@@ -14,5 +14,5 @@ const language = Astro.currentLocale as Language;
 <Layout title="Dokumentarkiv" language={language}>
   <Breadcrumbs showDokumenter={true} language={language} client:only="react"/>
   <FeilMelding language={language} client:only="react" />
-  <SingleJournalpost language={language} journalpostId={journalpostid} fullmakt={fullmakt} client:only="react"/>
+  <SingleJournalpost language={language} journalpostId={journalpostid} temakode={temakode} fullmakt={fullmakt} client:only="react"/>
 </Layout>
