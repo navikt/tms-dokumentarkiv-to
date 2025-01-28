@@ -5,7 +5,7 @@
   color: var(--a-text-default);
   text-decoration: none;
   background: var(--a-surface-subtle);
-  padding: 0.75rem;
+  padding: 1rem;
   margin-bottom: 0.2rem;
   border-radius: 4px;
   position: relative;
@@ -19,7 +19,6 @@
 }
 
 .link {
-  margin: 0.2rem 0;
   text-decoration: underline;
   color: var(--a-text-action);  
   text-wrap: balance;
@@ -47,6 +46,10 @@
 
 .link:focus {
   outline: none;
+}
+
+.linkText {
+  padding: 0.2rem 0 0.4rem 0;
 }
 
 .tag {

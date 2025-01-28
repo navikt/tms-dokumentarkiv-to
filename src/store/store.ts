@@ -1,3 +1,4 @@
+import { include } from './../utils/client/api';
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
 import { alphabetically, byOpprettetDateAsc, byOpprettetDateDesc } from "@utils/sorting";
 import { atom } from "nanostores";
@@ -18,6 +19,7 @@ export const sakstemaFiltersAtom = atom<Filters["sakstemaFilters"]>(["Alle"]);
 export const singleJournalpostDisclaimerAtom = atom<string | null>(null);
 export const sortingOrderAtom = atom<Filters["order"]>("asc");
 export const showFiltersAtom = atom<boolean>(false);
+export const showVedtakFilterAtom = atom<string[]>([]);
 export const isValidatingJournalposterAtom = atom<boolean>(false);
 export const isErrorAtom = atom<boolean>(false);
 export const isValgtRepresentantAtom = atom<boolean>(false);
@@ -42,6 +44,13 @@ export function setSakstemaer(journalposter: JournalpostProps[]) {
 
 
   sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques).sort(alphabetically));
+}
+
+export function setShowVedtakFilter(journalposter: JournalpostProps[]) {
+
+  const isVedtak = (journalpost: JournalpostProps) => journalpost.tittel.toLowerCase().includes("vedtak")
+
+  showVedtakFilterAtom.set(journalposter.some(isVedtak) ? ["Vedtak"] : [])
 }
 
 export function setSingleJournalpostDisclaimerAtom(string: string | null) {
@@ -84,9 +93,15 @@ export const filteredJournalposter = (filters?: Filters) => {
     return journalposter;
   }
 
-  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle")) {
+  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle") && !filters.sakstemaFilters.includes("Vedtak")) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.temakode === filters.sakstemaFilters[0];
+    });
+  }
+
+  if (filters?.sakstemaFilters?.includes("Vedtak")) {
+    journalposter = journalposter.filter((journalpost) => {
+      return journalpost.tittel.toLowerCase().includes("vedtak");
     });
   }
 
