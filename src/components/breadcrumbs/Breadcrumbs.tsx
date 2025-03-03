@@ -15,7 +15,7 @@ const Breadcrumbs = ({ showDokumenter, language }: Props) => (
     <a
       className={`${style.minSideLink} ${style.link}`}
       href={minSideUrlWithLanguage[language]}
-      onClick={() => logEvent('breadcrum', 'min-side')}
+      data-umami-event="breadcrumb"
     >
       {text.minSide[language]}
     </a>
@@ -23,7 +23,7 @@ const Breadcrumbs = ({ showDokumenter, language }: Props) => (
       <div className={style.linkWrapper}>
         <a
           className={style.link}
-          onClick={() => logEvent('breadcrum', 'dokumenter')}
+          data-umami-event="breadcrumb"
           href={baseUrlWithLanguage[language]}
         >
           {text.dokumenter[language]}
