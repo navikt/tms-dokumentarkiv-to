@@ -23,8 +23,6 @@ const Filters = ({ language, queryParam }: Props) => {
   const showFilters = useStore(showFiltersAtom);
   const showVedtakFilter = useStore(showVedtakFilterAtom);
 
-  console.log(showVedtakFilter);
-
   const isValidFilterValue = (queryParam: string | null) => {
     const filterValue = sakstemaer.filter(
       (sakstema) => sakstema.temakode === queryParam
