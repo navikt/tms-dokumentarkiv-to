@@ -44,22 +44,30 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     data: fullmakter,
     isLoading: isLoadingFullmakter,
     error: fullmaktsForholdError,
-  } = useSWRImmutable<Fullmakter>(getFullmaktForhold, fetcher);
+  } = useSWRImmutable<Fullmakter>(getFullmaktForhold, fetcher, {
+    revalidateOnFocus: false,
+  });
 
   const {
     data: fullmaktInfo,
     mutate: mutateUser,
     error: fullmaktsInfoError,
-  } = useSWR<FullmaktInfoProps>(getFullmaktInfoUrl, fetcher);
+  } = useSWR<FullmaktInfoProps>(getFullmaktInfoUrl, fetcher, {
+    revalidateOnFocus: false,
+  });
 
   const { data: hasDigisosContent, error: hasDigisosContentError } =
-    useSWR<boolean>(hasDigisosContentUrl, fetcher);
+    useSWR<boolean>(hasDigisosContentUrl, fetcher, {
+      revalidateOnFocus: false,
+    });
 
   const {
     mutate: mutateJournalposter,
     isValidating,
     error: mutateJournalposterError,
-  } = useSWR<JournalpostProps[]>(getAlleJournalposterUrl, fetcher);
+  } = useSWR<JournalpostProps[]>(getAlleJournalposterUrl, fetcher, {
+    revalidateOnFocus: false,
+  });
 
   useEffect(() => {
     setIsValidatingJournalposter(isValidating);
