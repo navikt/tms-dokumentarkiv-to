@@ -6,16 +6,18 @@ import styles from "./Disclaimer.module.css";
 import type { Language } from "@language/language";
 
 const Disclaimer = ({ language }: { language: Language }) => {
-
   return (
     <div className={styles.container}>
       <Heading level="2" size="small">
         {text.landingssideDisclaimerTittel[language]}
       </Heading>
       <ul className={styles.list}>
-      <li>
+        <li>
           <BodyLong>
-            <a href={digisosUrl} onClick={() => logEvent("Lenke", "Sosialhjelp lenke")}>
+            <a
+              href={digisosUrl}
+              onClick={() => logEvent("Lenke", "Sosialhjelp lenke")}
+            >
               {text.sosialhjelpLenketekst[language]}
             </a>
           </BodyLong>

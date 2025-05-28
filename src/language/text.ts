@@ -15,9 +15,12 @@ export const text = {
     en: (antall: number) => `The document has ${antall} attachments`,
   },
   viserAntallDokumenter: {
-    nb: (synlige: number, antall: number ) => `Viser ${synlige} av ${antall} dokumenter`,
-    nn: (synlige: number, antall: number ) => `Viser ${synlige} av ${antall} dokument`,
-    en: (synlige: number, antall: number ) => `Showing ${synlige} of ${antall} documents`,
+    nb: (synlige: number, antall: number) =>
+      `Viser ${synlige} av ${antall} dokumenter`,
+    nn: (synlige: number, antall: number) =>
+      `Viser ${synlige} av ${antall} dokument`,
+    en: (synlige: number, antall: number) =>
+      `Showing ${synlige} of ${antall} documents`,
   },
   lasterInn: {
     nb: "Laster...",
@@ -35,9 +38,9 @@ export const text = {
     en: "All documents registered for ",
   },
   sosialhjelpLenketekst: {
-    nb: "Dokumenter om økonomisk sosialhjelp.",
-    nn: "Dokument om økonomisk sosialhjelp.",
-    en: "Documents regarding økonomisk sosialhjelp can be found on this page.",
+    nb: "Se dokumenter om økonomisk sosialhjelp.",
+    nn: "Sjå dokument om økonomisk sosialhjelp.",
+    en: "See documents regarding økonomisk sosialhjelp can be found on this page.",
   },
   representasjonDeg: {
     nb: " (Deg)",
@@ -55,9 +58,9 @@ export const text = {
     en: "Do you not find what you were looking for?",
   },
   landingssideDisclaimerListepunktTo: {
-    nb: "Vi viser dokumenter i saker nyere enn 2016. For bidragssaker kan du kun se dokumenter fra starten av 2022.",
-    nn: "Vi viser dokument i sakar nyare enn 2016. For bidragssakar kan du kun sjå dokument frå starten av 2022.",
-    en: "For contribution matters, we are only able to present documents starting from 2022.",
+    nb: "Vi viser dokumenter i saker fra midten av 2016. For pensjon viser vi dokumenter fra slutten av 2008 og for uføretrygd viser vi dokumenter fra midten av 2009. For bidragssaker kan du kun se dokumenter fra starten av 2022.",
+    nn: "Vi viser dokument i saker frå midten av 2016. For pensjon viser vi dokument frå slutten av 2008 og for uføretrygd viser vi dokument frå midten av 2009. For saker om bidrag kan du berre sjå dokument frå starten av 2022.",
+    en: "We present documents for cases from 2016. For cases regarding Pension, we can present documents starting from 2008 and for Disability benefit, we can present documents from 2009. For contribution matters, we are only able to present documents starting from 2022.",
   },
   ingenJournalposter: {
     nb: "Ingen registrerte saker eller dokumenter å vise",
