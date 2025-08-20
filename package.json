@@ -19,7 +19,7 @@
     "@navikt/aksel-icons": "6.1.1",
     "@navikt/ds-react": "6.1.1",
     "@navikt/nav-dekoratoren-moduler": "2.1.6",
-    "astro": "^5.7.6",
+    "astro": "^5.13.2",
     "dayjs": "1.11.10",
     "jose": "5.2.3",
     "openid-client": "5.4.3",
