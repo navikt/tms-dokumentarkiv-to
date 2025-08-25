@@ -61,7 +61,6 @@ jobs:
       - name: "Deploy to prod"
         uses: "nais/deploy/actions/deploy@v2"
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: ${{ matrix.cluster }}
           RESOURCE: nais/${{ matrix.cluster }}/nais.yaml
           VAR: image=${{ needs.build.outputs.image }},version=${{ github.sha }}
