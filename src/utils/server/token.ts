@@ -1,6 +1,7 @@
 import { requestOboToken } from "@navikt/oasis";
 import { isLocal } from "@src/utils/server/environment.ts";
 import { generateKeyPair, SignJWT } from "jose";
+import logger from "./logger";
 
 export const getOboToken = async (
   token: string,
@@ -13,7 +14,7 @@ export const getOboToken = async (
   }
 
   if (!oboResult.ok) {
-    console.error("Error getting access token: " + oboResult.error);
+    logger.error("Error getting access token: " + oboResult.error);
     throw new Error("Request oboToken for mine-saker-api failed ");
   }
 

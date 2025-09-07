@@ -3,6 +3,7 @@ import { defineMiddleware } from "astro/middleware";
 import { loginUrl } from "./urls";
 import { isInternal } from "./utils";
 import { isLocal } from "@utils/server/environment";
+import logger from "@utils/server/logger";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const bearerToken: string | null | undefined = context.request.headers.get("authorization");
@@ -17,7 +18,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   if (!bearerToken) {
-    console.info("Could not find any bearer token on the request. Redirecting to login.");
+    logger.info("Could not find any bearer token on the request. Redirecting to login.");
     return context.redirect(`${loginUrl}${params}`);
   }
 
@@ -25,7 +26,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   if (validationResult !== "valid") {
     const error = new Error(`Invalid JWT token found (cause: ${validationResult.errorType} ${validationResult.message}, redirecting to login.`);
-    console.error(error);
+    logger.error(error);
     return context.redirect(`${loginUrl}${params}`);
   }
 
