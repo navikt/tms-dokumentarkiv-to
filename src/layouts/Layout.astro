@@ -1,12 +1,12 @@
 ---
-import { fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
-import { getEnvironment } from "../utils/server/environment";
-import { baseUrlWithLanguage } from "@src/urls";
+import {fetchDecoratorReact} from "@navikt/nav-dekoratoren-moduler/ssr";
+import {getEnvironment} from "../utils/server/environment";
+import {baseUrlWithLanguage} from "@src/urls";
 import styles from "./Layout.module.css";
-import type { Language } from "@language/language";
-import type { DecoratorLocale } from "@navikt/nav-dekoratoren-moduler";
+import type {Language} from "@language/language";
+import type {DecoratorLocale} from "@navikt/nav-dekoratoren-moduler";
 
-const currentLocale:Language  = Astro.currentLocale as Language;
+const currentLocale: Language = Astro.currentLocale as Language;
 
 export interface Props {
   title: string;
@@ -14,48 +14,61 @@ export interface Props {
   languageSelectorUrl?: string;
 }
 
-const {  language, languageSelectorUrl } = Astro.props;
+const {language, languageSelectorUrl} = Astro.props;
 
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),
   params: {
     context: "privatperson",
     language: currentLocale as DecoratorLocale,
-    availableLanguages : [
+    availableLanguages: [
       {
         locale: "nb",
-        url: languageSelectorUrl ? `${baseUrlWithLanguage["nb"]}${languageSelectorUrl}`  : baseUrlWithLanguage["nb"]
+        url: languageSelectorUrl
+          ? `${baseUrlWithLanguage["nb"]}${languageSelectorUrl}`
+          : baseUrlWithLanguage["nb"],
       },
       {
         locale: "en",
-        url: languageSelectorUrl ? `${baseUrlWithLanguage["en"]}${languageSelectorUrl}` : baseUrlWithLanguage["en"]
+        url: languageSelectorUrl
+          ? `${baseUrlWithLanguage["en"]}${languageSelectorUrl}`
+          : baseUrlWithLanguage["en"],
       },
       {
         locale: "nn",
-        url: languageSelectorUrl ? `${baseUrlWithLanguage["nn"]}${languageSelectorUrl}` : baseUrlWithLanguage["nn"]
-      }
-    ]
+        url: languageSelectorUrl
+          ? `${baseUrlWithLanguage["nn"]}${languageSelectorUrl}`
+          : baseUrlWithLanguage["nn"],
+      },
+    ],
   },
 });
 ---
 
 <!doctype html>
 <html lang={language}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Dokumenter - nav.no</title>
-    <link rel="preload" href="https://cdn.nav.no/aksel/@navikt/ds-css/5.7.3/index.min.css" as="style" />
-    <link rel="stylesheet" href="https://cdn.nav.no/aksel/@navikt/ds-css/5.7.3/index.min.css" />
-    <Decorator.Styles />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Dokumenter - nav.no</title>
+    <link
+      rel="preload"
+      href="https://cdn.nav.no/aksel/@navikt/ds-css/5.7.3/index.min.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.nav.no/aksel/@navikt/ds-css/5.7.3/index.min.css"
+    />
+    <Decorator.HeadAssets />
   </head>
   <body class="main">
     <Decorator.Header />
-      <main class={styles.container}>
-        <slot />
-      </main>
+    <main class={styles.container}>
+      <slot />
+    </main>
     <Decorator.Footer />
     <Decorator.Scripts />
   </body>
