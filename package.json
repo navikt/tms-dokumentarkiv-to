@@ -17,7 +17,7 @@
     "@nanostores/react": "0.7.2",
     "@navikt/aksel-icons": "6.1.1",
     "@navikt/ds-react": "6.1.1",
-    "@navikt/nav-dekoratoren-moduler": "3.2.3",
+    "@navikt/nav-dekoratoren-moduler": "2.1.6",
     "astro": "^5.7.6",
     "dayjs": "1.11.10",
     "jose": "5.2.3",
