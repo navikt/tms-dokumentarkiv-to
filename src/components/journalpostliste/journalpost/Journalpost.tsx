@@ -6,7 +6,7 @@ import {setAvsenderMottaker} from "@utils/client/setAvsenderMottaker";
 import {format} from "date-fns";
 import type {JournalpostProps} from "../JournalpostInterfaces";
 import styles from "./Journalpost.module.css";
-import {logEvent} from "@utils/client/amplitude";
+import {logEvent} from "@utils/client/analytics";
 
 interface Props {
   journalpost: JournalpostProps;

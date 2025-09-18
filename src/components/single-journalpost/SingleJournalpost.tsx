@@ -1,22 +1,22 @@
-import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
-import type { Language } from "@language/language";
-import { text } from "@language/text";
-import {  EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
-import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
-import { fetcher, NotFoundError } from "@utils/client/api";
-import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
-import { format } from "date-fns";
+import type {JournalpostProps} from "@components/journalpostliste/JournalpostInterfaces";
+import type {Language} from "@language/language";
+import {text} from "@language/text";
+import {EyeSlashIcon, FilePdfIcon} from "@navikt/aksel-icons";
+import {BodyShort, Detail, Heading} from "@navikt/ds-react";
+import {dokumentUrl, getJournalpostUrl} from "@src/urls.client";
+import {fetcher, NotFoundError} from "@utils/client/api";
+import {setAvsenderMottaker} from "@utils/client/setAvsenderMottaker";
+import {format} from "date-fns";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SingleJournalpost.module.css";
 import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
-import { readableFileSize } from "@utils/readableFilesize";
-import { setIsError, setSingleJournalpostDisclaimerAtom } from "@store/store";
+import {readableFileSize} from "@utils/readableFilesize";
+import {setIsError, setSingleJournalpostDisclaimerAtom} from "@store/store";
 import SkeletonComponent from "@components/loader/skeleton/Skeleton";
-import { useEffect } from "react";
+import {useEffect} from "react";
 import DokumentNotFound from "./finner-ikke-dokument/DokumentNotFound";
-import { logEvent } from "@utils/client/amplitude";
+import {logEvent} from "@utils/client/analytics";
 
 interface Props {
   language: Language;
@@ -25,18 +25,27 @@ interface Props {
   fullmakt: string | null;
 }
 
-const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Props) => {
+const SingleJournalpost = ({
+  language,
+  journalpostId,
+  fullmakt,
+  temakode,
+}: Props) => {
   const journalpostUrl = journalpostId && getJournalpostUrl(journalpostId);
 
   const {
     data: journalpost,
     isLoading,
     error,
-  } = useSWRImmutable<JournalpostProps>(fullmakt ? `${journalpostUrl}?enable_repr=true` : journalpostUrl, fetcher, {revalidateOnFocus: false});
+  } = useSWRImmutable<JournalpostProps>(
+    fullmakt ? `${journalpostUrl}?enable_repr=true` : journalpostUrl,
+    fetcher,
+    {revalidateOnFocus: false}
+  );
 
   useEffect(() => {
-    if(journalpost && journalpost.dokument.tilgangssperre !== null) {
-      setSingleJournalpostDisclaimerAtom(journalpost?.dokument.tilgangssperre)
+    if (journalpost && journalpost.dokument.tilgangssperre !== null) {
+      setSingleJournalpostDisclaimerAtom(journalpost?.dokument.tilgangssperre);
     }
   }, [journalpost]);
 
@@ -56,13 +65,11 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Prop
   });
 
   if (isLoading) {
-    return (
-      <SkeletonComponent />
-    );
+    return <SkeletonComponent />;
   }
 
-  if(error instanceof NotFoundError) {
-    return <DokumentNotFound language={language}/>
+  if (error instanceof NotFoundError) {
+    return <DokumentNotFound language={language} />;
   }
 
   if (error) {
@@ -74,15 +81,14 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Prop
   }
 
   const tilgangsSperreInfo = () => {
-    if(journalpost.dokument.tilgangssperre === null)
-      return null;
-    if(journalpost.dokument.tilgangssperre === "SkannetDokument")
+    if (journalpost.dokument.tilgangssperre === null) return null;
+    if (journalpost.dokument.tilgangssperre === "SkannetDokument")
       return <span>{text.tilgangssperreSkannet[language]}</span>;
-    if(journalpost.dokument.tilgangssperre === "Tredjepart")
+    if (journalpost.dokument.tilgangssperre === "Tredjepart")
       return <span>{text.tilgangssperreTredjepart[language]}</span>;
-    if(journalpost.dokument.tilgangssperre === "Annet")
+    if (journalpost.dokument.tilgangssperre === "Annet")
       return <span>{text.tilgangssperreAnnet[language]}</span>;
-  }
+  };
 
   const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
   const avsenderText = setAvsenderMottaker(journalpost);
@@ -100,7 +106,12 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Prop
               <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
-              <a className={styles.link} href={hovedDokumentUrl} lang="nb" onClick={() => logEvent('hoveddokument', journalpost.temanavn)}>
+              <a
+                className={styles.link}
+                href={hovedDokumentUrl}
+                lang="nb"
+                onClick={() => logEvent("hoveddokument", journalpost.temanavn)}
+              >
                 <BodyShort size="medium">
                   {"Åpne " + journalpost?.dokument.tittel.toLowerCase()}
                 </BodyShort>
@@ -108,10 +119,12 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Prop
               <Detail>
                 {readableFileSize(journalpost.dokument.filstorrelse)}
               </Detail>
-            </div>   
+            </div>
           </div>
         ) : (
-          <div className={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}>
+          <div
+            className={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}
+          >
             <div className={`${styles.icon} ${styles.iconKanIkkeVises}`}>
               <EyeSlashIcon fontSize="1.5rem" />
             </div>
@@ -162,7 +175,9 @@ const SingleJournalpost = ({ language, journalpostId, fullmakt, temakode }: Prop
         </div>
         <div className={styles.detail}>
           <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium" lang="nb">{journalpost?.temanavn}</BodyShort>
+          <BodyShort size="medium" lang="nb">
+            {journalpost?.temanavn}
+          </BodyShort>
         </div>
       </div>
       <div className={styles.vedlegg}>

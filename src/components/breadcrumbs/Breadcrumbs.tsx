@@ -1,21 +1,20 @@
-import { text } from '@language/text';
-import style from './Breadcrumbs.module.css';
-import { Link } from '@navikt/ds-react';
-import { minSideUrlWithLanguage, baseUrlWithLanguage } from '@src/urls.client';
-import { logEvent } from '@src/utils/client/amplitude';
-import type { Language } from '@language/language';
+import {text} from "@language/text";
+import style from "./Breadcrumbs.module.css";
+import {minSideUrlWithLanguage, baseUrlWithLanguage} from "@src/urls.client";
+import {logEvent} from "@utils/client/analytics";
+import type {Language} from "@language/language";
 
 interface Props {
   showDokumenter: boolean;
   language: Language;
 }
 
-const Breadcrumbs = ({ showDokumenter, language }: Props) => (
+const Breadcrumbs = ({showDokumenter, language}: Props) => (
   <div className={style.container}>
     <a
       className={`${style.minSideLink} ${style.link}`}
       href={minSideUrlWithLanguage[language]}
-      onClick={() => logEvent('breadcrum', 'min-side')}
+      onClick={() => logEvent("breadcrum", "min-side")}
     >
       {text.minSide[language]}
     </a>
@@ -23,7 +22,7 @@ const Breadcrumbs = ({ showDokumenter, language }: Props) => (
       <div className={style.linkWrapper}>
         <a
           className={style.link}
-          onClick={() => logEvent('breadcrum', 'dokumenter')}
+          onClick={() => logEvent("breadcrum", "dokumenter")}
           href={baseUrlWithLanguage[language]}
         >
           {text.dokumenter[language]}

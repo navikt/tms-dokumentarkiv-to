@@ -1,12 +1,12 @@
-import type { Language } from "@language/language";
-import { text } from "@language/text";
-import { ChevronDownIcon, ChevronUpIcon } from "@navikt/aksel-icons";
-import { BodyShort, Button, Detail } from "@navikt/ds-react";
-import { dokumentUrl } from "@src/urls.client";
-import { logEvent } from "@utils/client/amplitude";
-import { readableFileSize } from "@utils/readableFilesize";
-import { useState } from "react";
-import type { DokumentProps } from "../JournalpostInterfaces";
+import type {Language} from "@language/language";
+import {text} from "@language/text";
+import {ChevronDownIcon, ChevronUpIcon} from "@navikt/aksel-icons";
+import {BodyShort, Button, Detail} from "@navikt/ds-react";
+import {dokumentUrl} from "@src/urls.client";
+import {logEvent} from "@utils/client/analytics";
+import {readableFileSize} from "@utils/readableFilesize";
+import {useState} from "react";
+import type {DokumentProps} from "../JournalpostInterfaces";
 import styles from "./Vedlegg.module.css";
 
 interface Props {
@@ -22,7 +22,7 @@ interface VedleggslenkeProps {
   brukerHarTilgang: boolean;
 }
 
-const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
+const Vedlegg = ({vedleggsListe, journalpostId, language}: Props) => {
   const [hideVedlegg, setHideVedlegg] = useState(true);
   const antallVedlegg = vedleggsListe.length;
   const hasVedlegg = antallVedlegg > 0;

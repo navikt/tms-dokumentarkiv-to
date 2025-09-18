@@ -1,11 +1,11 @@
-import { text } from "@language/text";
-import { BodyLong, Heading } from "@navikt/ds-react";
-import { digisosUrl } from "@src/urls.client";
-import { logEvent } from "@utils/client/amplitude";
+import {text} from "@language/text";
+import {BodyLong, Heading} from "@navikt/ds-react";
+import {digisosUrl} from "@src/urls.client";
+import {logEvent} from "@utils/client/analytics";
 import styles from "./Disclaimer.module.css";
-import type { Language } from "@language/language";
+import type {Language} from "@language/language";
 
-const Disclaimer = ({ language }: { language: Language }) => {
+const Disclaimer = ({language}: {language: Language}) => {
   return (
     <div className={styles.container}>
       <Heading level="2" size="small">

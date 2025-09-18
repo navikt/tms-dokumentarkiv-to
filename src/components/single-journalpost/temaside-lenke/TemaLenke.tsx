@@ -1,8 +1,8 @@
-import type { Language } from "@language/language";
-import { lenker } from "./Lenker";
+import type {Language} from "@language/language";
+import {lenker} from "./Lenker";
 import styles from "./TemaLenke.module.css";
-import { text } from "@language/text";
-import { logEvent } from "@utils/client/amplitude";
+import {text} from "@language/text";
+import {logEvent} from "@utils/client/analytics";
 
 export type Temakode =
   | "DAG"
@@ -22,7 +22,7 @@ interface Props {
   language: Language;
 }
 
-const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
+const TemaLenke = ({lenketekst, temakode, language}: Props) => {
   const type = temakode as Temakode;
 
   const unntaksKoder = [
@@ -42,17 +42,17 @@ const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
 
   if (isUnntak) {
     return (
-        <span>
-          {text.temaLenkeDel1[language]}
-          <a
-            href={lenker[type]}
-            className={styles.lenke}
-            onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
-          >
-            {isSykOrSym ? text.sykOgSymLenke[language] : lenketekst}
-          </a>
-          {text.temaLenkeDel2[language]}
-        </span>
+      <span>
+        {text.temaLenkeDel1[language]}
+        <a
+          href={lenker[type]}
+          className={styles.lenke}
+          onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
+        >
+          {isSykOrSym ? text.sykOgSymLenke[language] : lenketekst}
+        </a>
+        {text.temaLenkeDel2[language]}
+      </span>
     );
   } else {
     return null;

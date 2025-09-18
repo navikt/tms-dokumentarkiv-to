@@ -1,7 +1,7 @@
-import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
-import type { Language } from "@language/language";
-import { text } from "@language/text";
-import { BodyShort, Select } from "@navikt/ds-react";
+import type {JournalpostProps} from "@components/journalpostliste/JournalpostInterfaces";
+import type {Language} from "@language/language";
+import {text} from "@language/text";
+import {BodyShort, Select} from "@navikt/ds-react";
 import {
   getAlleJournalposterUrl,
   getFullmaktForhold,
@@ -10,9 +10,9 @@ import {
   hasDigisosContentUrl,
   digisosUrl,
 } from "@src/urls.client";
-import { logEvent } from "@utils/client/amplitude";
-import { fetcher, postUser } from "@utils/client/api";
-import { useEffect, type ChangeEvent } from "react";
+import {logEvent} from "@utils/client/analytics";
+import {fetcher, postUser} from "@utils/client/api";
+import {useEffect, type ChangeEvent} from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import styles from "./SelectFullmakt.module.css";
@@ -39,7 +39,7 @@ export interface FullmaktInfoProps {
   representertIdent: string;
 }
 
-const SelectFullmakt = ({ language }: { language: Language }) => {
+const SelectFullmakt = ({language}: {language: Language}) => {
   const {
     data: fullmakter,
     isLoading: isLoadingFullmakter,
@@ -56,7 +56,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     revalidateOnFocus: false,
   });
 
-  const { data: hasDigisosContent, error: hasDigisosContentError } =
+  const {data: hasDigisosContent, error: hasDigisosContentError} =
     useSWR<boolean>(hasDigisosContentUrl, fetcher, {
       revalidateOnFocus: false,
     });
@@ -79,7 +79,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
   }, [fullmaktInfo]);
 
   const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
-    await postUser({ ident: event.target.value });
+    await postUser({ident: event.target.value});
     mutateJournalposter();
     mutateUser();
   };
@@ -121,7 +121,7 @@ const SelectFullmakt = ({ language }: { language: Language }) => {
     let nedtrekksliste = [originalUser];
 
     fullmakter?.fullmaktsGivere?.map((fullmaktsGiver) => {
-      const user = { navn: fullmaktsGiver.navn, ident: fullmaktsGiver.ident };
+      const user = {navn: fullmaktsGiver.navn, ident: fullmaktsGiver.ident};
       nedtrekksliste = [...nedtrekksliste, user];
     });
 
