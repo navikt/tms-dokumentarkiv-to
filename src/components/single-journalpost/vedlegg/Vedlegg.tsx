@@ -1,12 +1,12 @@
-import type { DokumentProps } from "@components/journalpostliste/JournalpostInterfaces";
-import type { Language } from "@language/language";
-import { text } from "@language/text";
-import { BodyShort, Detail, Heading } from "@navikt/ds-react";
-import { dokumentUrl } from "@src/urls.client";
-import { logEvent } from "@utils/client/amplitude";
-import { readableFileSize } from "@utils/readableFilesize";
+import type {DokumentProps} from "@components/journalpostliste/JournalpostInterfaces";
+import type {Language} from "@language/language";
+import {text} from "@language/text";
+import {BodyShort, Detail, Heading} from "@navikt/ds-react";
+import {dokumentUrl} from "@src/urls.client";
+import {logEvent} from "@utils/client/analytics";
+import {readableFileSize} from "@utils/readableFilesize";
 import styles from "./Vedlegg.module.css";
-import { ExternalLinkIcon } from "@navikt/aksel-icons";
+import {ExternalLinkIcon} from "@navikt/aksel-icons";
 
 interface Props {
   vedleggsListe: DokumentProps[] | undefined;
@@ -21,7 +21,7 @@ interface VedleggslenkeProps {
   brukerHarTilgang: boolean;
 }
 
-const Vedlegg = ({ vedleggsListe, journalpostId, language }: Props) => {
+const Vedlegg = ({vedleggsListe, journalpostId, language}: Props) => {
   const baseUrl = `${dokumentUrl}/${journalpostId}`;
   const hasVedlegg = vedleggsListe && vedleggsListe.length > 0;
 
