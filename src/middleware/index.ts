@@ -8,7 +8,7 @@ import {isInternal} from "./utils";
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
   const params = encodeURIComponent(context.url.search);
-  const loginUrl = `/oauth2/login?redirect=${REDIRECT_URI}`;
+  const loginUrl = `${REDIRECT_URI}/oauth2/login?redirect=${REDIRECT_URI}`;
 
   if (isLocal) {
     return next();
