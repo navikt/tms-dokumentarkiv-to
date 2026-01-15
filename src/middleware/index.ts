@@ -4,11 +4,12 @@ import {defineMiddleware} from "astro/middleware";
 import {isLocal} from "@src/utils/server/environment";
 import logger from "@src/utils/server/logger";
 import {isInternal} from "./utils";
+import {baseUrl} from "@src/urls";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
   const params = encodeURIComponent(context.url.search);
-  const loginUrl = `https://www.nav.no/dokumentarkiv/oauth2/login?redirect=https://www.nav.no/dokumentarkiv`;
+  const loginUrl = `${baseUrl}/oauth2/login?redirect=${baseUrl}`;
 
   if (isLocal) {
     return next();
