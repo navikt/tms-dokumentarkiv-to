@@ -8,7 +8,7 @@ import {isInternal} from "./utils";
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
   const params = encodeURIComponent(context.url.search);
-  const loginUrl = `/minside/utkast/oauth2/login?redirect=${REDIRECT_URI}`;
+  const loginUrl = `https://www.nav.no/dokumentarkiv/oauth2/login?redirect=https://www.nav.no/dokumentarkiv`;
 
   if (isLocal) {
     return next();
