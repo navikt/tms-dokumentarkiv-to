@@ -9,7 +9,7 @@ import {baseUrl} from "@src/urls";
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
   const params = encodeURIComponent(context.url.search);
-  const loginUrl = `${baseUrl}/oauth2/login?redirect=${baseUrl}`;
+  const loginUrl = `/oauth2/login?redirect=${REDIRECT_URI}`;
 
   if (isLocal) {
     return next();
