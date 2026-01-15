@@ -4,7 +4,6 @@ import {defineMiddleware} from "astro/middleware";
 import {isLocal} from "@src/utils/server/environment";
 import logger from "@src/utils/server/logger";
 import {isInternal} from "./utils";
-import {baseUrl} from "@src/urls";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
