@@ -1,19 +1,28 @@
 ---
 import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
 import Layout from "@layouts/Layout.astro";
-import type { Language } from "@language/language";
+import type {Language} from "@language/language";
 import FeilMelding from "@components/feilmelding/Feilmelding";
 import Breadcrumbs from "@components/breadcrumbs/Breadcrumbs";
 
-const { temakode, journalpostid } = Astro.params;
+const {temakode, journalpostid} = Astro.params;
 const language = Astro.currentLocale as Language;
 const params = Astro.url.searchParams;
 const fullmakt = params.get("fullmakt");
-const languageSelectorUrl = `/tema/${temakode}/${journalpostid}`
+const languageSelectorUrl = `/tema/${temakode}/${journalpostid}`;
 ---
 
-<Layout title="Dokumentarkiv" language={language} languageSelectorUrl={languageSelectorUrl}>
-  <Breadcrumbs showDokumenter={true} language={language} client:only="react"/>
+<Layout
+  title="Dokumentarkiv - nav.no"
+  language={language}
+  languageSelectorUrl={languageSelectorUrl}
+>
+  <Breadcrumbs showDokumenter={true} language={language} client:only="react" />
   <FeilMelding language={language} client:only="react" />
-  <SingleJournalpost language={language} journalpostId={journalpostid} fullmakt={fullmakt} client:only="react"/>
+  <SingleJournalpost
+    language={language}
+    journalpostId={journalpostid}
+    fullmakt={fullmakt}
+    client:only="react"
+  />
 </Layout>

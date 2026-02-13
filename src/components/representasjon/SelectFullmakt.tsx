@@ -1,7 +1,7 @@
 import type {JournalpostProps} from "@components/journalpostliste/JournalpostInterfaces";
 import type {Language} from "@language/language";
 import {text} from "@language/text";
-import {BodyShort, Select} from "@navikt/ds-react";
+import {BodyShort, Heading, Select} from "@navikt/ds-react";
 import {
   getAlleJournalposterUrl,
   getFullmaktForhold,
@@ -168,7 +168,12 @@ const SelectFullmakt = ({language}: {language: Language}) => {
         </div>
       ) : null}
       {fullmaktInfo?.viserRepresentertesData && (
-        <BodyShort size="medium" className={styles.heading} aria-live="polite">
+        <Heading
+          className={styles.representasjonsHeading}
+          level="2"
+          size="xsmall"
+          aria-live="polite"
+        >
           {text.representasjonStandardTekst[language] +
             fullmaktInfo?.representertNavn +
             ". "}
@@ -182,7 +187,7 @@ const SelectFullmakt = ({language}: {language: Language}) => {
               </a>
             </span>
           )}
-        </BodyShort>
+        </Heading>
       )}
     </>
   );
