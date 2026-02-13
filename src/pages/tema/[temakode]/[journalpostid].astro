@@ -11,7 +11,7 @@ const fullmakt = params.get("fullmakt");
 const language = Astro.currentLocale as Language;
 ---
 
-<Layout title="Dokumentarkiv - nav.no" language={language}>
+<Layout title="Dokumentdetaljer - nav.no" language={language}>
   <Breadcrumbs showDokumenter={true} language={language} client:only="react" />
   <FeilMelding language={language} client:only="react" />
   <SingleJournalpost

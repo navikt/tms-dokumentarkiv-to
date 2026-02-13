@@ -15,7 +15,7 @@ const params = Astro.params;
 const tema = params.temakode ? params.temakode : null;
 ---
 
-<Layout title="Dokumentarkiv - nav.no" language={language}>
+<Layout title="Dokumenter - nav.no" language={language}>
   <Breadcrumbs showDokumenter={false} language={language} client:only="react" />
   <FeilMelding language={language} client:only="react" />
   <Heading level="1" size="large">
@@ -24,5 +24,4 @@ const tema = params.temakode ? params.temakode : null;
   <SelectFullmakt language={language} client:only="react" />
   <Filters language={language} queryParam={tema} client:only="react" />
   <Journalpostliste language={language} client:only="react" />
-  <Disclaimer language={language} client:only="react" />
 </Layout>

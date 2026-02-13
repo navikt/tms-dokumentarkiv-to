@@ -144,6 +144,7 @@ const SelectFullmakt = ({language}: {language: Language}) => {
             }
             onChange={handleSelectChange}
             onClick={() => logEvent("Nedtrekksliste", "Representasjon")}
+            aria-controls="journalpostliste"
           >
             {fullmakter &&
               nedtrekksliste?.map((user) => (
