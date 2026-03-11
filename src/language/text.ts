@@ -107,6 +107,11 @@ export const text = {
     nn: "Ditt sjukefråvær",
     en: "Sickness benefit",
   },
+  pleiepengerTitle: {
+    nb: "Dine pleiepenger",
+    nn: "Dine pleiepengar",
+    en: "Need translation",
+  },
   temaLenkeOms: {
     nb: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
     nn: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",

@@ -77,7 +77,7 @@ const TemaLenke = ({lenketekst, temakode, language}: Props) => {
             className={styles.lenke}
             onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
           >
-            {lenketekst}
+            {text.pleiepengerTitle[language]}
           </a>
           {text.temaLenkeOms[language]}
         </span>
