@@ -48,7 +48,7 @@ const Journalpost = ({journalpost, language, isValgtRepresentant}: Props) => {
           </Tag>
         </div>
         <div className={styles.chevron}>
-          <ChevronRightIcon fontSize="1.25rem" />
+          <ChevronRightIcon fontSize="1.25rem" aria-hidden="true" />
         </div>
       </article>
     </li>

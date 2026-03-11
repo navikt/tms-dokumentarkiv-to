@@ -23,3 +23,9 @@
 .heading {
   margin-top: 2rem;
 }
+
+.representasjonsHeading {
+  font-weight: 400;
+  font-size: large;
+  margin-top: 2rem;
+}

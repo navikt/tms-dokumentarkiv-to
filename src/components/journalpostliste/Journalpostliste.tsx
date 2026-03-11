@@ -25,6 +25,7 @@ import styles from "./Journalpostliste.module.css";
 import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
 import Journalpost from "./journalpost/Journalpost";
 import {logEvent} from "@utils/client/analytics";
+import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
 
 interface Props {
   language: Language;
@@ -114,7 +115,11 @@ const Journalpostliste = ({language}: Props) => {
                     </option>
                   </Select>
                 </div>
-                <ul className={styles.list} key="journalpostliste">
+                <ul
+                  className={styles.list}
+                  key="journalpostliste"
+                  id="journalpostliste"
+                >
                   {filteredList?.map((journalpost: JournalpostProps) => {
                     return (
                       <Journalpost
@@ -132,6 +137,10 @@ const Journalpostliste = ({language}: Props) => {
             )}
           </div>
         </div>
+        <Disclaimer
+          language={language}
+          showingRepresentantDocuments={isValgtRepresentant}
+        />
       </div>
     </>
   );
