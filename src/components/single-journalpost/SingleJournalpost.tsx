@@ -83,11 +83,25 @@ const SingleJournalpost = ({
   const tilgangsSperreInfo = () => {
     if (journalpost.dokument.tilgangssperre === null) return null;
     if (journalpost.dokument.tilgangssperre === "SkannetDokument")
-      return <span>{text.tilgangssperreSkannet[language]}</span>;
+      return (
+        <div className={styles.tilgangssperre}>
+          <span className={styles.tilgangssperre}>
+            {text.tilgangssperreSkannet[language]}
+          </span>
+        </div>
+      );
     if (journalpost.dokument.tilgangssperre === "Tredjepart")
-      return <span>{text.tilgangssperreTredjepart[language]}</span>;
+      return (
+        <div className={styles.tilgangssperre}>
+          <span>{text.tilgangssperreTredjepart[language]}</span>
+        </div>
+      );
     if (journalpost.dokument.tilgangssperre === "Annet")
-      return <span>{text.tilgangssperreAnnet[language]}</span>;
+      return (
+        <div className={styles.tilgangssperre}>
+          <span>{text.tilgangssperreAnnet[language]}</span>
+        </div>
+      );
   };
 
   const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;

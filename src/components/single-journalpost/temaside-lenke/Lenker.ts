@@ -1,4 +1,4 @@
-import { getEnvironmentClientSide } from "@utils/client/environment";
+import {getEnvironmentClientSide} from "@utils/client/environment";
 
 const DAGPENGER = {
   local: "https://localhost:3000/arbeid/dagpenger/mine-dagpenger",
@@ -31,14 +31,16 @@ const SOSIALHJELP = {
 const PENSJON = {
   local: "https://localhost:3000/dinpensjon",
   dev: "https://pensjon-selvbetjening-dinpensjon-frontend-borger-q2.intern.dev.nav.no/pensjon/selvbetjening/dinpensjon",
-  ansatt: "https://pensjon-selvbetjening-dinpensjon-frontend-borger-q2.intern.dev.nav.no/pensjon/selvbetjening/dinpensjon",
+  ansatt:
+    "https://pensjon-selvbetjening-dinpensjon-frontend-borger-q2.intern.dev.nav.no/pensjon/selvbetjening/dinpensjon",
   prod: "https://www.nav.no/pensjon/selvbetjening/dinpensjon",
 };
 
 const UFORETRYGD = {
   local: "https://localhost:3000/uforetrygd",
   dev: "https://uforetrygd-selvbetjening-frontend-borger.intern.dev.nav.no/uforetrygd/selvbetjening",
-  ansatt: "https://uforetrygd-selvbetjening-frontend-borger.ansatt.dev.nav.no/uforetrygd/selvbetjening",
+  ansatt:
+    "https://uforetrygd-selvbetjening-frontend-borger.ansatt.dev.nav.no/uforetrygd/selvbetjening",
   prod: "https://www.nav.no/uforetrygd/selvbetjening",
 };
 
@@ -49,8 +51,10 @@ export const sosialhjelpUrl = SOSIALHJELP[getEnvironmentClientSide()];
 export const pensjonsUrl = PENSJON[getEnvironmentClientSide()];
 export const uforetrygdUrl = UFORETRYGD[getEnvironmentClientSide()];
 export const arbeidsavklaringspengerUrl = "https://www.nav.no/aap/mine-aap/";
-export const sykefravaerUrl = "https://www.nav.no/syk/sykefravaer"
-export const omsorgspengerUrl = "https://www.nav.no/familie/sykdom-i-familien/soknad/innsyn";
+export const sykefravaerUrl = "https://www.nav.no/syk/sykefravaer";
+export const omsorgspengerUrl =
+  "https://www.nav.no/familie/sykdom-i-familien/soknad/innsyn";
+export const omsorgspengerKontaktOssUrl = "www.nav.no/kontaktoss";
 
 export const lenker = {
   DAG: dagpengerUrl,
@@ -62,5 +66,5 @@ export const lenker = {
   SYM: sykefravaerUrl,
   PEN: pensjonsUrl,
   UFO: uforetrygdUrl,
-  OMS: omsorgspengerUrl
+  OMS: omsorgspengerUrl,
 };

@@ -107,6 +107,21 @@ export const text = {
     nn: "Ditt sjukefråvær",
     en: "Sickness benefit",
   },
+  temaLenkeOms: {
+    nb: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
+    nn: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
+    en: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
+  },
+  temaLenkeOmsDel2: {
+    nb: "Har du spørsmål om saker på omsorgspenger, opplæringspenger eller pleiepenger i livets sluttfase kan du ",
+    nn: "Har du spørsmål om saker på omsorgspenger, opplæringspenger eller pleiepenger i livets sluttfase kan du ",
+    en: "Har du spørsmål om saker på omsorgspenger, opplæringspenger eller pleiepenger i livets sluttfase kan du ",
+  },
+  temaLenkeOmsKontakteOss: {
+    nb: "kontakte oss",
+    nn: "kontakte oss",
+    en: "contact us",
+  },
   vedleggTitle: {
     nb: "Vedlegg",
     nn: "Vedlegg",
