@@ -83,11 +83,25 @@ const SingleJournalpost = ({
   const tilgangsSperreInfo = () => {
     if (journalpost.dokument.tilgangssperre === null) return null;
     if (journalpost.dokument.tilgangssperre === "SkannetDokument")
-      return <span>{text.tilgangssperreSkannet[language]}</span>;
+      return (
+        <div className={styles.tilgangssperre}>
+          <span className={styles.tilgangssperre}>
+            {text.tilgangssperreSkannet[language]}
+          </span>
+        </div>
+      );
     if (journalpost.dokument.tilgangssperre === "Tredjepart")
-      return <span>{text.tilgangssperreTredjepart[language]}</span>;
+      return (
+        <div className={styles.tilgangssperre}>
+          <span>{text.tilgangssperreTredjepart[language]}</span>
+        </div>
+      );
     if (journalpost.dokument.tilgangssperre === "Annet")
-      return <span>{text.tilgangssperreAnnet[language]}</span>;
+      return (
+        <div className={styles.tilgangssperre}>
+          <span>{text.tilgangssperreAnnet[language]}</span>
+        </div>
+      );
   };
 
   const hovedDokumentUrl = `${dokumentUrl}/${journalpostId}/${journalpost.dokument.dokumentInfoId}`;
@@ -103,7 +117,7 @@ const SingleJournalpost = ({
         {journalpost?.dokument.brukerHarTilgang ? (
           <div className={`${styles.container} ${styles.hover}`}>
             <div className={styles.icon}>
-              <FilePdfIcon fontSize="1.5rem" title="pdf-ikon" />
+              <FilePdfIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
               <a
@@ -126,10 +140,7 @@ const SingleJournalpost = ({
             className={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}
           >
             <div className={`${styles.icon} ${styles.iconKanIkkeVises}`}>
-              <EyeSlashIcon
-                fontSize="1.5rem"
-                title="Dokument ikke tilgjengelig ikon"
-              />
+              <EyeSlashIcon fontSize="1.5rem" />
             </div>
             <div className={styles.content}>
               <div className={styles.tittelIkkeTilgang}>
@@ -158,43 +169,31 @@ const SingleJournalpost = ({
           language={language}
         />
       </div>
-      <dl className={styles.details}>
+      <div className={styles.details}>
         <div className={styles.detailTitle}>
           <Heading level="2" size="xsmall">
             {text.detaljerTitle[language]}
           </Heading>
         </div>
         <div className={styles.detail}>
-          <dt>
-            <BodyShort size="medium">
-              {isInngaaendeJournalpost
-                ? text.sendtInnTitle[language]
-                : text.sendtTilTitle[language]}
-            </BodyShort>
-          </dt>
-          <dd>
-            <BodyShort size="medium">{avsenderText}</BodyShort>
-          </dd>
+          <BodyShort size="medium">
+            {isInngaaendeJournalpost
+              ? text.sendtInnTitle[language]
+              : text.sendtTilTitle[language]}
+          </BodyShort>
+          <BodyShort size="medium">{avsenderText}</BodyShort>
         </div>
         <div className={styles.detail}>
-          <dt>
-            <BodyShort size="medium">{text.datoTitle[language]}</BodyShort>
-          </dt>
-          <dd>
-            <BodyShort size="medium">{dato}</BodyShort>
-          </dd>
+          <BodyShort size="medium">{text.datoTitle[language]}</BodyShort>
+          <BodyShort size="medium">{dato}</BodyShort>
         </div>
         <div className={styles.detail}>
-          <dt>
-            <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          </dt>
-          <dd>
-            <BodyShort size="medium" lang="nb">
-              {journalpost?.temanavn}
-            </BodyShort>
-          </dd>
+          <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
+          <BodyShort size="medium" lang="nb">
+            {journalpost?.temanavn}
+          </BodyShort>
         </div>
-      </dl>
+      </div>
       <div className={styles.vedlegg}>
         <Vedlegg
           vedleggsListe={veddleggsListe}

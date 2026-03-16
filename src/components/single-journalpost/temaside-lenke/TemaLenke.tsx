@@ -1,5 +1,5 @@
 import type {Language} from "@language/language";
-import {lenker} from "./Lenker";
+import {lenker, omsorgspengerKontaktOssUrl} from "./Lenker";
 import styles from "./TemaLenke.module.css";
 import {text} from "@language/text";
 import {logEvent} from "@utils/client/analytics";
@@ -38,22 +38,77 @@ const TemaLenke = ({lenketekst, temakode, language}: Props) => {
     "OMS",
   ];
   const isUnntak = unntaksKoder.includes(type);
-  const isSykOrSym = type === "SYM" || type === "SYK";
+
+  const StandardLenke = () => (
+    <span>
+      {text.temaLenkeDel1[language]}
+      <a
+        href={lenker[type]}
+        className={styles.lenke}
+        onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
+      >
+        {lenketekst}
+      </a>
+      {text.temaLenkeDel2[language]}
+    </span>
+  );
+
+  const SykAndSymLenke = () => (
+    <span>
+      {text.temaLenkeDel1[language]}
+      <a
+        href={lenker[type]}
+        className={styles.lenke}
+        onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
+      >
+        {text.sykOgSymLenke[language]}
+      </a>
+      {text.temaLenkeDel2[language]}
+    </span>
+  );
+
+  const OmsLenke = () => (
+    <>
+      <div className={styles.omsLenke}>
+        <span>
+          {text.temaLenkeDel1[language]}
+          <a
+            href={lenker[type]}
+            className={styles.lenke}
+            onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
+          >
+            {text.pleiepengerTitle[language]}
+          </a>
+          {text.temaLenkeOms[language]}
+        </span>
+      </div>
+      <div>
+        <span>
+          {text.temaLenkeOmsDel2[language]}
+          <a
+            href={omsorgspengerKontaktOssUrl}
+            className={styles.lenke}
+            onClick={() => logEvent("Lenke", "Temalenke", "Kontakt oss")}
+          >
+            {text.temaLenkeOmsKontakteOss[language]}
+          </a>
+          .
+        </span>
+      </div>
+    </>
+  );
 
   if (isUnntak) {
-    return (
-      <span>
-        {text.temaLenkeDel1[language]}
-        <a
-          href={lenker[type]}
-          className={styles.lenke}
-          onClick={() => logEvent("Lenke", "Temalenke", lenketekst)}
-        >
-          {isSykOrSym ? text.sykOgSymLenke[language] : lenketekst}
-        </a>
-        {text.temaLenkeDel2[language]}
-      </span>
-    );
+    switch (type) {
+      case "OMS":
+        return <OmsLenke />;
+      case "SYK":
+        return <SykAndSymLenke />;
+      case "SYM":
+        return <SykAndSymLenke />;
+      default:
+        return <StandardLenke />;
+    }
   } else {
     return null;
   }

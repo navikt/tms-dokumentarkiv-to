@@ -46,7 +46,7 @@
 }
 
 .link::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -93,4 +93,8 @@
   margin-top: 2rem;
   padding: 2rem 1rem;
   border-radius: 8px;
+}
+
+.tilgangssperre {
+  margin-bottom: 1rem;
 }
