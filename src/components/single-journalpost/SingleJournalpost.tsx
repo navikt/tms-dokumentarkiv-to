@@ -117,7 +117,7 @@ const SingleJournalpost = ({
         {journalpost?.dokument.brukerHarTilgang ? (
           <div className={`${styles.container} ${styles.hover}`}>
             <div className={styles.icon}>
-              <FilePdfIcon fontSize="1.5rem" />
+              <FilePdfIcon fontSize="1.5rem" title="pdf-ikon" />
             </div>
             <div className={styles.content}>
               <a
@@ -140,7 +140,10 @@ const SingleJournalpost = ({
             className={`${styles.container} ${styles.kanIkkeVises} ${styles.hover}`}
           >
             <div className={`${styles.icon} ${styles.iconKanIkkeVises}`}>
-              <EyeSlashIcon fontSize="1.5rem" />
+              <EyeSlashIcon
+                fontSize="1.5rem"
+                title="Dokument ikke tilgjengelig ikon"
+              />
             </div>
             <div className={styles.content}>
               <div className={styles.tittelIkkeTilgang}>
@@ -169,31 +172,43 @@ const SingleJournalpost = ({
           language={language}
         />
       </div>
-      <div className={styles.details}>
+      <dl className={styles.details}>
         <div className={styles.detailTitle}>
           <Heading level="2" size="xsmall">
             {text.detaljerTitle[language]}
           </Heading>
         </div>
         <div className={styles.detail}>
-          <BodyShort size="medium">
-            {isInngaaendeJournalpost
-              ? text.sendtInnTitle[language]
-              : text.sendtTilTitle[language]}
-          </BodyShort>
-          <BodyShort size="medium">{avsenderText}</BodyShort>
+          <dt>
+            <BodyShort size="medium">
+              {isInngaaendeJournalpost
+                ? text.sendtInnTitle[language]
+                : text.sendtTilTitle[language]}
+            </BodyShort>
+          </dt>
+          <dd>
+            <BodyShort size="medium">{avsenderText}</BodyShort>
+          </dd>
         </div>
         <div className={styles.detail}>
-          <BodyShort size="medium">{text.datoTitle[language]}</BodyShort>
-          <BodyShort size="medium">{dato}</BodyShort>
+          <dt>
+            <BodyShort size="medium">{text.datoTitle[language]}</BodyShort>
+          </dt>
+          <dd>
+            <BodyShort size="medium">{dato}</BodyShort>
+          </dd>
         </div>
         <div className={styles.detail}>
-          <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
-          <BodyShort size="medium" lang="nb">
-            {journalpost?.temanavn}
-          </BodyShort>
+          <dt>
+            <BodyShort size="medium">{text.temaTitle[language]}</BodyShort>
+          </dt>
+          <dd>
+            <BodyShort size="medium" lang="nb">
+              {journalpost?.temanavn}
+            </BodyShort>
+          </dd>
         </div>
-      </div>
+      </dl>
       <div className={styles.vedlegg}>
         <Vedlegg
           vedleggsListe={veddleggsListe}

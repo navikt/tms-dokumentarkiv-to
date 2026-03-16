@@ -5,23 +5,32 @@ import {logEvent} from "@utils/client/analytics";
 import styles from "./Disclaimer.module.css";
 import type {Language} from "@language/language";
 
-const Disclaimer = ({language}: {language: Language}) => {
+interface Props {
+  language: Language;
+  showingRepresentantDocuments: boolean;
+}
+
+const Disclaimer = ({language, showingRepresentantDocuments}: Props) => {
+  const hideSosialhjelpLenke = showingRepresentantDocuments ? false : true;
+
   return (
     <div className={styles.container}>
       <Heading level="2" size="small">
         {text.landingssideDisclaimerTittel[language]}
       </Heading>
       <ul className={styles.list}>
-        <li>
-          <BodyLong>
-            <a
-              href={digisosUrl}
-              onClick={() => logEvent("Lenke", "Sosialhjelp lenke")}
-            >
-              {text.sosialhjelpLenketekst[language]}
-            </a>
-          </BodyLong>
-        </li>
+        {hideSosialhjelpLenke && (
+          <li>
+            <BodyLong>
+              <a
+                href={digisosUrl}
+                onClick={() => logEvent("Lenke", "Sosialhjelp lenke")}
+              >
+                {text.sosialhjelpLenketekst[language]}
+              </a>
+            </BodyLong>
+          </li>
+        )}
         <li>
           <BodyLong>
             {text.landingssideDisclaimerListepunktTo[language]}

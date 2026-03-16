@@ -12,11 +12,7 @@ const language = Astro.currentLocale as Language;
 const languageSelectorUrl = `/tema/${temakode}/${journalpostid}`;
 ---
 
-<Layout
-  title="Dokumentarkiv"
-  language={language}
-  languageSelectorUrl={languageSelectorUrl}
->
+<Layout title="Dokumentdetaljer - nav.no" language={language} languageSelectorUrl={languageSelectorUrl}>
   <Breadcrumbs showDokumenter={true} language={language} client:only="react" />
   <FeilMelding language={language} client:only="react" />
   <SingleJournalpost

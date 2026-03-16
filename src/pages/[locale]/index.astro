@@ -5,25 +5,23 @@ import FeilMelding from "@components/feilmelding/Feilmelding";
 import Filters from "@components/filters/Filters";
 import Journalpostliste from "@components/journalpostliste/Journalpostliste";
 import SelectFullmakt from "@components/representasjon/SelectFullmakt";
-import type { Language } from "@language/language";
-import { text } from "@language/text";
+import type {Language} from "@language/language";
+import {text} from "@language/text";
 import Layout from "@layouts/Layout.astro";
-import { Heading } from "@navikt/ds-react";
+import {Heading} from "@navikt/ds-react";
 
 const language = Astro.currentLocale as Language;
 const params = Astro.url.searchParams;
-const tema = params.get("tema")
-
+const tema = params.get("tema");
 ---
 
-<Layout title="Dokumentarkiv" language={language}>
-  <Breadcrumbs showDokumenter={false} language={language} client:only="react"/>
-  <FeilMelding language={language} client:only="react"/>
+<Layout title="Dokumenter - nav.no" language={language}>
+  <Breadcrumbs showDokumenter={false} language={language} client:only="react" />
+  <FeilMelding language={language} client:only="react" />
   <Heading level="1" size="large">
     {text.dokumenter[language]}
   </Heading>
-  <SelectFullmakt language={language} client:only="react"/>
-  <Filters language={language} queryParam={tema} client:only="react"/>
-  <Journalpostliste language={language} client:only="react"/>
-  <Disclaimer language={language} client:only="react"/>
+  <SelectFullmakt language={language} client:only="react" />
+  <Filters language={language} queryParam={tema} client:only="react" />
+  <Journalpostliste language={language} client:only="react" />
 </Layout>
