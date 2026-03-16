@@ -110,17 +110,17 @@ export const text = {
   pleiepengerTitle: {
     nb: "Dine pleiepenger",
     nn: "Dine pleiepengar",
-    en: "Need translation",
+    en: "Dine pleiepenger",
   },
   temaLenkeOms: {
     nb: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
-    nn: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
-    en: " finner du informasjon om endringer og status i saker om pleiepenger sykt barn.",
+    nn: " finn du informasjon om endringar og status i saker om pleiepengar sjukt barn.",
+    en: " you will find information about changes and the status of cases regarding attendance allowance (pleiepenger) for a sick child.",
   },
   temaLenkeOmsDel2: {
     nb: "Har du spørsmål om saker på omsorgspenger, opplæringspenger eller pleiepenger i livets sluttfase kan du ",
-    nn: "Har du spørsmål om saker på omsorgspenger, opplæringspenger eller pleiepenger i livets sluttfase kan du ",
-    en: "Har du spørsmål om saker på omsorgspenger, opplæringspenger eller pleiepenger i livets sluttfase kan du ",
+    nn: "Har du spørsmål om saker på omsorgspengar, opplæringspengar eller pleiepengar i livets sluttfase, kan du ",
+    en: "If you have questions about cases regarding care benefit, training allowance or attendance allowance in the final phase of life, you can ",
   },
   temaLenkeOmsKontakteOss: {
     nb: "kontakte oss",
