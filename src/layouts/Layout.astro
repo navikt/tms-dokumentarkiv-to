@@ -16,6 +16,12 @@ export interface Props {
 
 const {language, languageSelectorUrl} = Astro.props;
 
+console.log(
+  Astro.props,
+  "lang: " + language,
+  "langUrl: " + languageSelectorUrl
+);
+
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),
   params: {
