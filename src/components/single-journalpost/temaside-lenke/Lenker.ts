@@ -44,6 +44,13 @@ const UFORETRYGD = {
   prod: "https://www.nav.no/uforetrygd/selvbetjening",
 };
 
+const KONTAKT_OSS = {
+  local: "https://localhost:3000/kontaktoss",
+  dev: "https://www.ansatt.dev.nav.no/kontaktoss",
+  ansatt: "https://www.ansatt.dev.nav.no/kontaktoss",
+  prod: "https://www.nav.no/kontaktoss",
+};
+
 export const dagpengerUrl = DAGPENGER[getEnvironmentClientSide()];
 export const hjelpemidlerUrl = HJELPEMIDLER[getEnvironmentClientSide()];
 export const foreldrepengerUrl = FORELDREPENGER[getEnvironmentClientSide()];
@@ -54,7 +61,8 @@ export const arbeidsavklaringspengerUrl = "https://www.nav.no/aap/mine-aap/";
 export const sykefravaerUrl = "https://www.nav.no/syk/sykefravaer";
 export const omsorgspengerUrl =
   "https://www.nav.no/familie/sykdom-i-familien/soknad/innsyn";
-export const omsorgspengerKontaktOssUrl = "www.nav.no/kontaktoss";
+export const omsorgspengerKontaktOssUrl =
+  KONTAKT_OSS[getEnvironmentClientSide()];
 
 export const lenker = {
   DAG: dagpengerUrl,
