@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  color: var(--a-text-default);
-  background-color: var(--a-bg-subtle);
+  color: var(--ax-text-neutral);
+  background-color: var(--ax-bg-sunken);
   border-radius: 8px;
   padding: 1rem;
   margin-top: 2rem;
@@ -29,19 +29,19 @@
   width: 2.5rem;
   padding: 0.5rem;
   border-radius: 8px;
-  color: var(--a-surface-action);
-  background-color: var(--a-bg-default);
+  color: var(--ax-text-accent-subtle);
+  background-color: var(--ax-bg-default);
   line-height: 0;
 }
 
 .iconKanIkkeVises {
-  color: var(--a-text-default);
+  color: var(--ax-text-neutral);
 }
 
 .link {
   margin: 0;
   text-decoration: underline;
-  color: var(--a-text-action);
+  color: var(--ax-text-accent-subtle);
   text-wrap: balance;
 }
 
@@ -55,7 +55,7 @@
 .tittelIkkeTilgang {
   margin: 0.2rem 0;
   text-decoration: none;
-  color: var(--a-text-subtle);
+  color: var(--ax-text-neutral-subtle);
   text-wrap: balance;
 }
 
@@ -81,7 +81,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.75rem 0;
-  border-top: 1px solid var(--a-bg-subtle);
+  border-top: 1px solid var(--ax-border-neutral-subtle);
 }
 
 .vedlegg {
@@ -89,7 +89,7 @@
 }
 
 .kanIkkeViseDokument {
-  background-color: var(--a-bg-subtle);
+  background-color: var(--ax-bg-sunken);
   margin-top: 2rem;
   padding: 2rem 1rem;
   border-radius: 8px;

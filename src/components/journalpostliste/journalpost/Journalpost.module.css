@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  color: var(--a-text-default);
+  color: var(--ax-text-neutral);
   text-decoration: none;
-  background: var(--a-surface-subtle);
+  background: var(--ax-bg-neutral-soft);
   padding: 1rem;
   margin-bottom: 0.2rem;
   border-radius: 4px;
@@ -20,7 +20,7 @@
 
 .link {
   text-decoration: underline;
-  color: var(--a-text-action);
+  color: var(--ax-text-accent-subtle);
   text-wrap: balance;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .link:focus::before {
-  border-color: var(--a-surface-action-selected-hover);
+  border-color: var(--ax-border-accent-strong);
 }
 
 .link:focus {

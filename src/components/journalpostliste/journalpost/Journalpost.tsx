@@ -43,7 +43,7 @@ const Journalpost = ({journalpost, language, isValgtRepresentant}: Props) => {
               {journalpost.tittel}
             </BodyShort>
           </a>
-          <Tag variant="neutral" className={styles.tag} lang="nb">
+          <Tag variant="moderate" data-color="neutral" className={styles.tag} lang="nb">
             {journalpost.temanavn}
           </Tag>
         </div>

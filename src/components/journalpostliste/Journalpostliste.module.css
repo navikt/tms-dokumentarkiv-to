@@ -12,7 +12,7 @@
   margin-top: 1rem;
   margin-left: calc(((100vw - 100%) / 2) * -1);
   margin-right: calc(((100vw - 100%) / 2) * -1);
-  background-color: var(--a-surface-subtle);
+  background-color: var(--ax-bg-neutral-soft);
 }
 
 .ingress {
@@ -21,7 +21,7 @@
 
 .sistEndret {
   margin-top: 2.5rem;
-  color: var(--a-text-subtle);
+  color: var(--ax-text-neutral-subtle);
   font-size: 1rem;
 }
 
