@@ -7,11 +7,6 @@
   margin: 0 auto;
 }
 
-.pageHeader h1 {
-  color: var(--ax-text-neutral);
-  margin-bottom: 10px;
-}
-
 .breadcrumb {
   margin: 2rem 0;
 }

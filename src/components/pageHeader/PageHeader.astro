@@ -1,5 +1,5 @@
 ---
-import {BodyLong, Heading, Link} from "@navikt/ds-react";
+import {BodyLong, Link} from "@navikt/ds-react";
 import styles from "./PageHeader.module.css";
 
 interface BreadcrumbItem {
@@ -8,12 +8,11 @@ interface BreadcrumbItem {
 }
 
 interface Props {
-  title: string;
   description?: string;
   breadcrumbItems: BreadcrumbItem[];
 }
 
-const {title, description, breadcrumbItems} = Astro.props;
+const {description, breadcrumbItems} = Astro.props;
 ---
 
 <div class={styles.pageHeader}>
@@ -28,9 +27,7 @@ const {title, description, breadcrumbItems} = Astro.props;
       }
     </ol>
   </nav>
-  <Heading size="large" level="1">
-    {title}
-  </Heading>
+  <slot />
   {
     description && (
       <BodyLong className={styles.description} size="large">

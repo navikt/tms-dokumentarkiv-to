@@ -7,6 +7,7 @@ import SelectFullmakt from "@components/representasjon/SelectFullmakt";
 import type {Language} from "@language/language";
 import {text} from "@language/text";
 import Layout from "@layouts/Layout.astro";
+import {Heading} from "@navikt/ds-react";
 import {minSideUrlWithLanguage} from "@src/urls";
 
 const language = Astro.currentLocale as Language;
@@ -17,12 +18,15 @@ const tema = params.get("tema");
 <Layout title="Dokumenter - nav.no" language={language}>
   <FeilMelding language={language} client:only="react" />
   <PageHeader
-    title={text.dokumenter[language]}
     description={text.dokumenterIngress[language]}
     breadcrumbItems={[
       {label: text.minSide[language], href: minSideUrlWithLanguage[language]},
     ]}
-  />
+  >
+    <Heading level="1" size="xlarge">
+      {text.dokumenter[language]}
+    </Heading>
+  </PageHeader>
   <SelectFullmakt language={language} client:only="react" />
   <Filters language={language} queryParam={tema} client:only="react" />
   <Journalpostliste language={language} client:only="react" />

@@ -3,7 +3,9 @@ import SingleJournalpost from "@components/single-journalpost/SingleJournalpost"
 import Layout from "@layouts/Layout.astro";
 import type {Language} from "@language/language";
 import FeilMelding from "@components/feilmelding/Feilmelding";
-import Breadcrumbs from "@components/breadcrumbs/Breadcrumbs";
+import PageHeader from "@components/pageHeader/PageHeader.astro";
+import {text} from "@language/text";
+import {baseUrlWithLanguage, minSideUrlWithLanguage} from "@src/urls";
 
 const {journalpostid, temakode} = Astro.params;
 const params = Astro.url.searchParams;
@@ -12,8 +14,17 @@ const language = Astro.currentLocale as Language;
 const languageSelectorUrl = `/tema/${temakode}/${journalpostid}`;
 ---
 
-<Layout title="Dokumentdetaljer - nav.no" language={language} languageSelectorUrl={languageSelectorUrl}>
-  <Breadcrumbs showDokumenter={true} language={language} client:only="react" />
+<Layout
+  title="Dokumentdetaljer - nav.no"
+  language={language}
+  languageSelectorUrl={languageSelectorUrl}
+>
+  <PageHeader
+    breadcrumbItems={[
+      {label: text.minSide[language], href: minSideUrlWithLanguage[language]},
+      {label: text.dokumenter[language], href: baseUrlWithLanguage[language]},
+    ]}
+  />
   <FeilMelding language={language} client:only="react" />
   <SingleJournalpost
     language={language}
