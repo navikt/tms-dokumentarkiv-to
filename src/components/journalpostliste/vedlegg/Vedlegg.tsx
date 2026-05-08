@@ -74,7 +74,8 @@ const Vedlegg = ({vedleggsListe, journalpostId, language}: Props) => {
         </BodyShort>
         <Button
           className={styles.btn}
-          variant="secondary-neutral"
+          variant="secondary"
+          data-color="neutral"
           size="xsmall"
           icon={
             hideVedlegg ? (
