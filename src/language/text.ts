@@ -9,6 +9,11 @@ export const text = {
     nn: "Mi side",
     en: "My page",
   },
+  dokumenterIngress: {
+    nb: "Se dokumenter i sakene dine hos Nav.",
+    nn: "Sjå dokument i sakene dine hos Nav.",
+    en: "See documents in your cases with Nav.",
+  },
   antallVedlegg: {
     nb: (antall: number) => `Dokumentet har ${antall} vedlegg`,
     nn: (antall: number) => `Dokumentet har ${antall} vedlegg`,
