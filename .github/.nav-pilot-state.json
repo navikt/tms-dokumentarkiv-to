@@ -1,8 +1,8 @@
 {
   "collection": "frontend",
-  "version": "2026.04.20-194821-8b2cb9f",
+  "version": "2026.05.08-074522-0bbf582",
   "scope": "repo",
-  "source_sha": "8b2cb9f",
+  "source_sha": "14b480c",
   "installed_at": "2026-04-24T09:29:39Z",
   "files": [
     {
@@ -23,7 +23,7 @@
     },
     {
       "path": ".github/agents/forfatter.agent.md",
-      "hash": "f638bd5c234f329b"
+      "hash": "4e55f4d189619dcb"
     },
     {
       "path": ".github/agents/forfatter.metadata.json",
@@ -31,7 +31,7 @@
     },
     {
       "path": ".github/agents/nav-pilot.agent.md",
-      "hash": "3179adb5db9ae3af"
+      "hash": "71eaa207ac601d66"
     },
     {
       "path": ".github/agents/nav-pilot.metadata.json",
@@ -55,7 +55,7 @@
     },
     {
       "path": ".github/skills/nav-deep-interview/",
-      "hash": "42e9aab52e591ef0"
+      "hash": "eeb3399ecd4e352c"
     },
     {
       "path": ".github/skills/nav-architecture-review/",
@@ -87,11 +87,11 @@
     },
     {
       "path": ".github/prompts/aksel-component.prompt.md",
-      "hash": "9da00ddfc10aefc4"
+      "hash": "9119d15db318622d"
     },
     {
       "path": ".github/prompts/nais-manifest.prompt.md",
-      "hash": "7b1e6ac5b4115c3f"
+      "hash": "a7564098ae008cce"
     }
   ]
 }
