@@ -1,7 +1,11 @@
-import { include } from './../utils/client/api';
 import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
-import { alphabetically, byOpprettetDateAsc, byOpprettetDateDesc } from "@utils/sorting";
+import {
+  alphabetically,
+  byOpprettetDateAsc,
+  byOpprettetDateDesc,
+} from "@utils/sorting";
 import { atom } from "nanostores";
+import { include } from "./../utils/client/api";
 
 export type Filters = {
   order?: string;
@@ -25,7 +29,7 @@ export const isErrorAtom = atom<boolean>(false);
 export const isValgtRepresentantAtom = atom<boolean>(false);
 
 export function setIsError(bool: boolean) {
-  isErrorAtom.set(bool)
+  isErrorAtom.set(bool);
 }
 
 export function setJournalposter(journalposter: JournalpostProps[]) {
@@ -33,40 +37,41 @@ export function setJournalposter(journalposter: JournalpostProps[]) {
 }
 
 export function setSakstemaer(journalposter: JournalpostProps[]) {
-  const toSakstemaer = (journalpost: JournalpostProps) => (
-      {temanavn: journalpost.temanavn, temakode: journalpost.temakode }
-  );
+  const toSakstemaer = (journalpost: JournalpostProps) => ({
+    temanavn: journalpost.temanavn,
+    temakode: journalpost.temakode,
+  });
 
   const byUniques = (value: Sakstema, index: number, self: Sakstema[]) =>
-      index === self.findIndex((sakstema: any) => (
-          sakstema.temakode === value.temakode
-      ));
+    index ===
+    self.findIndex((sakstema: any) => sakstema.temakode === value.temakode);
 
-
-  sakstemaerAtom.set(journalposter.map(toSakstemaer).filter(byUniques).sort(alphabetically));
+  sakstemaerAtom.set(
+    journalposter.map(toSakstemaer).filter(byUniques).sort(alphabetically),
+  );
 }
 
 export function setShowVedtakFilter(journalposter: JournalpostProps[]) {
+  const isVedtak = (journalpost: JournalpostProps) =>
+    journalpost.tittel.toLowerCase().includes("vedtak");
 
-  const isVedtak = (journalpost: JournalpostProps) => journalpost.tittel.toLowerCase().includes("vedtak")
-
-  showVedtakFilterAtom.set(journalposter.some(isVedtak) ? ["Vedtak"] : [])
+  showVedtakFilterAtom.set(journalposter.some(isVedtak) ? ["Vedtak"] : []);
 }
 
 export function setSingleJournalpostDisclaimerAtom(string: string | null) {
-  singleJournalpostDisclaimerAtom.set(string)
+  singleJournalpostDisclaimerAtom.set(string);
 }
 
 export function setIsValidatingJournalposter(bool: boolean) {
-  isValidatingJournalposterAtom.set(bool)
+  isValidatingJournalposterAtom.set(bool);
 }
 
 export function setIsValgtRepresentant(bool: boolean) {
-  isValgtRepresentantAtom.set(bool)
+  isValgtRepresentantAtom.set(bool);
 }
 
 export function setShowFilters(bool: boolean) {
-  showFiltersAtom.set(bool)
+  showFiltersAtom.set(bool);
 }
 
 export function setSakstemaFilters(filters: string[]) {
@@ -74,7 +79,7 @@ export function setSakstemaFilters(filters: string[]) {
 }
 
 export function setSortingOrder(order: string) {
-  sortingOrderAtom.set(order)
+  sortingOrderAtom.set(order);
 }
 
 export const filteredJournalposter = (filters?: Filters) => {
@@ -89,11 +94,15 @@ export const filteredJournalposter = (filters?: Filters) => {
     }
   }
 
-  if(!filters || filters.sakstemaFilters?.includes("Alle")) {
+  if (!filters || filters.sakstemaFilters?.includes("Alle")) {
     return journalposter;
   }
 
-  if (filters?.sakstemaFilters && !filters.sakstemaFilters.includes("Alle") && !filters.sakstemaFilters.includes("Vedtak")) {
+  if (
+    filters?.sakstemaFilters &&
+    !filters.sakstemaFilters.includes("Alle") &&
+    !filters.sakstemaFilters.includes("Vedtak")
+  ) {
     journalposter = journalposter.filter((journalpost) => {
       return journalpost.temakode === filters.sakstemaFilters[0];
     });

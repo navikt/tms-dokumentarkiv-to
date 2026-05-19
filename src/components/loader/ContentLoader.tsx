@@ -1,10 +1,9 @@
-import { Loader } from "@navikt/ds-react";
-import styles from "./ContentLoader.module.css";
-import { text } from "../../language/text";
 import type { Language } from "@language/language";
+import { Loader } from "@navikt/ds-react";
+import { text } from "../../language/text";
+import styles from "./ContentLoader.module.css";
 
 const ContentLoader = ({ language }: { language: Language }) => {
-
   return (
     <div className={styles.contentLoader}>
       <Loader transparent title={text.lasterInn[language]} size="2xlarge" />

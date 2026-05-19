@@ -1,23 +1,23 @@
-import {useStore} from "@nanostores/react";
-import {Chips, Label} from "@navikt/ds-react";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { useStore } from "@nanostores/react";
+import { Chips, Label } from "@navikt/ds-react";
 import {
   sakstemaerAtom,
   setSakstemaFilters,
   showFiltersAtom,
   showVedtakFilterAtom,
 } from "@store/store";
-import {useEffect, useState} from "react";
+import { logEvent } from "@utils/client/analytics";
+import { useEffect, useState } from "react";
 import styles from "./Filters.module.css";
-import type {Language} from "@language/language";
-import {text} from "@language/text";
-import {logEvent} from "@utils/client/analytics";
 
 interface Props {
   language: Language;
   queryParam: string | null;
 }
 
-const Filters = ({language, queryParam}: Props) => {
+const Filters = ({ language, queryParam }: Props) => {
   const [selected, setSelected] = useState<string[]>(["Alle"]);
   const sakstemaer = useStore(sakstemaerAtom);
   const showFilters = useStore(showFiltersAtom);
@@ -25,7 +25,7 @@ const Filters = ({language, queryParam}: Props) => {
 
   const isValidFilterValue = (queryParam: string | null) => {
     const filterValue = sakstemaer.filter(
-      (sakstema) => sakstema.temakode === queryParam
+      (sakstema) => sakstema.temakode === queryParam,
     );
 
     return filterValue.length > 0;

@@ -1,8 +1,8 @@
-import type {Language} from "@language/language";
-import {lenker, omsorgspengerKontaktOssUrl} from "./Lenker";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { logEvent } from "@utils/client/analytics";
+import { lenker, omsorgspengerKontaktOssUrl } from "./Lenker";
 import styles from "./TemaLenke.module.css";
-import {text} from "@language/text";
-import {logEvent} from "@utils/client/analytics";
 
 export type Temakode =
   | "DAG"
@@ -22,7 +22,7 @@ interface Props {
   language: Language;
 }
 
-const TemaLenke = ({lenketekst, temakode, language}: Props) => {
+const TemaLenke = ({ lenketekst, temakode, language }: Props) => {
   const type = temakode as Temakode;
 
   const unntaksKoder = [

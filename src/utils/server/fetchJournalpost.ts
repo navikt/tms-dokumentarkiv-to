@@ -3,7 +3,7 @@ import { getOboToken } from "@src/utils/server/token";
 
 export const fetchJournalpost = async (
   url: string,
-  token: string
+  token: string,
 ): Promise<JournalpostProps> => {
   const audience = `${process.env.NAIS_CLUSTER_NAME}:min-side:mine-saker-api`;
   const oboToken = await getOboToken(token, audience);
@@ -19,7 +19,7 @@ export const fetchJournalpost = async (
 
   if (!response.ok) {
     throw new Error(
-      "http error with status " + response.status + "when fetching soknad"
+      "http error with status " + response.status + "when fetching soknad",
     );
   }
 

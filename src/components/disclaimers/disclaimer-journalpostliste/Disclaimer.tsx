@@ -1,16 +1,16 @@
-import {text} from "@language/text";
-import {BodyLong, Heading} from "@navikt/ds-react";
-import {digisosUrl} from "@src/urls.client";
-import {logEvent} from "@utils/client/analytics";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { BodyLong, Heading } from "@navikt/ds-react";
+import { digisosUrl } from "@src/urls.client";
+import { logEvent } from "@utils/client/analytics";
 import styles from "./Disclaimer.module.css";
-import type {Language} from "@language/language";
 
 interface Props {
   language: Language;
   showingRepresentantDocuments: boolean;
 }
 
-const Disclaimer = ({language, showingRepresentantDocuments}: Props) => {
+const Disclaimer = ({ language, showingRepresentantDocuments }: Props) => {
   const hideSosialhjelpLenke = showingRepresentantDocuments ? false : true;
 
   return (

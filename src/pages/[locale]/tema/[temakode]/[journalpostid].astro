@@ -1,13 +1,13 @@
 ---
-import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
-import Layout from "@layouts/Layout.astro";
-import type {Language} from "@language/language";
 import FeilMelding from "@components/feilmelding/Feilmelding";
 import PageHeader from "@components/pageHeader/PageHeader.astro";
-import {text} from "@language/text";
-import {baseUrlWithLanguage, minSideUrlWithLanguage} from "@src/urls";
+import SingleJournalpost from "@components/single-journalpost/SingleJournalpost";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import Layout from "@layouts/Layout.astro";
+import { baseUrlWithLanguage, minSideUrlWithLanguage } from "@src/urls";
 
-const {temakode, journalpostid} = Astro.params;
+const { temakode, journalpostid } = Astro.params;
 const language = Astro.currentLocale as Language;
 const params = Astro.url.searchParams;
 const fullmakt = params.get("fullmakt");

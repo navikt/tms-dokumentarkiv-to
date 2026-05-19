@@ -1,6 +1,7 @@
-const isDevelopmentClientSide = window.location.href.includes("intern.dev.nav.no");
+const isDevelopmentClientSide =
+  window.location.href.includes("intern.dev.nav.no");
 const isAnsattClientSide = window.location.href.includes("ansatt.dev.nav.no");
-const isLocalClientSide = window.location.href.includes("localhost");;
+const isLocalClientSide = window.location.href.includes("localhost");
 
 export const getEnvironmentClientSide = () => {
   if (isLocalClientSide) {
@@ -11,10 +12,9 @@ export const getEnvironmentClientSide = () => {
     return "dev";
   }
 
-  if(isAnsattClientSide) {
+  if (isAnsattClientSide) {
     return "ansatt";
   }
 
   return "prod";
 };
-

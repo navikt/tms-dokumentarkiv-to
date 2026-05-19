@@ -1,7 +1,7 @@
 ---
-import type { Language } from '@language/language';
-import { text } from '@language/text';
-import { BugIcon } from '@navikt/aksel-icons';
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { BugIcon } from "@navikt/aksel-icons";
 import {
   BodyShort,
   Box,
@@ -10,12 +10,11 @@ import {
   Link,
   List,
   VStack,
-} from '@navikt/ds-react';
-import Layout from '@src/layouts/Layout.astro';
-import { minSideUrl, errorReportingUrl, navNoUrl } from '@src/urls';
+} from "@navikt/ds-react";
+import Layout from "@src/layouts/Layout.astro";
+import { errorReportingUrl, minSideUrl, navNoUrl } from "@src/urls";
 
 const language = Astro.currentLocale as Language;
-
 ---
 
 <Layout title="Siden finnes ikke" language={language}>

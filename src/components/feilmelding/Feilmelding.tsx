@@ -1,9 +1,9 @@
-import { Alert } from "@navikt/ds-react";
-import { useStore } from "@nanostores/react";
-import { isErrorAtom } from "@store/store.ts";
 import type { Language } from "@language/language.ts";
-import styles from "./Feilmelding.module.css";
 import { text } from "@language/text.ts";
+import { useStore } from "@nanostores/react";
+import { Alert } from "@navikt/ds-react";
+import { isErrorAtom } from "@store/store.ts";
+import styles from "./Feilmelding.module.css";
 
 interface Props {
   language: Language;

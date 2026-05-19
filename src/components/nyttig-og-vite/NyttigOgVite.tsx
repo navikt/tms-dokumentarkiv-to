@@ -1,15 +1,15 @@
-import {Heading} from "@navikt/ds-react";
-import styles from "./NyttigOgVite.module.css";
+import type { Language } from "@language/language";
+import { Heading } from "@navikt/ds-react";
 import {
   kontaktOssUrl,
   saksbehandlingstiderUrl,
   tilbakemeldingerUrl,
 } from "@src/urls";
-import {text} from "../../language/text";
-import {logEvent} from "../../utils/client/analytics";
-import type {Language} from "@language/language";
+import { text } from "../../language/text";
+import { logEvent } from "../../utils/client/analytics";
+import styles from "./NyttigOgVite.module.css";
 
-const NyttigOgVite = ({language}: {language: Language}) => {
+const NyttigOgVite = ({ language }: { language: Language }) => {
   return (
     <div className={styles.container}>
       <Heading level="2" size="small" className={styles.heading}>

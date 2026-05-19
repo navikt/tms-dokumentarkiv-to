@@ -35,7 +35,7 @@ export const dokumentUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/do
 export const getFullmaktForhold = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/forhold`;
 export const postUserUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/representert`;
 export const getFullmaktInfoUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/fullmakt/info`;
-export const hasDigisosContentUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sosialhjelp/har_innsendte`
+export const hasDigisosContentUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sosialhjelp/har_innsendte`;
 
 export const baseUrl = BASE_URL[getEnvironmentClientSide()];
 export const internBaseUrl = BASE_URL_INTERN[getEnvironmentClientSide()];
@@ -45,10 +45,11 @@ export const pdlFullmaktUrl = `${BASE_URL[getEnvironmentClientSide()]}/person/pd
 export const digisosUrl = DIGISOS_URL[getEnvironmentClientSide()];
 export const kontaktOssUrl = `${BASE_URL[getEnvironmentClientSide()]}/kontaktoss`;
 
-export const getJournalposterUrl = (tema: string) => `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sakstema/${tema}/journalposter`;
+export const getJournalposterUrl = (tema: string) =>
+  `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/sakstema/${tema}/journalposter`;
 export const getAlleJournalposterUrl = `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/alle`;
-export const getJournalpostUrl = (journalpostId: string) => `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/journalpost/${journalpostId}`;
-
+export const getJournalpostUrl = (journalpostId: string) =>
+  `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/journalpost/${journalpostId}`;
 
 export const baseUrlWithLanguage = {
   nb: `${baseUrl}/dokumentarkiv`,

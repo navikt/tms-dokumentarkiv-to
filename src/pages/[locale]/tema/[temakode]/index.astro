@@ -4,11 +4,11 @@ import Filters from "@components/filters/Filters";
 import Journalpostliste from "@components/journalpostliste/Journalpostliste";
 import PageHeader from "@components/pageHeader/PageHeader.astro";
 import SelectFullmakt from "@components/representasjon/SelectFullmakt";
-import type {Language} from "@language/language";
-import {text} from "@language/text";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
 import Layout from "@layouts/Layout.astro";
-import {Heading} from "@navikt/ds-react";
-import {minSideUrlWithLanguage} from "@src/urls";
+import { Heading } from "@navikt/ds-react";
+import { minSideUrlWithLanguage } from "@src/urls";
 
 const language = Astro.currentLocale as Language;
 const params = Astro.params;

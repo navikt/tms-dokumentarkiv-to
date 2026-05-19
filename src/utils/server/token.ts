@@ -4,7 +4,7 @@ import { generateKeyPair, SignJWT } from "jose";
 
 export const getOboToken = async (
   token: string,
-  audience: string
+  audience: string,
 ): Promise<string> => {
   const oboResult = await requestOboToken(token, audience);
 
