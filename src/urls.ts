@@ -20,11 +20,9 @@ const NAV_NO_URL = {
 
 const ERROR_REPORTING_URL = {
   local:
-    'https://www.intern.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler',
-  dev:
-    'https://www.intern.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler',
-  prod:
-    'https://www.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler',
+    "https://www.intern.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler",
+  dev: "https://www.intern.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler",
+  prod: "https://www.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler",
 };
 
 export const minSideUrl = `${NAV_NO_URL[getEnvironment()]}/minside`;
@@ -32,8 +30,10 @@ export const minSideProxyUrl = MIN_SIDE_PROXY_URL[getEnvironment()];
 export const errorReportingUrl = ERROR_REPORTING_URL[getEnvironment()];
 export const navNoUrl = NAV_NO_URL[getEnvironment()];
 export const baseUrl = BASE_URL[getEnvironment()];
-export const tilbakemeldingerUrl = "https://www.nav.no/person/kontakt-oss/tilbakemeldinger";
-export const saksbehandlingstiderUrl = "https://www.nav.no/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav";
+export const tilbakemeldingerUrl =
+  "https://www.nav.no/person/kontakt-oss/tilbakemeldinger";
+export const saksbehandlingstiderUrl =
+  "https://www.nav.no/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav";
 export const kontaktOssUrl = `${NAV_NO_URL[getEnvironment()]}/kontaktoss`;
 
 export const baseUrlWithLanguage = {

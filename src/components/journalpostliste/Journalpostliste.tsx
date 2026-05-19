@@ -1,9 +1,10 @@
+import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
 import SkeletonComponent from "@components/loader/skeleton/Skeleton";
-import type {Language} from "@language/language";
-import {text} from "@language/text";
-import {useStore} from "@nanostores/react";
-import {BodyShort, Select} from "@navikt/ds-react";
-import {getAlleJournalposterUrl} from "@src/urls.client";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { useStore } from "@nanostores/react";
+import { BodyShort, Select } from "@navikt/ds-react";
+import { getAlleJournalposterUrl } from "@src/urls.client";
 import {
   filteredJournalposter,
   isValgtRepresentantAtom,
@@ -17,21 +18,20 @@ import {
   setSortingOrder,
   sortingOrderAtom,
 } from "@store/store";
-import {fetcher} from "@utils/client/api";
-import {useEffect, type ChangeEvent} from "react";
+import { logEvent } from "@utils/client/analytics";
+import { fetcher } from "@utils/client/api";
+import { type ChangeEvent, useEffect } from "react";
 import useSWRImmutable from "swr/immutable";
-import type {JournalpostProps} from "./JournalpostInterfaces";
-import styles from "./Journalpostliste.module.css";
 import IngenJournalposter from "./ingen-journalposter/IngenJournalposter";
+import type { JournalpostProps } from "./JournalpostInterfaces";
+import styles from "./Journalpostliste.module.css";
 import Journalpost from "./journalpost/Journalpost";
-import {logEvent} from "@utils/client/analytics";
-import Disclaimer from "@components/disclaimers/disclaimer-journalpostliste/Disclaimer";
 
 interface Props {
   language: Language;
 }
 
-const Journalpostliste = ({language}: Props) => {
+const Journalpostliste = ({ language }: Props) => {
   const {
     data: journalposter,
     isLoading,
@@ -98,7 +98,7 @@ const Journalpostliste = ({language}: Props) => {
                     {numberOfDocuments &&
                       text.viserAntallDokumenter[language](
                         numberOfShownDocuments,
-                        numberOfDocuments
+                        numberOfDocuments,
                       )}
                   </BodyShort>
                   <Select

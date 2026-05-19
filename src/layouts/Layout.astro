@@ -1,10 +1,10 @@
 ---
-import {fetchDecoratorReact} from "@navikt/nav-dekoratoren-moduler/ssr";
-import {getEnvironment} from "../utils/server/environment";
-import {baseUrlWithLanguage} from "@src/urls";
+import type { Language } from "@language/language";
+import type { DecoratorLocale } from "@navikt/nav-dekoratoren-moduler";
+import { fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
+import { baseUrlWithLanguage } from "@src/urls";
+import { getEnvironment } from "../utils/server/environment";
 import styles from "./Layout.module.css";
-import type {Language} from "@language/language";
-import type {DecoratorLocale} from "@navikt/nav-dekoratoren-moduler";
 
 const currentLocale: Language = Astro.currentLocale as Language;
 
@@ -14,7 +14,7 @@ export interface Props {
   languageSelectorUrl?: string;
 }
 
-const {language, languageSelectorUrl} = Astro.props;
+const { language, languageSelectorUrl } = Astro.props;
 
 const Decorator = await fetchDecoratorReact({
   env: getEnvironment(),

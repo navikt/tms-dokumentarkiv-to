@@ -1,9 +1,9 @@
-import {REDIRECT_URI} from "astro:env/server";
-import {getToken, validateToken} from "@navikt/oasis";
-import {defineMiddleware} from "astro/middleware";
-import {isLocal} from "@src/utils/server/environment";
+import { REDIRECT_URI } from "astro:env/server";
+import { getToken, validateToken } from "@navikt/oasis";
+import { isLocal } from "@src/utils/server/environment";
 import logger from "@src/utils/server/logger";
-import {isInternal} from "./utils";
+import { defineMiddleware } from "astro/middleware";
+import { isInternal } from "./utils";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
@@ -20,7 +20,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   if (!token) {
     logger.info(
-      "Could not find any bearer token on the request. Redirecting to login."
+      "Could not find any bearer token on the request. Redirecting to login.",
     );
     return context.redirect(`${loginUrl}${params}`);
   }

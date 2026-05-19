@@ -1,4 +1,4 @@
-import {getEnvironmentClientSide} from "@utils/client/environment";
+import { getEnvironmentClientSide } from "@utils/client/environment";
 
 const DAGPENGER = {
   local: "https://localhost:3000/arbeid/dagpenger/mine-dagpenger",

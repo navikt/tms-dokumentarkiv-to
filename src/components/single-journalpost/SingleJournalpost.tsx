@@ -1,22 +1,22 @@
-import type {JournalpostProps} from "@components/journalpostliste/JournalpostInterfaces";
-import type {Language} from "@language/language";
-import {text} from "@language/text";
-import {EyeSlashIcon, FilePdfIcon} from "@navikt/aksel-icons";
-import {BodyShort, Detail, Heading} from "@navikt/ds-react";
-import {dokumentUrl, getJournalpostUrl} from "@src/urls.client";
-import {fetcher, NotFoundError} from "@utils/client/api";
-import {setAvsenderMottaker} from "@utils/client/setAvsenderMottaker";
-import {format} from "date-fns";
+import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
+import SkeletonComponent from "@components/loader/skeleton/Skeleton";
+import type { Language } from "@language/language";
+import { text } from "@language/text";
+import { EyeSlashIcon, FilePdfIcon } from "@navikt/aksel-icons";
+import { BodyShort, Detail, Heading } from "@navikt/ds-react";
+import { dokumentUrl, getJournalpostUrl } from "@src/urls.client";
+import { setIsError, setSingleJournalpostDisclaimerAtom } from "@store/store";
+import { logEvent } from "@utils/client/analytics";
+import { fetcher, NotFoundError } from "@utils/client/api";
+import { setAvsenderMottaker } from "@utils/client/setAvsenderMottaker";
+import { readableFileSize } from "@utils/readableFilesize";
+import { format } from "date-fns";
+import { useEffect } from "react";
 import useSWRImmutable from "swr/immutable";
+import DokumentNotFound from "./finner-ikke-dokument/DokumentNotFound";
 import styles from "./SingleJournalpost.module.css";
 import TemaLenke from "./temaside-lenke/TemaLenke";
 import Vedlegg from "./vedlegg/Vedlegg";
-import {readableFileSize} from "@utils/readableFilesize";
-import {setIsError, setSingleJournalpostDisclaimerAtom} from "@store/store";
-import SkeletonComponent from "@components/loader/skeleton/Skeleton";
-import {useEffect} from "react";
-import DokumentNotFound from "./finner-ikke-dokument/DokumentNotFound";
-import {logEvent} from "@utils/client/analytics";
 
 interface Props {
   language: Language;
@@ -40,7 +40,7 @@ const SingleJournalpost = ({
   } = useSWRImmutable<JournalpostProps>(
     fullmakt ? `${journalpostUrl}?enable_repr=true` : journalpostUrl,
     fetcher,
-    {revalidateOnFocus: false}
+    { revalidateOnFocus: false },
   );
 
   useEffect(() => {
@@ -54,10 +54,10 @@ const SingleJournalpost = ({
     if (temakode === "BAR") {
       setTimeout(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        // @ts-expect-error
         if (typeof window.TA === "function") {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+          // @ts-expect-error
           window.TA("start", "03415");
         }
       }, 1000);

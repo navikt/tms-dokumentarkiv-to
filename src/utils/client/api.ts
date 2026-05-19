@@ -1,6 +1,6 @@
-import {  postUserUrl } from "@src/urls.client.ts";
-import { redirectToIdPorten } from "./redirect";
+import { postUserUrl } from "@src/urls.client.ts";
 import { setIsError } from "@store/store";
+import { redirectToIdPorten } from "./redirect";
 
 interface eventObjectProps {
   ident: string;
@@ -17,7 +17,7 @@ export const include = {
   credentials: "include",
 };
 
-export const fetcher = async (url:string) => {
+export const fetcher = async (url: string) => {
   const response = await fetch(url, {
     method: "GET",
     credentials: "include",
@@ -46,9 +46,9 @@ export const postUser = async (ident: eventObjectProps) => {
 
   if (!response.ok) {
     if (response.status === 401) {
-      redirectToIdPorten()
+      redirectToIdPorten();
     }
-    setIsError(true)
+    setIsError(true);
     //throw new Error("Post request failed");
   }
 };
