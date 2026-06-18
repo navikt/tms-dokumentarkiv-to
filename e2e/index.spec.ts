@@ -1,0 +1,81 @@
+import { expect, test } from "@playwright/test";
+import { DokumentarkivPage } from "./pages/dokumentarkiv.page";
+
+test.describe("Dokumentarkiv-forsiden", () => {
+  test("viser hovedoverskrift", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page);
+    await dokumentarkiv.goto();
+
+    await expect(dokumentarkiv.heading).toHaveText("Dokumenter");
+  });
+
+  test("viser ingressteksten", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page);
+    await dokumentarkiv.goto();
+
+    await expect(
+      dokumentarkiv.main.getByText("Se dokumenter i sakene dine hos Nav."),
+    ).toBeVisible();
+  });
+
+  test("viser brødsmulesti til Min side", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page);
+    await dokumentarkiv.goto();
+
+    await expect(
+      dokumentarkiv.breadcrumb.getByRole("link", { name: "Min side" }),
+    ).toBeVisible();
+  });
+
+  test("viser dokumenter fra api-et", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page);
+    await dokumentarkiv.goto();
+
+    await expect(
+      dokumentarkiv.journalpostLinkByTitle(
+        /Søknad om å beholde arbeidsavklaringspenger under opphold i innlandet/,
+      ),
+    ).toBeVisible({ timeout: 20_000 });
+  });
+
+  test("viser antall dokumenter og sorteringsvalg", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page);
+    await dokumentarkiv.goto();
+    await dokumentarkiv.expectAtLeastOneJournalpost();
+
+    await expect(
+      dokumentarkiv.main.getByText(/Viser \d+ av \d+ dokumenter/),
+    ).toBeVisible();
+  });
+
+  test("hvert dokument lenker til en temaside", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page);
+    await dokumentarkiv.goto();
+    await dokumentarkiv.expectAtLeastOneJournalpost();
+
+    const firstLink = dokumentarkiv.journalpostLinks().first();
+    await expect(firstLink).toHaveAttribute("href", /\/dokumentarkiv\/tema\//);
+  });
+});
+
+test.describe("Språkstøtte", () => {
+  test("viser engelsk innhold på /en", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page, "en");
+    await dokumentarkiv.goto();
+
+    await expect(dokumentarkiv.heading).toHaveText("Documents");
+    await expect(
+      dokumentarkiv.main.getByText("See documents in your cases with Nav."),
+    ).toBeVisible();
+  });
+
+  test("viser nynorsk innhold på /nn", async ({ page }) => {
+    const dokumentarkiv = new DokumentarkivPage(page, "nn");
+    await dokumentarkiv.goto();
+
+    await expect(dokumentarkiv.heading).toHaveText("Dokument");
+    await expect(
+      dokumentarkiv.main.getByText("Sjå dokument i sakene dine hos Nav."),
+    ).toBeVisible();
+  });
+});
