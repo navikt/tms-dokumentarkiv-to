@@ -54,7 +54,10 @@ test.describe("Dokumentarkiv-forsiden", () => {
     await dokumentarkiv.expectAtLeastOneJournalpost();
 
     const firstLink = dokumentarkiv.journalpostLinks().first();
-    await expect(firstLink).toHaveAttribute("href", /\/dokumentarkiv\/tema\//);
+    await expect(firstLink).toHaveAttribute(
+      "href",
+      /\/dokumentarkiv\/nb\/tema\//,
+    );
   });
 });
 
