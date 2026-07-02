@@ -103,8 +103,8 @@ importers:
         specifier: 4.1.8
         version: 4.1.8(vitest@4.1.8)
       hono:
-        specifier: 4.6.5
-        version: 4.6.5
+        specifier: 4.12.25
+        version: 4.12.25
       jsdom:
         specifier: 29.1.1
         version: 29.1.1
@@ -1094,9 +1094,6 @@ packages:
       '@types/react': ^17.0.30 || ^18 || ^19
       react: ^17 || ^18 || ^19
       react-dom: ^17 || ^18 || ^19
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
 
   '@navikt/ds-tokens@8.10.6':
     resolution: {integrity: sha512-tsYS9Wy5/t6fryllnQfbzNkjD8lTA4b+enkbDj0SLTYfB4naCeXO4cog1jl3u/y3IhqqVTIMnyO7ujv1mLbYTg==, tarball: https://npm.pkg.github.com/download/@navikt/ds-tokens/8.10.6/3070167a2ab8445b7f04935d47175c87cc0167a3}
@@ -1109,9 +1106,6 @@ packages:
       html-react-parser: '>=5.x'
       jsdom: '>=16.x'
       react: '>=17.x'
-    peerDependenciesMeta:
-      react:
-        optional: true
 
   '@navikt/oasis@3.4.0':
     resolution: {integrity: sha512-le+J+gE/OeLfqyZFQWDqp/pY6f7lzMpP1ynXnDOWBalmkav9tmWor4g/pqb+Xorm6C6bNCdScmCKDHvNVf+CoQ==, tarball: https://npm.pkg.github.com/download/@navikt/oasis/3.4.0/7a21e6e8c8e6eca00d7e6a5c06f7e8315c0cc71a}
@@ -2057,8 +2051,8 @@ packages:
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
 
-  hono@4.6.5:
-    resolution: {integrity: sha512-qsmN3V5fgtwdKARGLgwwHvcdLKursMd+YOt69eGpl1dUCJb8mCd7hZfyZnBYjxCegBG7qkJRQRUy2oO25yHcyQ==}
+  hono@4.12.25:
+    resolution: {integrity: sha512-2NFaIyNVgJmBs/ecmtGzlmluTFs5cHEWGTdu0t1HBwYzoGXOL5nUQBRMXsXWla5i4KkG//QMzVP88m1+I3fdAQ==}
     engines: {node: '>=16.9.0'}
 
   html-dom-parser@7.1.0:
@@ -4062,12 +4056,11 @@ snapshots:
       '@floating-ui/react-dom': 2.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@navikt/aksel-icons': 8.8.0
       '@navikt/ds-tokens': 8.10.6
+      '@types/react': 18.2.64
       date-fns: 4.2.1
       react: 18.2.0
       react-day-picker: 9.7.0(react@18.2.0)
       react-dom: 18.2.0(react@18.2.0)
-    optionalDependencies:
-      '@types/react': 18.2.64
 
   '@navikt/ds-tokens@8.10.6': {}
 
@@ -4077,7 +4070,6 @@ snapshots:
       html-react-parser: 6.1.1(@types/react@18.2.64)(react@18.2.0)
       js-cookie: 3.0.7
       jsdom: 29.1.1
-    optionalDependencies:
       react: 18.2.0
 
   '@navikt/oasis@3.4.0':
@@ -5067,7 +5059,7 @@ snapshots:
       property-information: 7.1.0
       space-separated-tokens: 2.0.2
 
-  hono@4.6.5: {}
+  hono@4.12.25: {}
 
   html-dom-parser@7.1.0:
     dependencies:
