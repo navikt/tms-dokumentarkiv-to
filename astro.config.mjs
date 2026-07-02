@@ -13,6 +13,9 @@ export default defineConfig({
     assetsPrefix: "https://cdn.nav.no/min-side/tms-dokumentarkiv",
   },
   integrations: [react()],
+  logger: {
+    entrypoint: "@navikt/astro-logger",
+  },
   i18n: {
     defaultLocale: "nb",
     locales: ["nb", "nn", "en"],
