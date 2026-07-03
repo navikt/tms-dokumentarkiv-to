@@ -11,8 +11,8 @@ import { Heading } from "@navikt/ds-react";
 import { minSideUrlWithLanguage } from "@src/urls";
 
 const language = Astro.currentLocale as Language;
-const params = Astro.url.searchParams;
-const tema = params.get("tema");
+const params = Astro.params;
+const tema = params.temakode ? params.temakode : null;
 ---
 
 <Layout title="Dokumenter - nav.no" language={language}>
@@ -23,7 +23,7 @@ const tema = params.get("tema");
       {label: text.minSide[language], href: minSideUrlWithLanguage[language]},
     ]}
   >
-    <Heading level="1" size="xlarge">
+    <Heading level="1" size="large">
       {text.dokumenter[language]}
     </Heading>
   </PageHeader>

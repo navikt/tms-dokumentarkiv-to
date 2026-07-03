@@ -24,7 +24,7 @@ export class DokumentarkivPage {
   }
 
   private path(): string {
-    return `${BASE_PATH}/${this.language}`;
+    return this.language === "nb" ? BASE_PATH : `${BASE_PATH}/${this.language}`;
   }
 
   async goto() {
