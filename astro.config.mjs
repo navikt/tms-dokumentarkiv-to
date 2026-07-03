@@ -20,7 +20,7 @@ export default defineConfig({
     defaultLocale: "nb",
     locales: ["nb", "nn", "en"],
     routing: {
-      prefixDefaultLocale: false,
+      prefixDefaultLocale: true,
     },
   },
   output: "server",
