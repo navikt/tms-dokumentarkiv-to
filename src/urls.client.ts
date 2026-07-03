@@ -52,13 +52,13 @@ export const getJournalpostUrl = (journalpostId: string) =>
   `${MINE_SAKER_API_URL[getEnvironmentClientSide()]}/v2/journalposter/journalpost/${journalpostId}`;
 
 export const baseUrlWithLanguage = {
-  nb: `${baseUrl}/dokumentarkiv/nb`,
+  nb: `${baseUrl}/dokumentarkiv`,
   en: `${baseUrl}/dokumentarkiv/en`,
   nn: `${baseUrl}/dokumentarkiv/nn`,
 };
 
 export const minSideUrlWithLanguage = {
-  nb: `${minSideUrl}/nb`,
+  nb: minSideUrl,
   en: `${minSideUrl}/en`,
   nn: `${minSideUrl}/nn`,
 };
