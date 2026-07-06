@@ -30,7 +30,7 @@
     "date-fns": "4.4.0",
     "dayjs": "1.11.21",
     "husky": "9.1.7",
-    "nanostores": "1.3.0",
+    "nanostores": "1.4.0",
     "pino": "9.9.4",
     "prom-client": "^15.1.3",
     "react": "18.2.0",
