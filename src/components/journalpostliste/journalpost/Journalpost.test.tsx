@@ -52,7 +52,7 @@ describe("Journalpost", () => {
     const link = screen.getByRole("link", { name: "Søknad om dagpenger" });
     expect(link).toHaveAttribute(
       "href",
-      expect.stringContaining("/dokumentarkiv/tema/AAP/598134457"),
+      expect.stringContaining("/dokumentarkiv/nb/tema/AAP/598134457"),
     );
   });
 

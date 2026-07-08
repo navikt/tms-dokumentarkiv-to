@@ -37,7 +37,7 @@ export const saksbehandlingstiderUrl =
 export const kontaktOssUrl = `${NAV_NO_URL[getEnvironment()]}/kontaktoss`;
 
 export const baseUrlWithLanguage = {
-  nb: `${baseUrl}`,
+  nb: `${baseUrl}/nb`,
   en: `${baseUrl}/en`,
   nn: `${baseUrl}/nn`,
 };
