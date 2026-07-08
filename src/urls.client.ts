@@ -58,7 +58,7 @@ export const baseUrlWithLanguage = {
 };
 
 export const minSideUrlWithLanguage = {
-  nb: `${minSideUrl}/nb`,
+  nb: minSideUrl,
   en: `${minSideUrl}/en`,
   nn: `${minSideUrl}/nn`,
 };

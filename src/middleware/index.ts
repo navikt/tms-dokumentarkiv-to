@@ -2,18 +2,23 @@ import { REDIRECT_URI } from "astro:env/server";
 import { getToken, validateToken } from "@navikt/oasis";
 import { isLocal } from "@src/utils/server/environment";
 import { defineMiddleware } from "astro/middleware";
-import { isInternal } from "./utils";
+import { isInternal, defaultLocaleRedirect } from "./utils";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
   const params = encodeURIComponent(context.url.search);
   const loginUrl = `${REDIRECT_URI}/oauth2/login?redirect=${REDIRECT_URI}`;
 
-  if (isLocal) {
+  if (isInternal(context)) {
     return next();
   }
 
-  if (isInternal(context)) {
+  const localeRedirect = defaultLocaleRedirect(context);
+  if (localeRedirect) {
+    return context.redirect(localeRedirect);
+  }
+
+  if (isLocal) {
     return next();
   }
 
