@@ -3,11 +3,6 @@ import { type APIResponse, expect, test } from "@playwright/test";
 const BASE = "/dokumentarkiv";
 const LOCALES = ["nb", "nn", "en"] as const;
 
-/**
- * Parses the (relative) `Location` header of a redirect response into a URL so
- * assertions can compare pathname and query independently of whether the header
- * is absolute or relative.
- */
 const location = (response: APIResponse): URL => {
   const header = response.headers().location;
   expect(header, "expected a Location header").toBeTruthy();
