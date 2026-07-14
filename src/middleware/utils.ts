@@ -1,8 +1,5 @@
 import type { APIContext } from "astro";
 
-export const isInternal = (context: APIContext) =>
-  context.request.url.includes("/internal");
-
 const BASE = "/dokumentarkiv";
 const LOCALES = ["nb", "nn", "en"];
 const DEFAULT_LOCALE = "nb";
