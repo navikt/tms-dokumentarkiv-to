@@ -6,6 +6,7 @@ export const onRequest = sequence(
   authenticate(),
   defineMiddleware(async (context, next) => {
     const localeRedirect = defaultLocaleRedirect(context);
+
     if (localeRedirect) {
       return context.redirect(localeRedirect);
     }
