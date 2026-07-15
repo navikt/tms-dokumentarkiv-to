@@ -31,13 +31,14 @@ const defaultLocaleRedirect = (context: APIContext): string | null => {
   return `${localizedPath}${search}`;
 };
 
-const localeMiddleware = defineMiddleware(async (context, next) => {
-  const localeRedirect = defaultLocaleRedirect(context);
-  if (localeRedirect) {
-    return context.redirect(localeRedirect);
-  }
+export const onRequest = sequence(
+  authenticate(),
+  defineMiddleware(async (context, next) => {
+    const localeRedirect = defaultLocaleRedirect(context);
+    if (localeRedirect) {
+      return context.redirect(localeRedirect);
+    }
 
-  return next();
-});
-
-export const onRequest = sequence(authenticate(), localeMiddleware);
+    return next();
+  }),
+);
