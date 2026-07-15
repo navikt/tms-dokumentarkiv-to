@@ -4,10 +4,17 @@ const BASE = "/dokumentarkiv";
 const LOCALES = ["nb", "nn", "en"];
 const DEFAULT_LOCALE = "nb";
 
+const isInternal = (context: APIContext) =>
+  context.url.pathname.includes("/internal/");
+
 export const defaultLocaleRedirect = (context: APIContext): string | null => {
   const { pathname, search } = context.url;
 
   if (!pathname.startsWith(BASE)) {
+    return null;
+  }
+
+  if (isInternal(context)) {
     return null;
   }
 
