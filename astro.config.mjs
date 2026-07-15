@@ -1,6 +1,6 @@
 import node from "@astrojs/node";
 import react from "@astrojs/react";
-import { defineConfig, envField } from "astro/config";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,12 +33,6 @@ export default defineConfig({
     mode: "standalone",
   }),
   env: {
-    schema: {
-      REDIRECT_URI: envField.string({
-        context: "server",
-        access: "secret",
-        default: "http://localhost:3000/dokumentarkiv",
-      }),
-    },
+    schema: {},
   },
 });
