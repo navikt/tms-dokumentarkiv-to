@@ -1,6 +1,8 @@
 import node from "@astrojs/node";
 import react from "@astrojs/react";
+import mockServer from "@navikt/astro-mocks";
 import { defineConfig } from "astro/config";
+import dokumentarkiv from "./src/mocks/dokumentarkiv.json" with { type: "json" };
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +15,7 @@ export default defineConfig({
       sourcemap: true,
     },
   },
-  integrations: [react()],
+  integrations: [react(), mockServer({ mocks: dokumentarkiv })],
   logger: {
     entrypoint: "@navikt/astro-logger",
   },
