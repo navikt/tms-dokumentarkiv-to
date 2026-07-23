@@ -4,11 +4,6 @@ const PORT = 4321;
 const origin = `http://localhost:${PORT}`;
 const baseURL = `${origin}/dokumentarkiv`;
 
-// The React islands fetch documents from the mock API (mine-saker-api) when
-// running locally. Wait for this endpoint before starting the dev server.
-const MOCK_READY_URL =
-  "http://localhost:3000/mine-saker-api/v2/journalposter/alle";
-
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
@@ -26,21 +21,13 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
-  webServer: [
-    {
-      command: "pnpm mock",
-      url: MOCK_READY_URL,
-      reuseExistingServer: !process.env.CI,
-      timeout: 60_000,
+  webServer: {
+    command: `pnpm dev --port ${PORT}`,
+    url: baseURL,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120_000,
+    env: {
+      NODE_ENV: "development",
     },
-    {
-      command: `pnpm dev --port ${PORT}`,
-      url: baseURL,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
-      env: {
-        NODE_ENV: "development",
-      },
-    },
-  ],
+  },
 });
