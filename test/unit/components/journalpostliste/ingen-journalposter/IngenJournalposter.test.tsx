@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import IngenJournalposter from "./IngenJournalposter";
+import IngenJournalposter from "@src/components/journalpostliste/ingen-journalposter/IngenJournalposter";
 
 describe("IngenJournalposter", () => {
   it("should render the bokmål empty state", () => {

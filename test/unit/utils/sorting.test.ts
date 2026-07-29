@@ -1,11 +1,11 @@
-import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
-import type { Sakstema } from "@store/store";
+import type { JournalpostProps } from "@src/components/journalpostliste/JournalpostInterfaces";
+import type { Sakstema } from "@src/store/store";
 import { describe, expect, it } from "vitest";
 import {
   alphabetically,
   byOpprettetDateAsc,
   byOpprettetDateDesc,
-} from "./sorting";
+} from "@src/utils/sorting";
 
 const makeJournalpost = (opprettet: string): JournalpostProps =>
   ({ opprettet }) as JournalpostProps;

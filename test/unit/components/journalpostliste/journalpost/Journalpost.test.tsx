@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { JournalpostProps } from "../JournalpostInterfaces";
+import type { JournalpostProps } from "@src/components/journalpostliste/JournalpostInterfaces";
 
 const logEvent = vi.fn();
 vi.mock("@utils/client/analytics", () => ({
   logEvent: (...args: unknown[]) => logEvent(...args),
 }));
 
-import Journalpost from "./Journalpost";
+import Journalpost from "@src/components/journalpostliste/journalpost/Journalpost";
 
 const baseJournalpost: JournalpostProps = {
   journalpostId: "598134457",

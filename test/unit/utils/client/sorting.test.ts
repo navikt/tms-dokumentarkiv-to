@@ -1,6 +1,6 @@
-import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
+import type { JournalpostProps } from "@src/components/journalpostliste/JournalpostInterfaces";
 import { describe, expect, it } from "vitest";
-import { sortByOpprettetAsc, sortByOpprettetDesc } from "./sorting";
+import { sortByOpprettetAsc, sortByOpprettetDesc } from "@src/utils/client/sorting";
 
 const makeJournalpost = (opprettet: string): JournalpostProps =>
   ({ opprettet }) as JournalpostProps;

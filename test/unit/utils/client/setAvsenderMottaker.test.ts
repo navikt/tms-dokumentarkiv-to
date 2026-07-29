@@ -1,6 +1,6 @@
-import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
+import type { JournalpostProps } from "@src/components/journalpostliste/JournalpostInterfaces";
 import { describe, expect, it } from "vitest";
-import { setAvsenderMottaker } from "./setAvsenderMottaker";
+import { setAvsenderMottaker } from "@src/utils/client/setAvsenderMottaker";
 
 const makeJournalpost = (
   overrides: Partial<JournalpostProps>,

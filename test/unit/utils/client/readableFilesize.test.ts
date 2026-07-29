@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readableFileSize } from "./readableFilesize";
+import { readableFileSize } from "@src/utils/client/readableFilesize";
 
 describe("readableFileSize", () => {
   it("should return '0 kB' for a zero byte size", () => {
