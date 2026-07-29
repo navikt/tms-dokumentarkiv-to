@@ -1,7 +1,7 @@
-import { setIsError } from "@store/store";
+import { setIsError } from "@src/store/store";
 import { act, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import FeilMelding from "./Feilmelding";
+import FeilMelding from "@src/components/feilmelding/Feilmelding";
 
 describe("FeilMelding", () => {
   afterEach(() => {

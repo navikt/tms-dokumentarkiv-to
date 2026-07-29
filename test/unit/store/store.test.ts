@@ -1,4 +1,4 @@
-import type { JournalpostProps } from "@components/journalpostliste/JournalpostInterfaces";
+import type { JournalpostProps } from "@src/components/journalpostliste/JournalpostInterfaces";
 import { beforeEach, describe, expect, it } from "vitest";
 import {
   filteredJournalposter,
@@ -7,7 +7,7 @@ import {
   setSakstemaer,
   setShowVedtakFilter,
   showVedtakFilterAtom,
-} from "./store";
+} from "@src/store/store";
 
 const makeJournalpost = (
   overrides: Partial<JournalpostProps> = {},
