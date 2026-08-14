@@ -1,5 +1,8 @@
-name: "Deploy dev"
-on: workflow_dispatch
+name: "Deploy main"
+on:
+  push:
+    branches:
+      - "main"
 
 permissions:
   contents: "read"
@@ -11,5 +14,5 @@ jobs:
     uses: navikt/tms-deploy/.github/workflows/astro-deploy-v1.yaml@main
     with:
       app-name: "tms-dokumentarkiv"
-      clusters: '["dev-gcp"]'
+      clusters: '["dev-gcp", "prod-gcp"]'
     secrets: inherit
