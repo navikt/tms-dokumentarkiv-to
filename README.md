@@ -17,7 +17,7 @@ Dette repoet inneholder Dokumentarkiv på Min side. Innloggede brukere kan:
 
 Applikasjonen er en serverrendret Astro-frontend med React-komponenter og Aksel. Brukerne autentiseres med ID-porten.
 
-## Architecture
+## Arkitektur
 
 ```mermaid
 flowchart LR
