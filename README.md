@@ -20,9 +20,7 @@ Applikasjonen er en serverrendret Astro-frontend med React-komponenter og Aksel.
 ```mermaid
 flowchart LR
     bruker["Innlogget bruker"] -->|"ID-porten"| app["tms-dokumentarkiv"]
-    app --> dekorator["nav-dekoratoren"]
-    app --> ui["Dokumentoversikt og dokumentdetaljer"]
-    ui -->|"Dokumenter og fullmakter"| api["mine-saker-api"]
+    app -->|"Dokumenter og fullmakter"| api["mine-saker-api"]
 ```
 
 ## Miljøer
