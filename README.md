@@ -17,6 +17,8 @@ Dette repoet inneholder Dokumentarkiv på Min side. Innloggede brukere kan:
 
 Applikasjonen er en serverrendret Astro-frontend med React-komponenter og Aksel. Brukerne autentiseres med ID-porten.
 
+## Arkitektur
+
 ```mermaid
 flowchart LR
     bruker["Innlogget bruker"] -->|"ID-porten"| app["tms-dokumentarkiv"]
